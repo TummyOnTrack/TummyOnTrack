@@ -1,7 +1,7 @@
 # TummyOnTrack
 Team project
 
-
+Quickly track what food items have you or your loved ones eaten using TummyOnTrack. Create nutrition goals and start a food plan to stay on track. Then get a visual picture of your progress with colorful, easy-to-read charts and graphs. Encouraging you to eating healthy TummyOnTrack will bring fun surprises on achieving goals set by you.
 
 Following are the required user stories to be implemented:
 
