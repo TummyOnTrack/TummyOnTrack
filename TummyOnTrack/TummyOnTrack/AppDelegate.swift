@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -17,6 +18,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        let filePath = Bundle.main.path(forResource: "GoogleService-Info", ofType: "plist")!
+        let options = FIROptions(contentsOfFile: filePath)
+        FIRApp.configure(with: options!)
+        self.isUserLoggedIn()
+        UIApplication.shared.statusBarStyle = .lightContent
         return true
     }
 
@@ -89,5 +95,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
 
+}
+
+fileprivate extension AppDelegate {
+    func isUserLoggedIn() {
+        if UserDefaults.standard.object(forKey: "currentLoggedInUserEmail") != nil {
+            let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let homeVC = mainStoryboard.instantiateInitialViewController()!
+            window?.rootViewController = homeVC
+        }else {
+            let onboardingStoryboard = UIStoryboard(name: "Onboarding", bundle: nil)
+            let onboardingRootController = onboardingStoryboard.instantiateInitialViewController()!
+            window?.rootViewController = onboardingRootController
+        }
+    }
 }
 
