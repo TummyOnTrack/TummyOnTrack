@@ -13,7 +13,8 @@
 		DCE26630DAFFED14DB212A92 /* Pods_TummyOnTrackTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C70769353C6DF168DCF8CA75 /* Pods_TummyOnTrackTests.framework */; };
 		E04117461EAFB4C400C8152E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E04117451EAFB4C400C8152E /* GoogleService-Info.plist */; };
 		E746D5BEBDD93D7BABE7860B /* Pods_TummyOnTrackUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD778399FA4004A9293948D1 /* Pods_TummyOnTrackUITests.framework */; };
-		E7834F261EB1401B00FD2F1C /* TTUserSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7834F251EB1401B00FD2F1C /* TTUserSettingsViewController.swift */; };
+		E7834F2A1EB14BB500FD2F1C /* TTHomeTableTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7834F291EB14BB500FD2F1C /* TTHomeTableTableViewController.swift */; };
+		E7834F2C1EB14CA000FD2F1C /* TTSettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7834F2B1EB14CA000FD2F1C /* TTSettingsTableViewController.swift */; };
 		E7B940E51EAE790C0078AB5E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B940E41EAE790C0078AB5E /* AppDelegate.swift */; };
 		E7B940EA1EAE790C0078AB5E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7B940E81EAE790C0078AB5E /* Main.storyboard */; };
 		E7B940ED1EAE790C0078AB5E /* TummyOnTrack.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E7B940EB1EAE790C0078AB5E /* TummyOnTrack.xcdatamodeld */; };
@@ -58,7 +59,8 @@
 		D1B1EF9A1EB141970032BEE1 /* TTVoiceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TTVoiceViewController.swift; path = TummyOnTrack/VoiceEntry/TTVoiceViewController.swift; sourceTree = SOURCE_ROOT; };
 		D1B1EF9C1EB141E40032BEE1 /* VoiceEntry.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = VoiceEntry.storyboard; sourceTree = "<group>"; };
 		E04117451EAFB4C400C8152E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		E7834F251EB1401B00FD2F1C /* TTUserSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TTUserSettingsViewController.swift; sourceTree = "<group>"; };
+		E7834F291EB14BB500FD2F1C /* TTHomeTableTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TTHomeTableTableViewController.swift; sourceTree = "<group>"; };
+		E7834F2B1EB14CA000FD2F1C /* TTSettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TTSettingsTableViewController.swift; sourceTree = "<group>"; };
 		E7B940E11EAE790C0078AB5E /* TummyOnTrack.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TummyOnTrack.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7B940E41EAE790C0078AB5E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E7B940E91EAE790C0078AB5E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -293,7 +295,8 @@
 		E7BC604B1EB10BDC000529AC /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				E7834F251EB1401B00FD2F1C /* TTUserSettingsViewController.swift */,
+				E7834F291EB14BB500FD2F1C /* TTHomeTableTableViewController.swift */,
+				E7834F2B1EB14CA000FD2F1C /* TTSettingsTableViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -606,13 +609,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E7834F2A1EB14BB500FD2F1C /* TTHomeTableTableViewController.swift in Sources */,
 				E7BC60551EB10D79000529AC /* SignupLoginViewController.swift in Sources */,
 				E7BC60561EB10D79000529AC /* SignupViewController.swift in Sources */,
 				E7BC60581EB11220000529AC /* TTUser.swift in Sources */,
 				D1B1EF9B1EB141970032BEE1 /* TTVoiceViewController.swift in Sources */,
 				E7B940E51EAE790C0078AB5E /* AppDelegate.swift in Sources */,
-				E7834F261EB1401B00FD2F1C /* TTUserSettingsViewController.swift in Sources */,
 				E7B940ED1EAE790C0078AB5E /* TummyOnTrack.xcdatamodeld in Sources */,
+				E7834F2C1EB14CA000FD2F1C /* TTSettingsTableViewController.swift in Sources */,
 				E7BC60541EB10D79000529AC /* LoginViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
