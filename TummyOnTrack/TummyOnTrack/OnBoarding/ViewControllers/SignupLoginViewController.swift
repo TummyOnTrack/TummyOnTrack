@@ -16,7 +16,7 @@ class SignupLoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupLoginButton()
+        //setupLoginButton()
  
     }
     
