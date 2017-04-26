@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class HomeViewController: UIViewController {
 
@@ -18,6 +19,20 @@ class HomeViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    
+    @IBAction func logoutUser(_ sender: Any) {
+        do {
+            try FIRAuth.auth()?.signOut()
+        }catch let error {
+            print(error)
+        }
+        UserDefaults.standard.removeObject(forKey: "currentLoggedInUserEmail")
+        let mainStoryboard = UIStoryboard(name: "Onboarding", bundle: nil)
+        let signupLoginVC = mainStoryboard.instantiateViewController(withIdentifier: "SignupLoginViewController") as! SignupLoginViewController
+        self.present(signupLoginVC, animated: true, completion: nil)
+
     }
 
 

@@ -16,21 +16,23 @@ class SignupViewController: UIViewController {
     @IBOutlet weak var emailLabel: UITextField!
     @IBOutlet weak var passwordLabel: UITextField!
     @IBOutlet weak var confirmPwdLabel: UITextField!
+    @IBOutlet weak var signupButton: UIButton!
     
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        setupSignupButton()
+        
+        navigationController?.navigationBar.barTintColor = .orange
+        navigationController?.navigationBar.tintColor = .white
+        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
        
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
+    func setupSignupButton() {
+        signupButton.layer.cornerRadius = 3.5
+    }
 
     @IBAction func signupUserClicked(_ sender: Any) {
         if passwordLabel.text! != confirmPwdLabel.text! {
@@ -67,6 +69,8 @@ class SignupViewController: UIViewController {
                 }
                 
                 print("Saved user successfully into DB")
+                UserDefaults.standard.set(email, forKey: "currentLoggedInUserEmail")
+                UserDefaults.standard.synchronize()
                 let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
                 let homeVC = mainStoryboard.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
                 self.present(homeVC, animated: true, completion: nil)

@@ -12,6 +12,7 @@
 		E022EB9F1EB02238004793EB /* SignupLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E022EB9E1EB02238004793EB /* SignupLoginViewController.swift */; };
 		E022EBA11EB02533004793EB /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E022EBA01EB02533004793EB /* LoginViewController.swift */; };
 		E022EBA31EB0253C004793EB /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E022EBA21EB0253C004793EB /* SignupViewController.swift */; };
+		E022EBA61EB03061004793EB /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E022EBA51EB03061004793EB /* User.swift */; };
 		E04117461EAFB4C400C8152E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E04117451EAFB4C400C8152E /* GoogleService-Info.plist */; };
 		E041174A1EAFC19000C8152E /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E04117491EAFC19000C8152E /* Onboarding.storyboard */; };
 		E746D5BEBDD93D7BABE7860B /* Pods_TummyOnTrackUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD778399FA4004A9293948D1 /* Pods_TummyOnTrackUITests.framework */; };
@@ -55,6 +56,7 @@
 		E022EB9E1EB02238004793EB /* SignupLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupLoginViewController.swift; sourceTree = "<group>"; };
 		E022EBA01EB02533004793EB /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		E022EBA21EB0253C004793EB /* SignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
+		E022EBA51EB03061004793EB /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		E04117451EAFB4C400C8152E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E04117491EAFC19000C8152E /* Onboarding.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
 		E7B940E11EAE790C0078AB5E /* TummyOnTrack.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TummyOnTrack.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -161,6 +163,7 @@
 				E04117451EAFB4C400C8152E /* GoogleService-Info.plist */,
 				E022EBA01EB02533004793EB /* LoginViewController.swift */,
 				E022EBA21EB0253C004793EB /* SignupViewController.swift */,
+				E022EBA51EB03061004793EB /* User.swift */,
 			);
 			path = TummyOnTrack;
 			sourceTree = "<group>";
@@ -475,6 +478,7 @@
 				E7B940E51EAE790C0078AB5E /* AppDelegate.swift in Sources */,
 				E022EBA11EB02533004793EB /* LoginViewController.swift in Sources */,
 				E7B940ED1EAE790C0078AB5E /* TummyOnTrack.xcdatamodeld in Sources */,
+				E022EBA61EB03061004793EB /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

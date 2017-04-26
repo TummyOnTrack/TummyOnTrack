@@ -13,7 +13,7 @@
         <!--Signup Login View Controller-->
         <scene sceneID="1bb-wa-aAR">
             <objects>
-                <viewController id="QVE-6M-Ix2" customClass="SignupLoginViewController" customModule="TummyOnTrack" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SignupLoginViewController" id="QVE-6M-Ix2" customClass="SignupLoginViewController" customModule="TummyOnTrack" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Lb8-K8-30j"/>
                         <viewControllerLayoutGuide type="bottom" id="yqH-ci-5xH"/>
@@ -145,6 +145,7 @@
                     </view>
                     <connections>
                         <outlet property="emailLabel" destination="9oq-4C-jhT" id="X2a-NO-up5"/>
+                        <outlet property="loginButton" destination="eEv-Qn-khq" id="7am-jv-Jdb"/>
                         <outlet property="passwordLabel" destination="2Kt-N5-y7C" id="QZ4-QO-K1O"/>
                     </connections>
                 </viewController>
@@ -243,6 +244,7 @@
                         <outlet property="confirmPwdLabel" destination="GkQ-52-ry6" id="7Uf-RW-MFe"/>
                         <outlet property="emailLabel" destination="EjC-H0-zEf" id="hu5-MF-2MG"/>
                         <outlet property="passwordLabel" destination="5FH-xG-jyM" id="lH3-pN-LQa"/>
+                        <outlet property="signupButton" destination="xDb-fb-IFy" id="58N-dO-ulT"/>
                         <outlet property="usernameLabel" destination="gut-pC-1Hn" id="Spg-jf-V1R"/>
                     </connections>
                 </viewController>

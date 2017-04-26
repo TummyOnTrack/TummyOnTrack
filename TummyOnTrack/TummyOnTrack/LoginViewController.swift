@@ -13,16 +13,16 @@ class LoginViewController: UIViewController {
     
     @IBOutlet weak var emailLabel: UITextField!
     @IBOutlet weak var passwordLabel: UITextField!
+    @IBOutlet weak var loginButton: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        setupLoginButton()
       
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    func setupLoginButton() {
+        loginButton.layer.cornerRadius = 3.5
     }
     
     
@@ -38,9 +38,12 @@ class LoginViewController: UIViewController {
     func loginUserWith(email: String, password: String) {
         FIRAuth.auth()?.signIn(withEmail: email, password: password, completion: { (user: FIRUser?, error) in
             if error != nil {
-                print("Login user error: \(error)")
+                print("Login user error: \(String(describing: error))")
+                return
             }
             
+            UserDefaults.standard.set(email, forKey: "currentLoggedInUserEmail")
+            UserDefaults.standard.synchronize()
             let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
             let homeVC = mainStoryboard.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
             self.present(homeVC, animated: true, completion: nil)
