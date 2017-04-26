@@ -151,6 +151,12 @@
 		E7B940E31EAE790C0078AB5E /* TummyOnTrack */ = {
 			isa = PBXGroup;
 			children = (
+				E7BC603F1EB109F0000529AC /* Model */,
+				E7BC60401EB109F9000529AC /* OnBoarding */,
+				E7BC60441EB10A13000529AC /* VoiceEntry */,
+				E7BC60421EB10A07000529AC /* Gamification */,
+				E7BC60411EB10A00000529AC /* Rewards */,
+				E7BC60431EB10A0D000529AC /* Common */,
 				E7B940E41EAE790C0078AB5E /* AppDelegate.swift */,
 				E7B940E61EAE790C0078AB5E /* HomeViewController.swift */,
 				E022EB9E1EB02238004793EB /* SignupLoginViewController.swift */,
@@ -184,6 +190,128 @@
 				E7B941091EAE790C0078AB5E /* Info.plist */,
 			);
 			path = TummyOnTrackUITests;
+			sourceTree = "<group>";
+		};
+		E7BC603F1EB109F0000529AC /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		E7BC60401EB109F9000529AC /* OnBoarding */ = {
+			isa = PBXGroup;
+			children = (
+				E7BC60451EB10BBD000529AC /* ViewControllers */,
+				E7BC60461EB10BBD000529AC /* views */,
+			);
+			path = OnBoarding;
+			sourceTree = "<group>";
+		};
+		E7BC60411EB10A00000529AC /* Rewards */ = {
+			isa = PBXGroup;
+			children = (
+				E7BC60491EB10BD5000529AC /* ViewControllers */,
+				E7BC604A1EB10BD5000529AC /* Views */,
+			);
+			path = Rewards;
+			sourceTree = "<group>";
+		};
+		E7BC60421EB10A07000529AC /* Gamification */ = {
+			isa = PBXGroup;
+			children = (
+				E7BC60471EB10BCD000529AC /* ViewControllers */,
+				E7BC60481EB10BCD000529AC /* Views */,
+			);
+			path = Gamification;
+			sourceTree = "<group>";
+		};
+		E7BC60431EB10A0D000529AC /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				E7BC604B1EB10BDC000529AC /* ViewControllers */,
+				E7BC604C1EB10BDC000529AC /* Views */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		E7BC60441EB10A13000529AC /* VoiceEntry */ = {
+			isa = PBXGroup;
+			children = (
+				E7BC604D1EB10C24000529AC /* ViewControllers */,
+				E7BC604E1EB10C24000529AC /* Views */,
+			);
+			path = VoiceEntry;
+			sourceTree = "<group>";
+		};
+		E7BC60451EB10BBD000529AC /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		E7BC60461EB10BBD000529AC /* views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = views;
+			sourceTree = "<group>";
+		};
+		E7BC60471EB10BCD000529AC /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		E7BC60481EB10BCD000529AC /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		E7BC60491EB10BD5000529AC /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		E7BC604A1EB10BD5000529AC /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		E7BC604B1EB10BDC000529AC /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		E7BC604C1EB10BDC000529AC /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		E7BC604D1EB10C24000529AC /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		E7BC604E1EB10C24000529AC /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
