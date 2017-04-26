@@ -72,7 +72,7 @@ class SignupViewController: UIViewController {
                 UserDefaults.standard.set(email, forKey: "currentLoggedInUserEmail")
                 UserDefaults.standard.synchronize()
                 let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                let homeVC = mainStoryboard.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
+                let homeVC = mainStoryboard.instantiateViewController(withIdentifier: "MainPageTabBarController") as! UITabBarController
                 self.present(homeVC, animated: true, completion: nil)
             })
         })
