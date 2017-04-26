@@ -12,35 +12,31 @@ import Firebase
 class SignupViewController: UIViewController {
     
     
-    @IBOutlet weak var usernameLabel: UITextField!
-    @IBOutlet weak var emailLabel: UITextField!
-    @IBOutlet weak var passwordLabel: UITextField!
-    @IBOutlet weak var confirmPwdLabel: UITextField!
+    @IBOutlet weak var usernameTextField: UITextField!
+    @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var confirmPwdTextField: UITextField!
     @IBOutlet weak var signupButton: UIButton!
-    
-    
+  
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupSignupButton()
+        setupTextfields()
         
         navigationController?.navigationBar.barTintColor = .orange
         navigationController?.navigationBar.tintColor = .white
         navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
-       
-    }
-    
-    func setupSignupButton() {
-        signupButton.layer.cornerRadius = 3.5
+
     }
 
     @IBAction func signupUserClicked(_ sender: Any) {
-        if passwordLabel.text! != confirmPwdLabel.text! {
+        if passwordTextField.text! != confirmPwdTextField.text! {
             print("Password does not match confirmation")
             return
         }
         
-        guard let username = usernameLabel.text, let email = emailLabel.text, let password = passwordLabel.text else {
+        guard let username = emailTextField.text, let email = emailTextField.text, let password = passwordTextField.text else {
             print("Please enter valid sign up information")
             return
         }
@@ -76,6 +72,25 @@ class SignupViewController: UIViewController {
                 self.present(homeVC, animated: true, completion: nil)
             })
         })
+    }
+    
+    func setupSignupButton() {
+        signupButton.layer.cornerRadius = 3.5
+    }
+    
+    func setupTextfields() {
+        let leftImgView = UIImageView()
+        leftImgView.image = UIImage(named: "user")
+        leftImgView.contentMode = UIViewContentMode.scaleAspectFit
+        
+        let leftPaddingView = UIView()
+        leftPaddingView.addSubview(leftImgView)
+        
+        leftPaddingView.frame = CGRect(x:0, y:0, width:30, height:20)
+        leftImgView.frame = CGRect(x:8, y:0, width:20, height:18)
+        
+        usernameTextField.leftView = leftPaddingView
+        usernameTextField.leftViewMode = UITextFieldViewMode.always
     }
 
 
