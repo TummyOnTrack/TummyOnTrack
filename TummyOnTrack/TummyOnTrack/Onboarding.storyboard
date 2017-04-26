@@ -82,10 +82,10 @@
             </objects>
             <point key="canvasLocation" x="720.79999999999995" y="-90.404797601199405"/>
         </scene>
-        <!--View Controller-->
+        <!--Login View Controller-->
         <scene sceneID="mKl-yu-9PR">
             <objects>
-                <viewController id="gjK-LO-6xB" sceneMemberID="viewController">
+                <viewController id="gjK-LO-6xB" customClass="LoginViewController" customModule="TummyOnTrack" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="9Xf-BU-WYx"/>
                         <viewControllerLayoutGuide type="bottom" id="d7x-rO-QDt"/>
@@ -94,7 +94,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="USERNAME" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9oq-4C-jhT">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="EMAIL" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9oq-4C-jhT">
                                 <rect key="frame" x="50" y="124" width="275" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="Bzh-Zg-JZz"/>
@@ -122,6 +122,9 @@
                                 <state key="normal" title="LOG IN">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="loginUserClicked:" destination="gjK-LO-6xB" eventType="touchUpInside" id="zns-OX-jdt"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -140,6 +143,10 @@
                             <constraint firstItem="9oq-4C-jhT" firstAttribute="top" secondItem="9Xf-BU-WYx" secondAttribute="bottom" constant="60" id="ytq-ms-mDe"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="emailLabel" destination="9oq-4C-jhT" id="X2a-NO-up5"/>
+                        <outlet property="passwordLabel" destination="2Kt-N5-y7C" id="QZ4-QO-K1O"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x70-yA-wEp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
