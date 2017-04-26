@@ -9,11 +9,9 @@
 /* Begin PBXBuildFile section */
 		03DEBB593919382D6559FBA3 /* Pods_TummyOnTrack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21989D8558ABF79AD2D3611D /* Pods_TummyOnTrack.framework */; };
 		DCE26630DAFFED14DB212A92 /* Pods_TummyOnTrackTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C70769353C6DF168DCF8CA75 /* Pods_TummyOnTrackTests.framework */; };
-		E022EBA61EB03061004793EB /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E022EBA51EB03061004793EB /* User.swift */; };
 		E04117461EAFB4C400C8152E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E04117451EAFB4C400C8152E /* GoogleService-Info.plist */; };
 		E746D5BEBDD93D7BABE7860B /* Pods_TummyOnTrackUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD778399FA4004A9293948D1 /* Pods_TummyOnTrackUITests.framework */; };
 		E7B940E51EAE790C0078AB5E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B940E41EAE790C0078AB5E /* AppDelegate.swift */; };
-		E7B940E71EAE790C0078AB5E /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B940E61EAE790C0078AB5E /* HomeViewController.swift */; };
 		E7B940EA1EAE790C0078AB5E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7B940E81EAE790C0078AB5E /* Main.storyboard */; };
 		E7B940ED1EAE790C0078AB5E /* TummyOnTrack.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E7B940EB1EAE790C0078AB5E /* TummyOnTrack.xcdatamodeld */; };
 		E7B940EF1EAE790C0078AB5E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E7B940EE1EAE790C0078AB5E /* Assets.xcassets */; };
@@ -24,6 +22,8 @@
 		E7BC60541EB10D79000529AC /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BC60511EB10D79000529AC /* LoginViewController.swift */; };
 		E7BC60551EB10D79000529AC /* SignupLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BC60521EB10D79000529AC /* SignupLoginViewController.swift */; };
 		E7BC60561EB10D79000529AC /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BC60531EB10D79000529AC /* SignupViewController.swift */; };
+		E7BC60581EB11220000529AC /* TTUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BC60571EB11220000529AC /* TTUser.swift */; };
+		E7BC605A1EB1122A000529AC /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BC60591EB1122A000529AC /* HomeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,11 +53,9 @@
 		95D98D94BFFCF67DC2115B6F /* Pods-TummyOnTrackTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TummyOnTrackTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TummyOnTrackTests/Pods-TummyOnTrackTests.release.xcconfig"; sourceTree = "<group>"; };
 		C70769353C6DF168DCF8CA75 /* Pods_TummyOnTrackTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TummyOnTrackTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD778399FA4004A9293948D1 /* Pods_TummyOnTrackUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TummyOnTrackUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E022EBA51EB03061004793EB /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		E04117451EAFB4C400C8152E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E7B940E11EAE790C0078AB5E /* TummyOnTrack.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TummyOnTrack.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7B940E41EAE790C0078AB5E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		E7B940E61EAE790C0078AB5E /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		E7B940E91EAE790C0078AB5E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E7B940EC1EAE790C0078AB5E /* TummyOnTrack.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TummyOnTrack.xcdatamodel; sourceTree = "<group>"; };
 		E7B940EE1EAE790C0078AB5E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -73,6 +71,8 @@
 		E7BC60511EB10D79000529AC /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		E7BC60521EB10D79000529AC /* SignupLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupLoginViewController.swift; sourceTree = "<group>"; };
 		E7BC60531EB10D79000529AC /* SignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
+		E7BC60571EB11220000529AC /* TTUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TTUser.swift; sourceTree = "<group>"; };
+		E7BC60591EB1122A000529AC /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,14 +158,12 @@
 				E7BC60411EB10A00000529AC /* Rewards */,
 				E7BC60431EB10A0D000529AC /* Common */,
 				E7B940E41EAE790C0078AB5E /* AppDelegate.swift */,
-				E7B940E61EAE790C0078AB5E /* HomeViewController.swift */,
 				E7B940E81EAE790C0078AB5E /* Main.storyboard */,
 				E7B940EE1EAE790C0078AB5E /* Assets.xcassets */,
 				E7B940F01EAE790C0078AB5E /* LaunchScreen.storyboard */,
 				E7B940F31EAE790C0078AB5E /* Info.plist */,
 				E7B940EB1EAE790C0078AB5E /* TummyOnTrack.xcdatamodeld */,
 				E04117451EAFB4C400C8152E /* GoogleService-Info.plist */,
-				E022EBA51EB03061004793EB /* User.swift */,
 			);
 			path = TummyOnTrack;
 			sourceTree = "<group>";
@@ -191,6 +189,7 @@
 		E7BC603F1EB109F0000529AC /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				E7BC60571EB11220000529AC /* TTUser.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -198,8 +197,8 @@
 		E7BC60401EB109F9000529AC /* OnBoarding */ = {
 			isa = PBXGroup;
 			children = (
-				E7BC604F1EB10D6A000529AC /* Onboarding.storyboard */,
 				E7BC60451EB10BBD000529AC /* ViewControllers */,
+				E7BC604F1EB10D6A000529AC /* Onboarding.storyboard */,
 				E7BC60461EB10BBD000529AC /* views */,
 			);
 			path = OnBoarding;
@@ -244,6 +243,7 @@
 		E7BC60451EB10BBD000529AC /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				E7BC60591EB1122A000529AC /* HomeViewController.swift */,
 				E7BC60511EB10D79000529AC /* LoginViewController.swift */,
 				E7BC60521EB10D79000529AC /* SignupLoginViewController.swift */,
 				E7BC60531EB10D79000529AC /* SignupViewController.swift */,
@@ -602,11 +602,11 @@
 			files = (
 				E7BC60551EB10D79000529AC /* SignupLoginViewController.swift in Sources */,
 				E7BC60561EB10D79000529AC /* SignupViewController.swift in Sources */,
-				E7B940E71EAE790C0078AB5E /* HomeViewController.swift in Sources */,
+				E7BC60581EB11220000529AC /* TTUser.swift in Sources */,
 				E7B940E51EAE790C0078AB5E /* AppDelegate.swift in Sources */,
 				E7B940ED1EAE790C0078AB5E /* TummyOnTrack.xcdatamodeld in Sources */,
+				E7BC605A1EB1122A000529AC /* HomeViewController.swift in Sources */,
 				E7BC60541EB10D79000529AC /* LoginViewController.swift in Sources */,
-				E022EBA61EB03061004793EB /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

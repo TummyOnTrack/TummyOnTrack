@@ -8,7 +8,7 @@
 
 import UIKit
 
-class User: NSObject {
+class TTUser: NSObject {
     var username: String
     var email: String
     
