@@ -1,0 +1,6 @@
+framework module Pods_TummyOnTrackTests {
+  umbrella header "Pods-TummyOnTrackTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
