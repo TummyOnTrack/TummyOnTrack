@@ -9,12 +9,8 @@
 /* Begin PBXBuildFile section */
 		03DEBB593919382D6559FBA3 /* Pods_TummyOnTrack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21989D8558ABF79AD2D3611D /* Pods_TummyOnTrack.framework */; };
 		DCE26630DAFFED14DB212A92 /* Pods_TummyOnTrackTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C70769353C6DF168DCF8CA75 /* Pods_TummyOnTrackTests.framework */; };
-		E022EB9F1EB02238004793EB /* SignupLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E022EB9E1EB02238004793EB /* SignupLoginViewController.swift */; };
-		E022EBA11EB02533004793EB /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E022EBA01EB02533004793EB /* LoginViewController.swift */; };
-		E022EBA31EB0253C004793EB /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E022EBA21EB0253C004793EB /* SignupViewController.swift */; };
 		E022EBA61EB03061004793EB /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E022EBA51EB03061004793EB /* User.swift */; };
 		E04117461EAFB4C400C8152E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E04117451EAFB4C400C8152E /* GoogleService-Info.plist */; };
-		E041174A1EAFC19000C8152E /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E04117491EAFC19000C8152E /* Onboarding.storyboard */; };
 		E746D5BEBDD93D7BABE7860B /* Pods_TummyOnTrackUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD778399FA4004A9293948D1 /* Pods_TummyOnTrackUITests.framework */; };
 		E7B940E51EAE790C0078AB5E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B940E41EAE790C0078AB5E /* AppDelegate.swift */; };
 		E7B940E71EAE790C0078AB5E /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B940E61EAE790C0078AB5E /* HomeViewController.swift */; };
@@ -24,6 +20,10 @@
 		E7B940F21EAE790C0078AB5E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7B940F01EAE790C0078AB5E /* LaunchScreen.storyboard */; };
 		E7B940FD1EAE790C0078AB5E /* TummyOnTrackTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B940FC1EAE790C0078AB5E /* TummyOnTrackTests.swift */; };
 		E7B941081EAE790C0078AB5E /* TummyOnTrackUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B941071EAE790C0078AB5E /* TummyOnTrackUITests.swift */; };
+		E7BC60501EB10D6A000529AC /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7BC604F1EB10D6A000529AC /* Onboarding.storyboard */; };
+		E7BC60541EB10D79000529AC /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BC60511EB10D79000529AC /* LoginViewController.swift */; };
+		E7BC60551EB10D79000529AC /* SignupLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BC60521EB10D79000529AC /* SignupLoginViewController.swift */; };
+		E7BC60561EB10D79000529AC /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BC60531EB10D79000529AC /* SignupViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,12 +53,8 @@
 		95D98D94BFFCF67DC2115B6F /* Pods-TummyOnTrackTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TummyOnTrackTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TummyOnTrackTests/Pods-TummyOnTrackTests.release.xcconfig"; sourceTree = "<group>"; };
 		C70769353C6DF168DCF8CA75 /* Pods_TummyOnTrackTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TummyOnTrackTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD778399FA4004A9293948D1 /* Pods_TummyOnTrackUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TummyOnTrackUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E022EB9E1EB02238004793EB /* SignupLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupLoginViewController.swift; sourceTree = "<group>"; };
-		E022EBA01EB02533004793EB /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		E022EBA21EB0253C004793EB /* SignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		E022EBA51EB03061004793EB /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		E04117451EAFB4C400C8152E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		E04117491EAFC19000C8152E /* Onboarding.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
 		E7B940E11EAE790C0078AB5E /* TummyOnTrack.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TummyOnTrack.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7B940E41EAE790C0078AB5E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E7B940E61EAE790C0078AB5E /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -73,6 +69,10 @@
 		E7B941031EAE790C0078AB5E /* TummyOnTrackUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TummyOnTrackUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7B941071EAE790C0078AB5E /* TummyOnTrackUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TummyOnTrackUITests.swift; sourceTree = "<group>"; };
 		E7B941091EAE790C0078AB5E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E7BC604F1EB10D6A000529AC /* Onboarding.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
+		E7BC60511EB10D79000529AC /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		E7BC60521EB10D79000529AC /* SignupLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupLoginViewController.swift; sourceTree = "<group>"; };
+		E7BC60531EB10D79000529AC /* SignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,16 +159,12 @@
 				E7BC60431EB10A0D000529AC /* Common */,
 				E7B940E41EAE790C0078AB5E /* AppDelegate.swift */,
 				E7B940E61EAE790C0078AB5E /* HomeViewController.swift */,
-				E022EB9E1EB02238004793EB /* SignupLoginViewController.swift */,
-				E04117491EAFC19000C8152E /* Onboarding.storyboard */,
 				E7B940E81EAE790C0078AB5E /* Main.storyboard */,
 				E7B940EE1EAE790C0078AB5E /* Assets.xcassets */,
 				E7B940F01EAE790C0078AB5E /* LaunchScreen.storyboard */,
 				E7B940F31EAE790C0078AB5E /* Info.plist */,
 				E7B940EB1EAE790C0078AB5E /* TummyOnTrack.xcdatamodeld */,
 				E04117451EAFB4C400C8152E /* GoogleService-Info.plist */,
-				E022EBA01EB02533004793EB /* LoginViewController.swift */,
-				E022EBA21EB0253C004793EB /* SignupViewController.swift */,
 				E022EBA51EB03061004793EB /* User.swift */,
 			);
 			path = TummyOnTrack;
@@ -202,6 +198,7 @@
 		E7BC60401EB109F9000529AC /* OnBoarding */ = {
 			isa = PBXGroup;
 			children = (
+				E7BC604F1EB10D6A000529AC /* Onboarding.storyboard */,
 				E7BC60451EB10BBD000529AC /* ViewControllers */,
 				E7BC60461EB10BBD000529AC /* views */,
 			);
@@ -247,6 +244,9 @@
 		E7BC60451EB10BBD000529AC /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				E7BC60511EB10D79000529AC /* LoginViewController.swift */,
+				E7BC60521EB10D79000529AC /* SignupLoginViewController.swift */,
+				E7BC60531EB10D79000529AC /* SignupViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -434,7 +434,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E7B940F21EAE790C0078AB5E /* LaunchScreen.storyboard in Resources */,
-				E041174A1EAFC19000C8152E /* Onboarding.storyboard in Resources */,
+				E7BC60501EB10D6A000529AC /* Onboarding.storyboard in Resources */,
 				E04117461EAFB4C400C8152E /* GoogleService-Info.plist in Resources */,
 				E7B940EF1EAE790C0078AB5E /* Assets.xcassets in Resources */,
 				E7B940EA1EAE790C0078AB5E /* Main.storyboard in Resources */,
@@ -600,12 +600,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E022EBA31EB0253C004793EB /* SignupViewController.swift in Sources */,
-				E022EB9F1EB02238004793EB /* SignupLoginViewController.swift in Sources */,
+				E7BC60551EB10D79000529AC /* SignupLoginViewController.swift in Sources */,
+				E7BC60561EB10D79000529AC /* SignupViewController.swift in Sources */,
 				E7B940E71EAE790C0078AB5E /* HomeViewController.swift in Sources */,
 				E7B940E51EAE790C0078AB5E /* AppDelegate.swift in Sources */,
-				E022EBA11EB02533004793EB /* LoginViewController.swift in Sources */,
 				E7B940ED1EAE790C0078AB5E /* TummyOnTrack.xcdatamodeld in Sources */,
+				E7BC60541EB10D79000529AC /* LoginViewController.swift in Sources */,
 				E022EBA61EB03061004793EB /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
