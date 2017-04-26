@@ -82,15 +82,46 @@ class SignupViewController: UIViewController {
         let leftImgView = UIImageView()
         leftImgView.image = UIImage(named: "user")
         leftImgView.contentMode = UIViewContentMode.scaleAspectFit
-        
         let leftPaddingView = UIView()
         leftPaddingView.addSubview(leftImgView)
-        
-        leftPaddingView.frame = CGRect(x:0, y:0, width:30, height:20)
-        leftImgView.frame = CGRect(x:8, y:0, width:20, height:18)
-        
+        leftPaddingView.frame = CGRect(x:0, y:0, width:35, height:20)
+        leftImgView.frame = CGRect(x:8, y:0, width: 20, height:18)
         usernameTextField.leftView = leftPaddingView
         usernameTextField.leftViewMode = UITextFieldViewMode.always
+        
+        
+        let emailLeftImgView = UIImageView()
+        emailLeftImgView.image = UIImage(named: "envelope")
+        emailLeftImgView.contentMode = UIViewContentMode.scaleAspectFit
+        let emailLeftPaddingView = UIView()
+        emailLeftPaddingView.addSubview(emailLeftImgView)
+        emailLeftPaddingView.frame = CGRect(x:0, y:0, width:35, height:20)
+        emailLeftImgView.frame = CGRect(x:8, y:0, width: 20, height:18)
+        emailTextField.leftView = emailLeftPaddingView
+        emailTextField.leftViewMode = UITextFieldViewMode.always
+        
+        
+        let pwdLeftImgView = UIImageView()
+        pwdLeftImgView.image = UIImage(named: "padlock")
+        pwdLeftImgView.contentMode = UIViewContentMode.scaleAspectFit
+        let pwdLeftPaddingView = UIView()
+        pwdLeftPaddingView.addSubview(pwdLeftImgView)
+        pwdLeftPaddingView.frame = CGRect(x:0, y:0, width:35, height:20)
+        pwdLeftImgView.frame = CGRect(x:8, y:0, width: 20, height:18)
+        passwordTextField.leftView = pwdLeftPaddingView
+        passwordTextField.leftViewMode = UITextFieldViewMode.always
+        
+        
+        let confirmPwdImgView = UIImageView()
+        confirmPwdImgView.image = UIImage(named: "padlock")
+        confirmPwdImgView.contentMode = UIViewContentMode.scaleAspectFit
+        let confirmPwdPaddingView = UIView()
+        confirmPwdPaddingView.addSubview(confirmPwdImgView)
+        confirmPwdPaddingView.frame = CGRect(x:0, y:0, width:35, height:20)
+        confirmPwdImgView.frame = CGRect(x:8, y:0, width: 20, height:18)
+        confirmPwdTextField.leftView = confirmPwdPaddingView
+        confirmPwdTextField.leftViewMode = UITextFieldViewMode.always
+        
     }
 
 

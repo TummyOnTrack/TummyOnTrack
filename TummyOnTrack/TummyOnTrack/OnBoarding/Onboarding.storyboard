@@ -240,29 +240,29 @@
                                     <action selector="signupUserClicked:" destination="upT-To-HxG" eventType="touchUpInside" id="LK6-Bv-zIZ"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8BU-WA-tMD">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8BU-WA-tMD">
                                 <rect key="frame" x="16" y="113" width="359" height="1"/>
-                                <color key="backgroundColor" red="1" green="0.6246866861" blue="0.1027341489" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.60720624609999996" green="0.70229219539999999" blue="0.6814870166" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="j2M-ZP-bCb"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dOk-Zj-rzw">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dOk-Zj-rzw">
                                 <rect key="frame" x="16" y="163" width="359" height="1"/>
-                                <color key="backgroundColor" red="1" green="0.6246866861" blue="0.1027341489" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.60720624609999996" green="0.70229219539999999" blue="0.6814870166" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="lqs-vM-zSO"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rBZ-bO-2j3">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rBZ-bO-2j3">
                                 <rect key="frame" x="16" y="213" width="359" height="1"/>
-                                <color key="backgroundColor" red="1" green="0.6246866861" blue="0.1027341489" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.60720624609999996" green="0.70229219539999999" blue="0.6814870166" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="DZP-XU-rqO"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="By continuing, you are agrred to Tummy On Track's " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xAm-Qx-zv8">
-                                <rect key="frame" x="60" y="356" width="255" height="13"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="By continuing, you are agreed to Tummy On Track's " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xAm-Qx-zv8">
+                                <rect key="frame" x="58.5" y="356" width="258" height="13"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="11"/>
                                 <color key="textColor" red="0.39800948798063301" green="0.43704245872055775" blue="0.45435437817258884" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -278,7 +278,11 @@
                         <constraints>
                             <constraint firstItem="nXt-Gf-LWl" firstAttribute="top" secondItem="xAm-Qx-zv8" secondAttribute="bottom" constant="2" id="32S-mz-wTR"/>
                             <constraint firstItem="5FH-xG-jyM" firstAttribute="top" secondItem="dOk-Zj-rzw" secondAttribute="bottom" id="4wP-Bw-m9R"/>
+                            <constraint firstItem="rBZ-bO-2j3" firstAttribute="trailing" secondItem="8BU-WA-tMD" secondAttribute="trailing" id="7Y9-hU-RNI"/>
+                            <constraint firstItem="rBZ-bO-2j3" firstAttribute="trailing" secondItem="5FH-xG-jyM" secondAttribute="trailing" id="8YB-TR-c1k"/>
+                            <constraint firstItem="rBZ-bO-2j3" firstAttribute="leading" secondItem="8mc-gK-lpe" secondAttribute="leadingMargin" id="9Av-SU-7E5"/>
                             <constraint firstItem="xDb-fb-IFy" firstAttribute="centerX" secondItem="8mc-gK-lpe" secondAttribute="centerX" id="ADW-Zz-o6A"/>
+                            <constraint firstItem="rBZ-bO-2j3" firstAttribute="leading" secondItem="8BU-WA-tMD" secondAttribute="leading" id="ApH-1H-VRy"/>
                             <constraint firstAttribute="trailing" secondItem="5FH-xG-jyM" secondAttribute="trailing" id="Bgs-I9-wCi"/>
                             <constraint firstItem="GkQ-52-ry6" firstAttribute="centerX" secondItem="8mc-gK-lpe" secondAttribute="centerX" id="ClZ-Ma-nQ3"/>
                             <constraint firstItem="xAm-Qx-zv8" firstAttribute="centerX" secondItem="8mc-gK-lpe" secondAttribute="centerX" id="D7M-SB-hNi"/>
@@ -293,12 +297,14 @@
                             <constraint firstAttribute="trailing" secondItem="GkQ-52-ry6" secondAttribute="trailing" id="V3t-eH-8x8"/>
                             <constraint firstItem="gut-pC-1Hn" firstAttribute="centerX" secondItem="8mc-gK-lpe" secondAttribute="centerX" id="XIX-za-ehE"/>
                             <constraint firstItem="nXt-Gf-LWl" firstAttribute="centerX" secondItem="8mc-gK-lpe" secondAttribute="centerX" id="Zc5-64-k6e"/>
+                            <constraint firstItem="rBZ-bO-2j3" firstAttribute="trailing" secondItem="dOk-Zj-rzw" secondAttribute="trailing" id="Zfq-7K-dms"/>
                             <constraint firstItem="EjC-H0-zEf" firstAttribute="centerX" secondItem="8mc-gK-lpe" secondAttribute="centerX" id="e8y-8r-izZ"/>
                             <constraint firstItem="gut-pC-1Hn" firstAttribute="top" secondItem="1Qv-hf-uQz" secondAttribute="bottom" id="eCB-Va-ZhQ"/>
                             <constraint firstItem="GkQ-52-ry6" firstAttribute="leading" secondItem="8mc-gK-lpe" secondAttribute="leading" id="enf-ua-ulI"/>
                             <constraint firstItem="5FH-xG-jyM" firstAttribute="leading" secondItem="8mc-gK-lpe" secondAttribute="leading" id="fW9-ES-aAZ"/>
                             <constraint firstItem="EjC-H0-zEf" firstAttribute="top" secondItem="8BU-WA-tMD" secondAttribute="bottom" id="fty-57-AKB"/>
                             <constraint firstItem="5FH-xG-jyM" firstAttribute="centerX" secondItem="8mc-gK-lpe" secondAttribute="centerX" id="giF-1Z-3T8"/>
+                            <constraint firstItem="rBZ-bO-2j3" firstAttribute="leading" secondItem="dOk-Zj-rzw" secondAttribute="leading" id="lEX-Kh-XYb"/>
                             <constraint firstItem="dOk-Zj-rzw" firstAttribute="bottom" secondItem="EjC-H0-zEf" secondAttribute="bottom" id="lhc-0b-m37"/>
                             <constraint firstAttribute="trailing" secondItem="gut-pC-1Hn" secondAttribute="trailing" id="n0j-T9-eli"/>
                             <constraint firstItem="xDb-fb-IFy" firstAttribute="top" secondItem="GkQ-52-ry6" secondAttribute="bottom" constant="26" id="nAe-sf-Hlq"/>
