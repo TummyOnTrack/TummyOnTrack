@@ -37,6 +37,12 @@ class SignupViewController: UIViewController {
         confirmPwdTextField.delegate = self
 
     }
+    
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillDisappear(animated)
+//        self.navigationController?.navigationBar.isHidden = false
+//    }
+    
 
     @IBAction func signupUserClicked(_ sender: Any) {
         if passwordTextField.text! != confirmPwdTextField.text! {

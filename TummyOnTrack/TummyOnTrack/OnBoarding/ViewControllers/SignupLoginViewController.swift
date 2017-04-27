@@ -17,7 +17,12 @@ class SignupLoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupLoginButton()
- 
+        
+        navigationController?.navigationBar.barTintColor = .orange
+        navigationController?.navigationBar.tintColor = .white
+        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
+        
+        self.navigationController?.navigationBar.isHidden = false
     }
     
     override func viewWillDisappear(_ animated: Bool) {
