@@ -10,6 +10,7 @@
 		03DEBB593919382D6559FBA3 /* Pods_TummyOnTrack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21989D8558ABF79AD2D3611D /* Pods_TummyOnTrack.framework */; };
 		DCE26630DAFFED14DB212A92 /* Pods_TummyOnTrackTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C70769353C6DF168DCF8CA75 /* Pods_TummyOnTrackTests.framework */; };
 		E04117461EAFB4C400C8152E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E04117451EAFB4C400C8152E /* GoogleService-Info.plist */; };
+		E08BD2A31EB28B4100FD5404 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08BD2A21EB28B4100FD5404 /* Helpers.swift */; };
 		E746D5BEBDD93D7BABE7860B /* Pods_TummyOnTrackUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD778399FA4004A9293948D1 /* Pods_TummyOnTrackUITests.framework */; };
 		E7B940E51EAE790C0078AB5E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B940E41EAE790C0078AB5E /* AppDelegate.swift */; };
 		E7B940EA1EAE790C0078AB5E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7B940E81EAE790C0078AB5E /* Main.storyboard */; };
@@ -54,6 +55,7 @@
 		C70769353C6DF168DCF8CA75 /* Pods_TummyOnTrackTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TummyOnTrackTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD778399FA4004A9293948D1 /* Pods_TummyOnTrackUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TummyOnTrackUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E04117451EAFB4C400C8152E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		E08BD2A21EB28B4100FD5404 /* Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		E7B940E11EAE790C0078AB5E /* TummyOnTrack.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TummyOnTrack.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7B940E41EAE790C0078AB5E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E7B940E91EAE790C0078AB5E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -124,6 +126,14 @@
 				311164B31794F3E36BFCC046 /* Pods-TummyOnTrackUITests.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		E08BD2A11EB28B2200FD5404 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				E08BD2A21EB28B4100FD5404 /* Helpers.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		E7B940D81EAE790C0078AB5E = {
@@ -197,6 +207,7 @@
 		E7BC60401EB109F9000529AC /* OnBoarding */ = {
 			isa = PBXGroup;
 			children = (
+				E08BD2A11EB28B2200FD5404 /* Helpers */,
 				E7BC60451EB10BBD000529AC /* ViewControllers */,
 				E7BC604F1EB10D6A000529AC /* Onboarding.storyboard */,
 				E7BC60461EB10BBD000529AC /* views */,
@@ -603,6 +614,7 @@
 				E7BC60551EB10D79000529AC /* SignupLoginViewController.swift in Sources */,
 				E7BC60561EB10D79000529AC /* SignupViewController.swift in Sources */,
 				E7BC60581EB11220000529AC /* TTUser.swift in Sources */,
+				E08BD2A31EB28B4100FD5404 /* Helpers.swift in Sources */,
 				E7B940E51EAE790C0078AB5E /* AppDelegate.swift in Sources */,
 				E7B940ED1EAE790C0078AB5E /* TummyOnTrack.xcdatamodeld in Sources */,
 				E7BC605A1EB1122A000529AC /* HomeViewController.swift in Sources */,

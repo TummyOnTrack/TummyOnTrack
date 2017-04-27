@@ -17,6 +17,8 @@ class SignupViewController: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var confirmPwdTextField: UITextField!
     @IBOutlet weak var signupButton: UIButton!
+    @IBOutlet var errorView: UIView!
+    @IBOutlet weak var errorViewLabel: UILabel!
   
 
     override func viewDidLoad() {
@@ -38,7 +40,10 @@ class SignupViewController: UIViewController {
 
     @IBAction func signupUserClicked(_ sender: Any) {
         if passwordTextField.text! != confirmPwdTextField.text! {
-            print("Password does not match confirmation")
+            Helpers.sharedInstance.showErrorMessageAlertDialog("Password does not match confirmation", errorView: errorView, errorLabel: errorViewLabel, parentView: view)
+            return
+        }else if (passwordTextField.text?.characters.count)! < 6 {
+            Helpers.sharedInstance.showErrorMessageAlertDialog("Password must be more than 6 letters", errorView: errorView, errorLabel: errorViewLabel, parentView: view)
             return
         }
         
@@ -48,8 +53,13 @@ class SignupViewController: UIViewController {
         }
         
         signupUser(username: username, email: email, password: password)
-        
+        Helpers.sharedInstance.hideErrorMessageAlertDialog(errorView: errorView)
     }
+    
+    @IBAction func dismissErrorView(_ sender: Any) {
+        Helpers.sharedInstance.hideErrorMessageAlertDialog(errorView: errorView)
+    }
+    
     
     func signupUser(username: String, email: String, password: String) {
         FIRAuth.auth()?.createUser(withEmail: email, password: password, completion: { (user: FIRUser?, error) in

@@ -315,12 +315,49 @@
                     <connections>
                         <outlet property="confirmPwdTextField" destination="GkQ-52-ry6" id="wA9-y3-HIC"/>
                         <outlet property="emailTextField" destination="EjC-H0-zEf" id="ddK-JL-Top"/>
+                        <outlet property="errorView" destination="22R-op-B7s" id="Uhm-9h-ddG"/>
+                        <outlet property="errorViewLabel" destination="nrZ-Iz-IA5" id="zUW-nh-b9F"/>
                         <outlet property="passwordTextField" destination="5FH-xG-jyM" id="qZb-hy-jEr"/>
                         <outlet property="signupButton" destination="xDb-fb-IFy" id="58N-dO-ulT"/>
                         <outlet property="usernameTextField" destination="gut-pC-1Hn" id="alg-My-6Kb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nxb-VP-jWB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <view contentMode="scaleToFill" id="22R-op-B7s">
+                    <rect key="frame" x="0.0" y="0.0" width="371" height="45"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Error Message Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nrZ-Iz-IA5">
+                            <rect key="frame" x="10" y="15" width="313" height="17"/>
+                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
+                            <color key="textColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4p2-Ig-9fJ">
+                            <rect key="frame" x="325" y="8" width="30" height="30"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="30" id="fIU-kj-Te5"/>
+                                <constraint firstAttribute="width" constant="30" id="pbJ-bw-pVa"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
+                            <state key="normal" title="X">
+                                <color key="titleColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                            </state>
+                            <connections>
+                                <action selector="dismissErrorView:" destination="upT-To-HxG" eventType="touchUpInside" id="rMr-wo-gj7"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" red="0.374383246" green="0.43551713199999997" blue="0.42319380699999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstItem="nrZ-Iz-IA5" firstAttribute="centerY" secondItem="22R-op-B7s" secondAttribute="centerY" constant="1" id="EKx-jX-s9y"/>
+                        <constraint firstItem="4p2-Ig-9fJ" firstAttribute="leading" secondItem="nrZ-Iz-IA5" secondAttribute="trailing" constant="2" id="Mm9-vX-Of4"/>
+                        <constraint firstItem="4p2-Ig-9fJ" firstAttribute="top" secondItem="22R-op-B7s" secondAttribute="top" constant="8" id="ZKo-Xo-2WB"/>
+                        <constraint firstItem="nrZ-Iz-IA5" firstAttribute="leading" secondItem="22R-op-B7s" secondAttribute="leading" constant="10" id="fun-be-k6t"/>
+                        <constraint firstItem="4p2-Ig-9fJ" firstAttribute="centerY" secondItem="22R-op-B7s" secondAttribute="centerY" id="nQX-6b-Ole"/>
+                        <constraint firstAttribute="trailing" secondItem="4p2-Ig-9fJ" secondAttribute="trailing" constant="16" id="xGF-YJ-Teh"/>
+                    </constraints>
+                </view>
             </objects>
             <point key="canvasLocation" x="1456.8" y="-374.66266866566718"/>
         </scene>
