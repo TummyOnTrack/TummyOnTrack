@@ -2,6 +2,8 @@
 //  TTHomeTableTableViewController.swift
 //  TummyOnTrack
 //
+//
+//  //  <div>Icons made by <a href="http://www.freepik.com" title="Freepik">Freepik</a></div>
 //  Created by Gauri Tikekar on 4/26/17.
 //  Copyright © 2017 Gauri Tikekar. All rights reserved.
 //
@@ -25,12 +27,17 @@ class TTHomeTableTableViewController: UITableViewController {
         pieLayer.maxRadius = Float(pieView.frame.width/2)
         
         view.layer.addSublayer(pieLayer)
+        
+        if pieLayer.values != nil && pieLayer.values.count == 2 {
+            pieLayer.deleteValues([pieLayer.values[0], pieLayer.values[1]], animated: true)
+        }
+        pieLayer.addValues([PieElement(value: 5.0, color: UIColor.init(red: 244/255.0, green: 115/255.0, blue: 0/255.0, alpha: 1)),
+                            PieElement(value: 5.0, color: UIColor.lightGray)], animated: true)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        pieLayer.addValues([PieElement(value: 5.0, color: UIColor.init(red: 244/255.0, green: 115/255.0, blue: 0/255.0, alpha: 1)),
-                            PieElement(value: 5.0, color: UIColor.lightGray)], animated: true)
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -46,5 +53,6 @@ class TTHomeTableTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
 
 }
