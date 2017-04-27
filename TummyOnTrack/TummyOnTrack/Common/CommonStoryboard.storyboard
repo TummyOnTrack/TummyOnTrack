@@ -252,7 +252,13 @@
                         </connections>
                     </tableView>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
-                    <navigationItem key="navigationItem" title="Hi Emily!" id="lyg-az-Lqc"/>
+                    <navigationItem key="navigationItem" title="Hi Emily!" id="lyg-az-Lqc">
+                        <barButtonItem key="rightBarButtonItem" image="camera-7" id="a2Q-8d-xB9">
+                            <connections>
+                                <action selector="onCameraClick:" destination="ex1-eT-I06" id="mOx-tX-Nkt"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="pieView" destination="FxA-XQ-pd6" id="GWx-Wl-mhF"/>
                         <outlet property="profileImageView" destination="BDC-Md-k7F" id="BGt-gW-CjU"/>
@@ -333,6 +339,104 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2vw-Ym-U0I" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1741.5999999999999" y="4.9475262368815596"/>
+        </scene>
+        <!--Add Photo Table View Controller-->
+        <scene sceneID="YA9-Dz-oW1">
+            <objects>
+                <tableViewController storyboardIdentifier="AddPhotoView" id="GcX-yN-R38" customClass="TTAddPhotoTableViewController" customModule="TummyOnTrack" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="o7C-DE-Wbg">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <sections>
+                            <tableViewSection id="Q5f-u7-2Fe">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="453" id="kVF-FV-wyA">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="453"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="kVF-FV-wyA" id="21m-eW-ZMz">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="453"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BZF-AU-FBd">
+                                                    <rect key="frame" x="329" y="38" width="30" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <state key="normal" image="cross_grey"/>
+                                                    <connections>
+                                                        <action selector="onCloseButtonClick:" destination="GcX-yN-R38" eventType="touchUpInside" id="5wt-Xj-YaI"/>
+                                                    </connections>
+                                                </button>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kuf-nU-hd9">
+                                                    <rect key="frame" x="8" y="90" width="351" height="343"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="384" id="7la-7k-op8">
+                                        <rect key="frame" x="0.0" y="453" width="375" height="384"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7la-7k-op8" id="95l-p9-tSN">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="384"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IKU-8v-pnu">
+                                                    <rect key="frame" x="16" y="44" width="342" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="30" id="2IE-4R-YmE"/>
+                                                    </constraints>
+                                                    <nil key="textColor"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What is this photo?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7CS-Fj-UPt">
+                                                    <rect key="frame" x="118.5" y="8" width="138.5" height="19"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Iwb-GG-M59">
+                                                    <rect key="frame" x="16" y="107" width="342" height="45"/>
+                                                    <color key="backgroundColor" red="0.95686274510000002" green="0.4514970767" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="45" id="epq-Ao-F7w"/>
+                                                    </constraints>
+                                                    <state key="normal" title="Speak and Tell">
+                                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="onSpeakTellClick:" destination="3aA-oc-afC" eventType="touchUpInside" id="9ls-Eb-6mY"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Iwb-GG-M59" firstAttribute="leading" secondItem="95l-p9-tSN" secondAttribute="leadingMargin" constant="8" id="2Yx-gX-M5a"/>
+                                                <constraint firstItem="Iwb-GG-M59" firstAttribute="centerX" secondItem="95l-p9-tSN" secondAttribute="centerX" id="ALE-3a-FRh"/>
+                                                <constraint firstItem="IKU-8v-pnu" firstAttribute="leading" secondItem="95l-p9-tSN" secondAttribute="leadingMargin" constant="8" id="IK3-fM-0Vr"/>
+                                                <constraint firstItem="Iwb-GG-M59" firstAttribute="top" secondItem="IKU-8v-pnu" secondAttribute="bottom" constant="33" id="JoN-Fk-hib"/>
+                                                <constraint firstItem="IKU-8v-pnu" firstAttribute="top" secondItem="7CS-Fj-UPt" secondAttribute="bottom" constant="17" id="NPn-E4-dSE"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="IKU-8v-pnu" secondAttribute="trailing" constant="9" id="cDT-Ae-FvA"/>
+                                                <constraint firstItem="7CS-Fj-UPt" firstAttribute="centerX" secondItem="95l-p9-tSN" secondAttribute="centerX" id="ijf-0b-kVX"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="Iwb-GG-M59" secondAttribute="trailing" constant="9" id="leh-UF-uei"/>
+                                                <constraint firstItem="7CS-Fj-UPt" firstAttribute="top" secondItem="95l-p9-tSN" secondAttribute="topMargin" id="m8s-UO-dyf"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="GcX-yN-R38" id="kol-9s-EEG"/>
+                            <outlet property="delegate" destination="GcX-yN-R38" id="uAQ-ie-Jj8"/>
+                        </connections>
+                    </tableView>
+                    <connections>
+                        <outlet property="photoImageView" destination="kuf-nU-hd9" id="Iy7-WT-YkI"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="T1R-u4-qLH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1349.5999999999999" y="423.23838080959524"/>
         </scene>
         <!--Settings Table View Controller-->
         <scene sceneID="FhR-aE-xCl">
@@ -444,5 +548,7 @@
     <resources>
         <image name="Smiling_Face_Blushed" width="640" height="640"/>
         <image name="Thinking_Face_Emoji" width="640" height="640"/>
+        <image name="camera-7" width="30" height="30"/>
+        <image name="cross_grey" width="40" height="40"/>
     </resources>
 </document>

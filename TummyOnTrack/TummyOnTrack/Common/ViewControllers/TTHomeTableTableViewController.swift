@@ -11,12 +11,14 @@
 import UIKit
 import MagicPie
 
-class TTHomeTableTableViewController: UITableViewController {
+class TTHomeTableTableViewController: UITableViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
     @IBOutlet weak var pieView: UIView!
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var profileName: UILabel!
     var pieLayer : PieLayer! = nil
+    
+    var imagePicker: UIImagePickerController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,6 +46,22 @@ class TTHomeTableTableViewController: UITableViewController {
         super.didReceiveMemoryWarning()
     }
 
+    @IBAction func onCameraClick(_ sender: Any) {
+        imagePicker =  UIImagePickerController()
+        imagePicker.delegate = self
+        imagePicker.sourceType = .camera
+        
+        present(imagePicker, animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        imagePicker.dismiss(animated: true, completion: nil)
+        if let viewController = UIStoryboard(name: "CommonStoryboard", bundle: nil).instantiateViewController(withIdentifier: "AddPhotoView") as? TTAddPhotoTableViewController {
+            viewController.photoImage = info[UIImagePickerControllerOriginalImage] as? UIImage
+            present(viewController, animated: true, completion: nil)
+        }
+    }
+    
     /*
     // MARK: - Navigation
 
