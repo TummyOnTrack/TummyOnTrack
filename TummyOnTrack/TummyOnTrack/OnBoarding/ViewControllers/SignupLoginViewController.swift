@@ -16,8 +16,13 @@ class SignupLoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //setupLoginButton()
- 
+        setupLoginButton()
+        
+        navigationController?.navigationBar.barTintColor = .orange
+        navigationController?.navigationBar.tintColor = .white
+        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
+        
+        self.navigationController?.navigationBar.isHidden = false
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -31,10 +36,7 @@ class SignupLoginViewController: UIViewController {
     }
     
     func setupLoginButton() {
-        loginButton.layer.borderWidth = 1.5
-        loginButton.layer.borderColor = UIColor.orange.cgColor
         loginButton.layer.cornerRadius = 3.5
-        
         signupButton.layer.cornerRadius = 3.5
     }
 

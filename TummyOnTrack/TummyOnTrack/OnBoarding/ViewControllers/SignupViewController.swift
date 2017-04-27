@@ -12,42 +12,60 @@ import Firebase
 class SignupViewController: UIViewController {
     
     
-    @IBOutlet weak var usernameLabel: UITextField!
-    @IBOutlet weak var emailLabel: UITextField!
-    @IBOutlet weak var passwordLabel: UITextField!
-    @IBOutlet weak var confirmPwdLabel: UITextField!
+    @IBOutlet weak var usernameTextField: UITextField!
+    @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var confirmPwdTextField: UITextField!
     @IBOutlet weak var signupButton: UIButton!
-    
-    
+    @IBOutlet var errorView: UIView!
+    @IBOutlet weak var errorViewLabel: UILabel!
+  
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupSignupButton()
+        setupTextfields()
         
         navigationController?.navigationBar.barTintColor = .orange
         navigationController?.navigationBar.tintColor = .white
         navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
-       
+        
+        usernameTextField.becomeFirstResponder()
+        usernameTextField.delegate = self
+        emailTextField.delegate = self
+        passwordTextField.delegate = self
+        confirmPwdTextField.delegate = self
+
     }
     
-    func setupSignupButton() {
-        signupButton.layer.cornerRadius = 3.5
-    }
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillDisappear(animated)
+//        self.navigationController?.navigationBar.isHidden = false
+//    }
+    
 
     @IBAction func signupUserClicked(_ sender: Any) {
-        if passwordLabel.text! != confirmPwdLabel.text! {
-            print("Password does not match confirmation")
+        if passwordTextField.text! != confirmPwdTextField.text! {
+            Helpers.sharedInstance.showErrorMessageAlertDialog("Password does not match confirmation", errorView: errorView, errorLabel: errorViewLabel, parentView: view)
+            return
+        }else if (passwordTextField.text?.characters.count)! < 6 {
+            Helpers.sharedInstance.showErrorMessageAlertDialog("Password must be more than 6 letters", errorView: errorView, errorLabel: errorViewLabel, parentView: view)
             return
         }
         
-        guard let username = usernameLabel.text, let email = emailLabel.text, let password = passwordLabel.text else {
+        guard let username = emailTextField.text, let email = emailTextField.text, let password = passwordTextField.text else {
             print("Please enter valid sign up information")
             return
         }
         
         signupUser(username: username, email: email, password: password)
-        
+        Helpers.sharedInstance.hideErrorMessageAlertDialog(errorView: errorView)
     }
+    
+    @IBAction func dismissErrorView(_ sender: Any) {
+        Helpers.sharedInstance.hideErrorMessageAlertDialog(errorView: errorView)
+    }
+    
     
     func signupUser(username: String, email: String, password: String) {
         FIRAuth.auth()?.createUser(withEmail: email, password: password, completion: { (user: FIRUser?, error) in
@@ -77,6 +95,72 @@ class SignupViewController: UIViewController {
             })
         })
     }
+    
+    func setupSignupButton() {
+        signupButton.layer.cornerRadius = 3.5
+    }
+    
+    func setupTextfields() {
+        let leftImgView = UIImageView()
+        leftImgView.image = UIImage(named: "user")
+        leftImgView.contentMode = UIViewContentMode.scaleAspectFit
+        let leftPaddingView = UIView()
+        leftPaddingView.addSubview(leftImgView)
+        leftPaddingView.frame = CGRect(x:0, y:0, width:35, height:20)
+        leftImgView.frame = CGRect(x:8, y:0, width: 20, height:18)
+        usernameTextField.leftView = leftPaddingView
+        usernameTextField.leftViewMode = UITextFieldViewMode.always
+        
+        
+        let emailLeftImgView = UIImageView()
+        emailLeftImgView.image = UIImage(named: "envelope")
+        emailLeftImgView.contentMode = UIViewContentMode.scaleAspectFit
+        let emailLeftPaddingView = UIView()
+        emailLeftPaddingView.addSubview(emailLeftImgView)
+        emailLeftPaddingView.frame = CGRect(x:0, y:0, width:35, height:20)
+        emailLeftImgView.frame = CGRect(x:8, y:0, width: 20, height:18)
+        emailTextField.leftView = emailLeftPaddingView
+        emailTextField.leftViewMode = UITextFieldViewMode.always
+        
+        
+        let pwdLeftImgView = UIImageView()
+        pwdLeftImgView.image = UIImage(named: "padlock")
+        pwdLeftImgView.contentMode = UIViewContentMode.scaleAspectFit
+        let pwdLeftPaddingView = UIView()
+        pwdLeftPaddingView.addSubview(pwdLeftImgView)
+        pwdLeftPaddingView.frame = CGRect(x:0, y:0, width:35, height:20)
+        pwdLeftImgView.frame = CGRect(x:8, y:0, width: 20, height:18)
+        passwordTextField.leftView = pwdLeftPaddingView
+        passwordTextField.leftViewMode = UITextFieldViewMode.always
+        
+        
+        let confirmPwdImgView = UIImageView()
+        confirmPwdImgView.image = UIImage(named: "padlock")
+        confirmPwdImgView.contentMode = UIViewContentMode.scaleAspectFit
+        let confirmPwdPaddingView = UIView()
+        confirmPwdPaddingView.addSubview(confirmPwdImgView)
+        confirmPwdPaddingView.frame = CGRect(x:0, y:0, width:35, height:20)
+        confirmPwdImgView.frame = CGRect(x:8, y:0, width: 20, height:18)
+        confirmPwdTextField.leftView = confirmPwdPaddingView
+        confirmPwdTextField.leftViewMode = UITextFieldViewMode.always
+        
+    }
 
 
+}
+
+extension SignupViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        switch textField {
+        case self.usernameTextField:
+            self.emailTextField.becomeFirstResponder()
+        case self.emailTextField:
+            self.passwordTextField.becomeFirstResponder()
+        case self.passwordTextField:
+            self.confirmPwdTextField.becomeFirstResponder()
+        default:
+            textField.resignFirstResponder()
+        }
+        return true
+    }
 }
