@@ -22,7 +22,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FIRApp.configure(with: options!)
         self.isUserLoggedIn()
         UIApplication.shared.statusBarStyle = .lightContent
-
+        
+        UINavigationBar.appearance().barTintColor = UIColor.white
+        UINavigationBar.appearance().isTranslucent = false
+        let color : UIColor = UIColor.init(red: 244/255.0, green: 115/255.0, blue: 0/255.0, alpha: 1)
+        UINavigationBar.appearance().tintColor = color
+        UINavigationBar.appearance().titleTextAttributes =  [NSForegroundColorAttributeName:color]
 
         /*let tabBarController = UITabBarController()
         let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
