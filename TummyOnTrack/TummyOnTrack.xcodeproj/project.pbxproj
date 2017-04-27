@@ -29,6 +29,7 @@
 		E7BC60551EB10D79000529AC /* SignupLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BC60521EB10D79000529AC /* SignupLoginViewController.swift */; };
 		E7BC60561EB10D79000529AC /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BC60531EB10D79000529AC /* SignupViewController.swift */; };
 		E7BC60581EB11220000529AC /* TTUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BC60571EB11220000529AC /* TTUser.swift */; };
+		E7F0E5641EB269B00088743B /* CommonStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7F0E5631EB269B00088743B /* CommonStoryboard.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +84,7 @@
 		E7BC60521EB10D79000529AC /* SignupLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupLoginViewController.swift; sourceTree = "<group>"; };
 		E7BC60531EB10D79000529AC /* SignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		E7BC60571EB11220000529AC /* TTUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TTUser.swift; sourceTree = "<group>"; };
+		E7F0E5631EB269B00088743B /* CommonStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CommonStoryboard.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -238,6 +240,7 @@
 			children = (
 				E7BC604B1EB10BDC000529AC /* ViewControllers */,
 				E7BC604C1EB10BDC000529AC /* Views */,
+				E7F0E5631EB269B00088743B /* CommonStoryboard.storyboard */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -451,6 +454,7 @@
 				E7BC60501EB10D6A000529AC /* Onboarding.storyboard in Resources */,
 				D1B1EF9D1EB141E40032BEE1 /* VoiceEntry.storyboard in Resources */,
 				E04117461EAFB4C400C8152E /* GoogleService-Info.plist in Resources */,
+				E7F0E5641EB269B00088743B /* CommonStoryboard.storyboard in Resources */,
 				E7B940EF1EAE790C0078AB5E /* Assets.xcassets in Resources */,
 				31DE9B061EB155120055B8D8 /* Rewards.storyboard in Resources */,
 				E7B940EA1EAE790C0078AB5E /* Main.storyboard in Resources */,
