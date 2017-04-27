@@ -10,6 +10,8 @@ target 'TummyOnTrack' do
   pod 'Firebase/Database'
   pod 'Firebase/Auth'
   pod 'AFNetworking'
+  pod 'MagicPie'
+  pod 'SVProgressHUD'
 	
   target 'TummyOnTrackTests' do
     inherit! :search_paths
