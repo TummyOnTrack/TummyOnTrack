@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Hi Emily!-->
+        <!--Home Page-->
         <scene sceneID="Iku-rB-eQy">
             <objects>
-                <tableViewController storyboardIdentifier="HomeView" id="ex1-eT-I06" customClass="TTHomeTableTableViewController" customModule="TummyOnTrack" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="HomeView" title="Home Page" id="ex1-eT-I06" customClass="TTHomeTableTableViewController" customModule="TummyOnTrack" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" allowsSelection="NO" rowHeight="198" sectionHeaderHeight="18" sectionFooterHeight="18" id="UcG-vu-tyw">
                         <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -86,11 +86,11 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="265" id="AT6-uk-ok9">
-                                        <rect key="frame" x="0.0" y="191" width="375" height="265"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="412" id="AT6-uk-ok9">
+                                        <rect key="frame" x="0.0" y="191" width="375" height="412"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="AT6-uk-ok9" id="oZF-Bp-Mwr">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="264.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="411.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l4G-LW-pau">
@@ -102,6 +102,9 @@
                                                     <state key="normal" title="WHAT DID YOU EAT TODAY?">
                                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
+                                                    <connections>
+                                                        <segue destination="3aA-oc-afC" kind="show" identifier="Show Food Input" id="6z6-73-1wp"/>
+                                                    </connections>
                                                 </button>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6rx-ta-SQI">
                                                     <rect key="frame" x="0.0" y="35" width="375" height="51"/>
@@ -259,6 +262,78 @@
             </objects>
             <point key="canvasLocation" x="799.20000000000005" y="4.9475262368815596"/>
         </scene>
+        <!--Food Input Ways View Controller-->
+        <scene sceneID="N3X-XT-qHc">
+            <objects>
+                <viewController id="3aA-oc-afC" customClass="TTFoodInputWaysViewController" customModule="TummyOnTrack" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="fpu-5c-i33"/>
+                        <viewControllerLayoutGuide type="bottom" id="pwW-rw-hlx"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="PVl-zu-ERX">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What Did You Eat Today?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QcD-bi-jmx">
+                                <rect key="frame" x="92" y="88" width="192.5" height="20"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0IT-Eg-sIn">
+                                <rect key="frame" x="18.5" y="149" width="338" height="45"/>
+                                <color key="backgroundColor" red="0.95686274510000002" green="0.4514970767" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="bQf-1Q-5U8"/>
+                                    <constraint firstAttribute="width" constant="338" id="h3j-rt-iOg"/>
+                                </constraints>
+                                <state key="normal" title="Speak and Tell">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onSpeakTellClick:" destination="3aA-oc-afC" eventType="touchUpInside" id="dio-QJ-Tx5"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IVd-W3-t1s">
+                                <rect key="frame" x="18.5" y="222" width="338" height="45"/>
+                                <color key="backgroundColor" red="0.95686274510000002" green="0.4514970767" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="82J-hv-MGw"/>
+                                    <constraint firstAttribute="width" constant="338" id="OSX-16-Agj"/>
+                                </constraints>
+                                <state key="normal" title="I Will Fill My Plate">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ai7-fN-c6C">
+                                <rect key="frame" x="18.5" y="289" width="338" height="45"/>
+                                <color key="backgroundColor" red="0.95686274510000002" green="0.4514970767" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="1hZ-CS-fNa"/>
+                                    <constraint firstAttribute="width" constant="338" id="rIf-s3-ZXR"/>
+                                </constraints>
+                                <state key="normal" title="Tap and Select Photos">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ai7-fN-c6C" firstAttribute="centerX" secondItem="PVl-zu-ERX" secondAttribute="centerX" id="5MN-52-d7a"/>
+                            <constraint firstItem="0IT-Eg-sIn" firstAttribute="centerX" secondItem="PVl-zu-ERX" secondAttribute="centerX" id="EQ6-mz-PHZ"/>
+                            <constraint firstItem="QcD-bi-jmx" firstAttribute="top" secondItem="fpu-5c-i33" secondAttribute="bottom" constant="24" id="ImB-hZ-i9z"/>
+                            <constraint firstItem="ai7-fN-c6C" firstAttribute="top" secondItem="IVd-W3-t1s" secondAttribute="bottom" constant="22" id="Qas-Cd-c2p"/>
+                            <constraint firstItem="IVd-W3-t1s" firstAttribute="centerX" secondItem="PVl-zu-ERX" secondAttribute="centerX" id="QhX-sz-d82"/>
+                            <constraint firstItem="QcD-bi-jmx" firstAttribute="centerX" secondItem="PVl-zu-ERX" secondAttribute="centerX" id="RXl-Bp-XFp"/>
+                            <constraint firstItem="IVd-W3-t1s" firstAttribute="top" secondItem="0IT-Eg-sIn" secondAttribute="bottom" constant="28" id="ebe-Fo-1gX"/>
+                            <constraint firstItem="0IT-Eg-sIn" firstAttribute="top" secondItem="QcD-bi-jmx" secondAttribute="bottom" constant="41" id="i5D-Io-TFH"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2vw-Ym-U0I" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1741.5999999999999" y="4.9475262368815596"/>
+        </scene>
         <!--Settings Table View Controller-->
         <scene sceneID="FhR-aE-xCl">
             <objects>
@@ -327,7 +402,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cFl-1U-jrO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2434.4000000000001" y="1.3493253373313345"/>
+            <point key="canvasLocation" x="799" y="-725"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="tIm-Gw-8c2">
@@ -363,7 +438,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VC6-AN-hEw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1495.2" y="1.3493253373313345"/>
+            <point key="canvasLocation" x="-140" y="-724"/>
         </scene>
     </scenes>
     <resources>
