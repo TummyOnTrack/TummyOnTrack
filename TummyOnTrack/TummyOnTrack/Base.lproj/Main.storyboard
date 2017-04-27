@@ -49,25 +49,25 @@
                     </tabBar>
                     <connections>
                         <segue destination="pHP-p5-5Lz" kind="relationship" relationship="viewControllers" id="Bkw-hk-3iC"/>
-                        <segue destination="N5L-2m-BwN" kind="relationship" relationship="viewControllers" id="78E-rn-PKd"/>
-                        <segue destination="n2K-lh-O8Z" kind="relationship" relationship="viewControllers" id="JPZ-Yx-sf5"/>
+                        <segue destination="AMa-f1-Q9E" kind="relationship" relationship="viewControllers" id="78E-rn-PKd"/>
+                        <segue destination="S7W-Bf-PO3" kind="relationship" relationship="viewControllers" id="3Uo-9o-M1o"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WQE-0l-uHT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-783" y="-22"/>
         </scene>
-        <!--Rewards-->
+        <!--PointsViewController-->
         <scene sceneID="6sf-mM-fLG">
             <objects>
-                <viewControllerPlaceholder storyboardName="Rewards" referencedIdentifier="Rewards" id="N5L-2m-BwN" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Points" id="Rjw-af-kwF"/>
+                <viewControllerPlaceholder storyboardName="Rewards" referencedIdentifier="PointsViewController" id="N5L-2m-BwN" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="8x6-lz-GWf"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XpA-ba-IqE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="61" y="648"/>
+            <point key="canvasLocation" x="999.20000000000005" y="647.22638680659679"/>
         </scene>
-        <!--Settings-->
+        <!--Settings Table View Controller-->
         <scene sceneID="xuf-Qp-Mfw">
             <objects>
                 <tableViewController storyboardIdentifier="SettingsViewController" id="n2K-lh-O8Z" customClass="TTSettingsTableViewController" customModule="TummyOnTrack" customModuleProvider="target" sceneMemberID="viewController">
@@ -90,7 +90,6 @@
                             <outlet property="delegate" destination="n2K-lh-O8Z" id="uxv-lb-c8P"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Settings" id="N9Y-qT-g5M"/>
                     <navigationItem key="navigationItem" id="y0y-Cu-LKU"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lb0-dd-b6h" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -101,7 +100,7 @@
         <scene sceneID="3jk-vG-ebw">
             <objects>
                 <navigationController storyboardIdentifier="HomeNavigationBar" automaticallyAdjustsScrollViewInsets="NO" id="pHP-p5-5Lz" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Home" id="6Ly-UG-eCW"/>
+                    <tabBarItem key="tabBarItem" title="Home" image="home" id="6Ly-UG-eCW"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Y22-yg-RX0">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -120,7 +119,7 @@
         <scene sceneID="S1C-Kp-em8">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="S7W-Bf-PO3" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Settings" id="9YH-mR-evg"/>
+                    <tabBarItem key="tabBarItem" title="Settings" image="settings" id="9YH-mR-evg"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="DBn-Tz-Mov">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -135,8 +134,29 @@
             </objects>
             <point key="canvasLocation" x="906.39999999999998" y="-27.436281859070466"/>
         </scene>
+        <!--Points-->
+        <scene sceneID="dRR-om-g1e">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="AMa-f1-Q9E" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Points" image="star" id="Rjw-af-kwF"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="wsD-fi-NRM">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="N5L-2m-BwN" kind="relationship" relationship="rootViewController" id="V7f-6L-RtU"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FZe-YK-Mee" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="60" y="647.22638680659679"/>
+        </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="JPZ-Yx-sf5"/>
-    </inferredMetricsTieBreakers>
+    <resources>
+        <image name="home" width="32" height="32"/>
+        <image name="settings" width="32" height="32"/>
+        <image name="star" width="32" height="32"/>
+    </resources>
 </document>
