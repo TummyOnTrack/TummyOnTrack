@@ -12,13 +12,13 @@
         <!--Home Table Table View Controller-->
         <scene sceneID="9Wj-3G-hFG">
             <objects>
-                <tableViewController id="ZxE-L9-na5" customClass="TTHomeTableTableViewController" customModule="TummyOnTrack" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="HomeViewController" id="ZxE-L9-na5" customClass="TTHomeTableTableViewController" customModule="TummyOnTrack" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="jwj-yq-0no">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Nc7-5F-nPo">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PlaceHolder" id="Nc7-5F-nPo">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Nc7-5F-nPo" id="0R4-F5-mp7">
@@ -49,7 +49,6 @@
                     </tabBar>
                     <connections>
                         <segue destination="pHP-p5-5Lz" kind="relationship" relationship="viewControllers" id="Bkw-hk-3iC"/>
-                        <segue destination="dc6-E5-zt3" kind="relationship" relationship="viewControllers" id="Xkd-Ff-tSk"/>
                         <segue destination="S7W-Bf-PO3" kind="relationship" relationship="viewControllers" id="oXE-6m-t3H"/>
                     </connections>
                 </tabBarController>
@@ -57,37 +56,10 @@
             </objects>
             <point key="canvasLocation" x="-783" y="-22"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="jdg-Oe-DTg">
-            <objects>
-                <viewController storyboardIdentifier="TempRewardsView" id="YKz-cg-qvH" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="rsx-FK-28A"/>
-                        <viewControllerLayoutGuide type="bottom" id="U7M-wn-UUL"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="VRZ-9e-WyW">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Temporary rewards View" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vJe-j8-6LY">
-                                <rect key="frame" x="72" y="126" width="190" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="hH4-p7-bVg" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-590" y="973"/>
-        </scene>
         <!--Settings Table View Controller-->
         <scene sceneID="xuf-Qp-Mfw">
             <objects>
-                <tableViewController id="n2K-lh-O8Z" customClass="TTSettingsTableViewController" customModule="TummyOnTrack" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="SettingsViewController" id="n2K-lh-O8Z" customClass="TTSettingsTableViewController" customModule="TummyOnTrack" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="0ag-eN-IsY">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -112,16 +84,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lb0-dd-b6h" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1845.5999999999999" y="-27.436281859070466"/>
-        </scene>
-        <!--TempRewardsView-->
-        <scene sceneID="WvW-gp-4f0">
-            <objects>
-                <viewControllerPlaceholder referencedIdentifier="TempRewardsView" id="hY6-Px-sOp" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="PbN-PT-bUF"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="oiJ-4Y-dxB" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1929.5999999999999" y="783.50824587706154"/>
         </scene>
         <!--Home-->
         <scene sceneID="3jk-vG-ebw">

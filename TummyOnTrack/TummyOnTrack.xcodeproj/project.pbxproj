@@ -10,7 +10,6 @@
 		03DEBB593919382D6559FBA3 /* Pods_TummyOnTrack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21989D8558ABF79AD2D3611D /* Pods_TummyOnTrack.framework */; };
 		31DE9B041EB154DF0055B8D8 /* TTPointsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31DE9B031EB154DF0055B8D8 /* TTPointsViewController.swift */; };
 		31DE9B061EB155120055B8D8 /* Rewards.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 31DE9B051EB155120055B8D8 /* Rewards.storyboard */; };
-		31DE9B081EB15D470055B8D8 /* TTHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31DE9B071EB15D470055B8D8 /* TTHomeViewController.swift */; };
 		D1B1EF9B1EB141970032BEE1 /* TTVoiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1B1EF9A1EB141970032BEE1 /* TTVoiceViewController.swift */; };
 		D1B1EF9D1EB141E40032BEE1 /* VoiceEntry.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1B1EF9C1EB141E40032BEE1 /* VoiceEntry.storyboard */; };
 		DCE26630DAFFED14DB212A92 /* Pods_TummyOnTrackTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C70769353C6DF168DCF8CA75 /* Pods_TummyOnTrackTests.framework */; };
@@ -58,7 +57,6 @@
 		311164B31794F3E36BFCC046 /* Pods-TummyOnTrackUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TummyOnTrackUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TummyOnTrackUITests/Pods-TummyOnTrackUITests.release.xcconfig"; sourceTree = "<group>"; };
 		31DE9B031EB154DF0055B8D8 /* TTPointsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TTPointsViewController.swift; path = TummyOnTrack/Rewards/TTPointsViewController.swift; sourceTree = SOURCE_ROOT; };
 		31DE9B051EB155120055B8D8 /* Rewards.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Rewards.storyboard; sourceTree = "<group>"; };
-		31DE9B071EB15D470055B8D8 /* TTHomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TTHomeViewController.swift; sourceTree = "<group>"; };
 		95D98D94BFFCF67DC2115B6F /* Pods-TummyOnTrackTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TummyOnTrackTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TummyOnTrackTests/Pods-TummyOnTrackTests.release.xcconfig"; sourceTree = "<group>"; };
 		C70769353C6DF168DCF8CA75 /* Pods_TummyOnTrackTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TummyOnTrackTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD778399FA4004A9293948D1 /* Pods_TummyOnTrackUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TummyOnTrackUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -628,7 +626,6 @@
 				E7B940ED1EAE790C0078AB5E /* TummyOnTrack.xcdatamodeld in Sources */,
 				E7834F2C1EB14CA000FD2F1C /* TTSettingsTableViewController.swift in Sources */,
 				E7BC60541EB10D79000529AC /* LoginViewController.swift in Sources */,
-				31DE9B081EB15D470055B8D8 /* TTHomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

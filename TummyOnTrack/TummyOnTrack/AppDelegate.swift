@@ -33,7 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let pointsViewController = rewardsStoryboard.instantiateInitialViewController()
         pointsViewController?.tabBarItem = UITabBarItem(title: "Points", image: UIImage(named: "star"), tag: 2)
 
-        let userSettingsViewController = mainStoryboard.instantiateViewController(withIdentifier: "UserSettingsViewController")
+        let userSettingsViewController = mainStoryboard.instantiateViewController(withIdentifier: "SettingsViewController")
         userSettingsViewController.tabBarItem = UITabBarItem(title: "Settings", image: UIImage(named: "settings"), tag: 3)
 
         let controllers = [homeViewController, pointsViewController, userSettingsViewController]
