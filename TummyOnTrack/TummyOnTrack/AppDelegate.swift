@@ -15,7 +15,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         let filePath = Bundle.main.path(forResource: "GoogleService-Info", ofType: "plist")!
@@ -23,6 +22,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FIRApp.configure(with: options!)
         self.isUserLoggedIn()
         UIApplication.shared.statusBarStyle = .lightContent
+
+
+        let tabBarController = UITabBarController()
+        let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let homeViewController = mainStoryboard.instantiateViewController(withIdentifier: "HomeViewController")
+        homeViewController.tabBarItem = UITabBarItem(title: "Home", image: UIImage(named: "home") , tag: 1)
+
+        let rewardsStoryboard = UIStoryboard(name: "Rewards", bundle: nil)
+        let pointsViewController = rewardsStoryboard.instantiateInitialViewController()
+        pointsViewController?.tabBarItem = UITabBarItem(title: "Points", image: UIImage(named: "star"), tag: 2)
+
+        let userSettingsViewController = mainStoryboard.instantiateViewController(withIdentifier: "UserSettingsViewController")
+        userSettingsViewController.tabBarItem = UITabBarItem(title: "Settings", image: UIImage(named: "settings"), tag: 3)
+
+        let controllers = [homeViewController, pointsViewController, userSettingsViewController]
+        tabBarController.viewControllers = controllers as? [UIViewController]
+        window?.rootViewController = tabBarController
+
         return true
     }
 
