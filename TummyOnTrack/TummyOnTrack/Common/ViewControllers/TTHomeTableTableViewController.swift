@@ -47,11 +47,32 @@ class TTHomeTableTableViewController: UITableViewController, UINavigationControl
     }
 
     @IBAction func onCameraClick(_ sender: Any) {
-        imagePicker =  UIImagePickerController()
-        imagePicker.delegate = self
-        imagePicker.sourceType = .camera
+       
         
-        present(imagePicker, animated: true, completion: nil)
+        let alertController =  UIAlertController()
+        let  takePhotoButton = UIAlertAction(title: "Take Photo", style: .destructive, handler: { (action) -> Void in
+            
+            self.imagePicker =  UIImagePickerController()
+            self.imagePicker.delegate = self
+            self.imagePicker.sourceType = .camera
+            
+            self.present(self.imagePicker, animated: true, completion: nil)
+            
+        })
+        
+        let galleryButton = UIAlertAction(title: "Choose From Photos", style: .cancel, handler: { (action) -> Void in
+            self.imagePicker =  UIImagePickerController()
+            self.imagePicker.delegate = self
+            self.imagePicker.sourceType = .photoLibrary
+            
+            self.present(self.imagePicker, animated: true, completion: nil)
+        })
+        
+        
+        alertController.addAction(takePhotoButton)
+        alertController.addAction(galleryButton)
+        
+        self.navigationController!.present(alertController, animated: true, completion: nil)
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
@@ -61,6 +82,7 @@ class TTHomeTableTableViewController: UITableViewController, UINavigationControl
             present(viewController, animated: true, completion: nil)
         }
     }
+    
     
     /*
     // MARK: - Navigation

@@ -370,14 +370,27 @@
                                                     <rect key="frame" x="8" y="90" width="351" height="343"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add To Today's Photos" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="enj-XI-fDq">
+                                                    <rect key="frame" x="94" y="43" width="186" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="AM8-4G-Jy2"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
+                                                    <color key="textColor" red="0.95686274510000002" green="0.4514970767" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="enj-XI-fDq" firstAttribute="centerX" secondItem="21m-eW-ZMz" secondAttribute="centerX" id="cMh-wd-Ro9"/>
+                                                <constraint firstItem="enj-XI-fDq" firstAttribute="top" secondItem="21m-eW-ZMz" secondAttribute="topMargin" constant="35" id="h9s-Zg-61X"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="384" id="7la-7k-op8">
-                                        <rect key="frame" x="0.0" y="453" width="375" height="384"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="162" id="7la-7k-op8">
+                                        <rect key="frame" x="0.0" y="453" width="375" height="162"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7la-7k-op8" id="95l-p9-tSN">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="384"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="162"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IKU-8v-pnu">
@@ -388,6 +401,9 @@
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="GcX-yN-R38" id="USD-vZ-fPG"/>
+                                                    </connections>
                                                 </textField>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What is this photo?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7CS-Fj-UPt">
                                                     <rect key="frame" x="118.5" y="8" width="138.5" height="19"/>
@@ -396,12 +412,12 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Iwb-GG-M59">
-                                                    <rect key="frame" x="16" y="107" width="342" height="45"/>
+                                                    <rect key="frame" x="16" y="97" width="342" height="45"/>
                                                     <color key="backgroundColor" red="0.95686274510000002" green="0.4514970767" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="45" id="epq-Ao-F7w"/>
                                                     </constraints>
-                                                    <state key="normal" title="Speak and Tell">
+                                                    <state key="normal" title="Add to Today's Photos">
                                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <connections>
@@ -411,9 +427,8 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="Iwb-GG-M59" firstAttribute="leading" secondItem="95l-p9-tSN" secondAttribute="leadingMargin" constant="8" id="2Yx-gX-M5a"/>
-                                                <constraint firstItem="Iwb-GG-M59" firstAttribute="centerX" secondItem="95l-p9-tSN" secondAttribute="centerX" id="ALE-3a-FRh"/>
                                                 <constraint firstItem="IKU-8v-pnu" firstAttribute="leading" secondItem="95l-p9-tSN" secondAttribute="leadingMargin" constant="8" id="IK3-fM-0Vr"/>
-                                                <constraint firstItem="Iwb-GG-M59" firstAttribute="top" secondItem="IKU-8v-pnu" secondAttribute="bottom" constant="33" id="JoN-Fk-hib"/>
+                                                <constraint firstItem="Iwb-GG-M59" firstAttribute="top" secondItem="IKU-8v-pnu" secondAttribute="bottom" constant="23" id="JoN-Fk-hib"/>
                                                 <constraint firstItem="IKU-8v-pnu" firstAttribute="top" secondItem="7CS-Fj-UPt" secondAttribute="bottom" constant="17" id="NPn-E4-dSE"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="IKU-8v-pnu" secondAttribute="trailing" constant="9" id="cDT-Ae-FvA"/>
                                                 <constraint firstItem="7CS-Fj-UPt" firstAttribute="centerX" secondItem="95l-p9-tSN" secondAttribute="centerX" id="ijf-0b-kVX"/>
@@ -432,6 +447,7 @@
                     </tableView>
                     <connections>
                         <outlet property="photoImageView" destination="kuf-nU-hd9" id="Iy7-WT-YkI"/>
+                        <outlet property="tagsTextField" destination="IKU-8v-pnu" id="vdn-Ek-8BO"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T1R-u4-qLH" userLabel="First Responder" sceneMemberID="firstResponder"/>

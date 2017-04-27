@@ -8,21 +8,19 @@
 
 import UIKit
 
-class TTAddPhotoTableViewController: UITableViewController {
+class TTAddPhotoTableViewController: UITableViewController, UITextFieldDelegate {
     
+    
+    @IBOutlet weak var tagsTextField: UITextField!
     
     @IBOutlet weak var photoImageView: UIImageView!
+    
     var photoImage: UIImage!
     
     override func viewDidLoad() {
-        super.viewDidLoad()
-        
         photoImageView.image = photoImage
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        tableView.keyboardDismissMode = UIScrollViewKeyboardDismissMode.onDrag
+        super.viewDidLoad()
     }
 
     override func didReceiveMemoryWarning() {
@@ -33,6 +31,12 @@ class TTAddPhotoTableViewController: UITableViewController {
     @IBAction func onCloseButtonClick(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
     /*
     // MARK: - Navigation
 
