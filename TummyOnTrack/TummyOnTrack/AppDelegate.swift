@@ -24,7 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UIApplication.shared.statusBarStyle = .lightContent
 
 
-        let tabBarController = UITabBarController()
+        /*let tabBarController = UITabBarController()
         let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let homeViewController = mainStoryboard.instantiateViewController(withIdentifier: "HomeViewController")
         homeViewController.tabBarItem = UITabBarItem(title: "Home", image: UIImage(named: "home") , tag: 1)
@@ -38,7 +38,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         let controllers = [homeViewController, pointsViewController, userSettingsViewController]
         tabBarController.viewControllers = controllers as? [UIViewController]
-        window?.rootViewController = tabBarController
+        window?.rootViewController = tabBarController*/
 
         return true
     }

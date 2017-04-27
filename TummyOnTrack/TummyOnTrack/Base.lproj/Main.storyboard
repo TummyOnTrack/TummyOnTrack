@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BHG-vA-OQH">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BHG-vA-OQH">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -49,14 +49,25 @@
                     </tabBar>
                     <connections>
                         <segue destination="pHP-p5-5Lz" kind="relationship" relationship="viewControllers" id="Bkw-hk-3iC"/>
-                        <segue destination="S7W-Bf-PO3" kind="relationship" relationship="viewControllers" id="oXE-6m-t3H"/>
+                        <segue destination="N5L-2m-BwN" kind="relationship" relationship="viewControllers" id="78E-rn-PKd"/>
+                        <segue destination="n2K-lh-O8Z" kind="relationship" relationship="viewControllers" id="JPZ-Yx-sf5"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WQE-0l-uHT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-783" y="-22"/>
         </scene>
-        <!--Settings Table View Controller-->
+        <!--Rewards-->
+        <scene sceneID="6sf-mM-fLG">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Rewards" referencedIdentifier="Rewards" id="N5L-2m-BwN" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Points" id="Rjw-af-kwF"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XpA-ba-IqE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="61" y="648"/>
+        </scene>
+        <!--Settings-->
         <scene sceneID="xuf-Qp-Mfw">
             <objects>
                 <tableViewController storyboardIdentifier="SettingsViewController" id="n2K-lh-O8Z" customClass="TTSettingsTableViewController" customModule="TummyOnTrack" customModuleProvider="target" sceneMemberID="viewController">
@@ -79,6 +90,7 @@
                             <outlet property="delegate" destination="n2K-lh-O8Z" id="uxv-lb-c8P"/>
                         </connections>
                     </tableView>
+                    <tabBarItem key="tabBarItem" title="Settings" id="N9Y-qT-g5M"/>
                     <navigationItem key="navigationItem" id="y0y-Cu-LKU"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lb0-dd-b6h" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -124,4 +136,7 @@
             <point key="canvasLocation" x="906.39999999999998" y="-27.436281859070466"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="JPZ-Yx-sf5"/>
+    </inferredMetricsTieBreakers>
 </document>
