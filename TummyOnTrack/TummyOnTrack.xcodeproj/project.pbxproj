@@ -14,6 +14,7 @@
 		D1B1EF9D1EB141E40032BEE1 /* VoiceEntry.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1B1EF9C1EB141E40032BEE1 /* VoiceEntry.storyboard */; };
 		D1B1EFD51EB395250032BEE1 /* TTVoiceSummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1B1EFD41EB395250032BEE1 /* TTVoiceSummaryViewController.swift */; };
 		D1B1EFD71EB3953D0032BEE1 /* TTFoodItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1B1EFD61EB3953D0032BEE1 /* TTFoodItem.swift */; };
+		D1B1EFE81EB3BDF80032BEE1 /* VoiceCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1B1EFE71EB3BDF80032BEE1 /* VoiceCollectionViewCell.swift */; };
 		DCE26630DAFFED14DB212A92 /* Pods_TummyOnTrackTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C70769353C6DF168DCF8CA75 /* Pods_TummyOnTrackTests.framework */; };
 		E04117461EAFB4C400C8152E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E04117451EAFB4C400C8152E /* GoogleService-Info.plist */; };
 		E08BD2A31EB28B4100FD5404 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08BD2A21EB28B4100FD5404 /* Helpers.swift */; };
@@ -70,6 +71,7 @@
 		D1B1EF9C1EB141E40032BEE1 /* VoiceEntry.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = VoiceEntry.storyboard; sourceTree = "<group>"; };
 		D1B1EFD41EB395250032BEE1 /* TTVoiceSummaryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TTVoiceSummaryViewController.swift; path = TummyOnTrack/VoiceEntry/TTVoiceSummaryViewController.swift; sourceTree = SOURCE_ROOT; };
 		D1B1EFD61EB3953D0032BEE1 /* TTFoodItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TTFoodItem.swift; sourceTree = "<group>"; };
+		D1B1EFE71EB3BDF80032BEE1 /* VoiceCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VoiceCollectionViewCell.swift; path = TummyOnTrack/VoiceEntry/VoiceCollectionViewCell.swift; sourceTree = SOURCE_ROOT; };
 		E04117451EAFB4C400C8152E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E08BD2A21EB28B4100FD5404 /* Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		E7834F291EB14BB500FD2F1C /* TTHomeTableTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TTHomeTableTableViewController.swift; sourceTree = "<group>"; };
@@ -351,6 +353,7 @@
 		E7BC604E1EB10C24000529AC /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				D1B1EFE71EB3BDF80032BEE1 /* VoiceCollectionViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -645,6 +648,7 @@
 			files = (
 				E7F0E5661EB2801F0088743B /* TTFoodInputWaysViewController.swift in Sources */,
 				E7834F2A1EB14BB500FD2F1C /* TTHomeTableTableViewController.swift in Sources */,
+				D1B1EFE81EB3BDF80032BEE1 /* VoiceCollectionViewCell.swift in Sources */,
 				D1B1EFD51EB395250032BEE1 /* TTVoiceSummaryViewController.swift in Sources */,
 				E7BC60551EB10D79000529AC /* SignupLoginViewController.swift in Sources */,
 				E7BC60561EB10D79000529AC /* SignupViewController.swift in Sources */,

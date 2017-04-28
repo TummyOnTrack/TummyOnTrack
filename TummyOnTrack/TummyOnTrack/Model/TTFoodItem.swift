@@ -29,4 +29,5 @@ class TTFoodItem {
             images = imageurls
         }
     }
+    static var defaultFoodList: [TTFoodItem]?
 }
