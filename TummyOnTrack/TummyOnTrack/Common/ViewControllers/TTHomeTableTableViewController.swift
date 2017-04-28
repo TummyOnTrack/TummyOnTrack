@@ -10,6 +10,7 @@
 
 import UIKit
 import MagicPie
+import Firebase
 
 class TTHomeTableTableViewController: UITableViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
@@ -22,6 +23,21 @@ class TTHomeTableTableViewController: UITableViewController, UINavigationControl
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // load default food items
+        let ref = FIRDatabase.database().reference(fromURL: "https://tummyontrack.firebaseio.com/").child("FoodItem")
+        let query = ref.queryOrdered(byChild: "name")
+        query.observeSingleEvent(of: .value, with: { snapshot in
+            
+            for snap in snapshot.children {
+                let snap_ = snap as! FIRDataSnapshot
+                let dict = snap_.value as! NSDictionary
+                let newFood = TTFoodItem(dictionary: dict)
+                if (TTFoodItem.defaultFoodList?.append(newFood)) == nil {
+                    TTFoodItem.defaultFoodList = [newFood]
+                }
+            }
+        })
         
         pieLayer = PieLayer()
         pieLayer.frame = pieView.frame
