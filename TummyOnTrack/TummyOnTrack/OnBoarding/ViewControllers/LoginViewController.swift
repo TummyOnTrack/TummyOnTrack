@@ -77,24 +77,26 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func dismissErrorView(_ sender: Any) {
-        Helpers.sharedInstance.hideErrorMessageAlertDialog(errorView: errorView)
+        Helpers.sharedInstance.hideErrorMessageAlertDialog(errorView: errorView, navController: navigationController!)
     }
     
 
     func loginUserWith(email: String, password: String) {
         if email.isEmpty || password.isEmpty {
-            Helpers.sharedInstance.showErrorMessageAlertDialog("Please enter a valid email or password", errorView: errorView, errorLabel: errorMessageLabel, parentView: view)
+            Helpers.sharedInstance.showErrorMessageAlertDialog("Please enter a valid email or password", errorView: errorView, errorLabel: errorMessageLabel, parentView: view, navController: navigationController!)
+            return
         }
         
         FIRAuth.auth()?.signIn(withEmail: email, password: password, completion: { (user: FIRUser?, error) in
             if error != nil {
                 print("Login user error: \(String(describing: error))")
+                Helpers.sharedInstance.showErrorMessageAlertDialog("Please enter a valid email or password", errorView: self.errorView, errorLabel: self.errorMessageLabel, parentView: self.view, navController: self.navigationController!)
                 return
             }
             
             UserDefaults.standard.set(email, forKey: "currentLoggedInUserEmail")
             UserDefaults.standard.synchronize()
-            Helpers.sharedInstance.hideErrorMessageAlertDialog(errorView: self.errorView)
+            Helpers.sharedInstance.hideErrorMessageAlertDialog(errorView: self.errorView, navController: self.navigationController!)
             
             let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
             let homeVC = mainStoryboard.instantiateViewController(withIdentifier: "MainPageTabBarController") as! UITabBarController
