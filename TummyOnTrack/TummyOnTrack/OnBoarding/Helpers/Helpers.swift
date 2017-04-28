@@ -21,7 +21,7 @@ class Helpers: NSObject {
         parentView.addSubview(errorView)
         UIView.animate(withDuration: 1) {
             errorView.alpha = 1
-            errorView.frame.origin.y = 64
+            errorView.frame.origin.y = 29
             errorLabel.isHidden = false
             errorLabel.text = errorMessage
         }
@@ -30,7 +30,7 @@ class Helpers: NSObject {
     func hideErrorMessageAlertDialog(errorView: UIView) {
         UIView.animate(withDuration: 0.4) {
             errorView.alpha = 0
-            errorView.frame.origin.y = -64
+            errorView.frame.origin.y = -29
         }
     }
     

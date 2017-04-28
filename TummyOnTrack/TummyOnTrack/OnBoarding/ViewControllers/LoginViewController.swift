@@ -14,6 +14,10 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var emailTextfield: UITextField!
     @IBOutlet weak var passwordTextfield: UITextField!
     @IBOutlet weak var loginButton: UIButton!
+    
+    @IBOutlet var errorView: UIView!
+    @IBOutlet weak var errorMessageLabel: UILabel!
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -71,8 +75,17 @@ class LoginViewController: UIViewController {
         loginUserWith(email: email, password: password)
         
     }
+    
+    @IBAction func dismissErrorView(_ sender: Any) {
+        Helpers.sharedInstance.hideErrorMessageAlertDialog(errorView: errorView)
+    }
+    
 
     func loginUserWith(email: String, password: String) {
+        if email.isEmpty || password.isEmpty {
+            Helpers.sharedInstance.showErrorMessageAlertDialog("Please enter a valid email or password", errorView: errorView, errorLabel: errorMessageLabel, parentView: view)
+        }
+        
         FIRAuth.auth()?.signIn(withEmail: email, password: password, completion: { (user: FIRUser?, error) in
             if error != nil {
                 print("Login user error: \(String(describing: error))")
@@ -81,6 +94,8 @@ class LoginViewController: UIViewController {
             
             UserDefaults.standard.set(email, forKey: "currentLoggedInUserEmail")
             UserDefaults.standard.synchronize()
+            Helpers.sharedInstance.hideErrorMessageAlertDialog(errorView: self.errorView)
+            
             let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
             let homeVC = mainStoryboard.instantiateViewController(withIdentifier: "MainPageTabBarController") as! UITabBarController
             self.present(homeVC, animated: true, completion: nil)

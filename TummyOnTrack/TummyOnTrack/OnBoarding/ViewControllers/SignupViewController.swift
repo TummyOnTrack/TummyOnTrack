@@ -59,7 +59,7 @@ class SignupViewController: UIViewController {
         }
         
         signupUser(username: username, email: email, password: password)
-        Helpers.sharedInstance.hideErrorMessageAlertDialog(errorView: errorView)
+
     }
     
     @IBAction func dismissErrorView(_ sender: Any) {
@@ -89,6 +89,8 @@ class SignupViewController: UIViewController {
                 print("Saved user successfully into DB")
                 UserDefaults.standard.set(email, forKey: "currentLoggedInUserEmail")
                 UserDefaults.standard.synchronize()
+                Helpers.sharedInstance.hideErrorMessageAlertDialog(errorView: self.errorView)
+                
                 let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
                 let homeVC = mainStoryboard.instantiateViewController(withIdentifier: "MainPageTabBarController") as! UITabBarController
                 self.present(homeVC, animated: true, completion: nil)
