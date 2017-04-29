@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class TTSettingsTableViewController: UITableViewController, UICollectionViewDelegate, UICollectionViewDataSource {
 
@@ -20,14 +21,11 @@ class TTSettingsTableViewController: UITableViewController, UICollectionViewDele
     
     func loadProfiles() {
         let addProfileCell = TTProfile(dictionary: ["name": "Add Profile"])
-        if TTUser.currentUser == nil {
-            self.profiles.add(addProfileCell)
-            collectionView.reloadData()
-            return
-        }
+        
         TTUser.currentUser?.getProfiles(success: { (aProfiles: [TTProfile]) in
             self.profiles.addObjects(from: aProfiles)
             self.profiles.add(addProfileCell)
+            self.collectionView.reloadData()
             
         }, failure: { (error: NSError) -> ()  in
             
@@ -51,6 +49,13 @@ class TTSettingsTableViewController: UITableViewController, UICollectionViewDele
         cell.setUI(aProfile: profiles[indexPath.row] as! TTProfile)
         
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if indexPath.row == profiles.count - 1 {
+            
+            TTUser.currentUser?.addProfile(aProfile: profiles[indexPath.row] as! TTProfile)
+        }
     }
     
 

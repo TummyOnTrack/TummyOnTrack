@@ -71,6 +71,19 @@ class LoginViewController: UIViewController {
         loginUserWith(email: email, password: password)
         
     }
+    
+    func userSnapshot() {
+    
+        let ref = FIRDatabase.database().reference(fromURL: BASE_URL).child(USERS_TABLE)
+        
+        let LoggedInUser = ref.child((FIRAuth.auth()?.currentUser?.uid)!)
+        
+        LoggedInUser.observeSingleEvent(of: .value, with: { snapshot in
+            let snap_ = snapshot
+            print(snap_.value!)
+            TTUser.currentUser = TTUser.init(dictionary: snap_.value! as! NSDictionary)
+        })
+    }
 
     func loginUserWith(email: String, password: String) {
         FIRAuth.auth()?.signIn(withEmail: email, password: password, completion: { (user: FIRUser?, error) in
@@ -78,7 +91,7 @@ class LoginViewController: UIViewController {
                 print("Login user error: \(String(describing: error))")
                 return
             }
-            
+            self.userSnapshot()
             UserDefaults.standard.set(email, forKey: "currentLoggedInUserEmail")
             UserDefaults.standard.synchronize()
             let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
