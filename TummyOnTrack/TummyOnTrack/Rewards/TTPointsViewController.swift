@@ -11,30 +11,27 @@ import AFNetworking
 
 class TTPointsViewController: UIViewController {
 
-  @IBOutlet weak var pointsTodayLabel: UILabel!
-  @IBOutlet weak var achievementImageView: UIImageView!
-  @IBOutlet weak var awesomeLabel: UILabel!
+    @IBOutlet weak var pointsTodayLabel: UILabel!
+    @IBOutlet weak var achievementImageView: UIImageView!
+    @IBOutlet weak var awesomeLabel: UILabel!
 
-  override func viewDidLoad() {
-    super.viewDidLoad()
+    override func viewDidLoad() {
+        super.viewDidLoad()
 
-    let achievementUrl = URL(string: "https://media.giphy.com/media/peAFQfg7Ol6IE/giphy.gif")
-    if let achievementUrl = achievementUrl {
-        achievementImageView.setImageWith(achievementUrl)
+        let achievementUrl = URL(string: "https://media.giphy.com/media/peAFQfg7Ol6IE/giphy.gif")
+        if let achievementUrl = achievementUrl {
+            achievementImageView.setImageWith(achievementUrl)
+        }
     }
-  }
 
-  override func didReceiveMemoryWarning() {
-    super.didReceiveMemoryWarning()
-    // Dispose of any resources that can be recreated.
-  }
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
 
-  @IBAction func onShopRewardsButton(_ sender: Any) {
-  }
+    @IBAction func onPointsHistoryButton(_ sender: Any) {
+    }
 
-  @IBAction func onPointsHistoryButton(_ sender: Any) {
-  }
-
-  @IBAction func onDecorateMyRoomButton(_ sender: Any) {
-  }
+    @IBAction func onDecorateMyRoomButton(_ sender: Any) {
+    }
 }

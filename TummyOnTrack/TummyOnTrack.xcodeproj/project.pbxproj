@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		03DEBB593919382D6559FBA3 /* Pods_TummyOnTrack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21989D8558ABF79AD2D3611D /* Pods_TummyOnTrack.framework */; };
+		311B02E41EB448D700DAA2ED /* TTRewardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311B02E31EB448D700DAA2ED /* TTRewardsViewController.swift */; };
+		311B02E61EB4513900DAA2ED /* RewardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311B02E51EB4513900DAA2ED /* RewardCell.swift */; };
+		311B02E81EB459EC00DAA2ED /* TTReward.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311B02E71EB459EC00DAA2ED /* TTReward.swift */; };
 		31DE9B041EB154DF0055B8D8 /* TTPointsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31DE9B031EB154DF0055B8D8 /* TTPointsViewController.swift */; };
 		31DE9B061EB155120055B8D8 /* Rewards.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 31DE9B051EB155120055B8D8 /* Rewards.storyboard */; };
 		D1B1EF9B1EB141970032BEE1 /* TTVoiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1B1EF9A1EB141970032BEE1 /* TTVoiceViewController.swift */; };
@@ -62,6 +65,9 @@
 		26AE05810A52D180E9FA6DC3 /* Pods-TummyOnTrackUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TummyOnTrackUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TummyOnTrackUITests/Pods-TummyOnTrackUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		297D0B9229B100B9928ADB4D /* Pods-TummyOnTrack.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TummyOnTrack.release.xcconfig"; path = "Pods/Target Support Files/Pods-TummyOnTrack/Pods-TummyOnTrack.release.xcconfig"; sourceTree = "<group>"; };
 		311164B31794F3E36BFCC046 /* Pods-TummyOnTrackUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TummyOnTrackUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TummyOnTrackUITests/Pods-TummyOnTrackUITests.release.xcconfig"; sourceTree = "<group>"; };
+		311B02E31EB448D700DAA2ED /* TTRewardsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TTRewardsViewController.swift; path = TummyOnTrack/Rewards/TTRewardsViewController.swift; sourceTree = SOURCE_ROOT; };
+		311B02E51EB4513900DAA2ED /* RewardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RewardCell.swift; path = TummyOnTrack/Rewards/RewardCell.swift; sourceTree = SOURCE_ROOT; };
+		311B02E71EB459EC00DAA2ED /* TTReward.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TTReward.swift; sourceTree = "<group>"; };
 		31DE9B031EB154DF0055B8D8 /* TTPointsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TTPointsViewController.swift; path = TummyOnTrack/Rewards/TTPointsViewController.swift; sourceTree = SOURCE_ROOT; };
 		31DE9B051EB155120055B8D8 /* Rewards.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Rewards.storyboard; sourceTree = "<group>"; };
 		95D98D94BFFCF67DC2115B6F /* Pods-TummyOnTrackTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TummyOnTrackTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TummyOnTrackTests/Pods-TummyOnTrackTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -223,6 +229,7 @@
 			children = (
 				E7BC60571EB11220000529AC /* TTUser.swift */,
 				D1B1EFD61EB3953D0032BEE1 /* TTFoodItem.swift */,
+				311B02E71EB459EC00DAA2ED /* TTReward.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -312,6 +319,7 @@
 			isa = PBXGroup;
 			children = (
 				31DE9B031EB154DF0055B8D8 /* TTPointsViewController.swift */,
+				311B02E31EB448D700DAA2ED /* TTRewardsViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -319,6 +327,7 @@
 		E7BC604A1EB10BD5000529AC /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				311B02E51EB4513900DAA2ED /* RewardCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -646,11 +655,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				311B02E41EB448D700DAA2ED /* TTRewardsViewController.swift in Sources */,
 				E7F0E5661EB2801F0088743B /* TTFoodInputWaysViewController.swift in Sources */,
 				E7834F2A1EB14BB500FD2F1C /* TTHomeTableTableViewController.swift in Sources */,
 				D1B1EFE81EB3BDF80032BEE1 /* VoiceCollectionViewCell.swift in Sources */,
 				D1B1EFD51EB395250032BEE1 /* TTVoiceSummaryViewController.swift in Sources */,
 				E7BC60551EB10D79000529AC /* SignupLoginViewController.swift in Sources */,
+				311B02E81EB459EC00DAA2ED /* TTReward.swift in Sources */,
 				E7BC60561EB10D79000529AC /* SignupViewController.swift in Sources */,
 				31DE9B041EB154DF0055B8D8 /* TTPointsViewController.swift in Sources */,
 				E7BC60581EB11220000529AC /* TTUser.swift in Sources */,
@@ -661,6 +672,7 @@
 				E7F0E56A1EB29E7B0088743B /* TTAddPhotoTableViewController.swift in Sources */,
 				E7B940ED1EAE790C0078AB5E /* TummyOnTrack.xcdatamodeld in Sources */,
 				E7834F2C1EB14CA000FD2F1C /* TTSettingsTableViewController.swift in Sources */,
+				311B02E61EB4513900DAA2ED /* RewardCell.swift in Sources */,
 				E7BC60541EB10D79000529AC /* LoginViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
