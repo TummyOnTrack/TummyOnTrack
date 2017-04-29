@@ -13,6 +13,8 @@ class TTReward: NSObject {
     var points: Int?
     var imageURLs: [URL]?
 
+    static var rewards = [String: TTReward]()
+
     init(dictionary: NSDictionary) {
         name = dictionary["name"] as? String
         points = dictionary["points"] as? Int

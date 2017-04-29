@@ -31,6 +31,9 @@ class TTRewardsViewController: UIViewController {
                 let dict = snap_.value as! NSDictionary
                 let reward = TTReward(dictionary: dict)
                 self.rewards.append(reward)
+                if let name = reward.name {
+                    TTReward.rewards[name] = reward
+                }
             }
         })
 
