@@ -78,7 +78,7 @@ class SignupViewController: UIViewController {
             }
             
             // successful
-            let dbReference = FIRDatabase.database().reference(fromURL: "https://tummyontrack.firebaseio.com/").child("Users").child(uid)
+            let dbReference = FIRDatabase.database().reference(fromURL: BASE_URL).child(USERS_TABLE).child(uid)
             let newUser = ["username": username, "email": email, "createdAt": Date().timeIntervalSince1970] as [String : Any]
             dbReference.updateChildValues(newUser, withCompletionBlock: { (err, ref) in
                 if err != nil {

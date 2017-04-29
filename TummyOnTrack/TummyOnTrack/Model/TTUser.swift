@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class TTUser: NSObject {
     var username: String
@@ -23,6 +24,24 @@ class TTUser: NSObject {
 
         username = dictionary["username"] as! String
         email = dictionary["email"] as! String
+    }
+    
+    func getProfiles(success: @escaping ([TTProfile]) -> (), failure: @escaping (NSError) -> ()) {
+        /*let ref = FIRDatabase.database().reference(fromURL: BASE_URL).child(PROFILES_TABLE)
+        let query = ref.queryOrdered(byChild: "name")
+        
+        //get all of the comments tied to this post
+        query.observeSingleEvent(of: .value, with: { snapshot in
+            
+            for snap in snapshot.children {
+                //let snap_ = snap as! FIRDataSnapshot
+            }
+        })*/
+        success([])
+    }
+    
+    func addProfile( profile: TTProfile) {
+        
     }
 
     static var userAccounts = [String: TTUser]()
