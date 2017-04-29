@@ -67,11 +67,11 @@
             </objects>
             <point key="canvasLocation" x="1650" y="-866"/>
         </scene>
-        <!--Settings-->
+        <!--Profiles-->
         <scene sceneID="S1C-Kp-em8">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="S7W-Bf-PO3" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Settings" image="settings" id="9YH-mR-evg"/>
+                    <tabBarItem key="tabBarItem" title="Profiles" image="woman-man-7" id="9YH-mR-evg"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="DBn-Tz-Mov">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -118,7 +118,7 @@
     </scenes>
     <resources>
         <image name="home" width="32" height="32"/>
-        <image name="settings" width="32" height="32"/>
         <image name="star" width="32" height="32"/>
+        <image name="woman-man-7" width="29" height="30"/>
     </resources>
 </document>

@@ -53,6 +53,7 @@ class TTHomeTableTableViewController: UITableViewController, UINavigationControl
                             PieElement(value: 5.0, color: UIColor.lightGray)], animated: true)
     }
     
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
