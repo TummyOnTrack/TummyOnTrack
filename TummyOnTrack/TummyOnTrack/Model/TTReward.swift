@@ -27,10 +27,9 @@ class TTReward: NSObject {
                 if let imageURL = URL(string: imageURLString as! String) {
                     imageURLs.append(imageURL)
                 }
-
             }
-            self.imageURLs = imageURLs
         }
+        self.imageURLs = imageURLs
     }
 
     class func getRewards(success: @escaping ([TTReward]) -> (), failure: @escaping (NSError) -> ()) {
@@ -54,41 +53,46 @@ class TTReward: NSObject {
         })
     }
 
-    class func addReward() {
-        let image_ = UIImage(named: "package_games_kids")
-        let data = UIImagePNGRepresentation(image_!)! as NSData
-        var imageURL: String? = nil
-        let storageRef = FIRStorage.storage().reference()
+    class func addReward(filename: String, points: Int) {
+        var imagesURLsArray = [String]()
 
-        // Create a reference to the file you want to upload
-        let tempRef =  storageRef.child("rewardImages/temp.png")
+        let imageSizes = [1, 2]
 
-        _ = tempRef.put(data as Data, metadata: nil) { (metadata, error) in
-            guard let metadata = metadata else {
-                print("An error occurred while uploading reward image")
-                return
+        for imageSize in imageSizes {
+            let image_ = UIImage(named: "\(filename)-\(imageSize)x")
+            let data = UIImagePNGRepresentation(image_!)! as NSData
+            var imageURL: String? = nil
+            let storageRef = FIRStorage.storage().reference()
+
+            // Create a reference to the file you want to upload
+            let tempRef =  storageRef.child("rewardImages/temp.png")
+
+            _ = tempRef.put(data as Data, metadata: nil) { (metadata, error) in
+                guard let metadata = metadata else {
+                    print("An error occurred while uploading reward image")
+                    return
+                }
+
+                // Metadata contains file metadata such as size, content-type, and download URL.
+                let downloadURL = metadata.downloadURL
+                imageURL = downloadURL()?.absoluteString
+
+                if let imageURL = imageURL {
+                    imagesURLsArray.append(imageURL)
+                }
             }
-
-            // Metadata contains file metadata such as size, content-type, and download URL.
-            let downloadURL = metadata.downloadURL
-            imageURL = downloadURL()?.absoluteString
-            var imagesURLsArray = [String]()
-
-            if let imageURL = imageURL {
-                imagesURLsArray.append(imageURL)
-            }
-
-            // User this imageurl, create a reward object and add that in the firebase database
-            let reference = FIRDatabase.database().reference(fromURL: BASE_URL).child(REWARDS_TABLE).childByAutoId()
-            let values = [
-                "name": "Teddy",
-                "points": 5,
-                "createdAt": Date().timeIntervalSince1970,
-                "updatedAt": Date().timeIntervalSince1970,
-                "images" : imagesURLsArray,
-            ] as [String : Any]
-
-            reference.updateChildValues(values)
         }
+
+        // Use the imagesURLsArray to create a reward object to add to the firebase database
+        let reference = FIRDatabase.database().reference(fromURL: BASE_URL).child(REWARDS_TABLE).childByAutoId()
+        let values = [
+            "name": filename,
+            "points": points,
+            "createdAt": Date().timeIntervalSince1970,
+            "updatedAt": Date().timeIntervalSince1970,
+            "images" : imagesURLsArray,
+        ] as [String : Any]
+
+        reference.updateChildValues(values)
     }
 }

@@ -28,26 +28,24 @@ class TTVoiceSummaryViewController: UIViewController, UICollectionViewDataSource
     }
     
     func checkForFoodItemsPresent() {
-        if let defaultFoodList = TTFoodItem.defaultFoodList{
-            for food in defaultFoodList {
-                if let name = food.name?.lowercased() {
-                    defaultFoodNames.append(name)
-                }
+        for food in TTFoodItem.defaultFoodList {
+            if let name = food.name?.lowercased() {
+                defaultFoodNames.append(name)
             }
-            
-            if selectedFoodString != nil {
-                let selectedFoodArray = selectedFoodString.components(separatedBy: " ")
-                for selectedFood in selectedFoodArray {
-                    defaultFoodList.contains(where: { (food: TTFoodItem) -> Bool in
-                        if selectedFood == food.name?.lowercased() {
-                            selectedFoodItems.append(food)
-                            return true
-                        }
-                        else {
-                            return false
-                        }
-                    })
-                }
+        }
+
+        if selectedFoodString != nil {
+            let selectedFoodArray = selectedFoodString.components(separatedBy: " ")
+            for selectedFood in selectedFoodArray {
+               _ = TTFoodItem.defaultFoodList.contains(where: { (food: TTFoodItem) -> Bool in
+                    if selectedFood == food.name?.lowercased() {
+                        selectedFoodItems.append(food)
+                        return true
+                    }
+                    else {
+                        return false
+                    }
+                })
             }
         }
     }
@@ -68,16 +66,4 @@ class TTVoiceSummaryViewController: UIViewController, UICollectionViewDataSource
         
         return cell
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

@@ -27,22 +27,8 @@ class TTHomeTableTableViewController: UITableViewController, UINavigationControl
         super.viewDidLoad()
         
         // load default food items
-        let ref = FIRDatabase.database().reference(fromURL: BASE_URL).child(FOODITEM_TABLE)
-        let query = ref.queryOrdered(byChild: "name")
-        query.observeSingleEvent(of: .value, with: { snapshot in
-            
-            for snap in snapshot.children {
-                let snap_ = snap as! FIRDataSnapshot
-                let dict = snap_.value as! NSDictionary
-                let newFood = TTFoodItem(dictionary: dict)
-                if (TTFoodItem.defaultFoodList?.append(newFood)) == nil {
-                    TTFoodItem.defaultFoodList = [newFood]
-                }
-            }
-        })
-        
-        
-        
+        loadFoodItems()
+
         pieLayer = PieLayer()
         pieLayer.frame = pieView.frame
         pieLayer.minRadius = Float(pieView.frame.width/4)
@@ -57,6 +43,14 @@ class TTHomeTableTableViewController: UITableViewController, UINavigationControl
         setCurrentProfileDetails()
     }
     
+    func loadFoodItems() {
+        TTFoodItem.getFoodItems(success: { () in
+            //self.pieView.reloadInputViews()
+        }, failure: { (error: Error) -> ()  in
+            print("Failed to load food items")
+        })
+    }
+
     func setCurrentProfileDetails() {
         if TTProfile.currentProfile != nil {
             populateProfileInfo()
@@ -78,24 +72,19 @@ class TTHomeTableTableViewController: UITableViewController, UINavigationControl
         let currentProfile_ = TTProfile.currentProfile
         self.navigationItem.title = "Hi " + (currentProfile_?.name)! + "!"
         self.profileImageView.setImageWith((currentProfile_?.profileImageURL)!)
+
+        var pieColor = UIColor.init(red: 244/255.0, green: 115/255.0, blue: 0/255.0, alpha: 1)
         if currentProfile_?.unusedPoints == nil {
             goalHeaderLabel.text = "Eat healthy, collect points!"
             pointsLabel.text = "Your weekly points will appear here"
-            if pieLayer.values != nil && pieLayer.values.count == 2 {
-                pieLayer.deleteValues([pieLayer.values[0], pieLayer.values[1]], animated: true)
-            }
-            pieLayer.addValues([PieElement(value: 5.0, color: UIColor.lightGray),
-                                PieElement(value: 5.0, color: UIColor.lightGray)], animated: true)
+            pieColor = UIColor.lightGray
         }
-        else {
-            if pieLayer.values != nil && pieLayer.values.count == 2 {
-                pieLayer.deleteValues([pieLayer.values[0], pieLayer.values[1]], animated: true)
-            }
-            pieLayer.addValues([PieElement(value: 5.0, color: UIColor.init(red: 244/255.0, green: 115/255.0, blue: 0/255.0, alpha: 1)),
-                                PieElement(value: 5.0, color: UIColor.lightGray)], animated: true)
+
+        if pieLayer.values != nil && pieLayer.values.count == 2 {
+            pieLayer.deleteValues([pieLayer.values[0], pieLayer.values[1]], animated: true)
         }
-        
-        
+        pieLayer.addValues([PieElement(value: 5.0, color: pieColor),
+                            PieElement(value: 5.0, color: UIColor.lightGray)], animated: true)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -143,17 +132,4 @@ class TTHomeTableTableViewController: UITableViewController, UINavigationControl
             present(viewController, animated: true, completion: nil)
         }
     }
-    
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-    
-
 }

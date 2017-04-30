@@ -20,8 +20,13 @@ class TTRewardsViewController: UIViewController {
         collectionView.dataSource = self
         collectionView.delegate = self
 
-        // Add temp reward
-        // TTReward.addReward()
+        // Add temp rewards
+//        let rewardsImages = ["Cat", "Duckling", "Gorilla", "Hippo", "Panda", "Rabbit", "Raccoon"]
+//        var points = 10
+//        for rewardImage in rewardsImages {
+//            TTReward.addReward(filename: rewardImage, points: points)
+//            points += 5
+//        }
 
         // Load reward items
         loadRewards()

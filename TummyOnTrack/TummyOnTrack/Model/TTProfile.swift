@@ -28,10 +28,29 @@ class TTProfile: NSObject {
             profileImageURL = URL(string: profileImageString)
         }
 
-        isParent = dictionary["isParent"] as? Bool
-        unusedPoints = dictionary["unusedPoints"] as? Int
-        totalPoints = dictionary["totalPoints"] as? Int
-        goalPoints = dictionary["goalPoints"] as? Int
+        if let isParent = dictionary["isParent"] as? Bool {
+            self.isParent = isParent
+        } else {
+            self.isParent = false
+        }
+
+        if let unusedPoints = dictionary["unusedPoints"] as? Int {
+            self.unusedPoints = unusedPoints
+        } else {
+            self.unusedPoints = 0
+        }
+
+        if let totalPoints = dictionary["totalPoints"] as? Int {
+            self.totalPoints = totalPoints
+        } else {
+            self.totalPoints = 0
+        }
+
+        if let goalPoints = dictionary["goalPoints"] as? Int {
+            self.goalPoints = goalPoints
+        } else {
+            self.goalPoints = 0
+        }
 
         if let user_name = dictionary["user_name"] as? String {
             if let user = TTUser.userAccounts[user_name] {

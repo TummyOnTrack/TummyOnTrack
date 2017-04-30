@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class TTFoodItem {
     var name: String?
@@ -24,10 +25,24 @@ class TTFoodItem {
                 if let imageurl = URL(string: imageurlstring as! String) {
                     imageurls.append(imageurl)
                 }
-                
             }
             images = imageurls
         }
     }
-    static var defaultFoodList: [TTFoodItem]?
+
+    static var defaultFoodList = [TTFoodItem]()
+
+    class func getFoodItems(success: @escaping () -> (), failure: @escaping (NSError) -> ()) {
+        let reference = FIRDatabase.database().reference(fromURL: BASE_URL).child(FOODITEM_TABLE)
+        let query = reference.queryOrdered(byChild: "name")
+
+        query.observeSingleEvent(of: .value, with: { snapshot in
+            for snap in snapshot.children {
+                let snap_ = snap as! FIRDataSnapshot
+                let foodItem = TTFoodItem(dictionary: snap_.value! as! NSDictionary)
+
+                self.defaultFoodList.append(foodItem)
+            }
+        })
+    }
 }
