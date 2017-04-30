@@ -68,6 +68,7 @@ class TTUser: NSObject {
             let downloadURL = metadata.downloadURL
             imageURL = downloadURL()?.absoluteString
             
+            // User this imageurl, create a profile object and add that in the firebase database
             let ref = FIRDatabase.database().reference(fromURL: BASE_URL).child(PROFILES_TABLE).childByAutoId()
             let prof_ = ["name": "Emily", "age": 7, "createdAt": Date().timeIntervalSince1970, "updatedAt": Date().timeIntervalSince1970, "profilePhoto" : imageURL ?? "", "user" : self.dictionary ?? ""] as [String : Any]
             let values = prof_

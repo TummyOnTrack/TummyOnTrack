@@ -87,6 +87,7 @@ class SignupViewController: UIViewController {
                 }
                 
                 print("Saved user successfully into DB")
+                TTFirebaseClient.saveCurrentUser()
                 UserDefaults.standard.set(email, forKey: "currentLoggedInUserEmail")
                 UserDefaults.standard.synchronize()
                 let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
