@@ -25,6 +25,12 @@ class TTProfileCollectionViewCell: UICollectionViewCell {
         else {
             profilePhotoImageView.image = UIImage(named: "plus-simple-7")
         }
-        
     }
+    
+    override var isSelected: Bool {
+        didSet {
+            self.contentView.backgroundColor = isSelected ? UIColor.blue : UIColor.yellow
+        }
+    }
+
 }
