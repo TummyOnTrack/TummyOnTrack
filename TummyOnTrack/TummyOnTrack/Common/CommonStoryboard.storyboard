@@ -180,7 +180,7 @@
                                                                 <constraint firstAttribute="width" constant="45" id="op2-2X-6HU"/>
                                                             </constraints>
                                                             <state key="normal" title="Thu">
-                                                                <color key="titleColor" red="0.82745098039999998" green="0.13725490200000001" blue="0.13725490200000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                             </state>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3at-VH-b9B">
@@ -273,12 +273,19 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="friButton" destination="3at-VH-b9B" id="QCZ-VL-lKj"/>
                         <outlet property="goalHeaderLabel" destination="ERA-Es-AKo" id="wUp-RM-eVd"/>
                         <outlet property="goalPointsLabel" destination="SgH-L7-qxv" id="yHq-BU-gvW"/>
+                        <outlet property="monButton" destination="UxM-iv-EXx" id="jq8-HS-VHs"/>
                         <outlet property="pieView" destination="FxA-XQ-pd6" id="GWx-Wl-mhF"/>
                         <outlet property="pointsLabel" destination="NXg-uM-WNM" id="TVn-UH-9vh"/>
                         <outlet property="profileImageView" destination="BDC-Md-k7F" id="BGt-gW-CjU"/>
+                        <outlet property="satButton" destination="h95-fY-wjr" id="T2z-fH-nJe"/>
                         <outlet property="setupGoalButton" destination="i6j-Y6-wPh" id="eTt-jv-Uwt"/>
+                        <outlet property="sunButton" destination="TUX-4n-Qot" id="SKF-rq-4oV"/>
+                        <outlet property="thursButton" destination="DKg-BD-OFF" id="0Wp-2U-A7g"/>
+                        <outlet property="tuesButton" destination="a4s-iB-Psu" id="qzh-yh-E6l"/>
+                        <outlet property="wedButton" destination="PXP-0h-a4Q" id="X9q-tN-2C2"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="11c-ic-tMb" userLabel="First Responder" sceneMemberID="firstResponder"/>

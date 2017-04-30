@@ -25,11 +25,21 @@ class TTHomeTableTableViewController: UITableViewController, UINavigationControl
     
     var imagePicker: UIImagePickerController!
     
+    @IBOutlet weak var monButton: UIButton!
+    
+    @IBOutlet weak var satButton: UIButton!
+    @IBOutlet weak var friButton: UIButton!
+    @IBOutlet weak var thursButton: UIButton!
+    @IBOutlet weak var wedButton: UIButton!
+    @IBOutlet weak var tuesButton: UIButton!
+    @IBOutlet weak var sunButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // load default food items
         loadFoodItems()
+        
+        setToday()
 
         pieLayer = PieLayer()
         pieLayer.frame = pieView.frame
@@ -43,6 +53,64 @@ class TTHomeTableTableViewController: UITableViewController, UINavigationControl
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setCurrentProfileDetails()
+    }
+    
+    func setToday() {
+        let date = Date()
+        let calendar = Calendar.current
+        
+        //let year = calendar.component(.year, from: date)
+        //let month = calendar.component(.month, from: date)
+        //TODO: Bad logic. Fix it.
+        let day = calendar.component(.weekday, from: date)
+        if day == 1 {
+            setButtonColor(aButton: sunButton, aColor: UIColor.red)
+        }
+        else {
+            setButtonColor(aButton: sunButton, aColor: UIColor.black)
+        }
+        if day == 2 {
+            setButtonColor(aButton: monButton, aColor: UIColor.red)
+        }
+        else {
+            setButtonColor(aButton: monButton, aColor: UIColor.black)
+        }
+        if day == 3 {
+            setButtonColor(aButton: tuesButton, aColor: UIColor.red)
+        }
+        else {
+            setButtonColor(aButton: tuesButton, aColor: UIColor.black)
+        }
+        if day == 4 {
+            setButtonColor(aButton: wedButton, aColor: UIColor.red)
+        }
+        else {
+            setButtonColor(aButton: wedButton, aColor: UIColor.black)
+        }
+        if day == 5 {
+            setButtonColor(aButton: thursButton, aColor: UIColor.red)
+        }
+        else {
+            setButtonColor(aButton: thursButton, aColor: UIColor.black)
+        }
+        if day == 6 {
+            setButtonColor(aButton: friButton, aColor: UIColor.red)
+        }
+        else {
+            setButtonColor(aButton: friButton, aColor: UIColor.black)
+        }
+        if day == 7 {
+            setButtonColor(aButton: satButton, aColor: UIColor.red)
+        }
+        else {
+            setButtonColor(aButton: satButton, aColor: UIColor.black)
+        }
+        
+        print(day)
+    }
+    
+    func setButtonColor( aButton: UIButton, aColor: UIColor) {
+        aButton.setTitleColor(aColor, for: UIControlState.normal)
     }
     
     func loadFoodItems() {
@@ -60,17 +128,6 @@ class TTHomeTableTableViewController: UITableViewController, UINavigationControl
         if TTProfile.currentProfile != nil {
             populateProfileInfo()
         }
-        /*else {
-            TTFirebaseClient.initializeCurrentProfile(success: { (aProfile: TTProfile) in
-                if TTProfile.currentProfile != nil {
-                    self.populateProfileInfo()
-                }
-                else {
-                    // What to show when no profiles?
-                }
-            }, failure: { (error: NSError) -> ()  in
-            })
-        }*/
     }
     
     func populateProfileInfo() {
@@ -92,7 +149,7 @@ class TTHomeTableTableViewController: UITableViewController, UINavigationControl
         if pieLayer.values != nil && pieLayer.values.count == 2 {
             pieLayer.deleteValues([pieLayer.values[0], pieLayer.values[1]], animated: true)
         }
-        var greyPoints = Float((currentProfile_?.goalPoints)! - (currentProfile_?.weeklyEarnedPoints)!)
+        let greyPoints = Float((currentProfile_?.goalPoints)! - (currentProfile_?.weeklyEarnedPoints)!)
         
         pieLayer.addValues([PieElement(value: Float((currentProfile_?.weeklyEarnedPoints)!), color: pieColor),
                             PieElement(value: greyPoints, color: UIColor.lightGray)], animated: true)
