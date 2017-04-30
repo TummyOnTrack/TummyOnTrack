@@ -14,12 +14,14 @@ import FirebaseStorage
 class TTUser: NSObject {
     var username: String
     var email: String
+    var uid: String
     var dictionary: NSDictionary?
     var profiles: NSMutableArray?
 
-    init(username: String, email: String) {
+    init(username: String, email: String, uid: String) {
         self.username = username
         self.email = email
+        self.uid = uid
     }
 
     init(dictionary: NSDictionary){
@@ -27,14 +29,19 @@ class TTUser: NSObject {
 
         username = dictionary["username"] as! String
         email = dictionary["email"] as! String
+        uid = dictionary["uid"] as! String
     }
     
     func getProfiles(success: @escaping ([TTProfile]) -> (), failure: @escaping (NSError) -> ()) {
+        if profiles != nil && (profiles?.count)! > 0 {
+            success(profiles as! [TTProfile])
+            return
+        }
         if profiles == nil {
             profiles = []
         }
         let ref = FIRDatabase.database().reference(fromURL: BASE_URL).child(PROFILES_TABLE)
-        let query = ref.queryOrdered(byChild: "name")
+        let query = ref.queryOrdered(byChild: "userId").queryEqual(toValue: uid)
         
         //get all of the comments tied to this post
         query.observeSingleEvent(of: .value, with: { snapshot in
@@ -43,21 +50,24 @@ class TTUser: NSObject {
                 let snap_ = snap as! FIRDataSnapshot
                 let profile_ = TTProfile(dictionary: snap_.value! as! NSDictionary)
                 self.profiles?.add(profile_)
-                success(self.profiles as! [TTProfile])
             }
+            success(self.profiles as! [TTProfile])
         })
-        
+    }
+    
+    func changeCurrentProfile( aProfile: TTProfile ) {
+        TTProfile.changeProfile(profile: aProfile)
     }
     
     func addProfile( aProfile: TTProfile) {
         // Data in memory
         
-        let image_ = UIImage(named: "Smiling_Face_Blushed")
+        let image_ = UIImage(named: "user")
         let data = UIImagePNGRepresentation(image_!)! as NSData
         var imageURL: String? = nil
         let storageRef = FIRStorage.storage().reference()
         // Create a reference to the file you want to upload
-        let tempRef =  storageRef.child("profileImages/temp.png")
+        let tempRef =  storageRef.child("profileImages/temp2.png")
         
         _ = tempRef.put(data as Data, metadata: nil) { (metadata, error) in
             guard let metadata = metadata else {
@@ -70,7 +80,7 @@ class TTUser: NSObject {
             
             // User this imageurl, create a profile object and add that in the firebase database
             let ref = FIRDatabase.database().reference(fromURL: BASE_URL).child(PROFILES_TABLE).childByAutoId()
-            let prof_ = ["name": "Emily", "age": 7, "createdAt": Date().timeIntervalSince1970, "updatedAt": Date().timeIntervalSince1970, "profilePhoto" : imageURL ?? "", "user" : self.dictionary ?? ""] as [String : Any]
+            let prof_ = ["name": "John", "age": 6, "createdAt": Date().timeIntervalSince1970, "updatedAt": Date().timeIntervalSince1970, "profilePhoto" : imageURL ?? "", "userId" : self.uid, "user" : self.dictionary ?? ""] as [String : Any]
             let values = prof_
             ref.updateChildValues(values)
         }

@@ -19,12 +19,24 @@ class TTProfileCollectionViewCell: UICollectionViewCell {
     func setUI(aProfile: TTProfile) {
         profile = aProfile
         profileName.text = aProfile.name
+        /*if TTProfile.currentProfile?.name == aProfile.name {
+            isSelected = true
+        }
+        else {
+            isSelected = false
+        }*/
         if aProfile.profileImageURL != nil {
             profilePhotoImageView.setImageWith(aProfile.profileImageURL!)
         }
         else {
             profilePhotoImageView.image = UIImage(named: "plus-simple-7")
         }
-        
     }
+    
+    override var isSelected: Bool {
+        didSet {
+            self.contentView.backgroundColor = isSelected ? UIColor.yellow : UIColor.white
+        }
+    }
+
 }

@@ -14,16 +14,26 @@ class TTSettingsTableViewController: UITableViewController, UICollectionViewDele
     @IBOutlet weak var collectionView: UICollectionView!
     var profiles: NSMutableArray = []
     
+    var selectedProfile: TTProfile?
+    
+    @IBOutlet weak var addProfilesLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
+        collectionView.allowsMultipleSelection = false
         loadProfiles()
     }
     
     func loadProfiles() {
-        let addProfileCell = TTProfile(dictionary: ["name": "Add Profile"])
+        let addProfileCell = TTProfile(dictionary: ["name": "Add Member"])
         
         TTUser.currentUser?.getProfiles(success: { (aProfiles: [TTProfile]) in
             self.profiles.addObjects(from: aProfiles)
+            if self.profiles.count == 0 {
+                self.addProfilesLabel.text = "Create a family member's profile"
+            }
+            else {
+                self.addProfilesLabel.text = "Change current member"
+            }
             self.profiles.add(addProfileCell)
             self.collectionView.reloadData()
             
@@ -53,17 +63,25 @@ class TTSettingsTableViewController: UITableViewController, UICollectionViewDele
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if indexPath.row == profiles.count - 1 {
-            
             TTUser.currentUser?.addProfile(aProfile: profiles[indexPath.row] as! TTProfile)
+        }
+        else {
+           // TTUser.currentUser?.changeCurrentProfile(aProfile: profiles[indexPath.row] as! TTProfile)
+            selectedProfile = profiles[indexPath.row] as? TTProfile
         }
     }
     
-
+    @IBAction func onChangeProfileClick(_ sender: Any) {
+        TTUser.currentUser?.changeCurrentProfile(aProfile: selectedProfile!)
+        tabBarController?.selectedIndex = 0
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
 
     @IBAction func onLogoutClick(_ sender: Any) {
+        
     }
      /*
     // MARK: - Navigation
