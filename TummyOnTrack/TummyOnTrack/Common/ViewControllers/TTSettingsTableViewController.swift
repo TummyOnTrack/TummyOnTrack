@@ -12,11 +12,12 @@ import Firebase
 class TTSettingsTableViewController: UITableViewController, UICollectionViewDelegate, UICollectionViewDataSource {
 
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var addProfilesLabel: UILabel!
     var profiles: NSMutableArray = []
-    
     var selectedProfile: TTProfile?
     
-    @IBOutlet weak var addProfilesLabel: UILabel!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.allowsMultipleSelection = false
