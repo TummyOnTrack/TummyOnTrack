@@ -21,13 +21,17 @@ class TTFirebaseClient: NSObject {
     class func saveCurrentUser() {
         
         let ref = FIRDatabase.database().reference(fromURL: BASE_URL).child(USERS_TABLE)
-        
+        print((FIRAuth.auth()?.currentUser?.uid)!)
         let LoggedInUser = ref.child((FIRAuth.auth()?.currentUser?.uid)!)
-        
         LoggedInUser.observeSingleEvent(of: .value, with: { snapshot in
             let snap_ = snapshot
-            print(snap_.value!)
-            TTUser.currentUser = TTUser.init(dictionary: snap_.value! as! NSDictionary)
+            //print(snap_.value!)
+            
+            let dictionary_: NSMutableDictionary = [:]
+            dictionary_.addEntries(from: snap_.value! as! [AnyHashable : Any])
+            dictionary_.setObject(FIRAuth.auth()?.currentUser?.uid ?? "", forKey: "uid" as NSCopying)
+
+            TTUser.currentUser = TTUser.init(dictionary: dictionary_ as NSDictionary)
         })
     }
 

@@ -260,6 +260,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="goalHeaderLabel" destination="ERA-Es-AKo" id="wUp-RM-eVd"/>
                         <outlet property="pieView" destination="FxA-XQ-pd6" id="GWx-Wl-mhF"/>
                         <outlet property="profileImageView" destination="BDC-Md-k7F" id="BGt-gW-CjU"/>
                     </connections>

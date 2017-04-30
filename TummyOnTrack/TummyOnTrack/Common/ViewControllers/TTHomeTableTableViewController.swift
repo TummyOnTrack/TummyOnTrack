@@ -14,6 +14,7 @@ import Firebase
 
 class TTHomeTableTableViewController: UITableViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
+    @IBOutlet weak var goalHeaderLabel: UILabel!
     @IBOutlet weak var pieView: UIView!
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var profileName: UILabel!
