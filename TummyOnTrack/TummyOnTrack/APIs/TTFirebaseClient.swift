@@ -22,7 +22,6 @@ class TTFirebaseClient: NSObject {
     class func saveCurrentUser(success: @escaping (Bool) -> (), failure: @escaping (NSError) -> ()) {
         
         let ref = FIRDatabase.database().reference(fromURL: BASE_URL).child(USERS_TABLE)
-        print((FIRAuth.auth()?.currentUser?.uid)!)
         let LoggedInUser = ref.child((FIRAuth.auth()?.currentUser?.uid)!)
         LoggedInUser.observeSingleEvent(of: .value, with: { snapshot in
             let snap_ = snapshot
