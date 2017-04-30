@@ -55,7 +55,7 @@ class TTHomeTableTableViewController: UITableViewController, UINavigationControl
         if TTProfile.currentProfile != nil {
             populateProfileInfo()
         }
-        else {
+        /*else {
             TTFirebaseClient.initializeCurrentProfile(success: { (aProfile: TTProfile) in
                 if TTProfile.currentProfile != nil {
                     self.populateProfileInfo()
@@ -65,7 +65,7 @@ class TTHomeTableTableViewController: UITableViewController, UINavigationControl
                 }
             }, failure: { (error: NSError) -> ()  in
             })
-        }
+        }*/
     }
     
     func populateProfileInfo() {

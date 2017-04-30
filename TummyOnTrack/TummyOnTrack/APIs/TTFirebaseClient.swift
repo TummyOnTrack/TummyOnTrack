@@ -19,7 +19,7 @@ let FOODITEM_TABLE = "FoodItem"
 
 class TTFirebaseClient: NSObject {
     
-    class func saveCurrentUser() {
+    class func saveCurrentUser(success: @escaping (Bool) -> (), failure: @escaping (NSError) -> ()) {
         
         let ref = FIRDatabase.database().reference(fromURL: BASE_URL).child(USERS_TABLE)
         print((FIRAuth.auth()?.currentUser?.uid)!)
@@ -34,19 +34,23 @@ class TTFirebaseClient: NSObject {
 
             TTUser.currentUser = TTUser.init(dictionary: dictionary_ as NSDictionary)
             
-            initializeCurrentProfile(success: { (aProfile: TTProfile) in
+            initializeCurrentProfile(success: { (aProfile: TTProfile?) in
+                success(true)
             }, failure: { (error: NSError) -> ()  in
             })
         })
     }
     
-    class func initializeCurrentProfile(success: @escaping (TTProfile) -> (), failure: @escaping (NSError) -> ()) {
+    class func initializeCurrentProfile(success: @escaping (TTProfile?) -> (), failure: @escaping (NSError) -> ()) {
         TTUser.currentUser?.getProfiles(success: { (aProfiles: [TTProfile]) in
             if aProfiles.count > 0 {
                 if TTProfile.currentProfile == nil {
                     TTProfile.currentProfile = aProfiles[0]
                 }
                 success(TTProfile.currentProfile!)
+            }
+            else {
+                success(nil)
             }
             
         }, failure: { (error: NSError) -> ()  in
