@@ -13,31 +13,28 @@ class TTRewardsViewController: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
 
-    var rewards: [TTReward]!
+    var rewards = [TTReward]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.dataSource = self
         collectionView.delegate = self
 
-        rewards = [TTReward]()
+        // Add temp reward
+        // TTReward.addReward()
 
-        // load default food items
-        let ref = FIRDatabase.database().reference(fromURL: "https://tummyontrack.firebaseio.com/").child("Rewards")
-        let query = ref.queryOrdered(byChild: "name")
-        query.observeSingleEvent(of: .value, with: { snapshot in
-            for snap in snapshot.children {
-                let snap_ = snap as! FIRDataSnapshot
-                let dict = snap_.value as! NSDictionary
-                let reward = TTReward(dictionary: dict)
-                self.rewards.append(reward)
-                if let name = reward.name {
-                    TTReward.rewards[name] = reward
-                }
-            }
+        // Load reward items
+        loadRewards()
+        print("Rewards count: \(rewards.count)")
+    }
+
+    func loadRewards() {
+        TTReward.getRewards(success: { (rewards: [TTReward]) in
+            self.rewards = rewards
+            self.collectionView.reloadData()
+        }, failure: { (error: Error) -> ()  in
+            print("Failed to load rewards")
         })
-
-        collectionView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -48,7 +45,7 @@ class TTRewardsViewController: UIViewController {
 
 extension TTRewardsViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return rewards == nil ? 0 : rewards!.count
+        return rewards.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

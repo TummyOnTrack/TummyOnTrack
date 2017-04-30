@@ -20,7 +20,7 @@ class RewardCell: UICollectionViewCell {
                 return
             }
 
-            pointsLabel.text = "\(String(describing: reward.points))"
+            pointsLabel.text = "\(String(describing: reward.points!))"
             rewardLabel.text = reward.name
 
             if let rewardImageUrl = reward.imageURLs?.first {
