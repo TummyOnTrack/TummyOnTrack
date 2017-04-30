@@ -180,13 +180,50 @@
                     </view>
                     <connections>
                         <outlet property="emailTextfield" destination="9oq-4C-jhT" id="XVl-1P-vHR"/>
+                        <outlet property="errorMessageLabel" destination="jYO-82-FP8" id="mGi-Dv-ngV"/>
+                        <outlet property="errorView" destination="tYc-YZ-dls" id="gW0-Fd-fBf"/>
                         <outlet property="loginButton" destination="eEv-Qn-khq" id="7am-jv-Jdb"/>
                         <outlet property="passwordTextfield" destination="2Kt-N5-y7C" id="tTZ-Zf-1eG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x70-yA-wEp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <view contentMode="scaleToFill" id="tYc-YZ-dls">
+                    <rect key="frame" x="0.0" y="0.0" width="371" height="45"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Error Message Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jYO-82-FP8">
+                            <rect key="frame" x="10" y="14" width="359" height="17"/>
+                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
+                            <color key="textColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KCL-MJ-Gea">
+                            <rect key="frame" x="325" y="7" width="30" height="30"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="30" id="CQx-AE-cJa"/>
+                                <constraint firstAttribute="width" constant="30" id="Wfl-xo-JiO"/>
+                            </constraints>
+                            <state key="normal" image="close1">
+                                <color key="titleColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                            </state>
+                            <connections>
+                                <action selector="dismissErrorView:" destination="upT-To-HxG" eventType="touchUpInside" id="00X-F3-Lze"/>
+                                <action selector="dismissErrorView:" destination="gjK-LO-6xB" eventType="touchUpInside" id="Hbu-iB-GnI"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" red="0.374383246" green="0.43551713199999997" blue="0.42319380699999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstItem="KCL-MJ-Gea" firstAttribute="top" secondItem="tYc-YZ-dls" secondAttribute="top" constant="7" id="CzG-ui-RGm"/>
+                        <constraint firstItem="jYO-82-FP8" firstAttribute="leading" secondItem="tYc-YZ-dls" secondAttribute="leading" constant="10" id="FEM-1V-PEa"/>
+                        <constraint firstItem="KCL-MJ-Gea" firstAttribute="centerY" secondItem="tYc-YZ-dls" secondAttribute="centerY" id="Hix-k9-9GD"/>
+                        <constraint firstAttribute="trailing" secondItem="jYO-82-FP8" secondAttribute="trailing" constant="2" id="OFK-pY-019"/>
+                        <constraint firstAttribute="trailing" secondItem="KCL-MJ-Gea" secondAttribute="trailing" constant="16" id="crs-zu-Q13"/>
+                        <constraint firstItem="jYO-82-FP8" firstAttribute="centerY" secondItem="tYc-YZ-dls" secondAttribute="centerY" id="udB-9J-Set"/>
+                    </constraints>
+                </view>
             </objects>
-            <point key="canvasLocation" x="1452" y="285.60719640179911"/>
+            <point key="canvasLocation" x="1457" y="427"/>
         </scene>
         <!--Signup View Controller-->
         <scene sceneID="fhi-34-b1E">
@@ -343,14 +380,13 @@
                             <color key="textColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4p2-Ig-9fJ">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4p2-Ig-9fJ">
                             <rect key="frame" x="325" y="8" width="30" height="30"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="30" id="fIU-kj-Te5"/>
                                 <constraint firstAttribute="width" constant="30" id="pbJ-bw-pVa"/>
                             </constraints>
-                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
-                            <state key="normal" title="X">
+                            <state key="normal" image="close1">
                                 <color key="titleColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                             </state>
                             <connections>
@@ -391,6 +427,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="close1" width="24" height="24"/>
         <image name="food-1898194_1920" width="1280" height="1920"/>
     </resources>
 </document>

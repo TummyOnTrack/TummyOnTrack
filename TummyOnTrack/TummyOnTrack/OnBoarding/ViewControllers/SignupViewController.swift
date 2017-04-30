@@ -45,25 +45,27 @@ class SignupViewController: UIViewController {
     
 
     @IBAction func signupUserClicked(_ sender: Any) {
-        if passwordTextField.text! != confirmPwdTextField.text! {
-            Helpers.sharedInstance.showErrorMessageAlertDialog("Password does not match confirmation", errorView: errorView, errorLabel: errorViewLabel, parentView: view)
-            return
-        }else if (passwordTextField.text?.characters.count)! < 6 {
-            Helpers.sharedInstance.showErrorMessageAlertDialog("Password must be more than 6 letters", errorView: errorView, errorLabel: errorViewLabel, parentView: view)
+        guard let username = emailTextField.text, let email = emailTextField.text, let password = passwordTextField.text, let confirmPwd = confirmPwdTextField.text else {
             return
         }
-        
-        guard let username = emailTextField.text, let email = emailTextField.text, let password = passwordTextField.text else {
-            print("Please enter valid sign up information")
+        if username.isEmpty || email.isEmpty || password.isEmpty {
+            Helpers.sharedInstance.showErrorMessageAlertDialog("Please enter valid sign up information", errorView: errorView, errorLabel: errorViewLabel, parentView: view, navController: navigationController!)
+            return
+        }
+        else if password != confirmPwd {
+            Helpers.sharedInstance.showErrorMessageAlertDialog("Password does not match confirmation", errorView: errorView, errorLabel: errorViewLabel, parentView: view, navController: navigationController!)
+            return
+        }else if password.characters.count < 6 {
+            Helpers.sharedInstance.showErrorMessageAlertDialog("Password must be more than 6 letters", errorView: errorView, errorLabel: errorViewLabel, parentView: view, navController: navigationController!)
             return
         }
         
         signupUser(username: username, email: email, password: password)
-        Helpers.sharedInstance.hideErrorMessageAlertDialog(errorView: errorView)
+
     }
     
     @IBAction func dismissErrorView(_ sender: Any) {
-        Helpers.sharedInstance.hideErrorMessageAlertDialog(errorView: errorView)
+        Helpers.sharedInstance.hideErrorMessageAlertDialog(errorView: errorView, navController: navigationController!)
     }
     
     
@@ -90,6 +92,8 @@ class SignupViewController: UIViewController {
                 TTFirebaseClient.saveCurrentUser()
                 UserDefaults.standard.set(email, forKey: "currentLoggedInUserEmail")
                 UserDefaults.standard.synchronize()
+                Helpers.sharedInstance.hideErrorMessageAlertDialog(errorView: self.errorView, navController: self.navigationController!)
+                
                 let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
                 let homeVC = mainStoryboard.instantiateViewController(withIdentifier: "MainPageTabBarController") as! UITabBarController
                 self.present(homeVC, animated: true, completion: nil)
