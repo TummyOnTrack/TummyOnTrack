@@ -14,6 +14,8 @@ import Firebase
 
 class TTHomeTableTableViewController: UITableViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
+    @IBOutlet weak var setupGoalButton: UIButton!
+    @IBOutlet weak var goalPointsLabel: UILabel!
     @IBOutlet weak var pointsLabel: UILabel!
     @IBOutlet weak var goalHeaderLabel: UILabel!
     @IBOutlet weak var pieView: UIView!
@@ -31,7 +33,7 @@ class TTHomeTableTableViewController: UITableViewController, UINavigationControl
 
         pieLayer = PieLayer()
         pieLayer.frame = pieView.frame
-        pieLayer.minRadius = Float(pieView.frame.width/4)
+        pieLayer.minRadius = Float(pieView.frame.width/3)
         pieLayer.maxRadius = Float(pieView.frame.width/2)
         
         view.layer.addSublayer(pieLayer)
@@ -49,6 +51,9 @@ class TTHomeTableTableViewController: UITableViewController, UINavigationControl
         }, failure: { (error: Error) -> ()  in
             print("Failed to load food items")
         })
+    }
+    @IBAction func onSetupGoalClick(_ sender: Any) {
+        
     }
 
     func setCurrentProfileDetails() {
@@ -72,19 +77,25 @@ class TTHomeTableTableViewController: UITableViewController, UINavigationControl
         let currentProfile_ = TTProfile.currentProfile
         self.navigationItem.title = "Hi " + (currentProfile_?.name)! + "!"
         self.profileImageView.setImageWith((currentProfile_?.profileImageURL)!)
-
+        setupGoalButton.isHidden = true
         var pieColor = UIColor.init(red: 244/255.0, green: 115/255.0, blue: 0/255.0, alpha: 1)
-        if currentProfile_?.unusedPoints == nil {
+        if currentProfile_?.weeklyEarnedPoints == 0 && currentProfile_?.goalPoints == 0 {
             goalHeaderLabel.text = "Eat healthy, collect points!"
             pointsLabel.text = "Your weekly points will appear here"
+            goalPointsLabel.text = "Setup Weekly Goal"
+            setupGoalButton.isHidden = false
             pieColor = UIColor.lightGray
         }
-
+        else {
+            goalPointsLabel.text = "Goal: " + "\((currentProfile_?.goalPoints)!)" + "Pts"
+        }
         if pieLayer.values != nil && pieLayer.values.count == 2 {
             pieLayer.deleteValues([pieLayer.values[0], pieLayer.values[1]], animated: true)
         }
-        pieLayer.addValues([PieElement(value: 5.0, color: pieColor),
-                            PieElement(value: 5.0, color: UIColor.lightGray)], animated: true)
+        var greyPoints = Float((currentProfile_?.goalPoints)! - (currentProfile_?.weeklyEarnedPoints)!)
+        
+        pieLayer.addValues([PieElement(value: Float((currentProfile_?.weeklyEarnedPoints)!), color: pieColor),
+                            PieElement(value: greyPoints, color: UIColor.lightGray)], animated: true)
     }
     
     override func viewDidAppear(_ animated: Bool) {
