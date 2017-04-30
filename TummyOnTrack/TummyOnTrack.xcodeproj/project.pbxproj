@@ -20,6 +20,7 @@
 		D1B1EFD71EB3953D0032BEE1 /* TTFoodItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1B1EFD61EB3953D0032BEE1 /* TTFoodItem.swift */; };
 		D1B1EFE81EB3BDF80032BEE1 /* VoiceCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1B1EFE71EB3BDF80032BEE1 /* VoiceCollectionViewCell.swift */; };
 		DCE26630DAFFED14DB212A92 /* Pods_TummyOnTrackTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C70769353C6DF168DCF8CA75 /* Pods_TummyOnTrackTests.framework */; };
+		E038F56B1EB694DA002E55DE /* ProfileStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E038F56A1EB694DA002E55DE /* ProfileStoryboard.storyboard */; };
 		E04117461EAFB4C400C8152E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E04117451EAFB4C400C8152E /* GoogleService-Info.plist */; };
 		E08BD2A31EB28B4100FD5404 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08BD2A21EB28B4100FD5404 /* Helpers.swift */; };
 		E746D5BEBDD93D7BABE7860B /* Pods_TummyOnTrackUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD778399FA4004A9293948D1 /* Pods_TummyOnTrackUITests.framework */; };
@@ -82,10 +83,11 @@
 		D1B1EFD41EB395250032BEE1 /* TTVoiceSummaryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TTVoiceSummaryViewController.swift; path = TummyOnTrack/VoiceEntry/TTVoiceSummaryViewController.swift; sourceTree = SOURCE_ROOT; };
 		D1B1EFD61EB3953D0032BEE1 /* TTFoodItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TTFoodItem.swift; sourceTree = "<group>"; };
 		D1B1EFE71EB3BDF80032BEE1 /* VoiceCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VoiceCollectionViewCell.swift; path = TummyOnTrack/VoiceEntry/VoiceCollectionViewCell.swift; sourceTree = SOURCE_ROOT; };
+		E038F56A1EB694DA002E55DE /* ProfileStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ProfileStoryboard.storyboard; sourceTree = "<group>"; };
 		E04117451EAFB4C400C8152E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E08BD2A21EB28B4100FD5404 /* Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		E7834F291EB14BB500FD2F1C /* TTHomeTableTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TTHomeTableTableViewController.swift; sourceTree = "<group>"; };
-		E7834F2B1EB14CA000FD2F1C /* TTSettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TTSettingsTableViewController.swift; sourceTree = "<group>"; };
+		E7834F2B1EB14CA000FD2F1C /* TTSettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TTSettingsTableViewController.swift; path = ../../Common/ViewControllers/TTSettingsTableViewController.swift; sourceTree = "<group>"; };
 		E7B940E11EAE790C0078AB5E /* TummyOnTrack.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TummyOnTrack.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7B940E41EAE790C0078AB5E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E7B940E91EAE790C0078AB5E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -162,6 +164,24 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		E038F5681EB694C1002E55DE /* Profiles */ = {
+			isa = PBXGroup;
+			children = (
+				E038F5691EB694C1002E55DE /* ViewControllers */,
+				E7BC604C1EB10BDC000529AC /* Views */,
+				E038F56A1EB694DA002E55DE /* ProfileStoryboard.storyboard */,
+			);
+			path = Profiles;
+			sourceTree = "<group>";
+		};
+		E038F5691EB694C1002E55DE /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				E7834F2B1EB14CA000FD2F1C /* TTSettingsTableViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
 		E08BD2A11EB28B2200FD5404 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -202,6 +222,7 @@
 				E7BC60421EB10A07000529AC /* Gamification */,
 				E7BC60411EB10A00000529AC /* Rewards */,
 				E7BC60431EB10A0D000529AC /* Common */,
+				E038F5681EB694C1002E55DE /* Profiles */,
 				E7B940E41EAE790C0078AB5E /* AppDelegate.swift */,
 				E7B940E81EAE790C0078AB5E /* Main.storyboard */,
 				E7B940EE1EAE790C0078AB5E /* Assets.xcassets */,
@@ -276,7 +297,6 @@
 			isa = PBXGroup;
 			children = (
 				E7BC604B1EB10BDC000529AC /* ViewControllers */,
-				E7BC604C1EB10BDC000529AC /* Views */,
 				E7F0E5631EB269B00088743B /* CommonStoryboard.storyboard */,
 			);
 			path = Common;
@@ -344,7 +364,6 @@
 			isa = PBXGroup;
 			children = (
 				E7834F291EB14BB500FD2F1C /* TTHomeTableTableViewController.swift */,
-				E7834F2B1EB14CA000FD2F1C /* TTSettingsTableViewController.swift */,
 				E7F0E5651EB2801F0088743B /* TTFoodInputWaysViewController.swift */,
 				E7F0E5691EB29E7B0088743B /* TTAddPhotoTableViewController.swift */,
 			);
@@ -356,7 +375,8 @@
 			children = (
 				E7F0E56B1EB53D7B0088743B /* TTProfileCollectionViewCell.swift */,
 			);
-			path = Views;
+			name = Views;
+			path = ../Common/Views;
 			sourceTree = "<group>";
 		};
 		E7BC604D1EB10C24000529AC /* ViewControllers */ = {
@@ -508,6 +528,7 @@
 				E04117461EAFB4C400C8152E /* GoogleService-Info.plist in Resources */,
 				E7F0E5641EB269B00088743B /* CommonStoryboard.storyboard in Resources */,
 				E7B940EF1EAE790C0078AB5E /* Assets.xcassets in Resources */,
+				E038F56B1EB694DA002E55DE /* ProfileStoryboard.storyboard in Resources */,
 				31DE9B061EB155120055B8D8 /* Rewards.storyboard in Resources */,
 				E7B940EA1EAE790C0078AB5E /* Main.storyboard in Resources */,
 			);
