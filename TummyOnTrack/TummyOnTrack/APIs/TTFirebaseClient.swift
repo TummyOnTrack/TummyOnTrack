@@ -43,7 +43,9 @@ class TTFirebaseClient: NSObject {
     class func initializeCurrentProfile(success: @escaping (TTProfile) -> (), failure: @escaping (NSError) -> ()) {
         TTUser.currentUser?.getProfiles(success: { (aProfiles: [TTProfile]) in
             if aProfiles.count > 0 {
-                TTProfile.currentProfile = aProfiles[0]
+                if TTProfile.currentProfile == nil {
+                    TTProfile.currentProfile = aProfiles[0]
+                }
                 success(TTProfile.currentProfile!)
             }
             

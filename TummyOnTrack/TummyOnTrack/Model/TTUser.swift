@@ -30,7 +30,6 @@ class TTUser: NSObject {
         username = dictionary["username"] as! String
         email = dictionary["email"] as! String
         uid = dictionary["uid"] as! String
-        
     }
     
     func getProfiles(success: @escaping ([TTProfile]) -> (), failure: @escaping (NSError) -> ()) {
@@ -54,7 +53,10 @@ class TTUser: NSObject {
             }
             success(self.profiles as! [TTProfile])
         })
-        
+    }
+    
+    func changeCurrentProfile( aProfile: TTProfile ) {
+        TTProfile.changeProfile(profile: aProfile)
     }
     
     func addProfile( aProfile: TTProfile) {
@@ -65,7 +67,7 @@ class TTUser: NSObject {
         var imageURL: String? = nil
         let storageRef = FIRStorage.storage().reference()
         // Create a reference to the file you want to upload
-        let tempRef =  storageRef.child("profileImages/temp1.png")
+        let tempRef =  storageRef.child("profileImages/temp2.png")
         
         _ = tempRef.put(data as Data, metadata: nil) { (metadata, error) in
             guard let metadata = metadata else {

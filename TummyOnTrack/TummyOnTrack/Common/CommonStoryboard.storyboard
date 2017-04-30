@@ -252,7 +252,7 @@
                         </connections>
                     </tableView>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
-                    <navigationItem key="navigationItem" title="Hi Emily!" id="lyg-az-Lqc">
+                    <navigationItem key="navigationItem" title="Hi Kid!" id="lyg-az-Lqc">
                         <barButtonItem key="rightBarButtonItem" image="camera-7" id="a2Q-8d-xB9">
                             <connections>
                                 <action selector="onCameraClick:" destination="ex1-eT-I06" id="mOx-tX-Nkt"/>
@@ -550,7 +550,11 @@
                                 <action selector="onLogoutClick:" destination="rZH-oC-TOM" id="Li3-0f-OES"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Change" id="L14-nf-fPR"/>
+                        <barButtonItem key="rightBarButtonItem" title="Change" id="L14-nf-fPR">
+                            <connections>
+                                <action selector="onChangeProfileClick:" destination="rZH-oC-TOM" id="UVq-Vp-RqW"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="addProfilesLabel" destination="XId-pj-6yr" id="2rz-ZH-Gmi"/>

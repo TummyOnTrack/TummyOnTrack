@@ -14,9 +14,12 @@ class TTSettingsTableViewController: UITableViewController, UICollectionViewDele
     @IBOutlet weak var collectionView: UICollectionView!
     var profiles: NSMutableArray = []
     
+    var selectedProfile: TTProfile?
+    
     @IBOutlet weak var addProfilesLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
+        collectionView.allowsMultipleSelection = false
         loadProfiles()
     }
     
@@ -62,6 +65,15 @@ class TTSettingsTableViewController: UITableViewController, UICollectionViewDele
         if indexPath.row == profiles.count - 1 {
             TTUser.currentUser?.addProfile(aProfile: profiles[indexPath.row] as! TTProfile)
         }
+        else {
+           // TTUser.currentUser?.changeCurrentProfile(aProfile: profiles[indexPath.row] as! TTProfile)
+            selectedProfile = profiles[indexPath.row] as? TTProfile
+        }
+    }
+    
+    @IBAction func onChangeProfileClick(_ sender: Any) {
+        TTUser.currentUser?.changeCurrentProfile(aProfile: selectedProfile!)
+        tabBarController?.selectedIndex = 0
     }
     
     override func didReceiveMemoryWarning() {
