@@ -14,6 +14,7 @@ let BASE_URL = "https://tummyontrack.firebaseio.com/"
 let PROFILES_TABLE = "Profiles"
 let REWARDS_TABLE = "Rewards"
 let USERS_TABLE = "Users"
+let FOODITEM_TABLE = "FoodItem"
 
 
 class TTFirebaseClient: NSObject {
@@ -32,6 +33,23 @@ class TTFirebaseClient: NSObject {
             dictionary_.setObject(FIRAuth.auth()?.currentUser?.uid ?? "", forKey: "uid" as NSCopying)
 
             TTUser.currentUser = TTUser.init(dictionary: dictionary_ as NSDictionary)
+            
+            initializeCurrentProfile(success: { (aProfile: TTProfile) in
+            }, failure: { (error: NSError) -> ()  in
+            })
+        })
+    }
+    
+    class func initializeCurrentProfile(success: @escaping (TTProfile) -> (), failure: @escaping (NSError) -> ()) {
+        TTUser.currentUser?.getProfiles(success: { (aProfiles: [TTProfile]) in
+            if aProfiles.count > 0 {
+                TTProfile.currentProfile = aProfiles[0]
+                success(TTProfile.currentProfile!)
+            }
+            
+        }, failure: { (error: NSError) -> ()  in
+            
+            
         })
     }
 

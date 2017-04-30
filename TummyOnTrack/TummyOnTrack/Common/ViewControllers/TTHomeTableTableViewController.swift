@@ -14,6 +14,7 @@ import Firebase
 
 class TTHomeTableTableViewController: UITableViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
+    @IBOutlet weak var pointsLabel: UILabel!
     @IBOutlet weak var goalHeaderLabel: UILabel!
     @IBOutlet weak var pieView: UIView!
     @IBOutlet weak var profileImageView: UIImageView!
@@ -26,7 +27,7 @@ class TTHomeTableTableViewController: UITableViewController, UINavigationControl
         super.viewDidLoad()
         
         // load default food items
-        let ref = FIRDatabase.database().reference(fromURL: "https://tummyontrack.firebaseio.com/").child("FoodItem")
+        let ref = FIRDatabase.database().reference(fromURL: BASE_URL).child(FOODITEM_TABLE)
         let query = ref.queryOrdered(byChild: "name")
         query.observeSingleEvent(of: .value, with: { snapshot in
             
@@ -40,20 +41,62 @@ class TTHomeTableTableViewController: UITableViewController, UINavigationControl
             }
         })
         
+        
+        
         pieLayer = PieLayer()
         pieLayer.frame = pieView.frame
         pieLayer.minRadius = Float(pieView.frame.width/4)
         pieLayer.maxRadius = Float(pieView.frame.width/2)
         
         view.layer.addSublayer(pieLayer)
-        
-        if pieLayer.values != nil && pieLayer.values.count == 2 {
-            pieLayer.deleteValues([pieLayer.values[0], pieLayer.values[1]], animated: true)
-        }
-        pieLayer.addValues([PieElement(value: 5.0, color: UIColor.init(red: 244/255.0, green: 115/255.0, blue: 0/255.0, alpha: 1)),
-                            PieElement(value: 5.0, color: UIColor.lightGray)], animated: true)
+        setCurrentProfileDetails()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+    }
+    
+    func setCurrentProfileDetails() {
+        if TTProfile.currentProfile != nil {
+            populateProfileInfo()
+        }
+        else {
+            TTFirebaseClient.initializeCurrentProfile(success: { (aProfile: TTProfile) in
+                if TTProfile.currentProfile != nil {
+                    self.populateProfileInfo()
+                }
+                else {
+                    // What to show when no profiles?
+                }
+            }, failure: { (error: NSError) -> ()  in
+            })
+        }
+    }
+    
+    func populateProfileInfo() {
+        let currentProfile_ = TTProfile.currentProfile
+        self.navigationItem.title = "Hi " + (currentProfile_?.name)! + "!"
+        self.profileImageView.setImageWith((currentProfile_?.profileImageURL)!)
+        if currentProfile_?.unusedPoints == nil {
+            goalHeaderLabel.text = "Eat healthy, collect points!"
+            pointsLabel.text = "Your weekly points will appear here"
+            if pieLayer.values != nil && pieLayer.values.count == 2 {
+                pieLayer.deleteValues([pieLayer.values[0], pieLayer.values[1]], animated: true)
+            }
+            pieLayer.addValues([PieElement(value: 5.0, color: UIColor.lightGray),
+                                PieElement(value: 5.0, color: UIColor.lightGray)], animated: true)
+        }
+        else {
+            if pieLayer.values != nil && pieLayer.values.count == 2 {
+                pieLayer.deleteValues([pieLayer.values[0], pieLayer.values[1]], animated: true)
+            }
+            pieLayer.addValues([PieElement(value: 5.0, color: UIColor.init(red: 244/255.0, green: 115/255.0, blue: 0/255.0, alpha: 1)),
+                                PieElement(value: 5.0, color: UIColor.lightGray)], animated: true)
+        }
+        
+        
+    }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
