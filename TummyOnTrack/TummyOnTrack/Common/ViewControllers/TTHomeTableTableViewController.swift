@@ -165,8 +165,6 @@ class TTHomeTableTableViewController: UITableViewController, UINavigationControl
     }
 
     @IBAction func onCameraClick(_ sender: Any) {
-       
-        
         let alertController =  UIAlertController()
         let  takePhotoButton = UIAlertAction(title: "Take Photo", style: .destructive, handler: { (action) -> Void in
             

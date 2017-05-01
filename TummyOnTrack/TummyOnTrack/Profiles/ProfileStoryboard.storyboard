@@ -131,15 +131,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="male-user-shadow" translatesAutoresizingMaskIntoConstraints="NO" id="am0-kc-dNr">
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="male-user-shadow" translatesAutoresizingMaskIntoConstraints="NO" id="am0-kc-dNr">
                                 <rect key="frame" x="137" y="111" width="100" height="100"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="YXU-3A-Yc0"/>
                                     <constraint firstAttribute="height" constant="100" id="oUV-mx-vY7"/>
                                 </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="SVK-yX-X30" appends="YES" id="KNG-m6-eTe"/>
+                                </connections>
                             </imageView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="taj-hr-NJa">
-                                <rect key="frame" x="30" y="288" width="315" height="45"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="taj-hr-NJa">
+                                <rect key="frame" x="30" y="242" width="315" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="mzZ-Pg-xhh"/>
                                 </constraints>
@@ -147,8 +151,8 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Age" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4fd-tz-oOf">
-                                <rect key="frame" x="30" y="343" width="315" height="45"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Age" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4fd-tz-oOf">
+                                <rect key="frame" x="30" y="297" width="315" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="tS4-Sg-a76"/>
                                 </constraints>
@@ -165,6 +169,7 @@
                             <constraint firstItem="am0-kc-dNr" firstAttribute="centerX" secondItem="dkP-zE-XCf" secondAttribute="centerX" id="GaA-Zi-blA"/>
                             <constraint firstAttribute="trailing" secondItem="4fd-tz-oOf" secondAttribute="trailing" constant="30" id="OuV-0l-Fn5"/>
                             <constraint firstAttribute="trailing" secondItem="taj-hr-NJa" secondAttribute="trailing" constant="30" id="Pdy-m4-lEM"/>
+                            <constraint firstItem="taj-hr-NJa" firstAttribute="top" secondItem="am0-kc-dNr" secondAttribute="bottom" constant="31" id="f4A-cI-Awc"/>
                             <constraint firstItem="taj-hr-NJa" firstAttribute="leading" secondItem="dkP-zE-XCf" secondAttribute="leading" constant="30" id="gsg-Dj-kMj"/>
                             <constraint firstItem="4fd-tz-oOf" firstAttribute="leading" secondItem="dkP-zE-XCf" secondAttribute="leading" constant="30" id="qYm-eq-mF8"/>
                             <constraint firstItem="4fd-tz-oOf" firstAttribute="top" secondItem="taj-hr-NJa" secondAttribute="bottom" constant="10" id="rDh-Wt-yrF"/>
@@ -189,6 +194,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qod-6D-vf2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="SVK-yX-X30">
+                    <connections>
+                        <action selector="uploadProfileImageClicked:" destination="Gso-vR-PTs" id="HLF-O6-RNj"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="504.80000000000001" y="-58.020989505247378"/>
         </scene>
