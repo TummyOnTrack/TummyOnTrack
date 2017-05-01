@@ -40,6 +40,7 @@
 		E7BC60581EB11220000529AC /* TTUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BC60571EB11220000529AC /* TTUser.swift */; };
 		E7E3B4771EB69DFF000F9CA4 /* TTProfilesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7E3B4761EB69DFF000F9CA4 /* TTProfilesViewController.swift */; };
 		E7E3B47D1EB6C04D000F9CA4 /* TTFillPlateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7E3B47C1EB6C04D000F9CA4 /* TTFillPlateViewController.swift */; };
+		E7E3B47F1EB6C705000F9CA4 /* TTGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7E3B47E1EB6C705000F9CA4 /* TTGameViewController.swift */; };
 		E7F0E5641EB269B00088743B /* CommonStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7F0E5631EB269B00088743B /* CommonStoryboard.storyboard */; };
 		E7F0E5661EB2801F0088743B /* TTFoodInputWaysViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F0E5651EB2801F0088743B /* TTFoodInputWaysViewController.swift */; };
 		E7F0E56A1EB29E7B0088743B /* TTAddPhotoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F0E5691EB29E7B0088743B /* TTAddPhotoTableViewController.swift */; };
@@ -110,6 +111,7 @@
 		E7BC60571EB11220000529AC /* TTUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TTUser.swift; sourceTree = "<group>"; };
 		E7E3B4761EB69DFF000F9CA4 /* TTProfilesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TTProfilesViewController.swift; sourceTree = "<group>"; };
 		E7E3B47C1EB6C04D000F9CA4 /* TTFillPlateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TTFillPlateViewController.swift; sourceTree = "<group>"; };
+		E7E3B47E1EB6C705000F9CA4 /* TTGameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TTGameViewController.swift; sourceTree = "<group>"; };
 		E7F0E5631EB269B00088743B /* CommonStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CommonStoryboard.storyboard; sourceTree = "<group>"; };
 		E7F0E5651EB2801F0088743B /* TTFoodInputWaysViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TTFoodInputWaysViewController.swift; sourceTree = "<group>"; };
 		E7F0E5691EB29E7B0088743B /* TTAddPhotoTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TTAddPhotoTableViewController.swift; sourceTree = "<group>"; };
@@ -372,6 +374,7 @@
 				E7F0E5651EB2801F0088743B /* TTFoodInputWaysViewController.swift */,
 				E7F0E5691EB29E7B0088743B /* TTAddPhotoTableViewController.swift */,
 				E7E3B47C1EB6C04D000F9CA4 /* TTFillPlateViewController.swift */,
+				E7E3B47E1EB6C705000F9CA4 /* TTGameViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -711,6 +714,7 @@
 				31DE9B041EB154DF0055B8D8 /* TTPointsViewController.swift in Sources */,
 				E7BC60581EB11220000529AC /* TTUser.swift in Sources */,
 				D1B1EFD71EB3953D0032BEE1 /* TTFoodItem.swift in Sources */,
+				E7E3B47F1EB6C705000F9CA4 /* TTGameViewController.swift in Sources */,
 				E7F0E56C1EB53D7B0088743B /* TTProfileCollectionViewCell.swift in Sources */,
 				D1B1EF9B1EB141970032BEE1 /* TTVoiceViewController.swift in Sources */,
 				E08BD2A31EB28B4100FD5404 /* Helpers.swift in Sources */,
