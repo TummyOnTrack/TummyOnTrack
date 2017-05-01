@@ -12,19 +12,68 @@ import AFNetworking
 class TTPointsViewController: UIViewController {
 
     @IBOutlet weak var pointsTodayLabel: UILabel!
-    @IBOutlet weak var achievementImageView: UIImageView!
+
     @IBOutlet weak var awesomeLabel: UILabel!
+
+    let awesomeSynonyms = [ "Awesome", "Excellent", "Great", "Incredible", "Marvelous", "Unbelievable", "Wonderful"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let unusedPoints = TTProfile.currentProfile == nil ? 0 : TTProfile.currentProfile?.unusedPoints
+        let weeklyEarnedPoints = TTProfile.currentProfile == nil ? 0 : TTProfile.currentProfile?.weeklyEarnedPoints
 
-        pointsTodayLabel.text = "You have \(String(describing: unusedPoints!)) points today"
+        if weeklyEarnedPoints == 0 {
+            pointsTodayLabel.text = "Eat healthy, collect points!"
+            awesomeLabel.isHidden = true
+        } else {
+            pointsTodayLabel.text = "You have \(String(describing: weeklyEarnedPoints!)) points this week!"
+            let randomIndex = Int(arc4random_uniform(UInt32(awesomeSynonyms.count)))
+            awesomeLabel.text = "\(awesomeSynonyms[randomIndex])!"
+            awesomeLabel.isHidden = false
+        }
+    }
 
-        let achievementUrl = URL(string: "https://media.giphy.com/media/peAFQfg7Ol6IE/giphy.gif")
-        if let achievementUrl = achievementUrl {
-            achievementImageView.setImageWith(achievementUrl)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        animateAchievement()
+    }
+
+    func animateAchievement() {
+        for _ in 0...5 {
+            // create a square image view
+            let square = UIImageView()
+            square.frame = CGRect(x: 55, y: 300, width: 32, height: 32)
+            // Add image to the square
+            square.image = UIImage(named: "carrot")
+            self.view.addSubview(square)
+
+            // randomly create a value between 0.0 and 150.0
+            let randomYOffset = CGFloat( arc4random_uniform(150))
+
+            // for every y-value on the bezier curve
+            // add our random y offset so that each individual animation
+            // will appear at a different y-position
+            let path = UIBezierPath()
+            path.move(to: CGPoint(x: 16,y: 80 + randomYOffset))
+            path.addCurve(to: CGPoint(x: 375, y: 80 + randomYOffset), controlPoint1: CGPoint(x: 136, y: 220 + randomYOffset), controlPoint2: CGPoint(x: 178, y: 30 + randomYOffset))
+
+            // create the animation
+            let anim = CAKeyframeAnimation(keyPath: "position")
+            anim.path = path.cgPath
+            anim.rotationMode = kCAAnimationRotateAuto
+            anim.repeatCount = Float.infinity
+            anim.duration = 5.0
+
+            // each square will take between 4.0 and 8.0 seconds
+            // to complete one animation loop
+            anim.duration = Double(arc4random_uniform(40)+30) / 10
+
+            // stagger each animation by a random value
+            // `290` was chosen simply by experimentation
+            anim.timeOffset = Double(arc4random_uniform(290))
+
+            // add the animation
+            square.layer.add(anim, forKey: "animate position along path")
         }
     }
 

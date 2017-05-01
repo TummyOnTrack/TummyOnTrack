@@ -17,67 +17,79 @@
                         <viewControllerLayoutGuide type="top" id="lVw-8H-vuQ"/>
                         <viewControllerLayoutGuide type="bottom" id="sgs-3O-fwn"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="g1i-TT-Ltj">
+                    <view key="view" contentMode="scaleAspectFill" id="g1i-TT-Ltj">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="er5-U7-0j5">
-                                <rect key="frame" x="16" y="132" width="343" height="236"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fruits_water" translatesAutoresizingMaskIntoConstraints="NO" id="uSQ-nh-cZQ">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Awesome" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ENT-zK-1hZ">
-                                <rect key="frame" x="150" y="410" width="80" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                <nil key="textColor"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You have earned 20 points" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mgs-x9-jLO">
+                                <rect key="frame" x="68" y="94" width="239.5" height="24"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="You earned 20 points this week" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x99-P3-nlt">
-                                <rect key="frame" x="71" y="64" width="240" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Awesome!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3po-bD-1dB">
+                                <rect key="frame" x="136" y="320" width="103" height="27"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Qw-mr-9b8">
-                                <rect key="frame" x="141" y="439" width="99" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Shop Rewards"/>
-                                <connections>
-                                    <segue destination="94s-sg-Cll" kind="show" identifier="rewardsSegue" id="GkN-D6-LUo"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C1i-jQ-aL9">
-                                <rect key="frame" x="127" y="514" width="127" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Vt-IG-VGS">
+                                <rect key="frame" x="117" y="614" width="142" height="33"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                 <state key="normal" title="Decorate my room"/>
                                 <connections>
-                                    <action selector="onDecorateMyRoomButton:" destination="5Fz-pW-Kly" eventType="touchUpInside" id="Kvf-G4-qvn"/>
+                                    <action selector="onDecorateMyRoomButton:" destination="5Fz-pW-Kly" eventType="touchUpInside" id="0rY-du-Zrx"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pkl-Di-XSb">
-                                <rect key="frame" x="141" y="477" width="99" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EkJ-9n-4jr">
+                                <rect key="frame" x="134" y="576" width="107" height="33"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                 <state key="normal" title="Points History"/>
                                 <connections>
-                                    <action selector="onPointsHistoryButton:" destination="5Fz-pW-Kly" eventType="touchUpInside" id="pAU-qN-tXK"/>
+                                    <action selector="onPointsHistoryButton:" destination="5Fz-pW-Kly" eventType="touchUpInside" id="tDo-BZ-ucg"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fCq-7k-1I7">
+                                <rect key="frame" x="135" y="538" width="106" height="33"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                <state key="normal" title="Shop rewards"/>
+                                <connections>
+                                    <segue destination="94s-sg-Cll" kind="show" id="jIT-FI-vS7"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="fCq-7k-1I7" firstAttribute="centerX" secondItem="g1i-TT-Ltj" secondAttribute="centerX" id="0ZX-tG-BEr"/>
+                            <constraint firstItem="0Vt-IG-VGS" firstAttribute="centerX" secondItem="g1i-TT-Ltj" secondAttribute="centerX" id="7ho-Iv-aH5"/>
+                            <constraint firstAttribute="trailing" secondItem="uSQ-nh-cZQ" secondAttribute="trailing" id="8yb-yq-Yp9"/>
+                            <constraint firstItem="mgs-x9-jLO" firstAttribute="top" secondItem="lVw-8H-vuQ" secondAttribute="bottom" constant="30" id="A1B-EV-pVt"/>
+                            <constraint firstItem="3po-bD-1dB" firstAttribute="centerY" secondItem="g1i-TT-Ltj" secondAttribute="centerY" id="TE9-Hs-FuB"/>
+                            <constraint firstItem="uSQ-nh-cZQ" firstAttribute="top" secondItem="g1i-TT-Ltj" secondAttribute="top" id="XIi-pr-2LV"/>
+                            <constraint firstItem="uSQ-nh-cZQ" firstAttribute="leading" secondItem="g1i-TT-Ltj" secondAttribute="leading" id="Xbp-6j-0iY"/>
+                            <constraint firstItem="mgs-x9-jLO" firstAttribute="centerX" secondItem="g1i-TT-Ltj" secondAttribute="centerX" id="Yq9-N1-uGE"/>
+                            <constraint firstItem="0Vt-IG-VGS" firstAttribute="top" secondItem="EkJ-9n-4jr" secondAttribute="bottom" constant="5" id="a8p-52-ry5"/>
+                            <constraint firstItem="EkJ-9n-4jr" firstAttribute="centerX" secondItem="g1i-TT-Ltj" secondAttribute="centerX" id="b0x-8I-063"/>
+                            <constraint firstItem="3po-bD-1dB" firstAttribute="centerX" secondItem="g1i-TT-Ltj" secondAttribute="centerX" id="dEf-QW-pAG"/>
+                            <constraint firstItem="sgs-3O-fwn" firstAttribute="top" secondItem="0Vt-IG-VGS" secondAttribute="bottom" constant="20" id="dny-sx-zjF"/>
+                            <constraint firstItem="sgs-3O-fwn" firstAttribute="top" secondItem="uSQ-nh-cZQ" secondAttribute="bottom" id="jcD-h3-xog"/>
+                            <constraint firstItem="EkJ-9n-4jr" firstAttribute="top" secondItem="fCq-7k-1I7" secondAttribute="bottom" constant="5" id="nfj-M4-UkN"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="CDB-Rg-rb2"/>
                     <connections>
-                        <outlet property="achievementImageView" destination="er5-U7-0j5" id="68S-Ah-GUg"/>
-                        <outlet property="awesomeLabel" destination="ENT-zK-1hZ" id="zVB-3j-qBM"/>
-                        <outlet property="pointsTodayLabel" destination="x99-P3-nlt" id="ze4-pp-FWQ"/>
+                        <outlet property="awesomeLabel" destination="3po-bD-1dB" id="KXP-6f-jQT"/>
+                        <outlet property="pointsTodayLabel" destination="mgs-x9-jLO" id="pk9-P3-MOv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aaP-yS-DqM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="950" y="195"/>
+            <point key="canvasLocation" x="949.60000000000002" y="194.75262368815595"/>
         </scene>
-        <!--Rewards View Controller-->
+        <!--Rewards-->
         <scene sceneID="lQE-fy-bdh">
             <objects>
                 <viewController storyboardIdentifier="RewardsViewController" id="94s-sg-Cll" customClass="TTRewardsViewController" customModule="TummyOnTrack" customModuleProvider="target" sceneMemberID="viewController">
@@ -89,41 +101,41 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ELC-DN-wNs">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ELC-DN-wNs">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="oiA-pM-C97">
-                                    <size key="itemSize" width="120" height="120"/>
+                                    <size key="itemSize" width="110" height="100"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="RewardCell" id="fiy-dS-v0e" customClass="RewardCell" customModule="TummyOnTrack" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="110" height="100"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="110" height="100"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="package_games_kids" translatesAutoresizingMaskIntoConstraints="NO" id="jDI-JD-5iK">
-                                                    <rect key="frame" x="0.0" y="0.0" width="120" height="121"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="110" height="120"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reward" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vcx-ce-c3F">
-                                                    <rect key="frame" x="35.5" y="99" width="49" height="17"/>
+                                                    <rect key="frame" x="30.5" y="98" width="49" height="17"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Id-0H-3Gn">
-                                                    <rect key="frame" x="82" y="5" width="16" height="16"/>
+                                                    <rect key="frame" x="72" y="5" width="16" height="16"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star" translatesAutoresizingMaskIntoConstraints="NO" id="SJ4-eu-p15">
-                                                    <rect key="frame" x="99" y="5" width="16" height="16"/>
+                                                    <rect key="frame" x="89" y="5" width="16" height="16"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="16" id="0R4-I7-xJ7"/>
                                                         <constraint firstAttribute="width" constant="16" id="KkD-7s-Fd1"/>
@@ -154,7 +166,9 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="qEh-0I-Idv"/>
+                    <navigationItem key="navigationItem" title="Rewards" id="qEh-0I-Idv">
+                        <barButtonItem key="rightBarButtonItem" title="Buy" id="zvX-3L-lJD"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="ELC-DN-wNs" id="huL-Y0-d1B"/>
                     </connections>
@@ -183,6 +197,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="fruits_water" width="800" height="1200"/>
         <image name="package_games_kids" width="128" height="128"/>
         <image name="star" width="32" height="32"/>
     </resources>

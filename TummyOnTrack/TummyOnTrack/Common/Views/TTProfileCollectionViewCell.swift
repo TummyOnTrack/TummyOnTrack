@@ -5,7 +5,6 @@
 //  Created by Gauri Tikekar on 4/29/17.
 //  Copyright © 2017 Gauri Tikekar. All rights reserved.
 //
-
 import UIKit
 
 class TTProfileCollectionViewCell: UICollectionViewCell {
@@ -38,5 +37,4 @@ class TTProfileCollectionViewCell: UICollectionViewCell {
             self.contentView.backgroundColor = isSelected ? UIColor.yellow : UIColor.white
         }
     }
-
 }
