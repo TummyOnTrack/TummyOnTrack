@@ -15,6 +15,7 @@ class TTVoiceViewController: UIViewController, SFSpeechRecognizerDelegate {
     @IBOutlet weak var microphoneButton: UIButton!
     @IBOutlet weak var userSpeechToTextLabel: UILabel!
 
+    @IBOutlet weak var awesomeLabel: UILabel!
     var utterance: AVSpeechUtterance!
     var synthesizer: AVSpeechSynthesizer!
     let speechText = "What did you have today?"
@@ -35,19 +36,20 @@ class TTVoiceViewController: UIViewController, SFSpeechRecognizerDelegate {
             audioEngine.stop()
             recognitionRequest?.endAudio()
             microphoneButton.isEnabled = false
-            microphoneButton.setTitle("Start Speaking", for: .normal)
+            microphoneButton.setTitle("Tap to start speaking!", for: .normal)
+            awesomeLabel.isHidden = false
         }
         else {
             userSpeechToTextLabel.text = ""
             startRecording()
-            microphoneButton.setTitle("Done", for: .normal)
+            microphoneButton.setTitle("Tap when done speaking", for: .normal)
         }
 
     }
         
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        awesomeLabel.isHidden = true
 //        // load food items
 //        let ref = FIRDatabase.database().reference(fromURL: "https://tummyontrack.firebaseio.com/").child("FoodItem")
 //        let query = ref.queryOrdered(byChild: "name")
