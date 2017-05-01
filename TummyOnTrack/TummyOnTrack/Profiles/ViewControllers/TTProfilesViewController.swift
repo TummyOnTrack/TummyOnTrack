@@ -5,7 +5,6 @@
 //  Created by Gauri Tikekar on 4/26/17.
 //  Copyright © 2017 Gauri Tikekar. All rights reserved.
 //
-
 import UIKit
 import Firebase
 
@@ -15,9 +14,7 @@ class TTProfilesViewController: UITableViewController {
     @IBOutlet weak var addProfilesLabel: UILabel!
     var profiles: NSMutableArray = []
     var selectedProfile: TTProfile?
-    
-    
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.allowsMultipleSelection = false
@@ -42,10 +39,8 @@ class TTProfilesViewController: UITableViewController {
             }
             self.profiles.add(addProfileCell)
             self.collectionView.reloadData()
-            
-        }, failure: { (error: NSError) -> ()  in
-            
-            
+        }, failure: { (error: Error) -> ()  in
+            print("Failed to get profiles")
         })
     }
     
@@ -61,19 +56,8 @@ class TTProfilesViewController: UITableViewController {
     @IBAction func onLogoutClick(_ sender: Any) {
         
     }
-     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
 
-// MARK: - UICollectionViewDataSource protocol
 extension TTProfilesViewController: UICollectionViewDelegate, UICollectionViewDataSource {
 
     // tell the collection view how many cells to make

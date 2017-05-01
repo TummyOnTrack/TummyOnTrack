@@ -25,6 +25,7 @@
 		E04117461EAFB4C400C8152E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E04117451EAFB4C400C8152E /* GoogleService-Info.plist */; };
 		E08BD2A31EB28B4100FD5404 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08BD2A21EB28B4100FD5404 /* Helpers.swift */; };
 		E746D5BEBDD93D7BABE7860B /* Pods_TummyOnTrackUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD778399FA4004A9293948D1 /* Pods_TummyOnTrackUITests.framework */; };
+		E7570FF41EB6F5F300E2FE2D /* TTProfileCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7570FF31EB6F5F300E2FE2D /* TTProfileCollectionViewCell.swift */; };
 		E7834F2A1EB14BB500FD2F1C /* TTHomeTableTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7834F291EB14BB500FD2F1C /* TTHomeTableTableViewController.swift */; };
 		E7B940E51EAE790C0078AB5E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B940E41EAE790C0078AB5E /* AppDelegate.swift */; };
 		E7B940EA1EAE790C0078AB5E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7B940E81EAE790C0078AB5E /* Main.storyboard */; };
@@ -39,10 +40,12 @@
 		E7BC60561EB10D79000529AC /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BC60531EB10D79000529AC /* SignupViewController.swift */; };
 		E7BC60581EB11220000529AC /* TTUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BC60571EB11220000529AC /* TTUser.swift */; };
 		E7E3B4771EB69DFF000F9CA4 /* TTProfilesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7E3B4761EB69DFF000F9CA4 /* TTProfilesViewController.swift */; };
+		E7E3B47D1EB6C04D000F9CA4 /* TTFillPlateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7E3B47C1EB6C04D000F9CA4 /* TTFillPlateViewController.swift */; };
+		E7E3B47F1EB6C705000F9CA4 /* TTGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7E3B47E1EB6C705000F9CA4 /* TTGameViewController.swift */; };
+		E7E3B4841EB6F483000F9CA4 /* TTGameCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7E3B4831EB6F483000F9CA4 /* TTGameCollectionViewCell.swift */; };
 		E7F0E5641EB269B00088743B /* CommonStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7F0E5631EB269B00088743B /* CommonStoryboard.storyboard */; };
 		E7F0E5661EB2801F0088743B /* TTFoodInputWaysViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F0E5651EB2801F0088743B /* TTFoodInputWaysViewController.swift */; };
 		E7F0E56A1EB29E7B0088743B /* TTAddPhotoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F0E5691EB29E7B0088743B /* TTAddPhotoTableViewController.swift */; };
-		E7F0E56C1EB53D7B0088743B /* TTProfileCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F0E56B1EB53D7B0088743B /* TTProfileCollectionViewCell.swift */; };
 		E7F0E5711EB540280088743B /* TTFirebaseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F0E5701EB540280088743B /* TTFirebaseClient.swift */; };
 /* End PBXBuildFile section */
 
@@ -88,6 +91,7 @@
 		E038F5721EB6A80C002E55DE /* AddTTProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddTTProfileViewController.swift; sourceTree = "<group>"; };
 		E04117451EAFB4C400C8152E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E08BD2A21EB28B4100FD5404 /* Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
+		E7570FF31EB6F5F300E2FE2D /* TTProfileCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TTProfileCollectionViewCell.swift; path = TummyOnTrack/Profiles/Views/TTProfileCollectionViewCell.swift; sourceTree = SOURCE_ROOT; };
 		E7834F291EB14BB500FD2F1C /* TTHomeTableTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TTHomeTableTableViewController.swift; sourceTree = "<group>"; };
 		E7B940E11EAE790C0078AB5E /* TummyOnTrack.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TummyOnTrack.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7B940E41EAE790C0078AB5E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -108,10 +112,12 @@
 		E7BC60531EB10D79000529AC /* SignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		E7BC60571EB11220000529AC /* TTUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TTUser.swift; sourceTree = "<group>"; };
 		E7E3B4761EB69DFF000F9CA4 /* TTProfilesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TTProfilesViewController.swift; sourceTree = "<group>"; };
+		E7E3B47C1EB6C04D000F9CA4 /* TTFillPlateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TTFillPlateViewController.swift; sourceTree = "<group>"; };
+		E7E3B47E1EB6C705000F9CA4 /* TTGameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TTGameViewController.swift; sourceTree = "<group>"; };
+		E7E3B4831EB6F483000F9CA4 /* TTGameCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TTGameCollectionViewCell.swift; sourceTree = "<group>"; };
 		E7F0E5631EB269B00088743B /* CommonStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CommonStoryboard.storyboard; sourceTree = "<group>"; };
 		E7F0E5651EB2801F0088743B /* TTFoodInputWaysViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TTFoodInputWaysViewController.swift; sourceTree = "<group>"; };
 		E7F0E5691EB29E7B0088743B /* TTAddPhotoTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TTAddPhotoTableViewController.swift; sourceTree = "<group>"; };
-		E7F0E56B1EB53D7B0088743B /* TTProfileCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TTProfileCollectionViewCell.swift; sourceTree = "<group>"; };
 		E7F0E5701EB540280088743B /* TTFirebaseClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TTFirebaseClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -299,6 +305,7 @@
 		E7BC60431EB10A0D000529AC /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				E7E3B4801EB6F44E000F9CA4 /* Views */,
 				E7BC604B1EB10BDC000529AC /* ViewControllers */,
 				E7F0E5631EB269B00088743B /* CommonStoryboard.storyboard */,
 			);
@@ -369,6 +376,8 @@
 				E7834F291EB14BB500FD2F1C /* TTHomeTableTableViewController.swift */,
 				E7F0E5651EB2801F0088743B /* TTFoodInputWaysViewController.swift */,
 				E7F0E5691EB29E7B0088743B /* TTAddPhotoTableViewController.swift */,
+				E7E3B47C1EB6C04D000F9CA4 /* TTFillPlateViewController.swift */,
+				E7E3B47E1EB6C705000F9CA4 /* TTGameViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -376,7 +385,7 @@
 		E7BC604C1EB10BDC000529AC /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				E7F0E56B1EB53D7B0088743B /* TTProfileCollectionViewCell.swift */,
+				E7570FF31EB6F5F300E2FE2D /* TTProfileCollectionViewCell.swift */,
 			);
 			name = Views;
 			path = ../Common/Views;
@@ -395,6 +404,14 @@
 			isa = PBXGroup;
 			children = (
 				D1B1EFE71EB3BDF80032BEE1 /* VoiceCollectionViewCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		E7E3B4801EB6F44E000F9CA4 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E7E3B4831EB6F483000F9CA4 /* TTGameCollectionViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -484,7 +501,6 @@
 				TargetAttributes = {
 					E7B940E01EAE790C0078AB5E = {
 						CreatedOnToolsVersion = 8.3;
-						DevelopmentTeam = GQAPG2Q6U6;
 						ProvisioningStyle = Automatic;
 					};
 					E7B940F71EAE790C0078AB5E = {
@@ -703,12 +719,14 @@
 				D1B1EFE81EB3BDF80032BEE1 /* VoiceCollectionViewCell.swift in Sources */,
 				D1B1EFD51EB395250032BEE1 /* TTVoiceSummaryViewController.swift in Sources */,
 				E7BC60551EB10D79000529AC /* SignupLoginViewController.swift in Sources */,
+				E7E3B4841EB6F483000F9CA4 /* TTGameCollectionViewCell.swift in Sources */,
 				311B02E81EB459EC00DAA2ED /* TTReward.swift in Sources */,
 				E7BC60561EB10D79000529AC /* SignupViewController.swift in Sources */,
 				31DE9B041EB154DF0055B8D8 /* TTPointsViewController.swift in Sources */,
 				E7BC60581EB11220000529AC /* TTUser.swift in Sources */,
 				D1B1EFD71EB3953D0032BEE1 /* TTFoodItem.swift in Sources */,
-				E7F0E56C1EB53D7B0088743B /* TTProfileCollectionViewCell.swift in Sources */,
+				E7570FF41EB6F5F300E2FE2D /* TTProfileCollectionViewCell.swift in Sources */,
+				E7E3B47F1EB6C705000F9CA4 /* TTGameViewController.swift in Sources */,
 				D1B1EF9B1EB141970032BEE1 /* TTVoiceViewController.swift in Sources */,
 				E08BD2A31EB28B4100FD5404 /* Helpers.swift in Sources */,
 				E7B940E51EAE790C0078AB5E /* AppDelegate.swift in Sources */,
@@ -719,6 +737,7 @@
 				E7B940ED1EAE790C0078AB5E /* TummyOnTrack.xcdatamodeld in Sources */,
 				311B02E61EB4513900DAA2ED /* RewardCell.swift in Sources */,
 				E7BC60541EB10D79000529AC /* LoginViewController.swift in Sources */,
+				E7E3B47D1EB6C04D000F9CA4 /* TTFillPlateViewController.swift in Sources */,
 				311B02EC1EB4B41E00DAA2ED /* TTProfile.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -875,7 +894,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = GQAPG2Q6U6;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = TummyOnTrack/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tummyontrack.TummyOnTrack;
@@ -891,7 +910,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = GQAPG2Q6U6;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = TummyOnTrack/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tummyontrack.TummyOnTrack;

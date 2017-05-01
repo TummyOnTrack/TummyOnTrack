@@ -59,13 +59,14 @@ class TTReward: NSObject {
         let imageSizes = [1, 2]
 
         for imageSize in imageSizes {
-            let image_ = UIImage(named: "\(filename)-\(imageSize)x")
+            let imageName = "\(filename)-\(imageSize)x"
+            let image_ = UIImage(named: imageName)
             let data = UIImagePNGRepresentation(image_!)! as NSData
             var imageURL: String? = nil
             let storageRef = FIRStorage.storage().reference()
 
             // Create a reference to the file you want to upload
-            let tempRef =  storageRef.child("rewardImages/temp.png")
+            let tempRef =  storageRef.child("profile_images").child("(imageName).png")
 
             _ = tempRef.put(data as Data, metadata: nil) { (metadata, error) in
                 guard let metadata = metadata else {

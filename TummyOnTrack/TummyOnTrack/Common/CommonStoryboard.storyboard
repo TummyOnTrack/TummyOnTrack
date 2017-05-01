@@ -334,6 +334,9 @@
                                 <state key="normal" title="I Will Fill My Plate">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <segue destination="e0x-T0-KYU" kind="show" identifier="Show Fill Plate" id="grL-G5-FCa"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ai7-fN-c6C">
                                 <rect key="frame" x="18.5" y="289" width="338" height="45"/>
@@ -363,6 +366,216 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2vw-Ym-U0I" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1741.5999999999999" y="4.9475262368815596"/>
+        </scene>
+        <!--Fill Plate View Controller-->
+        <scene sceneID="idf-6E-f6q">
+            <objects>
+                <viewController id="e0x-T0-KYU" customClass="TTFillPlateViewController" customModule="TummyOnTrack" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="J1D-xX-Kyt"/>
+                        <viewControllerLayoutGuide type="bottom" id="7pg-ID-61S"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="oT4-Z3-bmP">
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="za0-uE-6BW">
+                                <rect key="frame" x="67" y="123" width="250" height="250"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="32w-x3-JAx">
+                                        <rect key="frame" x="24" y="29" width="90" height="90"/>
+                                        <color key="backgroundColor" red="0.95686274510000002" green="0.75686274509999996" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="90" id="lhZ-wn-aaP"/>
+                                            <constraint firstAttribute="height" constant="90" id="ns2-bW-1CT"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                        <state key="normal" title="Fruits">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="DvD-o0-nvg" kind="show" identifier="Show Fruits" id="Ya6-4B-WPS"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tSV-t4-lDU">
+                                        <rect key="frame" x="140" y="29" width="90" height="90"/>
+                                        <color key="backgroundColor" red="0.95686274510000002" green="0.75686274509999996" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="90" id="0Uy-BC-yRs"/>
+                                            <constraint firstAttribute="height" constant="90" id="8fO-TI-lZp"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                        <state key="normal" title="Veggies">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="DvD-o0-nvg" kind="show" identifier="Show Veggies" id="Omq-JW-x1g"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jBE-Au-iFZ">
+                                        <rect key="frame" x="43" y="145" width="174" height="76"/>
+                                        <color key="backgroundColor" red="0.95686274510000002" green="0.75686274509999996" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="76" id="1ke-hA-Ulq"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                        <state key="normal" title="Main Dish/Protein">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="DvD-o0-nvg" kind="show" identifier="Show Main Dish" id="V2x-FU-Tgf"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.95686274510000002" green="0.4514970767" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="250" id="FiJ-Sc-B6y"/>
+                                    <constraint firstItem="jBE-Au-iFZ" firstAttribute="leading" secondItem="za0-uE-6BW" secondAttribute="leading" constant="43" id="GPu-Yu-EQN"/>
+                                    <constraint firstItem="32w-x3-JAx" firstAttribute="top" secondItem="za0-uE-6BW" secondAttribute="top" constant="29" id="PQZ-Oh-Y5d"/>
+                                    <constraint firstItem="32w-x3-JAx" firstAttribute="leading" secondItem="za0-uE-6BW" secondAttribute="leading" constant="24" id="VZb-mh-PvP"/>
+                                    <constraint firstAttribute="bottom" secondItem="jBE-Au-iFZ" secondAttribute="bottom" constant="29" id="Ybs-tS-nLp"/>
+                                    <constraint firstAttribute="trailing" secondItem="jBE-Au-iFZ" secondAttribute="trailing" constant="33" id="gaj-yP-HiD"/>
+                                    <constraint firstAttribute="height" constant="250" id="h9Q-48-k5e"/>
+                                    <constraint firstItem="tSV-t4-lDU" firstAttribute="top" secondItem="za0-uE-6BW" secondAttribute="top" constant="29" id="hcR-ph-Uml"/>
+                                    <constraint firstAttribute="trailing" secondItem="tSV-t4-lDU" secondAttribute="trailing" constant="20" id="ufs-lA-EY9"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bFL-82-9lW">
+                                <rect key="frame" x="16" y="64" width="108" height="108"/>
+                                <color key="backgroundColor" red="0.50196081400000003" green="0.25098040700000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="108" id="gUh-ee-9Ui"/>
+                                    <constraint firstAttribute="width" constant="108" id="w0W-Ty-cCZ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                <state key="normal" title="Dairy">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="DvD-o0-nvg" kind="show" identifier="Show Dairy" id="TIx-vF-Qqt"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Btq-Ge-Lek">
+                                <rect key="frame" x="248" y="391" width="90" height="85"/>
+                                <color key="backgroundColor" red="0.95686274510000002" green="0.4514970767" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="85" id="6jE-cp-MB3"/>
+                                    <constraint firstAttribute="width" constant="90" id="odA-Et-4sn"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                <state key="normal" title="Drink">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Snr-yC-V3n">
+                                <rect key="frame" x="259" y="64" width="108" height="108"/>
+                                <color key="backgroundColor" red="0.50196081400000003" green="0.25098040700000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="108" id="9gT-4d-dmF"/>
+                                    <constraint firstAttribute="height" constant="108" id="Woh-NY-sDv"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                <state key="normal" title="Dessert">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="DvD-o0-nvg" kind="show" identifier="Show Dessert" id="nfJ-Kx-e3X"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="Btq-Ge-Lek" secondAttribute="trailing" constant="21" id="0WY-Ip-WWf"/>
+                            <constraint firstItem="bFL-82-9lW" firstAttribute="leading" secondItem="oT4-Z3-bmP" secondAttribute="leadingMargin" id="Cdn-BH-eoY"/>
+                            <constraint firstItem="Snr-yC-V3n" firstAttribute="trailing" secondItem="oT4-Z3-bmP" secondAttribute="trailingMargin" constant="8" id="PbJ-Rl-Wg0"/>
+                            <constraint firstItem="Btq-Ge-Lek" firstAttribute="top" secondItem="za0-uE-6BW" secondAttribute="bottom" constant="18" id="RZz-9H-1MD"/>
+                            <constraint firstItem="Btq-Ge-Lek" firstAttribute="top" secondItem="za0-uE-6BW" secondAttribute="bottom" constant="18" id="YIC-61-Xtc"/>
+                            <constraint firstItem="za0-uE-6BW" firstAttribute="top" secondItem="J1D-xX-Kyt" secondAttribute="bottom" constant="123" id="f6o-dA-3z3"/>
+                            <constraint firstItem="Snr-yC-V3n" firstAttribute="top" secondItem="J1D-xX-Kyt" secondAttribute="bottom" constant="64" id="gGb-hF-XMd"/>
+                            <constraint firstItem="za0-uE-6BW" firstAttribute="leading" secondItem="oT4-Z3-bmP" secondAttribute="leadingMargin" constant="51" id="ndu-Dz-vTZ"/>
+                            <constraint firstItem="bFL-82-9lW" firstAttribute="top" secondItem="J1D-xX-Kyt" secondAttribute="bottom" constant="64" id="vMb-o3-iX5"/>
+                        </constraints>
+                    </view>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
+                    <connections>
+                        <outlet property="dairyButton" destination="bFL-82-9lW" id="cBS-V6-2px"/>
+                        <outlet property="dessertButton" destination="Snr-yC-V3n" id="nqD-2G-oDy"/>
+                        <outlet property="drinkButton" destination="Btq-Ge-Lek" id="aiv-yi-sZi"/>
+                        <outlet property="fruitsButton" destination="32w-x3-JAx" id="QIt-c4-13b"/>
+                        <outlet property="mainDishButton" destination="jBE-Au-iFZ" id="iU5-5p-nLS"/>
+                        <outlet property="plateView" destination="za0-uE-6BW" id="k7E-fN-Vfw"/>
+                        <outlet property="veggiesButton" destination="tSV-t4-lDU" id="4Ab-Oa-7Hc"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Zh6-ac-NBf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2116" y="51.724137931034484"/>
+        </scene>
+        <!--Game View Controller-->
+        <scene sceneID="Aen-d4-KcH">
+            <objects>
+                <viewController id="DvD-o0-nvg" customClass="TTGameViewController" customModule="TummyOnTrack" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="1j1-9Y-M8n"/>
+                        <viewControllerLayoutGuide type="bottom" id="hgc-DV-pQ7"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="fnP-LQ-9Uw">
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="d5A-ht-EgS">
+                                <rect key="frame" x="16" y="20" width="343" height="178"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="5" minimumInteritemSpacing="5" id="GTg-dc-lsp">
+                                    <size key="itemSize" width="127" height="132"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="GameCell" id="Bbd-Nx-LZg" customClass="TTGameCollectionViewCell" customModule="TummyOnTrack" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="23" width="127" height="132"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="127" height="132"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hpz-fA-ire">
+                                                    <rect key="frame" x="21" y="10" width="80" height="80"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Po-by-wea">
+                                                    <rect key="frame" x="8" y="97" width="111" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="textColor" red="0.33333333329999998" green="0.33333333329999998" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </view>
+                                        <connections>
+                                            <outlet property="foodImageView" destination="hpz-fA-ire" id="OOI-9L-JXv"/>
+                                            <outlet property="foodNameLabel" destination="5Po-by-wea" id="f2J-3s-Zj6"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="DvD-o0-nvg" id="4s5-p2-07z"/>
+                                    <outlet property="delegate" destination="DvD-o0-nvg" id="9Fc-EC-B6K"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
+                    <connections>
+                        <outlet property="collectionView" destination="d5A-ht-EgS" id="8aB-z3-QMi"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Bww-CD-0V9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2744.8000000000002" y="46.326836581709152"/>
         </scene>
         <!--Add Photo Table View Controller-->
         <scene sceneID="YA9-Dz-oW1">
@@ -503,4 +716,7 @@
         <image name="camera-7" width="30" height="30"/>
         <image name="cross_grey" width="40" height="40"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="V2x-FU-Tgf"/>
+    </inferredMetricsTieBreakers>
 </document>
