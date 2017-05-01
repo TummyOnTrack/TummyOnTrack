@@ -1,5 +1,5 @@
 //
-//  TTSettingsTableViewController.swift
+//  TTProfilesViewController.swift
 //  TummyOnTrack
 //
 //  Created by Gauri Tikekar on 4/26/17.
@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class TTSettingsTableViewController: UITableViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class TTProfilesViewController: UITableViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var addProfilesLabel: UILabel!
@@ -44,34 +44,6 @@ class TTSettingsTableViewController: UITableViewController, UICollectionViewDele
         })
     }
     
-    // MARK: - UICollectionViewDataSource protocol
-    
-    // tell the collection view how many cells to make
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return profiles.count
-    }
-    
-    // make a cell for each cell index path
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        // get a reference to our storyboard cell
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ProfileCell", for: indexPath as IndexPath) as! TTProfileCollectionViewCell
-        
-        cell.setUI(aProfile: profiles[indexPath.row] as! TTProfile)
-        
-        return cell
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if indexPath.row == profiles.count - 1 {
-            TTUser.currentUser?.addProfile(aProfile: profiles[indexPath.row] as! TTProfile)
-        }
-        else {
-           // TTUser.currentUser?.changeCurrentProfile(aProfile: profiles[indexPath.row] as! TTProfile)
-            selectedProfile = profiles[indexPath.row] as? TTProfile
-        }
-    }
-    
     @IBAction func onChangeProfileClick(_ sender: Any) {
         TTUser.currentUser?.changeCurrentProfile(aProfile: selectedProfile!)
         tabBarController?.selectedIndex = 0
@@ -94,4 +66,36 @@ class TTSettingsTableViewController: UITableViewController, UICollectionViewDele
     }
     */
 
+}
+
+// MARK: - UICollectionViewDataSource protocol
+extension TTProfilesViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+
+    // tell the collection view how many cells to make
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return profiles.count
+    }
+    
+    // make a cell for each cell index path
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        // get a reference to our storyboard cell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ProfileCell", for: indexPath as IndexPath) as! TTProfileCollectionViewCell
+        
+        cell.setUI(aProfile: profiles[indexPath.row] as! TTProfile)
+        
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if indexPath.row == profiles.count - 1 {
+            let addProfileVC = self.storyboard?.instantiateViewController(withIdentifier: "AddProfileVC")
+            self.navigationController?.pushViewController(addProfileVC!, animated: true)
+            //            TTUser.currentUser?.addProfile(aProfile: profiles[indexPath.row] as! TTProfile)
+        }
+        else {
+            // TTUser.currentUser?.changeCurrentProfile(aProfile: profiles[indexPath.row] as! TTProfile)
+            selectedProfile = profiles[indexPath.row] as? TTProfile
+        }
+    }
 }

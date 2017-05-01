@@ -21,6 +21,7 @@
 		D1B1EFE81EB3BDF80032BEE1 /* VoiceCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1B1EFE71EB3BDF80032BEE1 /* VoiceCollectionViewCell.swift */; };
 		DCE26630DAFFED14DB212A92 /* Pods_TummyOnTrackTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C70769353C6DF168DCF8CA75 /* Pods_TummyOnTrackTests.framework */; };
 		E038F56B1EB694DA002E55DE /* ProfileStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E038F56A1EB694DA002E55DE /* ProfileStoryboard.storyboard */; };
+		E038F5731EB6A80C002E55DE /* AddTTProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E038F5721EB6A80C002E55DE /* AddTTProfileViewController.swift */; };
 		E04117461EAFB4C400C8152E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E04117451EAFB4C400C8152E /* GoogleService-Info.plist */; };
 		E08BD2A31EB28B4100FD5404 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08BD2A21EB28B4100FD5404 /* Helpers.swift */; };
 		E746D5BEBDD93D7BABE7860B /* Pods_TummyOnTrackUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD778399FA4004A9293948D1 /* Pods_TummyOnTrackUITests.framework */; };
@@ -37,7 +38,7 @@
 		E7BC60551EB10D79000529AC /* SignupLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BC60521EB10D79000529AC /* SignupLoginViewController.swift */; };
 		E7BC60561EB10D79000529AC /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BC60531EB10D79000529AC /* SignupViewController.swift */; };
 		E7BC60581EB11220000529AC /* TTUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BC60571EB11220000529AC /* TTUser.swift */; };
-		E7E3B4771EB69DFF000F9CA4 /* TTSettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7E3B4761EB69DFF000F9CA4 /* TTSettingsTableViewController.swift */; };
+		E7E3B4771EB69DFF000F9CA4 /* TTProfilesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7E3B4761EB69DFF000F9CA4 /* TTProfilesViewController.swift */; };
 		E7F0E5641EB269B00088743B /* CommonStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7F0E5631EB269B00088743B /* CommonStoryboard.storyboard */; };
 		E7F0E5661EB2801F0088743B /* TTFoodInputWaysViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F0E5651EB2801F0088743B /* TTFoodInputWaysViewController.swift */; };
 		E7F0E56A1EB29E7B0088743B /* TTAddPhotoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F0E5691EB29E7B0088743B /* TTAddPhotoTableViewController.swift */; };
@@ -84,6 +85,7 @@
 		D1B1EFD61EB3953D0032BEE1 /* TTFoodItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TTFoodItem.swift; sourceTree = "<group>"; };
 		D1B1EFE71EB3BDF80032BEE1 /* VoiceCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VoiceCollectionViewCell.swift; path = TummyOnTrack/VoiceEntry/VoiceCollectionViewCell.swift; sourceTree = SOURCE_ROOT; };
 		E038F56A1EB694DA002E55DE /* ProfileStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ProfileStoryboard.storyboard; sourceTree = "<group>"; };
+		E038F5721EB6A80C002E55DE /* AddTTProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddTTProfileViewController.swift; sourceTree = "<group>"; };
 		E04117451EAFB4C400C8152E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E08BD2A21EB28B4100FD5404 /* Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		E7834F291EB14BB500FD2F1C /* TTHomeTableTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TTHomeTableTableViewController.swift; sourceTree = "<group>"; };
@@ -105,7 +107,7 @@
 		E7BC60521EB10D79000529AC /* SignupLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupLoginViewController.swift; sourceTree = "<group>"; };
 		E7BC60531EB10D79000529AC /* SignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		E7BC60571EB11220000529AC /* TTUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TTUser.swift; sourceTree = "<group>"; };
-		E7E3B4761EB69DFF000F9CA4 /* TTSettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TTSettingsTableViewController.swift; sourceTree = "<group>"; };
+		E7E3B4761EB69DFF000F9CA4 /* TTProfilesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TTProfilesViewController.swift; sourceTree = "<group>"; };
 		E7F0E5631EB269B00088743B /* CommonStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CommonStoryboard.storyboard; sourceTree = "<group>"; };
 		E7F0E5651EB2801F0088743B /* TTFoodInputWaysViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TTFoodInputWaysViewController.swift; sourceTree = "<group>"; };
 		E7F0E5691EB29E7B0088743B /* TTAddPhotoTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TTAddPhotoTableViewController.swift; sourceTree = "<group>"; };
@@ -177,7 +179,8 @@
 		E038F5691EB694C1002E55DE /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				E7E3B4761EB69DFF000F9CA4 /* TTSettingsTableViewController.swift */,
+				E7E3B4761EB69DFF000F9CA4 /* TTProfilesViewController.swift */,
+				E038F5721EB6A80C002E55DE /* AddTTProfileViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -710,8 +713,9 @@
 				E08BD2A31EB28B4100FD5404 /* Helpers.swift in Sources */,
 				E7B940E51EAE790C0078AB5E /* AppDelegate.swift in Sources */,
 				E7F0E5711EB540280088743B /* TTFirebaseClient.swift in Sources */,
+				E038F5731EB6A80C002E55DE /* AddTTProfileViewController.swift in Sources */,
 				E7F0E56A1EB29E7B0088743B /* TTAddPhotoTableViewController.swift in Sources */,
-				E7E3B4771EB69DFF000F9CA4 /* TTSettingsTableViewController.swift in Sources */,
+				E7E3B4771EB69DFF000F9CA4 /* TTProfilesViewController.swift in Sources */,
 				E7B940ED1EAE790C0078AB5E /* TummyOnTrack.xcdatamodeld in Sources */,
 				311B02E61EB4513900DAA2ED /* RewardCell.swift in Sources */,
 				E7BC60541EB10D79000529AC /* LoginViewController.swift in Sources */,

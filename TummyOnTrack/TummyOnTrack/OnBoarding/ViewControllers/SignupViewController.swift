@@ -55,10 +55,11 @@ class SignupViewController: UIViewController {
         else if password != confirmPwd {
             Helpers.sharedInstance.showErrorMessageAlertDialog("Password does not match confirmation", errorView: errorView, errorLabel: errorViewLabel, parentView: view, navController: navigationController!)
             return
-        }else if password.characters.count < 6 {
-            Helpers.sharedInstance.showErrorMessageAlertDialog("Password must be more than 6 letters", errorView: errorView, errorLabel: errorViewLabel, parentView: view, navController: navigationController!)
-            return
         }
+//        else if password.characters.count < 6 {
+//            Helpers.sharedInstance.showErrorMessageAlertDialog("Password must be more than 6 letters", errorView: errorView, errorLabel: errorViewLabel, parentView: view, navController: navigationController!)
+//            return
+//        }
         
         signupUser(username: username, email: email, password: password)
 
@@ -97,7 +98,7 @@ class SignupViewController: UIViewController {
                     Helpers.sharedInstance.hideErrorMessageAlertDialog(errorView: self.errorView, navController: self.navigationController!)
                     
                     let profileStoryboard = UIStoryboard(name: "ProfileStoryboard", bundle: nil)
-                    let profileVC = profileStoryboard.instantiateViewController(withIdentifier: "SettingsView") as! TTSettingsTableViewController
+                    let profileVC = profileStoryboard.instantiateViewController(withIdentifier: "SettingsView") as! TTProfilesViewController
                     self.navigationController?.pushViewController(profileVC, animated: true)
 //                    self.present(profileVC, animated: true, completion: nil)
                 }, failure: { (error: NSError) in

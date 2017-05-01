@@ -13,7 +13,7 @@
         <!--Profiles-->
         <scene sceneID="gRU-f0-nZV">
             <objects>
-                <tableViewController storyboardIdentifier="SettingsView" id="aIp-hI-5qi" customClass="TTSettingsTableViewController" customModule="TummyOnTrack" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="SettingsView" id="aIp-hI-5qi" customClass="TTProfilesViewController" customModule="TummyOnTrack" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="85" sectionHeaderHeight="18" sectionFooterHeight="18" id="aqS-pY-Pgi">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -119,6 +119,79 @@
             </objects>
             <point key="canvasLocation" x="527" y="-725"/>
         </scene>
+        <!--AddTT Profile View Controller-->
+        <scene sceneID="b0B-UT-1fr">
+            <objects>
+                <viewController storyboardIdentifier="AddProfileVC" id="Gso-vR-PTs" customClass="AddTTProfileViewController" customModule="TummyOnTrack" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="48z-wV-Rgn"/>
+                        <viewControllerLayoutGuide type="bottom" id="FUd-IR-oKN"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="dkP-zE-XCf">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="male-user-shadow" translatesAutoresizingMaskIntoConstraints="NO" id="am0-kc-dNr">
+                                <rect key="frame" x="137" y="111" width="100" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="YXU-3A-Yc0"/>
+                                    <constraint firstAttribute="height" constant="100" id="oUV-mx-vY7"/>
+                                </constraints>
+                            </imageView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="taj-hr-NJa">
+                                <rect key="frame" x="30" y="288" width="315" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="mzZ-Pg-xhh"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Age" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4fd-tz-oOf">
+                                <rect key="frame" x="30" y="343" width="315" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="tS4-Sg-a76"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="4fd-tz-oOf" firstAttribute="centerX" secondItem="dkP-zE-XCf" secondAttribute="centerX" id="3yE-FE-K5d"/>
+                            <constraint firstItem="taj-hr-NJa" firstAttribute="centerX" secondItem="dkP-zE-XCf" secondAttribute="centerX" id="AFC-Fy-Shc"/>
+                            <constraint firstItem="am0-kc-dNr" firstAttribute="top" secondItem="48z-wV-Rgn" secondAttribute="bottom" constant="47" id="DfU-u0-Czb"/>
+                            <constraint firstItem="am0-kc-dNr" firstAttribute="centerX" secondItem="dkP-zE-XCf" secondAttribute="centerX" id="GaA-Zi-blA"/>
+                            <constraint firstAttribute="trailing" secondItem="4fd-tz-oOf" secondAttribute="trailing" constant="30" id="OuV-0l-Fn5"/>
+                            <constraint firstAttribute="trailing" secondItem="taj-hr-NJa" secondAttribute="trailing" constant="30" id="Pdy-m4-lEM"/>
+                            <constraint firstItem="taj-hr-NJa" firstAttribute="leading" secondItem="dkP-zE-XCf" secondAttribute="leading" constant="30" id="gsg-Dj-kMj"/>
+                            <constraint firstItem="4fd-tz-oOf" firstAttribute="leading" secondItem="dkP-zE-XCf" secondAttribute="leading" constant="30" id="qYm-eq-mF8"/>
+                            <constraint firstItem="4fd-tz-oOf" firstAttribute="top" secondItem="taj-hr-NJa" secondAttribute="bottom" constant="10" id="rDh-Wt-yrF"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="3qp-1d-WDx">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="7PU-Lz-fP7">
+                            <connections>
+                                <action selector="cancelButtonClicked:" destination="Gso-vR-PTs" id="aNm-ZV-FG5"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Add" id="pM0-mP-7gP">
+                            <connections>
+                                <action selector="addProfileClicked:" destination="Gso-vR-PTs" id="VG5-Si-zWP"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="ageTextfield" destination="4fd-tz-oOf" id="2q9-EE-Hxd"/>
+                        <outlet property="namefield" destination="taj-hr-NJa" id="tSN-6Q-bdE"/>
+                        <outlet property="profileImgView" destination="am0-kc-dNr" id="czC-3g-Er8"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qod-6D-vf2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="504.80000000000001" y="-58.020989505247378"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="001-V6-V4j">
             <objects>
@@ -137,5 +210,26 @@
             </objects>
             <point key="canvasLocation" x="-140" y="-724"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Xms-LM-Lhd">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="CfO-2V-ZDS" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="I23-lb-s3O">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Gso-vR-PTs" kind="relationship" relationship="rootViewController" id="4fD-qS-uQN"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QgG-Aa-1Qw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-140" y="-58"/>
+        </scene>
     </scenes>
+    <resources>
+        <image name="male-user-shadow" width="512" height="512"/>
+    </resources>
 </document>
