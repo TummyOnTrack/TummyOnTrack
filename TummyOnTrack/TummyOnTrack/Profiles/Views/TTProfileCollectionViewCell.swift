@@ -18,6 +18,7 @@ class TTProfileCollectionViewCell: UICollectionViewCell {
     func setUI(aProfile: TTProfile) {
         profile = aProfile
         profileName.text = aProfile.name
+        profilePhotoImageView.layer.cornerRadius = 3.5
         /*if TTProfile.currentProfile?.name == aProfile.name {
             isSelected = true
         }

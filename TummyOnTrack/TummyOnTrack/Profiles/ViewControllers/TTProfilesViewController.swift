@@ -80,11 +80,10 @@ extension TTProfilesViewController: UICollectionViewDelegate, UICollectionViewDa
         if indexPath.row == profiles.count - 1 {
             let addProfileVC = self.storyboard?.instantiateViewController(withIdentifier: "AddProfileVC")
             self.navigationController?.pushViewController(addProfileVC!, animated: true)
-            //            TTUser.currentUser?.addProfile(aProfile: profiles[indexPath.row] as! TTProfile)
         }
         else {
-            // TTUser.currentUser?.changeCurrentProfile(aProfile: profiles[indexPath.row] as! TTProfile)
             selectedProfile = profiles[indexPath.row] as? TTProfile
         }
     }
+
 }

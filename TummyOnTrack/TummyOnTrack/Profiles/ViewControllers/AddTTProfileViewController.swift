@@ -24,7 +24,7 @@ class AddTTProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
+        profileImgView.layer.cornerRadius = 3.5
     }
 
     override func didReceiveMemoryWarning() {
@@ -37,7 +37,6 @@ class AddTTProfileViewController: UIViewController {
             print("Name cannot be empty")
             return
         }
-        
         guard let age = ageTextfield.text else {
             print("Age cannot be empty")
             return
@@ -46,13 +45,11 @@ class AddTTProfileViewController: UIViewController {
             print("profile image when adding member")
             return
         }
-        
         TTUser.currentUser?.addProfile(name: name, age: Int(age)!, image: image, completionHandler: { (status) in
             if status {
                 self.navigationController?.popViewController(animated: true)
             }
         })
-        
     }
 
 
@@ -113,6 +110,7 @@ class AddTTProfileViewController: UIViewController {
         actionSheet.addAction(choose)
         actionSheet.addAction(take)
         actionSheet.addAction(cancel)
+        // block below is for iPad
         if actionSheet.popoverPresentationController != nil {
             actionSheet.popoverPresentationController!.sourceView = self.view
             actionSheet.popoverPresentationController!.permittedArrowDirections = UIPopoverArrowDirection.up
@@ -121,27 +119,6 @@ class AddTTProfileViewController: UIViewController {
         self.present(actionSheet, animated: true, completion: nil)
         
     }
-    
-//    func saveProfile(name: String, age: Int) {
-//        let profile = TTProfile()
-//        profile.name = name
-//        profile.age = age
-//        
-//        let imageFileName = NSUUID().uuidString
-//        let storageRef = FIRStorage.storage().reference().child("profile_images").child("\(imageFileName).png")
-//        
-//        if let profileImg = profileImgView.image, let imgData = UIImageJPEGRepresentation(profileImg, 0.1) {
-//            storageRef.put(imgData, metadata: nil) { (metaData, error) in
-//                if error != nil {
-//                    print("error when uploading profile image to storage \(String(describing: error)) in AddTTProfileViewController")
-//                }
-//                if let profileImgUrl = metaData?.downloadURL()?.absoluteString {
-//                    let values = ["name": name, "age": age, "createdAt": Date().timeIntervalSince1970, "updatedAt": Date().timeIntervalSince1970, "profilePhoto": profileImgUrl]
-//                }
-//            }
-//        }
-//        
-//    }
 
  
 
@@ -174,7 +151,6 @@ extension AddTTProfileViewController: UINavigationControllerDelegate, UIImagePic
         let redirectingDialog = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
         
         redirectingDialog.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler:{(action: UIAlertAction!) in
-            // back to homeVC
             
         }))
         guard let settingsUrl = URL(string: UIApplicationOpenSettingsURLString) else {
@@ -191,7 +167,7 @@ extension AddTTProfileViewController: UINavigationControllerDelegate, UIImagePic
         if UIImagePickerController.isSourceTypeAvailable(.camera) {
             self.imagePicker.sourceType = .camera
         }
-        //        self.imagePicker.allowsEditing = true
+
         self.imagePicker.sourceType = UIImagePickerControllerSourceType.camera
         self.present(self.imagePicker, animated: true, completion: nil)
     }
@@ -200,7 +176,7 @@ extension AddTTProfileViewController: UINavigationControllerDelegate, UIImagePic
         if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
             self.imagePicker.sourceType = .photoLibrary
         }
-        //        self.imagePicker.allowsEditing = true
+
         self.imagePicker.mediaTypes = UIImagePickerController.availableMediaTypes(for: self.imagePicker.sourceType)!
         self.present(self.imagePicker, animated: true, completion: nil)
     }
