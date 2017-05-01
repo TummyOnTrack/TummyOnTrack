@@ -131,7 +131,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="male-user-shadow" translatesAutoresizingMaskIntoConstraints="NO" id="am0-kc-dNr">
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="addProfile" translatesAutoresizingMaskIntoConstraints="NO" id="am0-kc-dNr">
                                 <rect key="frame" x="137" y="111" width="100" height="100"/>
                                 <gestureRecognizers/>
                                 <constraints>
@@ -240,6 +240,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="male-user-shadow" width="512" height="512"/>
+        <image name="addProfile" width="128" height="128"/>
     </resources>
 </document>

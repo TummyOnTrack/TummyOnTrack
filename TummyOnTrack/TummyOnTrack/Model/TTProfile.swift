@@ -12,15 +12,21 @@ class TTProfile: NSObject {
     var name: String?
     var age: Int?
     var profileImageURL: URL?
-    var isParent: Bool?
-    var unusedPoints: Int?
-    var weeklyEarnedPoints: Int?
-    var totalPoints: Int?
-    var goalPoints: Int?
+    var isParent: Bool = false
+    var unusedPoints: Int = 0
+    var weeklyEarnedPoints: Int = 0
+    var totalPoints: Int = 0
+    var goalPoints: Int = 0
     var user: TTUser?
-    var rewards: [TTReward]?
+    var rewards: [TTReward] = [TTReward]()
     var dictionary: NSDictionary?
+    
+    override init() {
+        super.init()
+        
+    }
 
+    
     init(dictionary: NSDictionary) {
         name = dictionary["name"] as? String
         age = dictionary["age"] as? Int
@@ -69,7 +75,7 @@ class TTProfile: NSObject {
             rewards = [TTReward]()
             for rewardsItem in rewardsItems {
                 if let reward = TTReward.rewards[rewardsItem] {
-                    rewards?.append(reward)
+                    rewards.append(reward)
                 }
             }
         }

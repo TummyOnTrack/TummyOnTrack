@@ -24,6 +24,11 @@ class TTProfilesViewController: UITableViewController {
         loadProfiles()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        collectionView.reloadData()
+    }
+    
     func loadProfiles() {
         let addProfileCell = TTProfile(dictionary: ["name": "Add Member"])
         

@@ -10,6 +10,8 @@ import UIKit
 import AVFoundation
 import Photos
 import SystemConfiguration
+import Firebase
+import FirebaseStorage
 
 class AddTTProfileViewController: UIViewController {
     
@@ -31,21 +33,32 @@ class AddTTProfileViewController: UIViewController {
     }
     
     @IBAction func addProfileClicked(_ sender: Any) {
-        if (namefield.text?.isEmpty)!{
+        guard let name = namefield.text else {
             print("Name cannot be empty")
             return
         }
-        else if (ageTextfield.text?.isEmpty)! {
+        
+        guard let age = ageTextfield.text else {
             print("Age cannot be empty")
             return
         }
+        guard let image = profileImgView.image else {
+            print("profile image when adding member")
+            return
+        }
         
-        
-        
+        TTUser.currentUser?.addProfile(name: name, age: Int(age)!, image: image, completionHandler: { (status) in
+            if status {
+                self.navigationController?.popViewController(animated: true)
+            }
+        })
         
     }
 
+
+
     @IBAction func cancelButtonClicked(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
     }
 
     
@@ -109,6 +122,43 @@ class AddTTProfileViewController: UIViewController {
         
     }
     
+//    func saveProfile(name: String, age: Int) {
+//        let profile = TTProfile()
+//        profile.name = name
+//        profile.age = age
+//        
+//        let imageFileName = NSUUID().uuidString
+//        let storageRef = FIRStorage.storage().reference().child("profile_images").child("\(imageFileName).png")
+//        
+//        if let profileImg = profileImgView.image, let imgData = UIImageJPEGRepresentation(profileImg, 0.1) {
+//            storageRef.put(imgData, metadata: nil) { (metaData, error) in
+//                if error != nil {
+//                    print("error when uploading profile image to storage \(String(describing: error)) in AddTTProfileViewController")
+//                }
+//                if let profileImgUrl = metaData?.downloadURL()?.absoluteString {
+//                    let values = ["name": name, "age": age, "createdAt": Date().timeIntervalSince1970, "updatedAt": Date().timeIntervalSince1970, "profilePhoto": profileImgUrl]
+//                }
+//            }
+//        }
+//        
+//    }
+
+ 
+
+}
+
+extension AddTTProfileViewController: UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        let image = info[UIImagePickerControllerOriginalImage] as? UIImage
+        self.profileImgView.image = image
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     fileprivate func redirectAlertDialog(type: String) {
         var title = ""
         var message = ""
@@ -141,33 +191,17 @@ class AddTTProfileViewController: UIViewController {
         if UIImagePickerController.isSourceTypeAvailable(.camera) {
             self.imagePicker.sourceType = .camera
         }
-//        self.imagePicker.allowsEditing = true
+        //        self.imagePicker.allowsEditing = true
         self.imagePicker.sourceType = UIImagePickerControllerSourceType.camera
         self.present(self.imagePicker, animated: true, completion: nil)
     }
-
+    
     fileprivate func accessPhotoLibrary() {
         if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
             self.imagePicker.sourceType = .photoLibrary
         }
-//        self.imagePicker.allowsEditing = true
+        //        self.imagePicker.allowsEditing = true
         self.imagePicker.mediaTypes = UIImagePickerController.availableMediaTypes(for: self.imagePicker.sourceType)!
         self.present(self.imagePicker, animated: true, completion: nil)
-    }
- 
-
-}
-
-extension AddTTProfileViewController: UINavigationControllerDelegate, UIImagePickerControllerDelegate {
-    
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        let image = info[UIImagePickerControllerOriginalImage] as? UIImage
-        self.profileImgView.image = image
-        // save image to storage
-        self.dismiss(animated: true, completion: nil)
-    }
-    
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        self.dismiss(animated: true, completion: nil)
     }
 }

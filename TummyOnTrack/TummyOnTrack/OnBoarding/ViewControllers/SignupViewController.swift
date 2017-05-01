@@ -56,10 +56,10 @@ class SignupViewController: UIViewController {
             Helpers.sharedInstance.showErrorMessageAlertDialog("Password does not match confirmation", errorView: errorView, errorLabel: errorViewLabel, parentView: view, navController: navigationController!)
             return
         }
-//        else if password.characters.count < 6 {
-//            Helpers.sharedInstance.showErrorMessageAlertDialog("Password must be more than 6 letters", errorView: errorView, errorLabel: errorViewLabel, parentView: view, navController: navigationController!)
-//            return
-//        }
+        else if password.characters.count < 6 {
+            Helpers.sharedInstance.showErrorMessageAlertDialog("Password must be more than 6 letters", errorView: errorView, errorLabel: errorViewLabel, parentView: view, navController: navigationController!)
+            return
+        }
         
         signupUser(username: username, email: email, password: password)
 

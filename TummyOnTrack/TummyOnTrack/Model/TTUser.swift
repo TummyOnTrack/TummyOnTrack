@@ -59,30 +59,22 @@ class TTUser: NSObject {
         TTProfile.changeProfile(profile: aProfile)
     }
     
-    func addProfile( aProfile: TTProfile) {
-        // Data in memory
+    func addProfile(name: String, age: Int, image: UIImage, completionHandler: @escaping(Bool) -> Void) {
+        let imageFileName = NSUUID().uuidString
+        let storageRef = FIRStorage.storage().reference().child("profile_images").child("\(imageFileName).png")
         
-        let image_ = UIImage(named: "user")
-        let data = UIImagePNGRepresentation(image_!)! as NSData
-        var imageURL: String? = nil
-        let storageRef = FIRStorage.storage().reference()
-        // Create a reference to the file you want to upload
-        let tempRef =  storageRef.child("profileImages/temp2.png")
-        
-        _ = tempRef.put(data as Data, metadata: nil) { (metadata, error) in
-            guard let metadata = metadata else {
-                // Uh-oh, an error occurred!
-                return
+        if let imgData = UIImageJPEGRepresentation(image, 0.1) {
+            storageRef.put(imgData, metadata: nil) { (metaData, error) in
+                if error != nil {
+                    print("error when uploading profile image to storage \(String(describing: error)) in TTUser")
+                }
+                if let profileImgUrl = metaData?.downloadURL()?.absoluteString {
+                    let ref = FIRDatabase.database().reference(fromURL: BASE_URL).child(PROFILES_TABLE).childByAutoId()
+                    let profileValues = ["name": name, "age": age, "createdAt": Date().timeIntervalSince1970, "updatedAt": Date().timeIntervalSince1970, "profilePhoto" : profileImgUrl, "userId" : self.uid, "user" : self.dictionary as Any] as [String : Any]
+                    ref.updateChildValues(profileValues)
+                    completionHandler(true)
+                }
             }
-            // Metadata contains file metadata such as size, content-type, and download URL.
-            let downloadURL = metadata.downloadURL
-            imageURL = downloadURL()?.absoluteString
-            
-            // User this imageurl, create a profile object and add that in the firebase database
-            let ref = FIRDatabase.database().reference(fromURL: BASE_URL).child(PROFILES_TABLE).childByAutoId()
-            let prof_ = ["name": "John", "age": 6, "createdAt": Date().timeIntervalSince1970, "updatedAt": Date().timeIntervalSince1970, "profilePhoto" : imageURL ?? "", "userId" : self.uid, "user" : self.dictionary ?? ""] as [String : Any]
-            let values = prof_
-            ref.updateChildValues(values)
         }
 
     }
