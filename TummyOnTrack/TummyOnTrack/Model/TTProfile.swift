@@ -14,6 +14,7 @@ class TTProfile: NSObject {
     var profileImageURL: URL?
     var isParent: Bool?
     var unusedPoints: Int?
+    var weeklyEarnedPoints: Int?
     var totalPoints: Int?
     var goalPoints: Int?
     var user: TTUser?
@@ -38,6 +39,12 @@ class TTProfile: NSObject {
             self.unusedPoints = unusedPoints
         } else {
             self.unusedPoints = 0
+        }
+        
+        if let weeklyPoints = dictionary["weeklyEarnedPoints"] as? Int {
+            self.weeklyEarnedPoints = weeklyPoints
+        } else {
+            self.weeklyEarnedPoints = 0
         }
 
         if let totalPoints = dictionary["totalPoints"] as? Int {
