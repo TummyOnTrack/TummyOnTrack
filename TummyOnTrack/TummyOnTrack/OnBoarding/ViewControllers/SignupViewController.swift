@@ -25,11 +25,7 @@ class SignupViewController: UIViewController {
         super.viewDidLoad()
         setupSignupButton()
         setupTextfields()
-        
-        navigationController?.navigationBar.barTintColor = .orange
-        navigationController?.navigationBar.tintColor = .white
-        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
-        
+      
         usernameTextField.becomeFirstResponder()
         usernameTextField.delegate = self
         emailTextField.delegate = self

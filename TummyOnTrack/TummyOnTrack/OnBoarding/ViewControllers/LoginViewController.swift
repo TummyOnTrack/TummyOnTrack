@@ -24,10 +24,6 @@ class LoginViewController: UIViewController {
         setupLoginButton()
         setupTextfields()
 
-        navigationController?.navigationBar.barTintColor = .orange
-        navigationController?.navigationBar.tintColor = .white
-        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
-
         emailTextfield.becomeFirstResponder()
         emailTextfield.delegate = self
         passwordTextfield.delegate = self

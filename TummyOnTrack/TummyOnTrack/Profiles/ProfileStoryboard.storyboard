@@ -118,14 +118,7 @@
                             <outlet property="delegate" destination="aIp-hI-5qi" id="qmH-0h-MzY"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Profiles" id="VPO-Yh-J8S">
-                        <barButtonItem key="leftBarButtonItem" title="Logout" id="Ejm-KE-08v">
-                            <connections>
-                                <action selector="onLogoutClick:" destination="aIp-hI-5qi" id="iqp-6h-Q9v"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Change" id="ySY-TF-phQ"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Profiles" id="VPO-Yh-J8S"/>
                     <connections>
                         <outlet property="addProfilesLabel" destination="s1u-5t-4Fc" id="f9m-fs-C4w"/>
                         <outlet property="collectionView" destination="L2O-Ek-B7I" id="5Gs-Bd-5zA"/>

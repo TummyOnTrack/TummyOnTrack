@@ -28,7 +28,7 @@ class TTProfilesViewController: UITableViewController {
         getAllProfiles()
     }
     
-    func getAllProfiles() {    
+    func getAllProfiles() {
         TTUser._currentUser?.getProfiles(success: { (profiles) in
             self.profiles = profiles
             self.collectionView.reloadData()
@@ -42,9 +42,7 @@ class TTProfilesViewController: UITableViewController {
         super.didReceiveMemoryWarning()
     }
 
-    @IBAction func onLogoutClick(_ sender: Any) {
-        
-    }
+
 }
 
 extension TTProfilesViewController: UICollectionViewDelegate, UICollectionViewDataSource {
