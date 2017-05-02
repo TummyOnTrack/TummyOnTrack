@@ -54,46 +54,38 @@ class TTReward: NSObject {
     }
 
     class func addReward(filename: String, points: Int) {
-        var imagesURLsArray = [String]()
-
-        let imageSizes = [1, 2]
+        let imageSizes = [1]
 
         for imageSize in imageSizes {
             let imageName = "\(filename)-\(imageSize)x"
-            let image_ = UIImage(named: imageName)
-            let data = UIImagePNGRepresentation(image_!)! as NSData
-            var imageURL: String? = nil
-            let storageRef = FIRStorage.storage().reference()
+            let image = UIImage(named: imageName)
+            let storageRef = FIRStorage.storage().reference().child("rewardImages").child("\(imageName).png")
 
-            // Create a reference to the file you want to upload
-            let tempRef =  storageRef.child("profile_images").child("(imageName).png")
+            if let imgData = UIImagePNGRepresentation(image!) {
+                storageRef.put(imgData, metadata: nil) { (metaData, error) in
+                    if error != nil {
+                        print("Error when uploading reward image to storage \(String(describing: error)) in TTReward")
+                    }
+                    var imagesURLsArray = [String]()
 
-            _ = tempRef.put(data as Data, metadata: nil) { (metadata, error) in
-                guard let metadata = metadata else {
-                    print("An error occurred while uploading reward image")
-                    return
-                }
+                    if let imageUrl = metaData?.downloadURL()?.absoluteString {
+                        // Metadata contains file metadata such as size, content-type, and download URL.
+                        imagesURLsArray.append(imageUrl)
+                    }
 
-                // Metadata contains file metadata such as size, content-type, and download URL.
-                let downloadURL = metadata.downloadURL
-                imageURL = downloadURL()?.absoluteString
+                    // Use the imagesURLsArray to create a reward object to add to the firebase database
+                    let reference = FIRDatabase.database().reference(fromURL: BASE_URL).child(REWARDS_TABLE).childByAutoId()
+                    let values = [
+                        "name": filename,
+                        "points": points,
+                        "createdAt": Date().timeIntervalSince1970,
+                        "updatedAt": Date().timeIntervalSince1970,
+                        "images" : imagesURLsArray,
+                        ] as [String : Any]
 
-                if let imageURL = imageURL {
-                    imagesURLsArray.append(imageURL)
+                    reference.updateChildValues(values)
                 }
             }
         }
-
-        // Use the imagesURLsArray to create a reward object to add to the firebase database
-        let reference = FIRDatabase.database().reference(fromURL: BASE_URL).child(REWARDS_TABLE).childByAutoId()
-        let values = [
-            "name": filename,
-            "points": points,
-            "createdAt": Date().timeIntervalSince1970,
-            "updatedAt": Date().timeIntervalSince1970,
-            "images" : imagesURLsArray,
-        ] as [String : Any]
-
-        reference.updateChildValues(values)
     }
 }

@@ -34,7 +34,6 @@ class TTRewardsViewController: UIViewController {
 
     func loadRewards() {
         TTReward.getRewards(success: { (rewards: [TTReward]) in
-            print("Rewards count: \(rewards.count)")
             self.rewards = rewards
             self.collectionView.reloadData()
         }, failure: { (error: Error) -> ()  in
