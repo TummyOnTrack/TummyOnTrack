@@ -12,36 +12,30 @@ class TTProfilesViewController: UITableViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var addProfilesLabel: UILabel!
-    var profiles: NSMutableArray = []
-    var selectedProfile: TTProfile?
+    var profiles = [TTProfile]()
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.allowsMultipleSelection = false
-        loadProfiles()
+        collectionView.delegate = self
+        collectionView.dataSource = self
+
     }
     
-    func loadProfiles() {
-        let addProfileCell = TTProfile(dictionary: ["name": "Add Member"])
-        
-        TTUser.currentUser?.getProfiles(success: { (aProfiles: [TTProfile]) in
-            self.profiles.addObjects(from: aProfiles)
-            if self.profiles.count == 0 {
-                self.addProfilesLabel.text = "Create a family member's profile"
-            }
-            else {
-                self.addProfilesLabel.text = "Change current member"
-            }
-            self.profiles.add(addProfileCell)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        getAllProfiles()
+    }
+    
+    func getAllProfiles() {    
+        TTUser._currentUser?.getProfiles(success: { (profiles) in
+            self.profiles = profiles
             self.collectionView.reloadData()
-        }, failure: { (error: Error) -> ()  in
-            print("Failed to get profiles")
+        }, failure: { (error) in
+            print(error)
         })
-    }
-    
-    @IBAction func onChangeProfileClick(_ sender: Any) {
-        TTUser.currentUser?.changeCurrentProfile(aProfile: selectedProfile!)
-        tabBarController?.selectedIndex = 0
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -57,28 +51,30 @@ extension TTProfilesViewController: UICollectionViewDelegate, UICollectionViewDa
 
     // tell the collection view how many cells to make
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return profiles.count
+        return profiles.count + 1
     }
     
     // make a cell for each cell index path
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        // get a reference to our storyboard cell
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ProfileCell", for: indexPath as IndexPath) as! TTProfileCollectionViewCell
-        
-        cell.setUI(aProfile: profiles[indexPath.row] as! TTProfile)
-        
+        if indexPath.row == 0 {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AddMemberCell", for: indexPath)
+            cell.layer.cornerRadius = 3.5
+            return cell
+        }
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ProfileCell", for: indexPath) as! TTProfileCollectionViewCell
+        cell.layer.cornerRadius = 3.5
+        cell.profile = profiles[indexPath.row - 1]
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if indexPath.row == profiles.count - 1 {
-            let addProfileVC = self.storyboard?.instantiateViewController(withIdentifier: "AddProfileVC")
-            self.navigationController?.pushViewController(addProfileVC!, animated: true)
-        }
-        else {
-            selectedProfile = profiles[indexPath.row] as? TTProfile
-        }
+//        if indexPath.row == profiles.count - 1 {
+//            let addProfileVC = self.storyboard?.instantiateViewController(withIdentifier: "AddProfileVC")
+//            self.navigationController?.pushViewController(addProfileVC!, animated: true)
+//        }
+//        else {
+//            selectedProfile = profiles[indexPath.row] as? TTProfile
+//        }
     }
 
 }

@@ -32,41 +32,61 @@
                                         <inset key="sectionInset" minX="10" minY="10" maxX="10" maxY="0.0"/>
                                     </collectionViewFlowLayout>
                                     <cells>
-                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ProfileCell" id="JLO-AP-DU5" customClass="TTProfileCollectionViewCell" customModule="TummyOnTrack" customModuleProvider="target">
+                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="AddMemberCell" id="JLO-AP-DU5">
                                             <rect key="frame" x="10" y="10" width="111" height="161"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                                 <rect key="frame" x="0.0" y="0.0" width="111" height="161"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Child Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OMP-j5-yiP">
+                                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="plus-simple-7" translatesAutoresizingMaskIntoConstraints="NO" id="9Uy-BX-Pr5">
+                                                        <rect key="frame" x="40.5" y="65.5" width="30" height="30"/>
+                                                    </imageView>
+                                                </subviews>
+                                            </view>
+                                            <constraints>
+                                                <constraint firstItem="9Uy-BX-Pr5" firstAttribute="centerX" secondItem="JLO-AP-DU5" secondAttribute="centerX" id="I5Q-WJ-ROd"/>
+                                                <constraint firstItem="9Uy-BX-Pr5" firstAttribute="centerY" secondItem="JLO-AP-DU5" secondAttribute="centerY" id="yVe-nb-OMl"/>
+                                            </constraints>
+                                            <connections>
+                                                <segue destination="Gso-vR-PTs" kind="show" id="STD-kr-RIm"/>
+                                            </connections>
+                                        </collectionViewCell>
+                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ProfileCell" id="Y5U-Fk-0VK" customClass="TTProfileCollectionViewCell" customModule="TummyOnTrack" customModuleProvider="target">
+                                            <rect key="frame" x="132" y="10" width="111" height="161"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                                <rect key="frame" x="0.0" y="0.0" width="111" height="161"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Child Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WEj-y5-QbZ">
                                                         <rect key="frame" x="11" y="120" width="89" height="21"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="21" id="EhP-Mk-emP"/>
+                                                            <constraint firstAttribute="height" constant="21" id="QLy-Re-JQs"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="24O-JZ-RNn">
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Cat-1x" translatesAutoresizingMaskIntoConstraints="NO" id="RAu-Qy-cyX">
                                                         <rect key="frame" x="11" y="13" width="89" height="89"/>
                                                     </imageView>
                                                 </subviews>
                                             </view>
                                             <constraints>
-                                                <constraint firstItem="24O-JZ-RNn" firstAttribute="leading" secondItem="JLO-AP-DU5" secondAttribute="leadingMargin" constant="3" id="Bzj-09-V7q"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="24O-JZ-RNn" secondAttribute="trailing" constant="3" id="FPl-EY-VwY"/>
-                                                <constraint firstItem="OMP-j5-yiP" firstAttribute="centerX" secondItem="JLO-AP-DU5" secondAttribute="centerX" id="Jsd-QA-XCj"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="OMP-j5-yiP" secondAttribute="bottom" constant="12" id="LIM-U5-me4"/>
-                                                <constraint firstItem="OMP-j5-yiP" firstAttribute="top" secondItem="24O-JZ-RNn" secondAttribute="bottom" constant="18" id="Q0Q-J1-Hem"/>
-                                                <constraint firstItem="24O-JZ-RNn" firstAttribute="centerX" secondItem="JLO-AP-DU5" secondAttribute="centerX" id="RgE-Zw-vxX"/>
-                                                <constraint firstItem="24O-JZ-RNn" firstAttribute="top" secondItem="JLO-AP-DU5" secondAttribute="topMargin" constant="5" id="Www-FJ-B6y"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="OMP-j5-yiP" secondAttribute="bottom" constant="12" id="aW7-9x-Get"/>
-                                                <constraint firstItem="24O-JZ-RNn" firstAttribute="top" secondItem="JLO-AP-DU5" secondAttribute="topMargin" constant="5" id="ojR-IY-OBA"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="WEj-y5-QbZ" secondAttribute="bottom" constant="12" id="0rc-6x-Exw"/>
+                                                <constraint firstItem="RAu-Qy-cyX" firstAttribute="top" secondItem="Y5U-Fk-0VK" secondAttribute="topMargin" constant="5" id="3YE-5y-8Jh"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="WEj-y5-QbZ" secondAttribute="bottom" constant="12" id="8pE-HO-rxl"/>
+                                                <constraint firstItem="RAu-Qy-cyX" firstAttribute="top" secondItem="Y5U-Fk-0VK" secondAttribute="topMargin" constant="5" id="BHw-wh-hpB"/>
+                                                <constraint firstItem="WEj-y5-QbZ" firstAttribute="top" secondItem="RAu-Qy-cyX" secondAttribute="bottom" constant="18" id="E1p-VG-HVt"/>
+                                                <constraint firstItem="RAu-Qy-cyX" firstAttribute="leading" secondItem="Y5U-Fk-0VK" secondAttribute="leadingMargin" constant="3" id="IPK-aG-iPJ"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="RAu-Qy-cyX" secondAttribute="trailing" constant="3" id="YPM-OO-jwS"/>
+                                                <constraint firstItem="RAu-Qy-cyX" firstAttribute="centerX" secondItem="Y5U-Fk-0VK" secondAttribute="centerX" id="aa1-um-a7m"/>
+                                                <constraint firstItem="WEj-y5-QbZ" firstAttribute="centerX" secondItem="Y5U-Fk-0VK" secondAttribute="centerX" id="y8h-Cp-Edx"/>
                                             </constraints>
                                             <connections>
-                                                <outlet property="profileName" destination="OMP-j5-yiP" id="8wT-mW-fqf"/>
-                                                <outlet property="profilePhotoImageView" destination="24O-JZ-RNn" id="wFZ-YN-ZkT"/>
+                                                <outlet property="profileName" destination="WEj-y5-QbZ" id="Igu-7o-ZwE"/>
+                                                <outlet property="profilePhotoImageView" destination="RAu-Qy-cyX" id="TE8-75-KGy"/>
                                             </connections>
                                         </collectionViewCell>
                                     </cells>
@@ -104,11 +124,7 @@
                                 <action selector="onLogoutClick:" destination="aIp-hI-5qi" id="iqp-6h-Q9v"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Change" id="ySY-TF-phQ">
-                            <connections>
-                                <action selector="onChangeProfileClick:" destination="aIp-hI-5qi" id="iIz-GU-iUa"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Change" id="ySY-TF-phQ"/>
                     </navigationItem>
                     <connections>
                         <outlet property="addProfilesLabel" destination="s1u-5t-4Fc" id="f9m-fs-C4w"/>
@@ -117,7 +133,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QRh-fo-1Km" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="527" y="-725"/>
+            <point key="canvasLocation" x="525.60000000000002" y="-725.48725637181417"/>
         </scene>
         <!--AddTT Profile View Controller-->
         <scene sceneID="b0B-UT-1fr">
@@ -200,7 +216,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="504.80000000000001" y="-58.020989505247378"/>
+            <point key="canvasLocation" x="1193" y="-725"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="001-V6-V4j">
@@ -220,26 +236,10 @@
             </objects>
             <point key="canvasLocation" x="-140" y="-724"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="Xms-LM-Lhd">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="CfO-2V-ZDS" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="I23-lb-s3O">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="Gso-vR-PTs" kind="relationship" relationship="rootViewController" id="4fD-qS-uQN"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="QgG-Aa-1Qw" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-140" y="-58"/>
-        </scene>
     </scenes>
     <resources>
+        <image name="Cat-1x" width="128" height="128"/>
         <image name="addProfile" width="128" height="128"/>
+        <image name="plus-simple-7" width="30" height="30"/>
     </resources>
 </document>

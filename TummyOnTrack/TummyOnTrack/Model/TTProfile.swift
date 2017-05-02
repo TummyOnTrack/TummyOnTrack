@@ -16,7 +16,7 @@ class TTProfile: NSObject {
     var unusedPoints: Int = 0
     var weeklyEarnedPoints: Int = 0
     var totalPoints: Int = 0
-    var goalPoints: Int = 0
+    var goalPoints: Int = 50
     var user: TTUser?
     var rewards: [TTReward] = [TTReward]()
     var dictionary: NSDictionary?
