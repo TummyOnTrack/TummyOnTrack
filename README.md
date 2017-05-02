@@ -10,9 +10,9 @@ Time spent: **XX** hours spent in total
 The following **required** functionality is completed:
 
 Login/Signup
-- [ ]	User can signup/login using username/password  
-- [ ]	New user can create an account and add one or more kids' profiles
-- [ ]	The current signed in user will be persisted across restarts
+- [x ]	User can signup/login using username/password  
+- [ x]	New user can create an account and add one or more kids' profiles
+- [x ]	The current signed in user will be persisted across restarts
 
 Parent Role
 - [ ]	User(Parent role) can set daily target points for each child
@@ -20,7 +20,7 @@ Parent Role
 Parent/Child interactive Activity
 - [ ]	User can update food items eaten by uploading photos
 - [ ]	User can select photos from the gallery
-- [ ]	User can access camera and click photos to upload
+- [x ]	User can access camera and click photos to upload
 - [ ]	User can update food items eaten by speaking the food names (voice to text)
 - [ ]	User can gamify the experience by dragging or animating food items
 
@@ -44,9 +44,9 @@ Please list two areas of the assignment you'd like to **discuss further with you
 
 ## Video Walkthrough
 
-Here's a walkthrough of implemented user stories:
+Here's a walkthrough of so far implemented user stories:
 
-<img src='https://github.com/TummyOnTrack/TummyOnTrack/blob/master/TummyOnTrack_Walkthrough.gif' alt='Video Walkthrough' />
+<img src='https://github.com/TummyOnTrack/TummyOnTrack/blob/master/TummyOnTrackSprint2_Walkthrough.gif' alt='Video Walkthrough' />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
