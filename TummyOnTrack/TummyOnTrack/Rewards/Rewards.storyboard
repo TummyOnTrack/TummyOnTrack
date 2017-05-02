@@ -106,36 +106,36 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="oiA-pM-C97">
-                                    <size key="itemSize" width="110" height="100"/>
+                                    <size key="itemSize" width="110" height="120"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="RewardCell" id="fiy-dS-v0e" customClass="RewardCell" customModule="TummyOnTrack" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="110" height="100"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="110" height="120"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="110" height="100"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="110" height="120"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="package_games_kids" translatesAutoresizingMaskIntoConstraints="NO" id="jDI-JD-5iK">
+                                                <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jDI-JD-5iK">
                                                     <rect key="frame" x="0.0" y="0.0" width="110" height="120"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reward" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vcx-ce-c3F">
-                                                    <rect key="frame" x="30.5" y="98" width="49" height="17"/>
+                                                    <rect key="frame" x="30.5" y="103" width="49" height="17"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Id-0H-3Gn">
-                                                    <rect key="frame" x="72" y="5" width="16" height="16"/>
+                                                    <rect key="frame" x="78" y="0.0" width="16" height="16"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star" translatesAutoresizingMaskIntoConstraints="NO" id="SJ4-eu-p15">
-                                                    <rect key="frame" x="89" y="5" width="16" height="16"/>
+                                                    <rect key="frame" x="94" y="0.0" width="16" height="16"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="16" id="0R4-I7-xJ7"/>
                                                         <constraint firstAttribute="width" constant="16" id="KkD-7s-Fd1"/>
@@ -144,13 +144,13 @@
                                             </subviews>
                                         </view>
                                         <constraints>
-                                            <constraint firstItem="SJ4-eu-p15" firstAttribute="leading" secondItem="3Id-0H-3Gn" secondAttribute="trailing" constant="1" id="3bp-EU-FhG"/>
-                                            <constraint firstAttribute="bottom" secondItem="vcx-ce-c3F" secondAttribute="bottom" constant="5" id="5ke-ip-tUz"/>
+                                            <constraint firstAttribute="bottom" secondItem="vcx-ce-c3F" secondAttribute="bottom" id="3a9-cq-SK2"/>
+                                            <constraint firstItem="SJ4-eu-p15" firstAttribute="leading" secondItem="3Id-0H-3Gn" secondAttribute="trailing" id="3bp-EU-FhG"/>
                                             <constraint firstItem="jDI-JD-5iK" firstAttribute="leading" secondItem="fiy-dS-v0e" secondAttribute="leading" id="9a0-rw-gfh"/>
-                                            <constraint firstAttribute="trailing" secondItem="SJ4-eu-p15" secondAttribute="trailing" constant="5" id="Gpq-f9-HIR"/>
+                                            <constraint firstAttribute="trailing" secondItem="SJ4-eu-p15" secondAttribute="trailing" id="Gpq-f9-HIR"/>
                                             <constraint firstItem="jDI-JD-5iK" firstAttribute="top" secondItem="fiy-dS-v0e" secondAttribute="top" id="KJC-5y-tYU"/>
                                             <constraint firstItem="SJ4-eu-p15" firstAttribute="top" secondItem="3Id-0H-3Gn" secondAttribute="top" id="QhX-7r-SjV"/>
-                                            <constraint firstItem="SJ4-eu-p15" firstAttribute="top" secondItem="fiy-dS-v0e" secondAttribute="top" constant="5" id="YF6-WI-3w5"/>
+                                            <constraint firstItem="SJ4-eu-p15" firstAttribute="top" secondItem="fiy-dS-v0e" secondAttribute="top" id="YF6-WI-3w5"/>
                                             <constraint firstAttribute="bottom" secondItem="jDI-JD-5iK" secondAttribute="bottom" id="aAv-r9-OVx"/>
                                             <constraint firstItem="vcx-ce-c3F" firstAttribute="centerX" secondItem="fiy-dS-v0e" secondAttribute="centerX" id="gzn-P6-33o"/>
                                             <constraint firstAttribute="trailing" secondItem="jDI-JD-5iK" secondAttribute="trailing" id="jkm-bt-0Qf"/>
@@ -198,7 +198,6 @@
     </scenes>
     <resources>
         <image name="fruits_water" width="800" height="1200"/>
-        <image name="package_games_kids" width="128" height="128"/>
         <image name="star" width="32" height="32"/>
     </resources>
 </document>
