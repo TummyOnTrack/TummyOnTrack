@@ -504,11 +504,6 @@
 				TargetAttributes = {
 					E7B940E01EAE790C0078AB5E = {
 						CreatedOnToolsVersion = 8.3;
-<<<<<<< HEAD
-						DevelopmentTeam = WQ56QXLK4A;
-=======
-						DevelopmentTeam = GQAPG2Q6U6;
->>>>>>> f7d77307a9e458f32bd7f3de9d2783a9b0ec94f5
 						ProvisioningStyle = Automatic;
 					};
 					E7B940F71EAE790C0078AB5E = {
@@ -903,11 +898,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-<<<<<<< HEAD
-				DEVELOPMENT_TEAM = WQ56QXLK4A;
-=======
-				DEVELOPMENT_TEAM = GQAPG2Q6U6;
->>>>>>> f7d77307a9e458f32bd7f3de9d2783a9b0ec94f5
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = TummyOnTrack/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tummyontrack.TummyOnTrack;
@@ -923,11 +914,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-<<<<<<< HEAD
-				DEVELOPMENT_TEAM = WQ56QXLK4A;
-=======
-				DEVELOPMENT_TEAM = GQAPG2Q6U6;
->>>>>>> f7d77307a9e458f32bd7f3de9d2783a9b0ec94f5
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = TummyOnTrack/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tummyontrack.TummyOnTrack;
