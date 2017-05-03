@@ -100,11 +100,11 @@ class TTHomeTableTableViewController: UITableViewController, UINavigationControl
         self.profileImageView.setImageWith((currentProfile_?.profileImageURL)!)
         setupGoalButton.isHidden = true
         var pieColor = UIColor.init(red: 244/255.0, green: 115/255.0, blue: 0/255.0, alpha: 1)
-        if currentProfile_?.weeklyEarnedPoints == 0 && currentProfile_?.goalPoints == 0 {
+        if currentProfile_?.weeklyEarnedPoints == 0 {
             goalHeaderLabel.text = "Eat healthy, collect points!"
             pointsLabel.text = "Your weekly points will appear here"
-            goalPointsLabel.text = "Setup Weekly Goal"
-            setupGoalButton.isHidden = false
+            //goalPointsLabel.text = "Setup Weekly Goal"
+            //setupGoalButton.isHidden = false
             pieColor = UIColor.lightGray
         }
         else {

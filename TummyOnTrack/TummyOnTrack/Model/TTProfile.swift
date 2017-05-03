@@ -62,7 +62,7 @@ class TTProfile: NSObject {
         if let goalPoints = dictionary["goalPoints"] as? Int {
             self.goalPoints = goalPoints
         } else {
-            self.goalPoints = 0
+            self.goalPoints = 50
         }
 
         if let user_name = dictionary["user_name"] as? String {
