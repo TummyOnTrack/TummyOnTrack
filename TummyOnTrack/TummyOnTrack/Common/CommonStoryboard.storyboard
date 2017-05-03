@@ -157,13 +157,7 @@
                         </connections>
                     </tableView>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
-                    <navigationItem key="navigationItem" title="Hi Kid!" id="lyg-az-Lqc">
-                        <barButtonItem key="rightBarButtonItem" image="camera-7" id="a2Q-8d-xB9">
-                            <connections>
-                                <action selector="onCameraClick:" destination="ex1-eT-I06" id="mOx-tX-Nkt"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Hi Kid!" id="lyg-az-Lqc"/>
                     <connections>
                         <outlet property="chartsView" destination="HkA-dX-SDa" id="Kpd-Fv-GGj"/>
                         <outlet property="goalHeaderLabel" destination="ERA-Es-AKo" id="wUp-RM-eVd"/>
@@ -598,7 +592,6 @@
     </scenes>
     <resources>
         <image name="Smiling_Face_Blushed" width="640" height="640"/>
-        <image name="camera-7" width="30" height="30"/>
         <image name="cross_grey" width="40" height="40"/>
     </resources>
     <inferredMetricsTieBreakers>

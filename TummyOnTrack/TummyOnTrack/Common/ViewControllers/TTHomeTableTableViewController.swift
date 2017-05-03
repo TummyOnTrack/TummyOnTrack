@@ -13,7 +13,7 @@ import MagicPie
 import Firebase
 import Charts
 
-class TTHomeTableTableViewController: UITableViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+class TTHomeTableTableViewController: UITableViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, ChartViewDelegate {
     
     @IBOutlet weak var setupGoalButton: UIButton!
     @IBOutlet weak var goalPointsLabel: UILabel!
@@ -109,28 +109,20 @@ class TTHomeTableTableViewController: UITableViewController, UINavigationControl
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         let weekdays = ["Mon", "Tues", "Wed", "Thur", "Fri", "Sat", "Sun"]
-        let dayPoints = [20.0, 4.0, 6.0, 3.0, 12.0, 16.0, 4.0]
+        let dayPoints = [5.0, 10.0, 15.0, 7.0, 20.0, 10.0, 5.0]
+        chartsView.noDataText = "See your weekly points here"
         
+        let limitLine = ChartLimitLine(limit: 0, label: "")
+        limitLine.lineColor = UIColor.white.withAlphaComponent(0.3)
+        limitLine.lineWidth = 1
+        
+        chartsView.leftAxis.addLimitLine(limitLine)
+        chartsView.drawGridBackgroundEnabled = false
         chartsView.setBarChartData(xValues: weekdays, yValues: dayPoints, label: "Weekdays")
-        //setChart(dataPoints: months, values: dayPoints)
+        chartsView.delegate = self
+        chartsView.animate(yAxisDuration: 0.9)
     }
     
-    func setChart(dataPoints: Array<Any>, values: Array<Any>) {
-        var dataEntries: [BarChartDataEntry] = []
-        
-        for i in 0..<dataPoints.count {
-            let dataEntry = BarChartDataEntry(x: Double(i+2), y:values[i] as! Double, data: dataPoints as AnyObject )
-            dataEntries.append(dataEntry)
-        }
-        
-        let chartDataSet = BarChartDataSet(values: dataEntries, label: "Points")
-        
-        let chartData = BarChartData()
-        chartData.addDataSet(chartDataSet)
-        chartsView.data = chartData
-        
-    }
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -169,6 +161,10 @@ class TTHomeTableTableViewController: UITableViewController, UINavigationControl
             present(viewController, animated: true, completion: nil)
         }
     }
+    
+    func chartValueSelected(chartView: ChartViewBase, entry: ChartDataEntry, dataSetIndex: Int, highlight: Highlight) {
+        //print("\(entry.value) in \(months[entry.xIndex])")
+    }
 }
 
 //https://github.com/danielgindi/Charts/issues/1340
@@ -198,6 +194,7 @@ extension BarChartView {
         }
         
         let chartDataSet = BarChartDataSet(values: dataEntries, label: label)
+        chartDataSet.colors = ChartColorTemplates.colorful()
         let chartData = BarChartData(dataSet: chartDataSet)
         
         let chartFormatter = BarChartFormatter(labels: xValues)
@@ -208,3 +205,4 @@ extension BarChartView {
         self.data = chartData
     }
 }
+
