@@ -88,7 +88,8 @@ class LoginViewController: UIViewController {
                 Helpers.sharedInstance.showErrorMessageAlertDialog("Please enter a valid email or password", errorView: self.errorView, errorLabel: self.errorMessageLabel, parentView: self.view, navController: self.navigationController!)
                 return
             }
-            //TTFirebaseClient.saveCurrentUser()
+            
+//            TTFirebaseClient.saveCurrentUser()
             TTFirebaseClient.saveCurrentUser(success: { (flag: Bool) in
                 UserDefaults.standard.set(email, forKey: "currentLoggedInUserEmail")
                 UserDefaults.standard.synchronize()

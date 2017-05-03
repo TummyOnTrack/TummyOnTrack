@@ -33,6 +33,11 @@ class TTHomeTableTableViewController: UITableViewController, UINavigationControl
     @IBOutlet weak var wedButton: UIButton!
     @IBOutlet weak var tuesButton: UIButton!
     @IBOutlet weak var sunButton: UIButton!
+    
+    var homeViewProfile = TTProfile()
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -53,6 +58,7 @@ class TTHomeTableTableViewController: UITableViewController, UINavigationControl
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setCurrentProfileDetails()
+        print(self.homeViewProfile)
     }
     
     func setToday() {

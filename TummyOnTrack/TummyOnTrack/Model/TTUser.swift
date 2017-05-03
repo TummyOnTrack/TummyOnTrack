@@ -44,6 +44,7 @@ class TTUser: NSObject {
                 let profile = TTProfile(dictionary: val as NSDictionary)
                 allProfiles.append(profile)
             }
+            print(allProfiles)
             success(allProfiles)
         })
 

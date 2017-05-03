@@ -20,7 +20,7 @@ class TTProfilesViewController: UITableViewController {
         collectionView.allowsMultipleSelection = false
         collectionView.delegate = self
         collectionView.dataSource = self
-
+//        getAllProfiles()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -35,13 +35,12 @@ class TTProfilesViewController: UITableViewController {
         }, failure: { (error) in
             print(error)
         })
-        
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-
+    
 
 }
 
@@ -65,14 +64,15 @@ extension TTProfilesViewController: UICollectionViewDelegate, UICollectionViewDa
         return cell
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        if indexPath.row == profiles.count - 1 {
-//            let addProfileVC = self.storyboard?.instantiateViewController(withIdentifier: "AddProfileVC")
-//            self.navigationController?.pushViewController(addProfileVC!, animated: true)
-//        }
-//        else {
-//            selectedProfile = profiles[indexPath.row] as? TTProfile
-//        }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {        
+        if indexPath.row > 0 {
+            let commonStoryboard = UIStoryboard(name: "CommonStoryboard", bundle: nil)
+            let homeVc = commonStoryboard.instantiateViewController(withIdentifier: "HomeView") as! TTHomeTableTableViewController
+            homeVc.homeViewProfile = self.profiles[indexPath.row - 1]
+            self.navigationController?.pushViewController(homeVc, animated: true)
+            
+        }
+        
     }
 
 }
