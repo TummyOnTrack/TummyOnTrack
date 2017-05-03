@@ -7,6 +7,7 @@
 //
 import UIKit
 import Firebase
+import SVProgressHUD
 
 class TTProfilesViewController: UITableViewController {
 
@@ -28,7 +29,9 @@ class TTProfilesViewController: UITableViewController {
     }
 
     func getAllProfiles() {
+        SVProgressHUD.show()
         TTUser.currentUser?.getProfiles(success: { (profiles) in
+            SVProgressHUD.dismiss()
             self.profiles = profiles
             self.collectionView.reloadData()
         }, failure: { (error) in
