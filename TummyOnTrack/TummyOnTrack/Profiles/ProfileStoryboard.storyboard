@@ -68,7 +68,7 @@
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Cat-1x" translatesAutoresizingMaskIntoConstraints="NO" id="RAu-Qy-cyX">
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default" translatesAutoresizingMaskIntoConstraints="NO" id="RAu-Qy-cyX">
                                                         <rect key="frame" x="11" y="13" width="89" height="89"/>
                                                     </imageView>
                                                 </subviews>
@@ -231,8 +231,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Cat-1x" width="128" height="128"/>
         <image name="addProfile" width="128" height="128"/>
+        <image name="default" width="225" height="225"/>
         <image name="plus-simple-7" width="30" height="30"/>
     </resources>
 </document>

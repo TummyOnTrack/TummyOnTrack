@@ -29,7 +29,7 @@ class TTProfilesViewController: UITableViewController {
     }
     
     func getAllProfiles() {
-        TTUser._currentUser?.getProfiles(success: { (profiles) in
+        TTUser.currentUser?.getProfiles(success: { (profiles) in
             self.profiles = profiles
             self.collectionView.reloadData()
         }, failure: { (error) in
@@ -64,7 +64,7 @@ extension TTProfilesViewController: UICollectionViewDelegate, UICollectionViewDa
         return cell
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {        
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if indexPath.row > 0 {
             let commonStoryboard = UIStoryboard(name: "CommonStoryboard", bundle: nil)
             let homeVc = commonStoryboard.instantiateViewController(withIdentifier: "HomeView") as! TTHomeTableTableViewController
