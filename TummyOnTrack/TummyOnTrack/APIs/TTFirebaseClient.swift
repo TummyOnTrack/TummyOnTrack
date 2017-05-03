@@ -27,13 +27,13 @@ class TTFirebaseClient: NSObject {
             let dictionary_: NSMutableDictionary = [:]
             dictionary_.addEntries(from: snap_.value! as! [AnyHashable : Any])
             dictionary_.setObject(FIRAuth.auth()?.currentUser?.uid ?? "", forKey: "uid" as NSCopying)
-
+            success(true)
             TTUser.currentUser = TTUser.init(dictionary: dictionary_ as NSDictionary)
             
-            initializeCurrentProfile(success: { (aProfile: TTProfile?) in
+            /*initializeCurrentProfile(success: { (aProfile: TTProfile?) in
                 success(true)
             }, failure: { (error: NSError) -> ()  in
-            })
+            })*/
         })
     }
     

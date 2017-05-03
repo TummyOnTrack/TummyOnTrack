@@ -94,9 +94,10 @@ class SignupViewController: UIViewController {
                     Helpers.sharedInstance.hideErrorMessageAlertDialog(errorView: self.errorView, navController: self.navigationController!)
                     
                     let profileStoryboard = UIStoryboard(name: "ProfileStoryboard", bundle: nil)
-                    let profileVC = profileStoryboard.instantiateViewController(withIdentifier: "SettingsView") as! TTProfilesViewController
+                    let profileVC = profileStoryboard.instantiateViewController(withIdentifier: "AddProfileVC") as! AddTTProfileViewController
+                    profileVC.navigationItem.leftBarButtonItem = nil
+                    profileVC.navigationItem.hidesBackButton = true
                     self.navigationController?.pushViewController(profileVC, animated: true)
-//                    self.present(profileVC, animated: true, completion: nil)
                 }, failure: { (error: NSError) in
                     
                 })

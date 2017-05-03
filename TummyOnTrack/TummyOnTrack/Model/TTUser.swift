@@ -66,6 +66,10 @@ class TTUser: NSObject {
                     let ref = FIRDatabase.database().reference(fromURL: BASE_URL).child(PROFILES_TABLE).childByAutoId()
                     let profileValues = ["name": name, "age": age, "createdAt": Date().timeIntervalSince1970, "updatedAt": Date().timeIntervalSince1970, "profilePhoto" : profileImgUrl, "userId" : self.uid, "user" : self.dictionary as Any] as [String : Any]
                     ref.updateChildValues(profileValues)
+                    TTFirebaseClient.initializeCurrentProfile(success: { (aProfile: TTProfile?) in
+                     
+                     }, failure: { (error: NSError) -> ()  in
+                     })
                     completionHandler(true)
                 }
             }

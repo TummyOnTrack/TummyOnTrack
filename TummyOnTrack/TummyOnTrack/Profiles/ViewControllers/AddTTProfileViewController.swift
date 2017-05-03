@@ -47,7 +47,10 @@ class AddTTProfileViewController: UIViewController {
         }
         TTUser.currentUser?.addProfile(name: name, age: Int(age)!, image: image, completionHandler: { (status) in
             if status {
-                self.navigationController?.popViewController(animated: true)
+                //self.navigationController?.popViewController(animated: true)
+                let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                let homeVC = mainStoryboard.instantiateViewController(withIdentifier: "MainPageTabBarController") as! UITabBarController
+                self.present(homeVC, animated: true, completion: nil)
             }
         })
     }
