@@ -58,7 +58,6 @@ class TTUser: NSObject {
     }
     
     func changeCurrentProfile( aProfile: TTProfile ) {
-        //TTProfile.changeProfile(profile: aProfile)
         TTProfile.currentProfile = aProfile
     }
     
