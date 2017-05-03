@@ -138,6 +138,10 @@ class TTProfile: NSObject {
 
         }
     }
+    
+    func setGoalPoints(aGoalPoints: Int) {
+        goalPoints = aGoalPoints
+    }
 
     class func changeProfile(profile: TTProfile) {
         if profiles[profile.name!] != nil {
