@@ -173,7 +173,7 @@ extension AddTTProfileViewController: UINavigationControllerDelegate, UIImagePic
         }
 
         self.imagePicker.sourceType = UIImagePickerControllerSourceType.camera
-        DispatchQueue.main.async(execute: {            
+        DispatchQueue.main.async(execute: {
            self.present(self.imagePicker, animated: true, completion: nil)
         })
         
