@@ -93,10 +93,10 @@ class LoginViewController: UIViewController {
             
 //            TTFirebaseClient.saveCurrentUser()
             TTFirebaseClient.saveCurrentUser(success: { (flag: Bool) in
-           Helpers.sharedInstance.hideErrorMessageAlertDialog(errorView: self.errorView, navController: self.navigationController!)
+                //Helpers.sharedInstance.hideErrorMessageAlertDialog(errorView: self.errorView, navController: self.navigationController!)
                 UserDefaults.standard.set(email, forKey: "email")
                 UserDefaults.standard.synchronize()
-<<<<<<< HEAD
+
                 Helpers.sharedInstance.hideErrorMessageAlertDialog(errorView: self.errorView, navController: self.navigationController!)
                 TTFirebaseClient.initializeCurrentProfile(success: { (aProfile: TTProfile?) in
                     SVProgressHUD.dismiss()
@@ -115,8 +115,6 @@ class LoginViewController: UIViewController {
                 }, failure: { (error: NSError) -> ()  in
                     SVProgressHUD.dismiss()
                 })
-=======
->>>>>>> origin/master
                 
             }, failure: { (error: NSError) in
                 SVProgressHUD.dismiss()
