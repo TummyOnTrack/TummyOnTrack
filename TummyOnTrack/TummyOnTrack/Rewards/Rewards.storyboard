@@ -31,9 +31,9 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Awesome!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3po-bD-1dB">
-                                <rect key="frame" x="136" y="320" width="103" height="27"/>
+                                <rect key="frame" x="136" y="534" width="103" height="27"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Vt-IG-VGS">
@@ -44,16 +44,8 @@
                                     <action selector="onDecorateMyRoomButton:" destination="5Fz-pW-Kly" eventType="touchUpInside" id="0rY-du-Zrx"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EkJ-9n-4jr">
-                                <rect key="frame" x="134" y="576" width="107" height="33"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                <state key="normal" title="Points History"/>
-                                <connections>
-                                    <action selector="onPointsHistoryButton:" destination="5Fz-pW-Kly" eventType="touchUpInside" id="tDo-BZ-ucg"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fCq-7k-1I7">
-                                <rect key="frame" x="135" y="538" width="106" height="33"/>
+                                <rect key="frame" x="135" y="571" width="106" height="33"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                 <state key="normal" title="Shop rewards"/>
                                 <connections>
@@ -67,16 +59,14 @@
                             <constraint firstItem="0Vt-IG-VGS" firstAttribute="centerX" secondItem="g1i-TT-Ltj" secondAttribute="centerX" id="7ho-Iv-aH5"/>
                             <constraint firstAttribute="trailing" secondItem="uSQ-nh-cZQ" secondAttribute="trailing" id="8yb-yq-Yp9"/>
                             <constraint firstItem="mgs-x9-jLO" firstAttribute="top" secondItem="lVw-8H-vuQ" secondAttribute="bottom" constant="30" id="A1B-EV-pVt"/>
-                            <constraint firstItem="3po-bD-1dB" firstAttribute="centerY" secondItem="g1i-TT-Ltj" secondAttribute="centerY" id="TE9-Hs-FuB"/>
+                            <constraint firstItem="0Vt-IG-VGS" firstAttribute="top" secondItem="fCq-7k-1I7" secondAttribute="bottom" constant="10" id="Ibg-vX-6lF"/>
+                            <constraint firstItem="3po-bD-1dB" firstAttribute="centerX" secondItem="g1i-TT-Ltj" secondAttribute="centerX" id="QF4-sq-50Y"/>
                             <constraint firstItem="uSQ-nh-cZQ" firstAttribute="top" secondItem="g1i-TT-Ltj" secondAttribute="top" id="XIi-pr-2LV"/>
                             <constraint firstItem="uSQ-nh-cZQ" firstAttribute="leading" secondItem="g1i-TT-Ltj" secondAttribute="leading" id="Xbp-6j-0iY"/>
                             <constraint firstItem="mgs-x9-jLO" firstAttribute="centerX" secondItem="g1i-TT-Ltj" secondAttribute="centerX" id="Yq9-N1-uGE"/>
-                            <constraint firstItem="0Vt-IG-VGS" firstAttribute="top" secondItem="EkJ-9n-4jr" secondAttribute="bottom" constant="5" id="a8p-52-ry5"/>
-                            <constraint firstItem="EkJ-9n-4jr" firstAttribute="centerX" secondItem="g1i-TT-Ltj" secondAttribute="centerX" id="b0x-8I-063"/>
-                            <constraint firstItem="3po-bD-1dB" firstAttribute="centerX" secondItem="g1i-TT-Ltj" secondAttribute="centerX" id="dEf-QW-pAG"/>
                             <constraint firstItem="sgs-3O-fwn" firstAttribute="top" secondItem="0Vt-IG-VGS" secondAttribute="bottom" constant="20" id="dny-sx-zjF"/>
+                            <constraint firstItem="fCq-7k-1I7" firstAttribute="top" secondItem="3po-bD-1dB" secondAttribute="bottom" constant="10" id="gyz-Q1-SwP"/>
                             <constraint firstItem="sgs-3O-fwn" firstAttribute="top" secondItem="uSQ-nh-cZQ" secondAttribute="bottom" id="jcD-h3-xog"/>
-                            <constraint firstItem="EkJ-9n-4jr" firstAttribute="top" secondItem="fCq-7k-1I7" secondAttribute="bottom" constant="5" id="nfj-M4-UkN"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="CDB-Rg-rb2"/>
@@ -192,7 +182,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Rewards" id="qEh-0I-Idv">
-                        <barButtonItem key="rightBarButtonItem" title="Buy" id="zvX-3L-lJD"/>
+                        <barButtonItem key="rightBarButtonItem" title="Buy" id="zvX-3L-lJD">
+                            <connections>
+                                <action selector="buy:" destination="94s-sg-Cll" id="LJq-Cd-FtK"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="ELC-DN-wNs" id="huL-Y0-d1B"/>

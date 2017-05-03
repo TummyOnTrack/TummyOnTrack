@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 import Firebase
 
-let themeColor = UIColor(red: 0.01, green: 0.41, blue: 0.22, alpha: 1.0)
+let themeColor = UIColor(red: 244/255.0, green: 115/255.0, blue: 0/255.0, alpha: 1.0)
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -27,9 +27,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         UINavigationBar.appearance().barTintColor = UIColor.white
         UINavigationBar.appearance().isTranslucent = false
-        let color : UIColor = UIColor.init(red: 244/255.0, green: 115/255.0, blue: 0/255.0, alpha: 1)
-        UINavigationBar.appearance().tintColor = color
-        UINavigationBar.appearance().titleTextAttributes =  [NSForegroundColorAttributeName:color]
+        UINavigationBar.appearance().tintColor = themeColor
+        UINavigationBar.appearance().titleTextAttributes =  [NSForegroundColorAttributeName: themeColor]
 
         return true
     }

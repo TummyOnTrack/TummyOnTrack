@@ -16,6 +16,8 @@ class TTRewardsViewController: UIViewController {
     fileprivate let sectionInsets = UIEdgeInsets(top: 50.0, left: 20.0, bottom: 50.0, right: 20.0)
     fileprivate let reuseIdentifier = "RewardCell"
     fileprivate let itemsPerRow: CGFloat = 3
+    fileprivate var selectedRewards = [TTReward]()
+    fileprivate let usedPointsTextLabel = UILabel()
     fileprivate var rewards = [TTReward]()
 
     fileprivate var largePhotoIndexPath: IndexPath? {
@@ -41,6 +43,31 @@ class TTRewardsViewController: UIViewController {
         }
     }
 
+    var buying: Bool = false {
+        didSet {
+            collectionView?.allowsMultipleSelection = buying
+            collectionView?.selectItem(at: nil, animated: true, scrollPosition: UICollectionViewScrollPosition())
+            selectedRewards.removeAll(keepingCapacity: false)
+
+            guard let buyButton = self.navigationItem.rightBarButtonItems?.first else {
+                return
+            }
+
+            guard buying else {
+                navigationItem.setRightBarButtonItems([buyButton], animated: true)
+                return
+            }
+
+            if let _ = largePhotoIndexPath  {
+                largePhotoIndexPath = nil
+            }
+
+            updateSelectedRewardsCount()
+            let buyingDetailItem = UIBarButtonItem(customView: usedPointsTextLabel)
+            navigationItem.setRightBarButtonItems([buyButton, buyingDetailItem], animated: true)
+        }
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.dataSource = self
@@ -63,6 +90,41 @@ class TTRewardsViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+
+
+    @IBAction func buy(_ sender: UIBarButtonItem) {
+        guard !rewards.isEmpty else {
+            return
+        }
+
+        guard !selectedRewards.isEmpty else {
+            buying = !buying
+            return
+        }
+
+        guard buying else  {
+            return
+        }
+
+        var pointsUsed = 0
+        for selectedReward in selectedRewards {
+            if let points = selectedReward.points {
+                pointsUsed += points
+            }
+        }
+
+        if let unusedPoints = TTProfile.currentProfile?.unusedPoints {
+            if pointsUsed > 0 && unusedPoints > pointsUsed {
+                TTProfile.currentProfile!.unusedPoints = unusedPoints - pointsUsed
+                buying = false
+                print("You just used \(pointsUsed) to buy rewards")
+            } else {
+                print("You have \(unusedPoints) points, but have selected items worth \(pointsUsed)")
+            }
+        } else {
+            print("You don't have a saved profile or unused points")
+        }
+    }
 }
 
 extension TTRewardsViewController: UICollectionViewDataSource {
@@ -78,7 +140,8 @@ extension TTRewardsViewController: UICollectionViewDataSource {
             let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind,
                                                                              withReuseIdentifier: "RewardsHeaderView",
                                                                              for: indexPath) as! RewardsHeaderView
-            headerView.pointsLabel.text = "You have \(String(describing: TTProfile.currentProfile!.unusedPoints)) points"
+            let unusedPoints = TTProfile.currentProfile == nil ? 0 : TTProfile.currentProfile!.unusedPoints
+            headerView.pointsLabel.text = "You have \(String(describing: unusedPoints)) points"
             return headerView
         default:
             assert(false, "Unexpected element kind")
@@ -111,29 +174,48 @@ extension TTRewardsViewController: UICollectionViewDataSource {
 
         return cell
     }
-}
 
-// MARK: - Private
-private extension TTRewardsViewController {
-    func rewardForIndexPath(_ indexPath: IndexPath) -> TTReward {
-        return rewards[indexPath.row]
+    func collectionView(_ collectionView: UICollectionView, moveItemAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        print("HERERE")
+        let reward = rewards.remove(at: sourceIndexPath.row)
+        rewards.insert(reward, at: destinationIndexPath.row)
     }
-
-//    func updateSharedPhotoCount() {
-//        shareTextLabel.textColor = themeColor
-//        shareTextLabel.text = "\(selectedPhotos.count) photos selected"
-//        shareTextLabel.sizeToFit()
-//    }
 }
 
 extension TTRewardsViewController: UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("Selected reward at: \(indexPath.row)")
-    }
-
     func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
+        guard !buying else {
+            return true
+        }
+
         largePhotoIndexPath = largePhotoIndexPath == indexPath ? nil : indexPath
         return false
+    }
+
+    func collectionView(_ collectionView: UICollectionView,
+                                 didSelectItemAt indexPath: IndexPath) {
+        guard buying else {
+            return
+        }
+
+        let photo = rewardForIndexPath(indexPath)
+        selectedRewards.append(photo)
+        updateSelectedRewardsCount()
+    }
+
+    func collectionView(_ collectionView: UICollectionView,
+                                 didDeselectItemAt indexPath: IndexPath) {
+
+        guard buying else {
+            return
+        }
+
+        let photo = rewardForIndexPath(indexPath)
+
+        if let index = selectedRewards.index(of: photo) {
+            selectedRewards.remove(at: index)
+            updateSelectedRewardsCount()
+        }
     }
 }
 
@@ -169,3 +251,17 @@ extension TTRewardsViewController: UICollectionViewDelegateFlowLayout {
         return sectionInsets.left
     }
 }
+
+// MARK: - Private
+private extension TTRewardsViewController {
+    func rewardForIndexPath(_ indexPath: IndexPath) -> TTReward {
+        return rewards[indexPath.row]
+    }
+
+    func updateSelectedRewardsCount() {
+        usedPointsTextLabel.textColor = themeColor
+        usedPointsTextLabel.text = "\(selectedRewards.count) rewards selected"
+        usedPointsTextLabel.sizeToFit()
+    }
+}
+
