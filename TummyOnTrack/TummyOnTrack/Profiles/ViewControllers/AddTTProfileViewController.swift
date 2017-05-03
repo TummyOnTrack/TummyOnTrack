@@ -12,6 +12,7 @@ import Photos
 import SystemConfiguration
 import Firebase
 import FirebaseStorage
+import SVProgressHUD
 
 class AddTTProfileViewController: UIViewController {
     
@@ -45,7 +46,9 @@ class AddTTProfileViewController: UIViewController {
             print("profile image when adding member")
             return
         }
+        SVProgressHUD.show()
         TTUser.currentUser?.addProfile(name: name, age: Int(age)!, image: image, completionHandler: { (status) in
+            SVProgressHUD.dismiss()
             if status {
                 //self.navigationController?.popViewController(animated: true)
                 let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)

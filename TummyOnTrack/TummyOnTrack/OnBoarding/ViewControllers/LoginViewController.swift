@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import SVProgressHUD
 
 class LoginViewController: UIViewController {
 
@@ -81,11 +82,12 @@ class LoginViewController: UIViewController {
             Helpers.sharedInstance.showErrorMessageAlertDialog("Please enter a valid email or password", errorView: errorView, errorLabel: errorMessageLabel, parentView: view, navController: navigationController!)
             return
         }
-
+        SVProgressHUD.show()
         FIRAuth.auth()?.signIn(withEmail: email, password: password, completion: { (user: FIRUser?, error) in
             if error != nil {
                 print("Login user error: \(String(describing: error))")
                 Helpers.sharedInstance.showErrorMessageAlertDialog("Please enter a valid email or password", errorView: self.errorView, errorLabel: self.errorMessageLabel, parentView: self.view, navController: self.navigationController!)
+                SVProgressHUD.dismiss()
                 return
             }
             //TTFirebaseClient.saveCurrentUser()
@@ -93,11 +95,26 @@ class LoginViewController: UIViewController {
                 UserDefaults.standard.set(email, forKey: "currentLoggedInUserEmail")
                 UserDefaults.standard.synchronize()
                 Helpers.sharedInstance.hideErrorMessageAlertDialog(errorView: self.errorView, navController: self.navigationController!)
+                TTFirebaseClient.initializeCurrentProfile(success: { (aProfile: TTProfile?) in
+                    SVProgressHUD.dismiss()
+                    if TTProfile.currentProfile == nil {
+                        let profileStoryboard = UIStoryboard(name: "ProfileStoryboard", bundle: nil)
+                        let profileVC = profileStoryboard.instantiateViewController(withIdentifier: "AddProfileVC") as! AddTTProfileViewController
+                        profileVC.navigationItem.leftBarButtonItem = nil
+                        profileVC.navigationItem.hidesBackButton = true
+                        self.navigationController?.pushViewController(profileVC, animated: true)
+                    }
+                    else {
+                        let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                        let homeVC = mainStoryboard.instantiateViewController(withIdentifier: "MainPageTabBarController") as! UITabBarController
+                        self.present(homeVC, animated: true, completion: nil)
+                    }
+                }, failure: { (error: NSError) -> ()  in
+                    SVProgressHUD.dismiss()
+                })
                 
-                let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                let homeVC = mainStoryboard.instantiateViewController(withIdentifier: "MainPageTabBarController") as! UITabBarController
-                self.present(homeVC, animated: true, completion: nil)
             }, failure: { (error: NSError) in
+                SVProgressHUD.dismiss()
                 
             })
             

@@ -38,7 +38,10 @@ class TTUser: NSObject {
         let query = ref.queryOrdered(byChild: "userId").queryEqual(toValue: uid)
 
         query.observeSingleEvent(of: .value, with: { snapshot in
-            if !snapshot.exists() { return }
+            if !snapshot.exists() {
+                success(allProfiles)
+                return
+            }
             for profile in snapshot.children.allObjects as! [FIRDataSnapshot] {
                 let val = profile.value as! [String: Any]
                 let profile = TTProfile(dictionary: val as NSDictionary)
