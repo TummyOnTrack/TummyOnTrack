@@ -54,7 +54,8 @@ class TTProfilesViewController: UITableViewController {
         UserDefaults.standard.removeObject(forKey: "email")
         let onboardingStoryboard = UIStoryboard(name: "Onboarding", bundle: nil)
         let onboardingRootController = onboardingStoryboard.instantiateViewController(withIdentifier: "SignupLoginViewController")
-        self.present(onboardingRootController, animated: true, completion: nil)
+        let navController = UINavigationController(rootViewController: onboardingRootController)
+        self.present(navController, animated: true, completion: nil)
     }
   
 }
