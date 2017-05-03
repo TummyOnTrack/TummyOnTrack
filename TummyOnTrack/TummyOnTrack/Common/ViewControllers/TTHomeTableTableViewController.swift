@@ -54,7 +54,7 @@ class TTHomeTableTableViewController: UITableViewController, UINavigationControl
         pieLayer.maxRadius = Float(pieView.frame.width/2)
 
         view.layer.addSublayer(pieLayer)
-        print("homevc \(self.homeViewProfile.name)")
+        
     }
 
     override func viewWillAppear(_ animated: Bool) {
