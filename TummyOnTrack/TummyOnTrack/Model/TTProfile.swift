@@ -91,6 +91,7 @@ class TTProfile: NSObject {
             if _currentProfile == nil {
                 if profiles.isEmpty == true {
                     print("no profiles")
+                    return _currentProfile
                 }
                 let defaults = UserDefaults.standard
 

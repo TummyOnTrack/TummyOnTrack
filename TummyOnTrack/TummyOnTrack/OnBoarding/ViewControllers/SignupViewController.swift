@@ -89,14 +89,15 @@ class SignupViewController: UIViewController {
                 //TTFirebaseClient.saveCurrentUser()
                 
                 TTFirebaseClient.saveCurrentUser(success: { (flag: Bool) in
-                    UserDefaults.standard.set(email, forKey: "currentLoggedInUserEmail")
-                    UserDefaults.standard.synchronize()
                     Helpers.sharedInstance.hideErrorMessageAlertDialog(errorView: self.errorView, navController: self.navigationController!)
+                    UserDefaults.standard.set(email, forKey: "email")
+                    UserDefaults.standard.synchronize()
                     
                     let profileStoryboard = UIStoryboard(name: "ProfileStoryboard", bundle: nil)
-                    let profileVC = profileStoryboard.instantiateViewController(withIdentifier: "SettingsView") as! TTProfilesViewController
+                    let profileVC = profileStoryboard.instantiateViewController(withIdentifier: "AddProfileVC") as! AddTTProfileViewController
+                    profileVC.navigationItem.leftBarButtonItem = nil
+                    profileVC.navigationItem.hidesBackButton = true
                     self.navigationController?.pushViewController(profileVC, animated: true)
-//                    self.present(profileVC, animated: true, completion: nil)
                 }, failure: { (error: NSError) in
                     
                 })
