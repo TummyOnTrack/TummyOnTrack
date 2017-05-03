@@ -126,8 +126,6 @@ class AddTTProfileViewController: UIViewController {
         
     }
 
- 
-
 }
 
 extension AddTTProfileViewController: UINavigationControllerDelegate, UIImagePickerControllerDelegate {
@@ -175,7 +173,10 @@ extension AddTTProfileViewController: UINavigationControllerDelegate, UIImagePic
         }
 
         self.imagePicker.sourceType = UIImagePickerControllerSourceType.camera
-        self.present(self.imagePicker, animated: true, completion: nil)
+        DispatchQueue.main.async(execute: {            
+           self.present(self.imagePicker, animated: true, completion: nil)
+        })
+        
     }
     
     fileprivate func accessPhotoLibrary() {
@@ -184,6 +185,10 @@ extension AddTTProfileViewController: UINavigationControllerDelegate, UIImagePic
         }
 
         self.imagePicker.mediaTypes = UIImagePickerController.availableMediaTypes(for: self.imagePicker.sourceType)!
-        self.present(self.imagePicker, animated: true, completion: nil)
+        DispatchQueue.main.async(execute: {
+             self.present(self.imagePicker, animated: true, completion: nil)
+        })
+
+       
     }
 }
