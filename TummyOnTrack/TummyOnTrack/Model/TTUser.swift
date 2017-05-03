@@ -34,7 +34,12 @@ class TTUser: NSObject {
     
     func getProfiles(success: @escaping ([TTProfile]) -> (), failure: @escaping (NSError) -> ()) {
         var allProfiles = [TTProfile]()
+        guard let uid = FIRAuth.auth()?.currentUser?.uid else {
+            // uid is nil
+            return
+        }
         let ref = FIRDatabase.database().reference(fromURL: BASE_URL).child(PROFILES_TABLE)
+<<<<<<< HEAD
         let query = ref.queryOrdered(byChild: "userId").queryEqual(toValue: uid)
 
         query.observeSingleEvent(of: .value, with: { snapshot in
@@ -48,8 +53,18 @@ class TTUser: NSObject {
                 allProfiles.append(profile)
             }
             success(allProfiles)
+=======
+            let query = ref.queryOrdered(byChild: "userId").queryEqual(toValue: uid)
+            query.observeSingleEvent(of: .value, with: { snapshot in
+                if !snapshot.exists() { return }
+                for profile in snapshot.children.allObjects as! [FIRDataSnapshot] {
+                    let val = profile.value as! [String: Any]
+                    let profile = TTProfile(dictionary: val as NSDictionary)
+                    allProfiles.append(profile)
+                }
+                success(allProfiles)
+>>>>>>> origin/master
         })
-
     }
     
     func changeCurrentProfile( aProfile: TTProfile ) {

@@ -121,7 +121,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 fileprivate extension AppDelegate {
     func isUserLoggedIn() {
-        if UserDefaults.standard.object(forKey: "currentLoggedInUserEmail") != nil {
+        if UserDefaults.standard.object(forKey: "email") != nil {
             let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
             let homeVC = mainStoryboard.instantiateInitialViewController()!
             window?.rootViewController = homeVC
