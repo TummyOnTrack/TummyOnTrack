@@ -21,12 +21,12 @@ class TTProfilesViewController: UITableViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         getAllProfiles()
     }
-    
+
     func getAllProfiles() {
         TTUser.currentUser?.getProfiles(success: { (profiles) in
             self.profiles = profiles
@@ -35,12 +35,13 @@ class TTProfilesViewController: UITableViewController {
             print(error)
         })
     }
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    
-    
+
+
+
     @IBAction func logoutUser(_ sender: Any) {
         do {
             try FIRAuth.auth()?.signOut()
@@ -52,8 +53,7 @@ class TTProfilesViewController: UITableViewController {
         let onboardingRootController = onboardingStoryboard.instantiateViewController(withIdentifier: "SignupLoginViewController")
         self.present(onboardingRootController, animated: true, completion: nil)
     }
-    
-
+  
 }
 
 extension TTProfilesViewController: UICollectionViewDelegate, UICollectionViewDataSource {
@@ -62,7 +62,7 @@ extension TTProfilesViewController: UICollectionViewDelegate, UICollectionViewDa
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return profiles.count + 1
     }
-    
+
     // make a cell for each cell index path
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if indexPath.row == 0 {
@@ -75,16 +75,18 @@ extension TTProfilesViewController: UICollectionViewDelegate, UICollectionViewDa
         cell.profile = profiles[indexPath.row - 1]
         return cell
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if indexPath.row > 0 {
-            let commonStoryboard = UIStoryboard(name: "CommonStoryboard", bundle: nil)
+            /*let commonStoryboard = UIStoryboard(name: "CommonStoryboard", bundle: nil)
             let homeVc = commonStoryboard.instantiateViewController(withIdentifier: "HomeView") as! TTHomeTableTableViewController
             homeVc.homeViewProfile = self.profiles[indexPath.row - 1]
-            self.navigationController?.pushViewController(homeVc, animated: true)
-            
+            self.navigationController?.pushViewController(homeVc, animated: true)*/
+            TTProfile.currentProfile = self.profiles[indexPath.row-1]
+            tabBarController?.selectedIndex = 0
+
         }
-        
+
     }
 
 }

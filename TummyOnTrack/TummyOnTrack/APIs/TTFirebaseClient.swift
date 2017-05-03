@@ -30,10 +30,6 @@ class TTFirebaseClient: NSObject {
             
             TTUser.currentUser = TTUser.init(dictionary: dictionary_ as NSDictionary)
             success(true)
-            /*initializeCurrentProfile(success: { (aProfile: TTProfile?) in
-                success(true)
-            }, failure: { (error: NSError) -> ()  in
-            })*/
         })
     }
     
