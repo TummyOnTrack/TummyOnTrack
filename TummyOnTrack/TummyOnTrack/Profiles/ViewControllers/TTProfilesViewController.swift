@@ -20,7 +20,6 @@ class TTProfilesViewController: UITableViewController {
         collectionView.allowsMultipleSelection = false
         collectionView.delegate = self
         collectionView.dataSource = self
-//        getAllProfiles()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -39,6 +38,19 @@ class TTProfilesViewController: UITableViewController {
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    
+    @IBAction func logoutUser(_ sender: Any) {
+        do {
+            try FIRAuth.auth()?.signOut()
+        }catch let error {
+            print(error)
+        }
+        UserDefaults.standard.removeObject(forKey: "email")
+        let onboardingStoryboard = UIStoryboard(name: "Onboarding", bundle: nil)
+        let onboardingRootController = onboardingStoryboard.instantiateViewController(withIdentifier: "SignupLoginViewController")
+        self.present(onboardingRootController, animated: true, completion: nil)
     }
     
 
