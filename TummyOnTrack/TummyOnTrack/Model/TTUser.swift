@@ -58,7 +58,8 @@ class TTUser: NSObject {
     }
     
     func changeCurrentProfile( aProfile: TTProfile ) {
-        TTProfile.changeProfile(profile: aProfile)
+        //TTProfile.changeProfile(profile: aProfile)
+        TTProfile.currentProfile = aProfile
     }
     
     func addProfile(name: String, age: Int, image: UIImage, completionHandler: @escaping(Bool) -> Void) {
