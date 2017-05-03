@@ -10,6 +10,8 @@ import UIKit
 import CoreData
 import Firebase
 
+let themeColor = UIColor(red: 0.01, green: 0.41, blue: 0.22, alpha: 1.0)
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -28,22 +30,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let color : UIColor = UIColor.init(red: 244/255.0, green: 115/255.0, blue: 0/255.0, alpha: 1)
         UINavigationBar.appearance().tintColor = color
         UINavigationBar.appearance().titleTextAttributes =  [NSForegroundColorAttributeName:color]
-
-        /*let tabBarController = UITabBarController()
-        let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let homeViewController = mainStoryboard.instantiateViewController(withIdentifier: "HomeViewController")
-        homeViewController.tabBarItem = UITabBarItem(title: "Home", image: UIImage(named: "home") , tag: 1)
-
-        let rewardsStoryboard = UIStoryboard(name: "Rewards", bundle: nil)
-        let pointsViewController = rewardsStoryboard.instantiateInitialViewController()
-        pointsViewController?.tabBarItem = UITabBarItem(title: "Points", image: UIImage(named: "star"), tag: 2)
-
-        let userSettingsViewController = mainStoryboard.instantiateViewController(withIdentifier: "SettingsViewController")
-        userSettingsViewController.tabBarItem = UITabBarItem(title: "Settings", image: UIImage(named: "settings"), tag: 3)
-
-        let controllers = [homeViewController, pointsViewController, userSettingsViewController]
-        tabBarController.viewControllers = controllers as? [UIViewController]
-        window?.rootViewController = tabBarController*/
 
         return true
     }

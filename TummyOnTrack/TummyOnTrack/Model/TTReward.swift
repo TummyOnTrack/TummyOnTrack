@@ -13,23 +13,32 @@ import FirebaseStorage
 class TTReward: NSObject {
     var name: String?
     var points: Int?
-    var imageURLs: [URL]?
+    var imageURLs = [URL]()
+    var thumbnail: UIImage?
+    var thumbnailURL: URL?
+    var largeImageURL: URL?
 
     static var rewards = [String: TTReward]()
 
     init(dictionary: NSDictionary) {
         name = dictionary["name"] as? String
         points = dictionary["points"] as? Int
-        var imageURLs = [URL]()
 
         if let imagesDictionary = dictionary["images"] as? NSArray {
-            for imageURLString in imagesDictionary {
+            for (index, imageURLString) in imagesDictionary.enumerated() {
                 if let imageURL = URL(string: imageURLString as! String) {
                     imageURLs.append(imageURL)
+                    switch index {
+                    case 0:
+                        thumbnailURL = imageURL
+                    case 1:
+                        largeImageURL = imageURL
+                    default:
+                        print("No images for rewards!")
+                    }
                 }
             }
         }
-        self.imageURLs = imageURLs
     }
 
     class func getRewards(success: @escaping ([TTReward]) -> (), failure: @escaping (NSError) -> ()) {
@@ -53,6 +62,29 @@ class TTReward: NSObject {
         })
     }
 
+    func sizeToFillWidthOfSize(_ size:CGSize) -> CGSize {
+
+        guard let thumbnail = thumbnail else {
+            return size
+        }
+
+        let imageSize = thumbnail.size
+        var returnSize = size
+
+        let aspectRatio = imageSize.width / imageSize.height
+
+        returnSize.height = returnSize.width / aspectRatio
+
+        if returnSize.height > size.height {
+            returnSize.height = size.height
+            returnSize.width = size.height * aspectRatio
+        }
+
+        return returnSize
+    }
+
+    /*
+    // TODO Make this upload multiple images
     class func addReward(filename: String, points: Int) {
         let imageSizes = [1]
 
@@ -87,5 +119,5 @@ class TTReward: NSObject {
                 }
             }
         }
-    }
+    }*/
 }

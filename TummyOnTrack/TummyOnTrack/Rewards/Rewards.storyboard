@@ -107,13 +107,13 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="oiA-pM-C97">
                                     <size key="itemSize" width="110" height="120"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="headerReferenceSize" width="50" height="50"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="RewardCell" id="fiy-dS-v0e" customClass="RewardCell" customModule="TummyOnTrack" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="110" height="120"/>
+                                        <rect key="frame" x="0.0" y="50" width="110" height="120"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="110" height="120"/>
@@ -141,27 +141,52 @@
                                                         <constraint firstAttribute="width" constant="16" id="KkD-7s-Fd1"/>
                                                     </constraints>
                                                 </imageView>
+                                                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="R6V-zE-nEU">
+                                                    <rect key="frame" x="37" y="42" width="37" height="37"/>
+                                                </activityIndicatorView>
                                             </subviews>
                                         </view>
                                         <constraints>
                                             <constraint firstAttribute="bottom" secondItem="vcx-ce-c3F" secondAttribute="bottom" id="3a9-cq-SK2"/>
                                             <constraint firstItem="SJ4-eu-p15" firstAttribute="leading" secondItem="3Id-0H-3Gn" secondAttribute="trailing" id="3bp-EU-FhG"/>
                                             <constraint firstItem="jDI-JD-5iK" firstAttribute="leading" secondItem="fiy-dS-v0e" secondAttribute="leading" id="9a0-rw-gfh"/>
+                                            <constraint firstItem="R6V-zE-nEU" firstAttribute="centerX" secondItem="fiy-dS-v0e" secondAttribute="centerX" id="GJj-bl-TYU"/>
                                             <constraint firstAttribute="trailing" secondItem="SJ4-eu-p15" secondAttribute="trailing" id="Gpq-f9-HIR"/>
                                             <constraint firstItem="jDI-JD-5iK" firstAttribute="top" secondItem="fiy-dS-v0e" secondAttribute="top" id="KJC-5y-tYU"/>
                                             <constraint firstItem="SJ4-eu-p15" firstAttribute="top" secondItem="3Id-0H-3Gn" secondAttribute="top" id="QhX-7r-SjV"/>
                                             <constraint firstItem="SJ4-eu-p15" firstAttribute="top" secondItem="fiy-dS-v0e" secondAttribute="top" id="YF6-WI-3w5"/>
                                             <constraint firstAttribute="bottom" secondItem="jDI-JD-5iK" secondAttribute="bottom" id="aAv-r9-OVx"/>
+                                            <constraint firstItem="R6V-zE-nEU" firstAttribute="centerY" secondItem="fiy-dS-v0e" secondAttribute="centerY" id="fE6-qV-Ntk"/>
                                             <constraint firstItem="vcx-ce-c3F" firstAttribute="centerX" secondItem="fiy-dS-v0e" secondAttribute="centerX" id="gzn-P6-33o"/>
                                             <constraint firstAttribute="trailing" secondItem="jDI-JD-5iK" secondAttribute="trailing" id="jkm-bt-0Qf"/>
                                         </constraints>
                                         <connections>
+                                            <outlet property="activityIndicator" destination="R6V-zE-nEU" id="SXm-L5-xCP"/>
                                             <outlet property="pointsLabel" destination="3Id-0H-3Gn" id="I5n-Jh-Enn"/>
                                             <outlet property="rewardImageView" destination="jDI-JD-5iK" id="BjA-VC-cNg"/>
                                             <outlet property="rewardLabel" destination="vcx-ce-c3F" id="PMt-SE-vEd"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
+                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="RewardsHeaderView" id="ja4-00-Kfw" customClass="RewardsHeaderView" customModule="TummyOnTrack" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You have 20 points" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4IC-rX-h5O">
+                                            <rect key="frame" x="96" y="13" width="183" height="24"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="4IC-rX-h5O" firstAttribute="centerY" secondItem="ja4-00-Kfw" secondAttribute="centerY" id="6kM-Mz-4iG"/>
+                                        <constraint firstItem="4IC-rX-h5O" firstAttribute="centerX" secondItem="ja4-00-Kfw" secondAttribute="centerX" id="VKY-qJ-N6t"/>
+                                    </constraints>
+                                    <connections>
+                                        <outlet property="pointsLabel" destination="4IC-rX-h5O" id="Jo4-xT-3zX"/>
+                                    </connections>
+                                </collectionReusableView>
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
