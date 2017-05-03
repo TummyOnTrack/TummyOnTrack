@@ -11,6 +11,7 @@
 import UIKit
 import MagicPie
 import Firebase
+import Charts
 
 class TTHomeTableTableViewController: UITableViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
@@ -25,14 +26,8 @@ class TTHomeTableTableViewController: UITableViewController, UINavigationControl
     
     var imagePicker: UIImagePickerController!
     
-    @IBOutlet weak var monButton: UIButton!
-    
-    @IBOutlet weak var satButton: UIButton!
-    @IBOutlet weak var friButton: UIButton!
-    @IBOutlet weak var thursButton: UIButton!
-    @IBOutlet weak var wedButton: UIButton!
-    @IBOutlet weak var tuesButton: UIButton!
-    @IBOutlet weak var sunButton: UIButton!
+    @IBOutlet weak var chartsView: BarChartView!
+   
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -63,50 +58,6 @@ class TTHomeTableTableViewController: UITableViewController, UINavigationControl
         //let month = calendar.component(.month, from: date)
         //TODO: Bad logic. Fix it.
         let day = calendar.component(.weekday, from: date)
-        if day == 1 {
-            setButtonColor(aButton: sunButton, aColor: UIColor.red)
-        }
-        else {
-            setButtonColor(aButton: sunButton, aColor: UIColor.black)
-        }
-        if day == 2 {
-            setButtonColor(aButton: monButton, aColor: UIColor.red)
-        }
-        else {
-            setButtonColor(aButton: monButton, aColor: UIColor.black)
-        }
-        if day == 3 {
-            setButtonColor(aButton: tuesButton, aColor: UIColor.red)
-        }
-        else {
-            setButtonColor(aButton: tuesButton, aColor: UIColor.black)
-        }
-        if day == 4 {
-            setButtonColor(aButton: wedButton, aColor: UIColor.red)
-        }
-        else {
-            setButtonColor(aButton: wedButton, aColor: UIColor.black)
-        }
-        if day == 5 {
-            setButtonColor(aButton: thursButton, aColor: UIColor.red)
-        }
-        else {
-            setButtonColor(aButton: thursButton, aColor: UIColor.black)
-        }
-        if day == 6 {
-            setButtonColor(aButton: friButton, aColor: UIColor.red)
-        }
-        else {
-            setButtonColor(aButton: friButton, aColor: UIColor.black)
-        }
-        if day == 7 {
-            setButtonColor(aButton: satButton, aColor: UIColor.red)
-        }
-        else {
-            setButtonColor(aButton: satButton, aColor: UIColor.black)
-        }
-        
-        print(day)
     }
     
     func setButtonColor( aButton: UIButton, aColor: UIColor) {
@@ -157,6 +108,26 @@ class TTHomeTableTableViewController: UITableViewController, UINavigationControl
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        let weekdays = ["Mon", "Tues", "Wed", "Thur", "Fri", "Sat", "Sun"]
+        let dayPoints = [20.0, 4.0, 6.0, 3.0, 12.0, 16.0, 4.0]
+        
+        chartsView.setBarChartData(xValues: weekdays, yValues: dayPoints, label: "Weekdays")
+        //setChart(dataPoints: months, values: dayPoints)
+    }
+    
+    func setChart(dataPoints: Array<Any>, values: Array<Any>) {
+        var dataEntries: [BarChartDataEntry] = []
+        
+        for i in 0..<dataPoints.count {
+            let dataEntry = BarChartDataEntry(x: Double(i+2), y:values[i] as! Double, data: dataPoints as AnyObject )
+            dataEntries.append(dataEntry)
+        }
+        
+        let chartDataSet = BarChartDataSet(values: dataEntries, label: "Points")
+        
+        let chartData = BarChartData()
+        chartData.addDataSet(chartDataSet)
+        chartsView.data = chartData
         
     }
 
@@ -197,5 +168,43 @@ class TTHomeTableTableViewController: UITableViewController, UINavigationControl
             viewController.photoImage = info[UIImagePickerControllerOriginalImage] as? UIImage
             present(viewController, animated: true, completion: nil)
         }
+    }
+}
+
+//https://github.com/danielgindi/Charts/issues/1340
+extension BarChartView {
+    
+    private class BarChartFormatter: NSObject, IAxisValueFormatter {
+        
+        var labels: [String] = []
+        
+        func stringForValue(_ value: Double, axis: AxisBase?) -> String {
+            return labels[Int(value)]
+        }
+        
+        init(labels: [String]) {
+            super.init()
+            self.labels = labels
+        }
+    }
+    
+    func setBarChartData(xValues: [String], yValues: [Double], label: String) {
+        
+        var dataEntries: [BarChartDataEntry] = []
+        
+        for i in 0..<yValues.count {
+            let dataEntry = BarChartDataEntry(x: Double(i), y: yValues[i])
+            dataEntries.append(dataEntry)
+        }
+        
+        let chartDataSet = BarChartDataSet(values: dataEntries, label: label)
+        let chartData = BarChartData(dataSet: chartDataSet)
+        
+        let chartFormatter = BarChartFormatter(labels: xValues)
+        let xAxis = XAxis()
+        xAxis.valueFormatter = chartFormatter
+        self.xAxis.valueFormatter = xAxis.valueFormatter
+        
+        self.data = chartData
     }
 }

@@ -13,6 +13,7 @@ target 'TummyOnTrack' do
   pod 'AFNetworking'
   pod 'MagicPie'
   pod 'SVProgressHUD'
+  pod 'Charts'
 	
   target 'TummyOnTrackTests' do
     inherit! :search_paths
