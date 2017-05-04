@@ -54,12 +54,13 @@ class TTHomeTableTableViewController: UITableViewController, UINavigationControl
         pieLayer.maxRadius = Float(pieView.frame.width/2)
 
         view.layer.addSublayer(pieLayer)
-
+        
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setCurrentProfileDetails()
+
     }
 
     func setToday() {
@@ -84,12 +85,30 @@ class TTHomeTableTableViewController: UITableViewController, UINavigationControl
         })
     }
     @IBAction func onSetupGoalClick(_ sender: Any) {
-
+        let alert = UIAlertController(title: "Change Goal Points",
+                                      message: "\n\n",
+                                      preferredStyle: .alert)
+        
+        let slider = UISlider(frame: CGRect(x: 10, y: 60, width: 250, height: 10))
+        slider.maximumValue = 100
+        slider.minimumValue = 10
+        slider.value = Float(TTProfile.currentProfile!.goalPoints)
+        alert.view.addSubview(slider)
+        alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler:{(action: UIAlertAction!) in
+            self.goalPointsLabel.text = "Goal: " + "\(Int(slider.value))" + "Pts"
+            TTProfile.currentProfile?.setGoalPoints(aGoalPoints: Int(slider.value))
+        }))
+        present(alert, animated: true, completion: nil)
     }
 
     func setCurrentProfileDetails() {
         if TTProfile.currentProfile != nil {
             populateProfileInfo()
+        }
+        TTUser.currentUser?.getProfiles(success: { (aProfiles: [TTProfile]) in
+            
+        }) { (error: NSError) in
+            
         }
     }
 
@@ -97,18 +116,17 @@ class TTHomeTableTableViewController: UITableViewController, UINavigationControl
         let currentProfile_ = TTProfile.currentProfile
         self.navigationItem.title = "Hi " + (currentProfile_?.name)! + "!"
         self.profileImageView.setImageWith((currentProfile_?.profileImageURL)!)
-        setupGoalButton.isHidden = true
+        //setupGoalButton.isHidden = true
         var pieColor = UIColor.init(red: 244/255.0, green: 115/255.0, blue: 0/255.0, alpha: 1)
-        if currentProfile_?.weeklyEarnedPoints == 0 && currentProfile_?.goalPoints == 0 {
+        if currentProfile_?.weeklyEarnedPoints == 0 {
             goalHeaderLabel.text = "Eat healthy, collect points!"
             pointsLabel.text = "Your weekly points will appear here"
-            goalPointsLabel.text = "Setup Weekly Goal"
-            setupGoalButton.isHidden = false
+            //goalPointsLabel.text = "Setup Weekly Goal"
+            //setupGoalButton.isHidden = false
             pieColor = UIColor.lightGray
         }
-        else {
-            goalPointsLabel.text = "Goal: " + "\((currentProfile_?.goalPoints)!)" + "Pts"
-        }
+        goalPointsLabel.text = "Goal: " + "\((currentProfile_?.goalPoints)!)" + "Pts"
+        
         if pieLayer.values != nil && pieLayer.values.count == 2 {
             pieLayer.deleteValues([pieLayer.values[0], pieLayer.values[1]], animated: true)
         }

@@ -16,12 +16,13 @@ class TTUser: NSObject {
     var email: String
     var uid: String
     var dictionary: NSDictionary?
-    var profiles: NSMutableArray?
+    var profiles: NSMutableArray
 
     init(username: String, email: String, uid: String) {
         self.username = username
         self.email = email
         self.uid = uid
+        self.profiles = []
     }
 
     init(dictionary: NSDictionary){
@@ -30,12 +31,18 @@ class TTUser: NSObject {
         username = dictionary["username"] as! String
         email = dictionary["email"] as! String
         uid = dictionary["uid"] as! String
+        profiles = []
     }
     
     func getProfiles(success: @escaping ([TTProfile]) -> (), failure: @escaping (NSError) -> ()) {
-        var allProfiles = [TTProfile]()
+        //var allProfiles = [TTProfile]()
+        
         guard let uid = FIRAuth.auth()?.currentUser?.uid else {
             // uid is nil
+            return
+        }
+        if profiles.count > 0 {
+            success(profiles as! [TTProfile])
             return
         }
         let ref = FIRDatabase.database().reference(fromURL: BASE_URL).child(PROFILES_TABLE)
@@ -44,15 +51,16 @@ class TTUser: NSObject {
 
         query.observeSingleEvent(of: .value, with: { snapshot in
             if !snapshot.exists() {
-                success(allProfiles)
+                success(self.profiles as! [TTProfile])
                 return
             }
             for profile in snapshot.children.allObjects as! [FIRDataSnapshot] {
                 let val = profile.value as! [String: Any]
                 let profile = TTProfile(dictionary: val as NSDictionary)
-                allProfiles.append(profile)
+                //allProfiles.append(profile)
+                self.profiles.add(profile)
             }
-            success(allProfiles)
+            success(self.profiles as! [TTProfile])
 
         })
     }
@@ -72,10 +80,11 @@ class TTUser: NSObject {
                 }
                 if let profileImgUrl = metaData?.downloadURL()?.absoluteString {
                     let ref = FIRDatabase.database().reference(fromURL: BASE_URL).child(PROFILES_TABLE).childByAutoId()
-                    let profileValues = ["name": name, "age": age, "createdAt": Date().timeIntervalSince1970, "updatedAt": Date().timeIntervalSince1970, "profilePhoto" : profileImgUrl, "userId" : self.uid, "user" : self.dictionary as Any] as [String : Any]
+                    let profileValues = ["name": name, "age": age, "createdAt": Date().timeIntervalSince1970, "updatedAt": Date().timeIntervalSince1970, "profilePhoto" : profileImgUrl, "userId" : self.uid, "user" : self.dictionary as Any, "goalPoints" : 50] as [String : Any]
                     ref.updateChildValues(profileValues)
+                    self.profiles.add(TTProfile.init(dictionary: profileValues as NSDictionary))
                     TTFirebaseClient.initializeCurrentProfile(success: { (aProfile: TTProfile?) in
-                     
+                        
                      }, failure: { (error: NSError) -> ()  in
                      })
                     completionHandler(true)
@@ -137,6 +146,17 @@ class TTUser: NSObject {
 
             defaults.synchronize()
 
+        }
+    }
+    
+    func replaceProfile(aProfile: TTProfile) {
+        if profiles.count > 0 {
+            for i in 0...(profiles.count)-1 {
+                if aProfile.name == (profiles[i] as! TTProfile).name {
+                    profiles[i] = aProfile
+                    break
+                }
+            }
         }
     }
 
