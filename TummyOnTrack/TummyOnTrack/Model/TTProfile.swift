@@ -26,7 +26,6 @@ class TTProfile: NSObject {
         
     }
 
-    
     init(dictionary: NSDictionary) {
         name = dictionary["name"] as? String
         age = dictionary["age"] as? Int
@@ -135,12 +134,12 @@ class TTProfile: NSObject {
             }
 
             defaults.synchronize()
-
         }
     }
     
     func setGoalPoints(aGoalPoints: Int) {
         goalPoints = aGoalPoints
+        TTUser.currentUser?.replaceProfile(aProfile: self)
     }
 
     class func changeProfile(profile: TTProfile) {

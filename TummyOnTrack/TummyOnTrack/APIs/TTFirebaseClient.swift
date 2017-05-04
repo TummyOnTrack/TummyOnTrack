@@ -22,7 +22,6 @@ class TTFirebaseClient: NSObject {
         let LoggedInUser = ref.child((FIRAuth.auth()?.currentUser?.uid)!)
         LoggedInUser.observeSingleEvent(of: .value, with: { snapshot in
             let snap_ = snapshot
-            //print(snap_.value!)
             
             let dictionary_: NSMutableDictionary = [:]
             dictionary_.addEntries(from: snap_.value! as! [AnyHashable : Any])

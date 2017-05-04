@@ -105,6 +105,11 @@ class TTHomeTableTableViewController: UITableViewController, UINavigationControl
         if TTProfile.currentProfile != nil {
             populateProfileInfo()
         }
+        TTUser.currentUser?.getProfiles(success: { (aProfiles: [TTProfile]) in
+            
+        }) { (error: NSError) in
+            
+        }
     }
 
     func populateProfileInfo() {

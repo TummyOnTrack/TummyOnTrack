@@ -30,6 +30,7 @@ class TTProfilesViewController: UITableViewController {
 
     func getAllProfiles() {
         SVProgressHUD.show()
+        
         TTUser.currentUser?.getProfiles(success: { (profiles) in
             SVProgressHUD.dismiss()
             self.profiles = profiles
