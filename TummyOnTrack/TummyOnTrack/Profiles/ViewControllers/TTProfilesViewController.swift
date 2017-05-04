@@ -89,10 +89,6 @@ extension TTProfilesViewController: UICollectionViewDelegate, UICollectionViewDa
         }
 
     }
-    
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        let size = self.collectionView.frame.size.width / 4
-//        return CGSize(width: size, height: size)
-//    }
+
 
 }
