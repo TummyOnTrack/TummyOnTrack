@@ -15,6 +15,7 @@ class TTVoiceViewController: UIViewController, SFSpeechRecognizerDelegate {
     @IBOutlet weak var microphoneButton: UIButton!
     @IBOutlet weak var userSpeechToTextLabel: UILabel!
 
+    @IBOutlet weak var rippleView: UIView!
     @IBOutlet weak var awesomeLabel: UILabel!
     var utterance: AVSpeechUtterance!
     var synthesizer: AVSpeechSynthesizer!
@@ -31,18 +32,18 @@ class TTVoiceViewController: UIViewController, SFSpeechRecognizerDelegate {
     private let audioEngine = AVAudioEngine()
 
     @IBAction func microphoneButton(_ sender: UIButton) {
-        
+        setupViewsForRippleEffect()
         if audioEngine.isRunning {
             audioEngine.stop()
             recognitionRequest?.endAudio()
-            microphoneButton.isEnabled = false
-            microphoneButton.setTitle("Tap to start speaking!", for: .normal)
+         //   microphoneButton.isEnabled = false
+          //  microphoneButton.setTitle("P", for: .normal)
             awesomeLabel.isHidden = false
         }
         else {
-            userSpeechToTextLabel.text = ""
+         //   userSpeechToTextLabel.text = ""
             startRecording()
-            microphoneButton.setTitle("Tap when done speaking", for: .normal)
+          //  microphoneButton.setTitle("S", for: .normal)
         }
 
     }
@@ -50,21 +51,7 @@ class TTVoiceViewController: UIViewController, SFSpeechRecognizerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         awesomeLabel.isHidden = true
-//        // load food items
-//        let ref = FIRDatabase.database().reference(fromURL: "https://tummyontrack.firebaseio.com/").child("FoodItem")
-//        let query = ref.queryOrdered(byChild: "name")
-//        
-//        query.observeSingleEvent(of: .value, with: { snapshot in
-//            
-//            for snap in snapshot.children {
-//                let snap_ = snap as! FIRDataSnapshot
-//                let dict = snap_.value as! NSDictionary
-//                let newFood = TTFoodItem(dictionary: dict)
-//                if (TTFoodItem.defaultFoodList?.append(newFood)) == nil {
-//                    TTFoodItem.defaultFoodList = [newFood]
-//                }
-//            }
-//        })
+        microphoneButton.layer.cornerRadius = microphoneButton.frame.size.width / 2
 
         //disable the microphone button until the speech recognizer is activated
         microphoneButton.isEnabled = false
@@ -102,6 +89,26 @@ class TTVoiceViewController: UIViewController, SFSpeechRecognizerDelegate {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func setupViewsForRippleEffect() {
+        rippleView.layer.cornerRadius = rippleView.frame.size.width / 2
+        rippleView.clipsToBounds = true
+        rippleView.layer.backgroundColor = UIColor.orange.withAlphaComponent(0.5).cgColor
+        animateRippleEffect()
+        
+    }
+    
+    func animateRippleEffect() {
+        rippleView.transform = CGAffineTransform(scaleX: 0.2, y: 0.2)
+        UIView.animate(withDuration: 1.5, delay: 0, options: UIViewAnimationOptions.curveLinear, animations: {
+            self.rippleView.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+            let alpha = (self.rippleView.layer.backgroundColor?.alpha)! / 10
+            self.rippleView.layer.backgroundColor = UIColor.orange.withAlphaComponent(alpha).cgColor
+        }) { (success: Bool) in
+            self.rippleView.layer.backgroundColor = UIColor.orange.withAlphaComponent(0).cgColor
+            
+        }
     }
     
     // This method will be called when the availability changes. If speech recognition is available, the record button will also be enabled
