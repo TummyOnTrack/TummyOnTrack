@@ -116,6 +116,7 @@ class TTRewardsViewController: UIViewController {
         if let unusedPoints = TTProfile.currentProfile?.unusedPoints {
             if pointsUsed > 0 && unusedPoints > pointsUsed {
                 TTProfile.currentProfile!.unusedPoints = unusedPoints - pointsUsed
+                TTProfile.currentProfile!.rewards += selectedRewards
                 buying = false
                 print("You just used \(pointsUsed) to buy rewards")
             } else {
