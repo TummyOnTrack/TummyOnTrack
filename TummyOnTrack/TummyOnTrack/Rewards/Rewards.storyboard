@@ -42,6 +42,7 @@
                                 <state key="normal" title="Decorate my room"/>
                                 <connections>
                                     <action selector="onDecorateMyRoomButton:" destination="5Fz-pW-Kly" eventType="touchUpInside" id="0rY-du-Zrx"/>
+                                    <segue destination="bsw-bU-wH7" kind="show" id="NfR-1w-UPl"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fCq-7k-1I7">
@@ -78,6 +79,71 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aaP-yS-DqM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="949.60000000000002" y="194.75262368815595"/>
+        </scene>
+        <!--Decorate My Room-->
+        <scene sceneID="rNF-To-zia">
+            <objects>
+                <viewController title="Decorate My Room" id="bsw-bU-wH7" customClass="TTDecorateRoomViewController" customModule="TummyOnTrack" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ykh-sr-FI3"/>
+                        <viewControllerLayoutGuide type="bottom" id="c21-SM-q8M"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Lzb-bh-sQv">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="psq-6R-LL2">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aCK-Hu-r7m">
+                                <rect key="frame" x="47.5" y="527" width="280" height="150"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="down_arrow" translatesAutoresizingMaskIntoConstraints="NO" id="AAr-3Q-kQU">
+                                        <rect key="frame" x="127.5" y="5" width="24" height="24"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="24" id="DE0-Fz-JbC"/>
+                                            <constraint firstAttribute="width" constant="24" id="QuT-n5-7aL"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="AwW-VP-6Dl"/>
+                                    <constraint firstAttribute="width" constant="280" id="fZ1-TA-Wdn"/>
+                                    <constraint firstItem="AAr-3Q-kQU" firstAttribute="top" secondItem="aCK-Hu-r7m" secondAttribute="top" constant="5" id="y46-A2-04V"/>
+                                    <constraint firstItem="AAr-3Q-kQU" firstAttribute="centerX" secondItem="aCK-Hu-r7m" secondAttribute="centerX" id="zHm-mp-Bmj"/>
+                                </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="2Dt-kF-PBq" appends="YES" id="QKn-AS-LV9"/>
+                                </connections>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="c21-SM-q8M" firstAttribute="top" secondItem="psq-6R-LL2" secondAttribute="bottom" id="2QO-nZ-jmt"/>
+                            <constraint firstItem="aCK-Hu-r7m" firstAttribute="centerX" secondItem="Lzb-bh-sQv" secondAttribute="centerX" id="Loj-cX-txV"/>
+                            <constraint firstItem="psq-6R-LL2" firstAttribute="leading" secondItem="Lzb-bh-sQv" secondAttribute="leading" id="LvH-uZ-qFC"/>
+                            <constraint firstAttribute="trailing" secondItem="psq-6R-LL2" secondAttribute="trailing" id="f3J-RE-iJp"/>
+                            <constraint firstItem="c21-SM-q8M" firstAttribute="top" secondItem="aCK-Hu-r7m" secondAttribute="bottom" constant="-10" id="wG7-ph-Ti1"/>
+                            <constraint firstItem="psq-6R-LL2" firstAttribute="top" secondItem="Lzb-bh-sQv" secondAttribute="top" id="z8b-HU-QfX"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="arrowImageView" destination="AAr-3Q-kQU" id="iQe-jN-jFp"/>
+                        <outlet property="roomImageView" destination="psq-6R-LL2" id="kR6-mc-Evz"/>
+                        <outlet property="trayView" destination="aCK-Hu-r7m" id="vhQ-67-c2R"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fkc-Ki-HIl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="2Dt-kF-PBq">
+                    <connections>
+                        <action selector="didPanTray:" destination="bsw-bU-wH7" id="3G3-02-67E"/>
+                    </connections>
+                </panGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="1885.5999999999999" y="652.62368815592208"/>
         </scene>
         <!--Rewards-->
         <scene sceneID="lQE-fy-bdh">
@@ -194,12 +260,11 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="u6j-Dt-qZY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1744.8" y="194.75262368815595"/>
+            <point key="canvasLocation" x="1887" y="-201"/>
         </scene>
         <!--Points-->
         <scene sceneID="933-x1-eZI">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="WVm-R8-iRp" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController storyboardIdentifier="Rewards" title="Points" automaticallyAdjustsScrollViewInsets="NO" id="B9m-TG-8Ar" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="p0a-td-X3f">
@@ -211,11 +276,13 @@
                         <segue destination="5Fz-pW-Kly" kind="relationship" relationship="rootViewController" id="KN1-PC-sb2"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WVm-R8-iRp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="152.80000000000001" y="194.75262368815595"/>
         </scene>
     </scenes>
     <resources>
+        <image name="down_arrow" width="20" height="14"/>
         <image name="fruits_water" width="800" height="1200"/>
         <image name="star" width="32" height="32"/>
     </resources>
