@@ -16,6 +16,10 @@ class TTVoiceSummaryViewController: UIViewController, UICollectionViewDataSource
     var defaultFoodNames = [String]()
     var selectedFoodItems = [TTFoodItem]()
     
+    @IBAction func doneBarButton(_ sender: UIBarButtonItem) {
+        
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

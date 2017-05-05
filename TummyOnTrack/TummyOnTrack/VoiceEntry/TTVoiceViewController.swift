@@ -205,7 +205,8 @@ class TTVoiceViewController: UIViewController, SFSpeechRecognizerDelegate {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ShowVoiceSummary" {
-            let destinationVC = segue.destination as! TTVoiceSummaryViewController
+            let navigationVC = segue.destination as! UINavigationController
+            let destinationVC = navigationVC.topViewController as! TTVoiceSummaryViewController
             destinationVC.selectedFoodString = self.selectedfoodstring.lowercased()
         }
     }
