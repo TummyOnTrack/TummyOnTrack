@@ -13,6 +13,7 @@ let PROFILES_TABLE = "Profiles"
 let REWARDS_TABLE = "Rewards"
 let USERS_TABLE = "Users"
 let FOODITEM_TABLE = "FoodItem"
+let DAILYFOOD_TABLE = "DailyFoodEntry"
 
 class TTFirebaseClient: NSObject {
     

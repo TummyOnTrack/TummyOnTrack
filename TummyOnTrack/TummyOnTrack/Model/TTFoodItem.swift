@@ -14,8 +14,10 @@ class TTFoodItem {
     var points: Int?
     var tags: [String]?
     var images: [URL]?
+    var dictionary: NSDictionary?
     
     init(dictionary: NSDictionary) {
+        self.dictionary = dictionary
         name = dictionary["name"] as? String
         points = dictionary["points"] as? Int
         tags = dictionary["tags"] as? [String]
@@ -45,4 +47,5 @@ class TTFoodItem {
             }
         })
     }
+    
 }

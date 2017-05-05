@@ -179,7 +179,9 @@
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="dGM-VB-Zkh" firstAttribute="centerX" secondItem="ieR-sw-SB8" secondAttribute="centerX" id="Idl-AH-jaY"/>
+                                        <constraint firstItem="dGM-VB-Zkh" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="ieR-sw-SB8" secondAttribute="leading" constant="16" id="T0F-ZL-Pfi"/>
                                         <constraint firstItem="dGM-VB-Zkh" firstAttribute="centerY" secondItem="ieR-sw-SB8" secondAttribute="centerY" id="W57-Cn-6dD"/>
+                                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="dGM-VB-Zkh" secondAttribute="trailing" constant="16" id="cJs-4D-6nb"/>
                                     </constraints>
                                     <connections>
                                         <outlet property="totalPointsLabel" destination="dGM-VB-Zkh" id="dOH-fy-Ek0"/>
