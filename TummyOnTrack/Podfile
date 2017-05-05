@@ -11,6 +11,7 @@ target 'TummyOnTrack' do
   pod 'Firebase/Storage'
   pod 'Firebase/Auth'
   pod 'AFNetworking'
+  pod 'SDWebImage'
   pod 'MagicPie'
   pod 'SVProgressHUD'
   pod 'Charts'
