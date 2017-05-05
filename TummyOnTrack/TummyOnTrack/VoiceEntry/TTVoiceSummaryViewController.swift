@@ -20,10 +20,7 @@ class TTVoiceSummaryViewController: UIViewController, UICollectionViewDataSource
     var totalPointsEarned = 0
     
     @IBAction func doneBarButton(_ sender: UIBarButtonItem) {
-        let ref = FIRDatabase.database().reference(fromURL: BASE_URL).child(DAILYFOOD_TABLE)
-        let dailyEntry = ["profile": TTProfile.currentProfile?.dictionary, "item": selectedFoodNSDictionary, "images": [], "earnedPoints" : totalPointsEarned, "createdAt": Date().timeIntervalSince1970, "updatedAt": Date().timeIntervalSince1970] as [String: Any]
-        ref.updateChildValues(dailyEntry)
-        
+
         if let currentProfileName_ = TTProfile.currentProfile?.name {
             let ref1 = FIRDatabase.database().reference(fromURL: BASE_URL).child(PROFILES_TABLE)
             let query = ref1.queryOrdered(byChild: "name").queryEqual(toValue: currentProfileName_)
@@ -32,11 +29,19 @@ class TTVoiceSummaryViewController: UIViewController, UICollectionViewDataSource
                 for snap in snapshot.children {
                     let snap_ = snap as! FIRDataSnapshot
                     print(snap_.key)
-                    let ref2 = FIRDatabase.database().reference(fromURL: BASE_URL).child(PROFILES_TABLE+"/\(snap_.key)")
+                    
+                    let ref2 = FIRDatabase.database().reference(fromURL: BASE_URL).child(DAILYFOOD_TABLE)
+                    let dailyEntry = ["profile": TTProfile.currentProfile?.dictionary, "item": self.selectedFoodNSDictionary, "images": [], "earnedPoints" : self.totalPointsEarned, "createdAt": Date().timeIntervalSince1970, "updatedAt": Date().timeIntervalSince1970, "profileId": snap_.key] as [String: Any]
+                    ref2.updateChildValues(dailyEntry)
+                    
+                    let ref3 = FIRDatabase.database().reference(fromURL: BASE_URL).child(PROFILES_TABLE+"/\(snap_.key)")
                     let total = self.totalPointsEarned + (TTProfile.currentProfile?.unusedPoints)!
-                    ref2.updateChildValues(["unusedPoints": total])
+                    ref3.updateChildValues(["unusedPoints": total])
                 }
             })
+        }
+        else {
+            print("No profile created")
         }
         
         
@@ -80,18 +85,6 @@ class TTVoiceSummaryViewController: UIViewController, UICollectionViewDataSource
         }
     }
     
-//    func updateFoodSelection() {
-//        
-//        let ref = FIRDatabase.database().reference(fromURL: BASE_URL).child("DailyFoodEntry").childByAutoId()
-//        if let _currentprofile = TTProfile.currentProfile?.dictionary {
-//            let dailyEntry = ["profile": _currentprofile, "item": selectedFoodItems, "images": [], "earnedPoints": totalPointsEarned, "createdAt": Date().timeIntervalSince1970, "updatedAt": Date().timeIntervalSince1970] as [String : Any]
-//            ref.updateChildValues(dailyEntry)
-//        }
-//        else {
-//            print("No profile created")
-//        }
-//    }
-
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         return CGSize(width: collectionView.frame.size.width, height: 25.0)
     }
