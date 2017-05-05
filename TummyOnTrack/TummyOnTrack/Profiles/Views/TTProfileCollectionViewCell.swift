@@ -11,11 +11,16 @@ class TTProfileCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var profilePhotoImageView: UIImageView!
     @IBOutlet weak var profileName: UILabel!
+    @IBOutlet weak var bgView: UIView!
     
     var profile: TTProfile! {
         didSet {
 //            self.contentView.backgroundColor = isSelected ? UIColor.yellow : UIColor.white
+            
+            bgView.backgroundColor = UIColor.black.withAlphaComponent(0.4)
+            profileName.textColor = .white
             profilePhotoImageView.layer.cornerRadius = 3.5
+            
             if let name = profile.name {
                 profileName.text = name
             }

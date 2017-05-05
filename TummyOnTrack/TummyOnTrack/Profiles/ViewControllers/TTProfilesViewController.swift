@@ -83,15 +83,12 @@ extension TTProfilesViewController: UICollectionViewDelegate, UICollectionViewDa
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if indexPath.row > 0 {
-            /*let commonStoryboard = UIStoryboard(name: "CommonStoryboard", bundle: nil)
-            let homeVc = commonStoryboard.instantiateViewController(withIdentifier: "HomeView") as! TTHomeTableTableViewController
-            homeVc.homeViewProfile = self.profiles[indexPath.row - 1]
-            self.navigationController?.pushViewController(homeVc, animated: true)*/
             TTProfile.currentProfile = self.profiles[indexPath.row-1]
             tabBarController?.selectedIndex = 0
 
         }
 
     }
+
 
 }
