@@ -33,7 +33,7 @@ class RewardCell: UICollectionViewCell {
     // MARK: - Properties
     override var isSelected: Bool {
         didSet {
-            rewardImageView.layer.borderWidth = isSelected ? 10 : 0
+            rewardImageView.layer.borderWidth = isSelected ? 1 : 0
         }
     }
 
@@ -41,6 +41,7 @@ class RewardCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         rewardImageView.layer.borderColor = themeColor.cgColor
+        rewardImageView.layer.cornerRadius = 3
         isSelected = false
     }
 }

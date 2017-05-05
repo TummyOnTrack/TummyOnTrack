@@ -31,6 +31,7 @@ class TTDecorateRoomViewController: UIViewController {
         trayDownOffset = 120
         trayUp = trayOriginalCenter
         trayDown = CGPoint(x: trayView.center.x ,y: trayView.center.y - trayDownOffset)
+        trayView.layer.cornerRadius = 3
 
         myRewards = TTProfile.currentProfile?.rewards
 
