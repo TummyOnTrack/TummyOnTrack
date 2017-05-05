@@ -117,6 +117,13 @@ class TTHomeTableTableViewController: UITableViewController, UINavigationControl
         
     }
 
+    @IBAction func onWhatDidEatClick(_ sender: Any) {
+        if let viewController = UIStoryboard(name: "VoiceEntry", bundle: nil).instantiateViewController(withIdentifier: "TTVoiceViewController") as? TTVoiceViewController {
+            if let navigator = navigationController {
+                navigator.pushViewController(viewController, animated: true)
+            }
+        }
+    }
 
     func setButtonColor( aButton: UIButton, aColor: UIColor) {
         aButton.setTitleColor(aColor, for: UIControlState.normal)

@@ -116,7 +116,7 @@
                                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <connections>
-                                                        <segue destination="3aA-oc-afC" kind="show" identifier="Show Food Input" id="6z6-73-1wp"/>
+                                                        <action selector="onWhatDidEatClick:" destination="ex1-eT-I06" eventType="touchUpInside" id="rWt-hJ-oB6"/>
                                                     </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This Week's Summary" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WPS-5f-7ua">
@@ -256,11 +256,11 @@
                         <viewControllerLayoutGuide type="bottom" id="7pg-ID-61S"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="oT4-Z3-bmP">
-                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="za0-uE-6BW">
-                                <rect key="frame" x="67" y="123" width="250" height="250"/>
+                                <rect key="frame" x="67" y="143" width="250" height="250"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="32w-x3-JAx">
                                         <rect key="frame" x="24" y="29" width="90" height="90"/>
@@ -321,7 +321,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bFL-82-9lW">
-                                <rect key="frame" x="16" y="64" width="108" height="108"/>
+                                <rect key="frame" x="16" y="84" width="108" height="108"/>
                                 <color key="backgroundColor" red="0.50196081400000003" green="0.25098040700000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="108" id="gUh-ee-9Ui"/>
@@ -336,7 +336,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Btq-Ge-Lek">
-                                <rect key="frame" x="248" y="391" width="90" height="85"/>
+                                <rect key="frame" x="248" y="411" width="90" height="85"/>
                                 <color key="backgroundColor" red="0.95686274510000002" green="0.4514970767" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="85" id="6jE-cp-MB3"/>
@@ -348,7 +348,7 @@
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Snr-yC-V3n">
-                                <rect key="frame" x="259" y="64" width="108" height="108"/>
+                                <rect key="frame" x="259" y="84" width="108" height="108"/>
                                 <color key="backgroundColor" red="0.50196081400000003" green="0.25098040700000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="108" id="9gT-4d-dmF"/>
@@ -400,7 +400,7 @@
                         <viewControllerLayoutGuide type="bottom" id="hgc-DV-pQ7"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="fnP-LQ-9Uw">
-                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="d5A-ht-EgS">
