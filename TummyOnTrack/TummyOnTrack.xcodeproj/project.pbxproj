@@ -17,7 +17,7 @@
 		31DE9B041EB154DF0055B8D8 /* TTPointsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31DE9B031EB154DF0055B8D8 /* TTPointsViewController.swift */; };
 		31DE9B061EB155120055B8D8 /* Rewards.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 31DE9B051EB155120055B8D8 /* Rewards.storyboard */; };
 		D11FC18B1EBC09A3005FDC06 /* VoiceSummaryHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11FC18A1EBC09A3005FDC06 /* VoiceSummaryHeader.swift */; };
-		D11FC18D1EBD7B49005FDC06 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D11FC18C1EBD7B49005FDC06 /* GoogleService-Info.plist */; };
+		D11FC18F1EBD8BEA005FDC06 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D11FC18E1EBD8BEA005FDC06 /* GoogleService-Info.plist */; };
 		D1B1EF9B1EB141970032BEE1 /* TTVoiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1B1EF9A1EB141970032BEE1 /* TTVoiceViewController.swift */; };
 		D1B1EF9D1EB141E40032BEE1 /* VoiceEntry.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1B1EF9C1EB141E40032BEE1 /* VoiceEntry.storyboard */; };
 		D1B1EFD51EB395250032BEE1 /* TTVoiceSummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1B1EFD41EB395250032BEE1 /* TTVoiceSummaryViewController.swift */; };
@@ -88,7 +88,7 @@
 		C70769353C6DF168DCF8CA75 /* Pods_TummyOnTrackTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TummyOnTrackTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD778399FA4004A9293948D1 /* Pods_TummyOnTrackUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TummyOnTrackUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D11FC18A1EBC09A3005FDC06 /* VoiceSummaryHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VoiceSummaryHeader.swift; path = TummyOnTrack/VoiceEntry/VoiceSummaryHeader.swift; sourceTree = SOURCE_ROOT; };
-		D11FC18C1EBD7B49005FDC06 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		D11FC18E1EBD8BEA005FDC06 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D1B1EF9A1EB141970032BEE1 /* TTVoiceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TTVoiceViewController.swift; path = TummyOnTrack/VoiceEntry/TTVoiceViewController.swift; sourceTree = SOURCE_ROOT; };
 		D1B1EF9C1EB141E40032BEE1 /* VoiceEntry.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = VoiceEntry.storyboard; sourceTree = "<group>"; };
 		D1B1EFD41EB395250032BEE1 /* TTVoiceSummaryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TTVoiceSummaryViewController.swift; path = TummyOnTrack/VoiceEntry/TTVoiceSummaryViewController.swift; sourceTree = SOURCE_ROOT; };
@@ -242,8 +242,8 @@
 				E7B940E81EAE790C0078AB5E /* Main.storyboard */,
 				E7B940EE1EAE790C0078AB5E /* Assets.xcassets */,
 				E7B940F01EAE790C0078AB5E /* LaunchScreen.storyboard */,
+				D11FC18E1EBD8BEA005FDC06 /* GoogleService-Info.plist */,
 				E7B940F31EAE790C0078AB5E /* Info.plist */,
-				D11FC18C1EBD7B49005FDC06 /* GoogleService-Info.plist */,
 				E7B940EB1EAE790C0078AB5E /* TummyOnTrack.xcdatamodeld */,
 			);
 			path = TummyOnTrack;
@@ -510,7 +510,6 @@
 				TargetAttributes = {
 					E7B940E01EAE790C0078AB5E = {
 						CreatedOnToolsVersion = 8.3;
-						DevelopmentTeam = 469Q3T2DQS;
 						ProvisioningStyle = Automatic;
 					};
 					E7B940F71EAE790C0078AB5E = {
@@ -554,7 +553,7 @@
 			files = (
 				E7B940F21EAE790C0078AB5E /* LaunchScreen.storyboard in Resources */,
 				E7BC60501EB10D6A000529AC /* Onboarding.storyboard in Resources */,
-				D11FC18D1EBD7B49005FDC06 /* GoogleService-Info.plist in Resources */,
+				D11FC18F1EBD8BEA005FDC06 /* GoogleService-Info.plist in Resources */,
 				D1B1EF9D1EB141E40032BEE1 /* VoiceEntry.storyboard in Resources */,
 				E7F0E5641EB269B00088743B /* CommonStoryboard.storyboard in Resources */,
 				E7B940EF1EAE790C0078AB5E /* Assets.xcassets in Resources */,
@@ -907,7 +906,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 469Q3T2DQS;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = TummyOnTrack/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tummyontrack.TummyOnTrack;
@@ -923,7 +922,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 469Q3T2DQS;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = TummyOnTrack/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tummyontrack.TummyOnTrack;

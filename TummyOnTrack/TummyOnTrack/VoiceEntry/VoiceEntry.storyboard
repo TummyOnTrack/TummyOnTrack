@@ -171,7 +171,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You have scored points!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dGM-VB-Zkh">
-                                            <rect key="frame" x="69" y="15.5" width="183" height="20"/>
+                                            <rect key="frame" x="96" y="15.5" width="183" height="20"/>
                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -201,6 +201,7 @@
                         <barButtonItem key="rightBarButtonItem" title="Done" id="5pD-BE-NCF">
                             <connections>
                                 <action selector="doneBarButton:" destination="NG7-C9-GPv" id="bgx-ET-cPh"/>
+                                <segue destination="tmb-IF-nmY" kind="unwind" identifier="unwindVoiceToHome" unwindAction="unwindToHomeWithSegue:" id="48Z-SD-oKa"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -209,8 +210,17 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hmV-8v-T4H" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="tmb-IF-nmY" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1862" y="32"/>
+        </scene>
+        <!--HomeView-->
+        <scene sceneID="Wwb-Te-Cwe">
+            <objects>
+                <viewControllerPlaceholder storyboardName="CommonStoryboard" referencedIdentifier="HomeView" id="nf5-tx-hzA" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UEh-dp-Cl7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2534" y="-60"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="IGx-Yn-xvU">

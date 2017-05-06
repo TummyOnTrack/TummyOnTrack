@@ -15,6 +15,10 @@ import Charts
 import UserNotifications
 
 class TTHomeTableTableViewController: UITableViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, ChartViewDelegate {
+    
+    @IBAction func unwindToHome(segue: UIStoryboardSegue) {
+        
+    }
 
     @IBOutlet weak var setupGoalButton: UIButton!
     @IBOutlet weak var goalPointsLabel: UILabel!
