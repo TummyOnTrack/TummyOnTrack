@@ -198,6 +198,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="KcR-Yd-xuS">
+                        <barButtonItem key="leftBarButtonItem" title="Speak Again" id="FVu-w9-d5Z">
+                            <connections>
+                                <action selector="speakAgainBarButton:" destination="NG7-C9-GPv" id="Qsj-lf-G8i"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Done" id="5pD-BE-NCF">
                             <connections>
                                 <action selector="doneBarButton:" destination="NG7-C9-GPv" id="bgx-ET-cPh"/>

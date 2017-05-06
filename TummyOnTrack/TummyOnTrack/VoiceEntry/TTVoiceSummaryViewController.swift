@@ -11,6 +11,10 @@ import Firebase
 
 class TTVoiceSummaryViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
+    @IBAction func speakAgainBarButton(_ sender: UIBarButtonItem) {
+        
+    }
+    
     @IBOutlet weak var collectionView: UICollectionView!
 
     var selectedFoodString: String!
@@ -20,29 +24,35 @@ class TTVoiceSummaryViewController: UIViewController, UICollectionViewDataSource
     var totalPointsEarned = 0
     
     @IBAction func doneBarButton(_ sender: UIBarButtonItem) {
-
-        if let currentProfileName_ = TTProfile.currentProfile?.name {
-            let ref1 = FIRDatabase.database().reference(fromURL: BASE_URL).child(PROFILES_TABLE)
-            let query = ref1.queryOrdered(byChild: "name").queryEqual(toValue: currentProfileName_)
+        TTFoodItem.updateFoodItems(items: selectedFoodNSDictionary, images: [], earnedPoints: totalPointsEarned, success: { 
             
-            query.observeSingleEvent(of: .value, with: { (snapshot) in
-                for snap in snapshot.children {
-                    let snap_ = snap as! FIRDataSnapshot
-                    print(snap_.key)
-                    
-                    let ref2 = FIRDatabase.database().reference(fromURL: BASE_URL).child(DAILYFOOD_TABLE)
-                    let dailyEntry = ["profile": TTProfile.currentProfile?.dictionary, "item": self.selectedFoodNSDictionary, "images": [], "earnedPoints" : self.totalPointsEarned, "createdAt": Date().timeIntervalSince1970, "updatedAt": Date().timeIntervalSince1970, "profileId": snap_.key] as [String: Any]
-                    ref2.updateChildValues(dailyEntry)
-                    
-                    let ref3 = FIRDatabase.database().reference(fromURL: BASE_URL).child(PROFILES_TABLE+"/\(snap_.key)")
-                    let total = self.totalPointsEarned + (TTProfile.currentProfile?.unusedPoints)!
-                    ref3.updateChildValues(["unusedPoints": total])
-                }
-            })
+        }) { (error: NSError) in
+            print(error.localizedDescription)
         }
-        else {
-            print("No profile created")
-        }
+
+//        if let currentProfileName_ = TTProfile.currentProfile?.name {
+//            let ref1 = FIRDatabase.database().reference(fromURL: BASE_URL).child(PROFILES_TABLE)
+//            let query = ref1.queryOrdered(byChild: "name").queryEqual(toValue: currentProfileName_)
+//            
+//            query.observeSingleEvent(of: .value, with: { (snapshot) in
+//                for snap in snapshot.children {
+//                    let snap_ = snap as! FIRDataSnapshot
+//                    print(snap_.key)
+//                    
+//                    let ref2 = FIRDatabase.database().reference(fromURL: BASE_URL).child(DAILYFOOD_TABLE).childByAutoId()
+//                    let dailyEntry = ["profile": TTProfile.currentProfile?.dictionary, "items": self.selectedFoodNSDictionary, "images": [], "earnedPoints" : self.totalPointsEarned, "createdAt": Date().timeIntervalSince1970, "updatedAt": Date().timeIntervalSince1970, "profileId": snap_.key] as [String: Any]
+//                    ref2.updateChildValues(dailyEntry)
+//                    
+//                    let ref3 = FIRDatabase.database().reference(fromURL: BASE_URL).child(PROFILES_TABLE+"/\(snap_.key)")
+//                    let totalUnused = self.totalPointsEarned + (TTProfile.currentProfile?.unusedPoints)!
+//                    let totalWeekly = self.totalPointsEarned + (TTProfile.currentProfile?.weeklyEarnedPoints)!
+//                    ref3.updateChildValues(["unusedPoints": totalUnused, "weeklyPoints": totalWeekly])
+//                }
+//            })
+//        }
+//        else {
+//            print("No profile created")
+//        }
         
         
     }
