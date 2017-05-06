@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class TTProfile: NSObject {
     var name: String?
@@ -19,7 +20,7 @@ class TTProfile: NSObject {
     var goalPoints: Int = 50
     var user: TTUser?
     var rewards: [TTReward] = [TTReward]()
-    var dictionary: NSDictionary?
+    var dictionary: NSMutableDictionary?
     
     override init() {
         super.init()
@@ -79,8 +80,9 @@ class TTProfile: NSObject {
             }
         }
 
-        self.dictionary = dictionary
+        self.dictionary = dictionary as? NSMutableDictionary
     }
+    
 
     static var profiles = [String: TTProfile]()
     static var _currentProfile: TTProfile?
@@ -140,6 +142,70 @@ class TTProfile: NSObject {
     func setGoalPoints(aGoalPoints: Int) {
         goalPoints = aGoalPoints
         TTUser.currentUser?.replaceProfile(aProfile: self)
+    }
+    
+    func updateProfile(dictionary: NSDictionary) {
+        
+        name = dictionary["name"] as? String
+        age = dictionary["age"] as? Int
+        
+        if let profileImageString = dictionary["profilePhoto"] as? String {
+            profileImageURL = URL(string: profileImageString)
+        }
+        
+        if let isParent = dictionary["isParent"] as? Bool {
+            self.isParent = isParent
+        } else {
+            self.isParent = false
+        }
+        
+        if let unusedPoints = dictionary["unusedPoints"] as? Int {
+            self.unusedPoints = unusedPoints
+        }
+        
+        if let weeklyPoints = dictionary["weeklyEarnedPoints"] as? Int {
+            self.weeklyEarnedPoints = weeklyPoints
+        }
+        
+        if let totalPoints = dictionary["totalPoints"] as? Int {
+            self.totalPoints = totalPoints
+        }
+        
+        if let goalPoints = dictionary["goalPoints"] as? Int {
+            self.goalPoints = goalPoints
+        }
+        
+        if let user_name = dictionary["user_name"] as? String {
+            if let user = TTUser.userAccounts[user_name] {
+                self.user = user
+            }
+        }
+        
+        if let rewardsItems = dictionary["rewards"] as? [String] {
+            rewards = [TTReward]()
+            for rewardsItem in rewardsItems {
+                if let reward = TTReward.rewards[rewardsItem] {
+                    rewards.append(reward)
+                }
+            }
+        }
+        
+        self.dictionary?.addEntries(from: dictionary as! [AnyHashable : Any])
+        
+        let ref1 = FIRDatabase.database().reference(fromURL: BASE_URL).child(PROFILES_TABLE)
+        let query = ref1.queryOrdered(byChild: "name").queryEqual(toValue: name)
+        
+        query.observeSingleEvent(of: .value, with: { (snapshot) in
+            for snap in snapshot.children {
+                let snap_ = snap as! FIRDataSnapshot
+                print(snap_.key)
+                let ref2 = FIRDatabase.database().reference(fromURL: BASE_URL).child(PROFILES_TABLE+"/\(snap_.key)")
+
+                ref2.updateChildValues(dictionary as! [AnyHashable : Any])
+            }
+        })
+        
+
     }
 
     class func changeProfile(profile: TTProfile) {

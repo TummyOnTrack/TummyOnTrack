@@ -77,6 +77,26 @@ class TTHomeTableTableViewController: UITableViewController, UINavigationControl
         //let month = calendar.component(.month, from: date)
         //TODO: Bad logic. Fix it.
         let day = calendar.component(.weekday, from: date)
+        // Monday
+        if day == 2 {
+            // reset weekly points on every monday
+            let defaults = UserDefaults.standard
+            let weekPointsFlag = defaults.object(forKey: "weeklyPointsReset")
+            if weekPointsFlag == nil {
+                TTProfile.currentProfile?.updateProfile(dictionary: ["weeklyEarnedPoints": 0])
+                let defaults = UserDefaults.standard
+                defaults.set("true", forKey: "weeklyPointsReset")
+                defaults.synchronize()
+            }
+        }
+        else {
+            let defaults = UserDefaults.standard
+            let weekPointsFlag = defaults.object(forKey: "weeklyPointsReset")
+            if weekPointsFlag != nil {
+                defaults.removeObject(forKey: "weeklyPointsReset")
+                defaults.synchronize()
+            }
+        }
         
     }
     
