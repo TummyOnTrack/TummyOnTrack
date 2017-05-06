@@ -17,6 +17,7 @@ class TTUser: NSObject {
     var uid: String
     var dictionary: NSDictionary?
     var profiles: NSMutableArray
+    
 
     init(username: String, email: String, uid: String) {
         self.username = username
@@ -35,7 +36,6 @@ class TTUser: NSObject {
     }
     
     func getProfiles(success: @escaping ([TTProfile]) -> (), failure: @escaping (NSError) -> ()) {
-        //var allProfiles = [TTProfile]()
         
         guard let uid = FIRAuth.auth()?.currentUser?.uid else {
             // uid is nil
@@ -55,7 +55,8 @@ class TTUser: NSObject {
                 return
             }
             for profile in snapshot.children.allObjects as! [FIRDataSnapshot] {
-                let val = profile.value as! [String: Any]
+                var val = profile.value as! [String: Any]
+                val["profileId"] = profile.key
                 let profile = TTProfile(dictionary: val as NSDictionary)
                 //allProfiles.append(profile)
                 self.profiles.add(profile)

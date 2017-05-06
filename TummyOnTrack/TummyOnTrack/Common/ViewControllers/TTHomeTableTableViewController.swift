@@ -77,9 +77,9 @@ class TTHomeTableTableViewController: UITableViewController, UINavigationControl
         //let month = calendar.component(.month, from: date)
         //TODO: Bad logic. Fix it.
         let day = calendar.component(.weekday, from: date)
-        // Monday
-        if day == 2 {
-            // reset weekly points on every monday
+        // Sunday
+        if day == 1 {
+            // reset weekly points on every Sunday
             let defaults = UserDefaults.standard
             let weekPointsFlag = defaults.object(forKey: "weeklyPointsReset")
             if weekPointsFlag == nil {
@@ -214,19 +214,29 @@ class TTHomeTableTableViewController: UITableViewController, UINavigationControl
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        let weekdays = ["Mon", "Tues", "Wed", "Thur", "Fri", "Sat", "Sun"]
-        let dayPoints = [5.0, 10.0, 15.0, 7.0, 20.0, 10.0, 5.0]
-        chartsView.noDataText = "See your weekly points here"
-
-        let limitLine = ChartLimitLine(limit: 0, label: "")
-        limitLine.lineColor = UIColor.white.withAlphaComponent(0.3)
-        limitLine.lineWidth = 1
-
-        chartsView.leftAxis.addLimitLine(limitLine)
-        chartsView.drawGridBackgroundEnabled = false
-        chartsView.setBarChartData(xValues: weekdays, yValues: dayPoints, label: "Weekdays")
-        chartsView.delegate = self
-        chartsView.animate(yAxisDuration: 0.9)
+        let weekdays = ["Sun", "Mon", "Tues", "Wed", "Thur", "Fri", "Sat"]
+        var dayPoints = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+        TTProfile.currentProfile?.getWeeklyFoodBlog(success: { (aFoodBlog: [TTDailyFoodEntry]) in
+            for i in 0...(aFoodBlog.count-1) {
+                let blog = aFoodBlog[i]
+                dayPoints[blog.weekDay!-1] = dayPoints[blog.weekDay!-1] + Double(blog.earnedPoints!)
+                self.chartsView.noDataText = "See your weekly points here"
+                
+                let limitLine = ChartLimitLine(limit: 0, label: "")
+                limitLine.lineColor = UIColor.white.withAlphaComponent(0.3)
+                limitLine.lineWidth = 1
+                
+                self.chartsView.leftAxis.addLimitLine(limitLine)
+                self.chartsView.drawGridBackgroundEnabled = false
+                self.chartsView.setBarChartData(xValues: weekdays, yValues: dayPoints, label: "Weekdays")
+                self.chartsView.delegate = self
+                self.chartsView.animate(yAxisDuration: 0.9)
+            }
+        }, failure: { (error: NSError) in
+            
+        })
+        
+        
     }
 
     override func didReceiveMemoryWarning() {

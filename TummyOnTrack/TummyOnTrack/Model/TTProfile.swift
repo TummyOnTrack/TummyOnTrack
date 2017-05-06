@@ -11,6 +11,7 @@ import Firebase
 
 class TTProfile: NSObject {
     var name: String?
+    var profileId: String?
     var age: Int?
     var profileImageURL: URL?
     var isParent: Bool = false
@@ -21,15 +22,18 @@ class TTProfile: NSObject {
     var user: TTUser?
     var rewards: [TTReward] = [TTReward]()
     var dictionary: NSMutableDictionary?
+    var weeklyFoodBlog: NSMutableArray
     
-    override init() {
+    /*override init() {
         super.init()
-        
-    }
+        self.weeklyFoodBlog = []
+    }*/
 
     init(dictionary: NSDictionary) {
         name = dictionary["name"] as? String
         age = dictionary["age"] as? Int
+        profileId = dictionary["profileId"] as? String
+        weeklyFoodBlog = []
 
         if let profileImageString = dictionary["profilePhoto"] as? String {
             profileImageURL = URL(string: profileImageString)
@@ -138,6 +142,35 @@ class TTProfile: NSObject {
             defaults.synchronize()
         }
     }
+    
+    func getWeeklyFoodBlog(success: @escaping ([TTDailyFoodEntry]) -> (), failure: @escaping (NSError) -> ()) {
+        
+        if weeklyFoodBlog.count > 0 {
+            success(weeklyFoodBlog as! [TTDailyFoodEntry])
+            return
+        }
+        
+        let ref = FIRDatabase.database().reference(fromURL: BASE_URL).child(DAILYFOOD_TABLE)
+        
+        let query = ref.queryOrdered(byChild: "profileId").queryEqual(toValue: profileId)
+        
+        query.observeSingleEvent(of: .value, with: { snapshot in
+            if !snapshot.exists() {
+                success(self.weeklyFoodBlog as! [TTDailyFoodEntry])
+                return
+            }
+            for profile in snapshot.children.allObjects as! [FIRDataSnapshot] {
+                
+                let val = profile.value as! [String: Any]
+                let blog = TTDailyFoodEntry(dictionary: val as NSDictionary)
+                self.weeklyFoodBlog.add(blog)
+            }
+            success(self.weeklyFoodBlog as! [TTDailyFoodEntry])
+            
+        })
+        
+    }
+
     
     func setGoalPoints(aGoalPoints: Int) {
         goalPoints = aGoalPoints
