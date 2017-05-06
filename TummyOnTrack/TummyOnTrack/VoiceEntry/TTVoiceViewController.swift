@@ -19,7 +19,7 @@ class TTVoiceViewController: UIViewController, SFSpeechRecognizerDelegate {
     @IBOutlet weak var awesomeLabel: UILabel!
     var utterance: AVSpeechUtterance!
     var synthesizer: AVSpeechSynthesizer!
-    let speechText = "What did you have today?"
+    let speechText = "What did you eat today?"
     var selectedfoodstring = String()
     //object that handles speech recognition
     private let speechRecognizer = SFSpeechRecognizer(locale: Locale.init(identifier: "en-US"))
@@ -36,14 +36,18 @@ class TTVoiceViewController: UIViewController, SFSpeechRecognizerDelegate {
         if audioEngine.isRunning {
             audioEngine.stop()
             recognitionRequest?.endAudio()
-         //   microphoneButton.isEnabled = false
+            microphoneButton.isEnabled = false
           //  microphoneButton.setTitle("P", for: .normal)
+            let image = UIImage(named: "microphone")
+            microphoneButton.setImage(image , for: .normal)
             awesomeLabel.isHidden = false
         }
         else {
          //   userSpeechToTextLabel.text = ""
             startRecording()
           //  microphoneButton.setTitle("S", for: .normal)
+            let image = UIImage(named: "pause")
+            microphoneButton.setImage(image, for: .normal)
         }
 
     }
@@ -56,11 +60,6 @@ class TTVoiceViewController: UIViewController, SFSpeechRecognizerDelegate {
         //disable the microphone button until the speech recognizer is activated
         microphoneButton.isEnabled = false
         speechRecognizer?.delegate = self
-        
-        utterance = AVSpeechUtterance(string: speechText)
-        synthesizer = AVSpeechSynthesizer()
-        utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
-        //   utterance.rate = 0.5
 
         //request the authorization of Speech Recognition
         SFSpeechRecognizer.requestAuthorization { (authStatus) in
@@ -200,13 +199,17 @@ class TTVoiceViewController: UIViewController, SFSpeechRecognizerDelegate {
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        
+        utterance = AVSpeechUtterance(string: speechText)
+        synthesizer = AVSpeechSynthesizer()
+        utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
+        //   utterance.rate = 0.5
         synthesizer.speak(utterance)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ShowVoiceSummary" {
-            let navigationVC = segue.destination as! UINavigationController
-            let destinationVC = navigationVC.topViewController as! TTVoiceSummaryViewController
+            let destinationVC = segue.destination as! TTVoiceSummaryViewController
             destinationVC.selectedFoodString = self.selectedfoodstring.lowercased()
         }
     }
