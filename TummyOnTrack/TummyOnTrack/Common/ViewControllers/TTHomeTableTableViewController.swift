@@ -51,7 +51,7 @@ class TTHomeTableTableViewController: UITableViewController, UINavigationControl
         // load default food items
         loadFoodItems()
 
-        setToday()
+        
         setTrackingAlarm()
 
         pieLayer = PieLayer()
@@ -65,6 +65,7 @@ class TTHomeTableTableViewController: UITableViewController, UINavigationControl
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        setToday()
         setCurrentProfileDetails()
 
     }

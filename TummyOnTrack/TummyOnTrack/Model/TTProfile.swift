@@ -163,7 +163,8 @@ class TTProfile: NSObject {
         
         query.observeSingleEvent(of: .value, with: { snapshot in
             if !snapshot.exists() {
-                success(self.weeklyFoodBlog as! [TTDailyFoodEntry])
+                //success() //self.weeklyFoodBlog as! [TTDailyFoodEntry])
+                //failure(nil)
                 return
             }
             for profile in snapshot.children.allObjects as! [FIRDataSnapshot] {
