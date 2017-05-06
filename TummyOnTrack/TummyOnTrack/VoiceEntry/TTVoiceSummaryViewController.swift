@@ -26,6 +26,8 @@ class TTVoiceSummaryViewController: UIViewController, UICollectionViewDataSource
             print(error.localizedDescription)
         }
         
+        performSegue(withIdentifier: "unwindVoiceToHome", sender: self)
+        
     }
     
     override func viewDidLoad() {
