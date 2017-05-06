@@ -41,7 +41,6 @@
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                 <state key="normal" title="Decorate my room"/>
                                 <connections>
-                                    <action selector="onDecorateMyRoomButton:" destination="5Fz-pW-Kly" eventType="touchUpInside" id="0rY-du-Zrx"/>
                                     <segue destination="bsw-bU-wH7" kind="show" id="NfR-1w-UPl"/>
                                 </connections>
                             </button>
@@ -83,7 +82,7 @@
         <!--Decorate My Room-->
         <scene sceneID="rNF-To-zia">
             <objects>
-                <viewController title="Decorate My Room" id="bsw-bU-wH7" customClass="TTDecorateRoomViewController" customModule="TummyOnTrack" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DecorateMyRoom" title="Decorate My Room" id="bsw-bU-wH7" customClass="TTDecorateRoomViewController" customModule="TummyOnTrack" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ykh-sr-FI3"/>
                         <viewControllerLayoutGuide type="bottom" id="c21-SM-q8M"/>
@@ -248,7 +247,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Rewards" id="qEh-0I-Idv">
-                        <barButtonItem key="rightBarButtonItem" title="Buy" id="zvX-3L-lJD">
+                        <barButtonItem key="rightBarButtonItem" title="Select" id="zvX-3L-lJD">
                             <connections>
                                 <action selector="buy:" destination="94s-sg-Cll" id="LJq-Cd-FtK"/>
                             </connections>

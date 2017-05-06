@@ -81,10 +81,4 @@ class TTPointsViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-    @IBAction func onPointsHistoryButton(_ sender: Any) {
-    }
-
-    @IBAction func onDecorateMyRoomButton(_ sender: Any) {
-    }
 }

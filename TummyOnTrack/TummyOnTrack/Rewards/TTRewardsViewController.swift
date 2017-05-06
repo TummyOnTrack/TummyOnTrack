@@ -54,6 +54,7 @@ class TTRewardsViewController: UIViewController {
             }
 
             guard buying else {
+                buyButton.title = "Select"
                 navigationItem.setRightBarButtonItems([buyButton], animated: true)
                 return
             }
@@ -64,6 +65,7 @@ class TTRewardsViewController: UIViewController {
 
             updateSelectedRewardsCount()
             let buyingDetailItem = UIBarButtonItem(customView: usedPointsTextLabel)
+            buyButton.title = "Buy"
             navigationItem.setRightBarButtonItems([buyButton, buyingDetailItem], animated: true)
         }
     }
@@ -119,6 +121,10 @@ class TTRewardsViewController: UIViewController {
                 TTProfile.currentProfile!.rewards += selectedRewards
                 buying = false
                 print("You just used \(pointsUsed) to buy rewards")
+
+                let rewardsStoryboard = UIStoryboard(name: "Rewards", bundle: nil)
+                let decorateMyRoomVC = rewardsStoryboard.instantiateViewController(withIdentifier: "DecorateMyRoom") as! TTDecorateRoomViewController
+                navigationController?.pushViewController(decorateMyRoomVC, animated: true)
             } else {
                 print("You have \(unusedPoints) points, but have selected items worth \(pointsUsed)")
             }
