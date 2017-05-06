@@ -20,7 +20,7 @@ class TTProfile: NSObject {
     var goalPoints: Int = 50
     var user: TTUser?
     var rewards: [TTReward] = [TTReward]()
-    var dictionary: NSDictionary?
+    var dictionary: NSMutableDictionary?
     
     override init() {
         super.init()
@@ -47,7 +47,7 @@ class TTProfile: NSObject {
             self.unusedPoints = 0
         }
         
-        if let weeklyPoints = dictionary["weeklyEarnedPoints"] as? Int {
+        if let weeklyPoints = dictionary["weeklyPoints"] as? Int {
             self.weeklyEarnedPoints = weeklyPoints
         } else {
             self.weeklyEarnedPoints = 0
@@ -80,7 +80,7 @@ class TTProfile: NSObject {
             }
         }
 
-        self.dictionary = dictionary //as? NSMutableDictionary
+        self.dictionary = dictionary.mutableCopy() as? NSMutableDictionary
     }
     
 
@@ -190,7 +190,7 @@ class TTProfile: NSObject {
             }
         }
         
-        //self.dictionary?.addEntries(from: dictionary as! [AnyHashable : Any])
+        self.dictionary?.addEntries(from: dictionary as! [AnyHashable : Any])
         
         let ref1 = FIRDatabase.database().reference(fromURL: BASE_URL).child(PROFILES_TABLE)
         let query = ref1.queryOrdered(byChild: "name").queryEqual(toValue: name)
