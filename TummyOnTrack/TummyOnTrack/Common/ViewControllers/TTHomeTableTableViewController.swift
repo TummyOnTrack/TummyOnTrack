@@ -236,7 +236,6 @@ class TTHomeTableTableViewController: UITableViewController, UINavigationControl
             
         })
         
-        
     }
 
     override func didReceiveMemoryWarning() {

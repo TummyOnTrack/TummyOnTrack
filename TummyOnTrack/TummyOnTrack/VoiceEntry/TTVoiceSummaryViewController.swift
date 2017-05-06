@@ -20,7 +20,7 @@ class TTVoiceSummaryViewController: UIViewController, UICollectionViewDataSource
     var totalPointsEarned = 0
     
     @IBAction func doneBarButton(_ sender: UIBarButtonItem) {
-        TTFoodItem.updateFoodItems(items: selectedFoodNSDictionary, images: [], earnedPoints: totalPointsEarned, success: { 
+        TTProfile.currentProfile?.updateFoodItems(items: selectedFoodNSDictionary, images: [], earnedPoints: totalPointsEarned, success: {
             
         }) { (error: NSError) in
             print(error.localizedDescription)

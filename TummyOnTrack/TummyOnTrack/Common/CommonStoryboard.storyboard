@@ -107,7 +107,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l4G-LW-pau">
-                                                    <rect key="frame" x="18" y="42" width="338" height="45"/>
+                                                    <rect key="frame" x="18" y="12" width="338" height="45"/>
                                                     <color key="backgroundColor" red="0.95686274510000002" green="0.4514970767" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="45" id="rWe-b3-ISM"/>
@@ -120,7 +120,7 @@
                                                     </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This Week's Summary" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WPS-5f-7ua">
-                                                    <rect key="frame" x="103" y="8" width="169" height="23"/>
+                                                    <rect key="frame" x="103" y="63" width="169" height="23"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="23" id="e0h-OB-ZUZ"/>
                                                     </constraints>
@@ -137,11 +137,11 @@
                                                 </view>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="WPS-5f-7ua" firstAttribute="top" secondItem="oZF-Bp-Mwr" secondAttribute="topMargin" id="8ds-VW-xR9"/>
-                                                <constraint firstItem="HkA-dX-SDa" firstAttribute="top" secondItem="l4G-LW-pau" secondAttribute="bottom" constant="15" id="D9T-bS-b6d"/>
+                                                <constraint firstItem="WPS-5f-7ua" firstAttribute="top" secondItem="oZF-Bp-Mwr" secondAttribute="topMargin" constant="55" id="8ds-VW-xR9"/>
+                                                <constraint firstItem="HkA-dX-SDa" firstAttribute="top" secondItem="l4G-LW-pau" secondAttribute="bottom" constant="45" id="D9T-bS-b6d"/>
                                                 <constraint firstAttribute="trailing" secondItem="l4G-LW-pau" secondAttribute="trailing" constant="19" id="Pte-Zc-PgS"/>
                                                 <constraint firstItem="l4G-LW-pau" firstAttribute="leading" secondItem="oZF-Bp-Mwr" secondAttribute="leading" constant="18" id="Sry-Ed-3lw"/>
-                                                <constraint firstItem="l4G-LW-pau" firstAttribute="top" secondItem="WPS-5f-7ua" secondAttribute="bottom" constant="11" id="Wir-TW-lbE"/>
+                                                <constraint firstItem="l4G-LW-pau" firstAttribute="top" secondItem="WPS-5f-7ua" secondAttribute="bottom" constant="-74" id="Wir-TW-lbE"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="HkA-dX-SDa" secondAttribute="trailing" constant="11" id="dJ2-s2-vej"/>
                                                 <constraint firstItem="HkA-dX-SDa" firstAttribute="leading" secondItem="oZF-Bp-Mwr" secondAttribute="leadingMargin" constant="10" id="j66-HA-bKV"/>
                                                 <constraint firstItem="WPS-5f-7ua" firstAttribute="centerX" secondItem="oZF-Bp-Mwr" secondAttribute="centerX" id="mCU-az-6zR"/>

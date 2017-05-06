@@ -170,6 +170,34 @@ class TTProfile: NSObject {
         })
         
     }
+    
+    func updateFoodItems(items: [NSDictionary], images: [URL], earnedPoints: Int, success: @escaping () -> (), failure: @escaping (NSError) -> ()) {
+        if let currentProfileName_ = TTProfile.currentProfile?.name {
+            let ref1 = FIRDatabase.database().reference(fromURL: BASE_URL).child(PROFILES_TABLE)
+            let query = ref1.queryOrdered(byChild: "name").queryEqual(toValue: currentProfileName_)
+            
+            query.observeSingleEvent(of: .value, with: { (snapshot) in
+                for snap in snapshot.children {
+                    let snap_ = snap as! FIRDataSnapshot
+                    print(snap_.key)
+                    
+                    let ref2 = FIRDatabase.database().reference(fromURL: BASE_URL).child(DAILYFOOD_TABLE).childByAutoId()
+                    let dailyEntry = ["profile": self.dictionary as Any, "items": items, "images": images, "earnedPoints" : earnedPoints, "createdAt": Date().timeIntervalSince1970, "updatedAt": Date().timeIntervalSince1970, "profileId": snap_.key] as [String: Any]
+                    self.weeklyFoodBlog.add(TTDailyFoodEntry.init(dictionary: dailyEntry as NSDictionary))
+                    ref2.updateChildValues(dailyEntry)
+                    
+                    let ref3 = FIRDatabase.database().reference(fromURL: BASE_URL).child(PROFILES_TABLE+"/\(snap_.key)")
+                    let totalUnused = earnedPoints + (self.unusedPoints)
+                    let totalWeekly = earnedPoints + (self.weeklyEarnedPoints)
+                    ref3.updateChildValues(["unusedPoints": totalUnused, "weeklyPoints": totalWeekly])
+                }
+            })
+        }
+        else {
+            print("No profile created")
+        }
+    }
+
 
     
     func setGoalPoints(aGoalPoints: Int) {

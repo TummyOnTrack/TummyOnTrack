@@ -48,7 +48,7 @@ class TTFoodItem {
         })
     }
     
-    class func updateFoodItems(items: [NSDictionary], images: [URL], earnedPoints: Int, success: @escaping () -> (), failure: @escaping (NSError) -> ()) {
+    /*class func updateFoodItems(items: [NSDictionary], images: [URL], earnedPoints: Int, success: @escaping () -> (), failure: @escaping (NSError) -> ()) {
         if let currentProfileName_ = TTProfile.currentProfile?.name {
             let ref1 = FIRDatabase.database().reference(fromURL: BASE_URL).child(PROFILES_TABLE)
             let query = ref1.queryOrdered(byChild: "name").queryEqual(toValue: currentProfileName_)
@@ -72,5 +72,5 @@ class TTFoodItem {
         else {
             print("No profile created")
         }
-    }
+    }*/
 }
