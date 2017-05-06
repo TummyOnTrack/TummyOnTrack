@@ -23,6 +23,7 @@ class TTProfile: NSObject {
     var rewards: [TTReward] = [TTReward]()
     var dictionary: NSMutableDictionary?
     var weeklyFoodBlog: NSMutableArray
+    var foodBlog: NSMutableArray
     
     /*override init() {
         super.init()
@@ -34,6 +35,7 @@ class TTProfile: NSObject {
         age = dictionary["age"] as? Int
         profileId = dictionary["profileId"] as? String
         weeklyFoodBlog = []
+        foodBlog = []
 
         if let profileImageString = dictionary["profilePhoto"] as? String {
             profileImageURL = URL(string: profileImageString)
@@ -145,14 +147,19 @@ class TTProfile: NSObject {
     
     func getWeeklyFoodBlog(success: @escaping ([TTDailyFoodEntry]) -> (), failure: @escaping (NSError) -> ()) {
         
-        if weeklyFoodBlog.count > 0 {
+        /*if weeklyFoodBlog.count > 0 {
             success(weeklyFoodBlog as! [TTDailyFoodEntry])
             return
-        }
-        
+        }*/
+        weeklyFoodBlog.removeAllObjects()
+        foodBlog.removeAllObjects()
         let ref = FIRDatabase.database().reference(fromURL: BASE_URL).child(DAILYFOOD_TABLE)
         
+        //let weekDay = Calendar.current.component(.weekday, from: Date())
+        //let daysAgo = Calendar.current.date(byAdding: .day, value: -weekDay-1, to: Date())
+        
         let query = ref.queryOrdered(byChild: "profileId").queryEqual(toValue: profileId)
+        //.queryOrdered(byChild: "createdAt").queryStarting(atValue: Date().timeIntervalSince1970).queryEnding(atValue: daysAgo?.timeIntervalSince1970)
         
         query.observeSingleEvent(of: .value, with: { snapshot in
             if !snapshot.exists() {
@@ -163,12 +170,26 @@ class TTProfile: NSObject {
                 
                 let val = profile.value as! [String: Any]
                 let blog = TTDailyFoodEntry(dictionary: val as NSDictionary)
-                self.weeklyFoodBlog.add(blog)
+                self.foodBlog.add(blog)
+                
             }
+            self.extractWeeklyBlog()
             success(self.weeklyFoodBlog as! [TTDailyFoodEntry])
             
         })
         
+    }
+    
+    func extractWeeklyBlog() {
+        let weekDay = Calendar.current.component(.weekday, from: Date())
+        let daysAgo = Calendar.current.date(byAdding: .day, value: -weekDay-1, to: Date())
+        
+        for i in 0...(foodBlog.count-1) {
+            let blog = foodBlog[i] as! TTDailyFoodEntry
+            if Double((blog.createdAt?.timeIntervalSince1970)!) >= Double((daysAgo?.timeIntervalSince1970)!) {
+                weeklyFoodBlog.add(blog)
+            }
+        }
     }
     
     func updateFoodItems(items: [NSDictionary], images: [URL], earnedPoints: Int, success: @escaping () -> (), failure: @escaping (NSError) -> ()) {
