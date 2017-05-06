@@ -13,6 +13,8 @@ class TTRewardsViewController: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
 
+    @IBOutlet weak var button: UIButton!
+
     fileprivate let sectionInsets = UIEdgeInsets(top: 50.0, left: 10.0, bottom: 50.0, right: 10.0)
     fileprivate let reuseIdentifier = "RewardCell"
     fileprivate let itemsPerRow: CGFloat = 3
@@ -92,7 +94,6 @@ class TTRewardsViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
 
     @IBAction func buy(_ sender: UIBarButtonItem) {
         guard !rewards.isEmpty else {

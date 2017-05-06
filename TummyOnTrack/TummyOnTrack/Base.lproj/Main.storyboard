@@ -96,10 +96,10 @@
             </objects>
             <point key="canvasLocation" x="1714" y="-38"/>
         </scene>
-        <!--Points-->
+        <!--Navigation Controller-->
         <scene sceneID="dRR-om-g1e">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="AMa-f1-Q9E" sceneMemberID="viewController">
+                <navigationController title="fff" automaticallyAdjustsScrollViewInsets="NO" id="AMa-f1-Q9E" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Points" image="star" id="Rjw-af-kwF"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="wsD-fi-NRM">
@@ -108,10 +108,16 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
+                        <outlet property="delegate" destination="45s-EM-amB" id="xgQ-5e-Cio"/>
                         <segue destination="N5L-2m-BwN" kind="relationship" relationship="rootViewController" id="V7f-6L-RtU"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FZe-YK-Mee" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <customObject id="45s-EM-amB" customClass="TTNavigationControllerDelegate" customModule="TummyOnTrack" customModuleProvider="target">
+                    <connections>
+                        <outlet property="navigationController" destination="AMa-f1-Q9E" id="zrZ-Rw-HWp"/>
+                    </connections>
+                </customObject>
             </objects>
             <point key="canvasLocation" x="906" y="778"/>
         </scene>
