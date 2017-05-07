@@ -20,14 +20,14 @@ Parent Role
 Parent/Child interactive Activity
 - [ ]	User can update food items eaten by uploading photos
 - [ ]	User can select photos from the gallery
-- [x ]	User can access camera and click photos to upload
-- [ ]	User can update food items eaten by speaking the food names (voice to text)
+- [ ]	User can access camera and click photos to upload
+- [x]	User can update food items eaten by speaking the food names (voice to text)
 - [ ]	User can gamify the experience by dragging or animating food items
 
 Rewards/Charts Summary
-- [ ] User can observe point-wise progress made
-- [ ] User should be granted with reward points for achieving target points
-- [ ] User should be able to shop fun rewards/stickers using the collected points
+- [x] User can observe point-wise progress made
+- [x] User should be granted with reward points for achieving target points
+- [x] User should be able to shop fun rewards/stickers using the collected points
 
 The following **optional** features are implemented:
 - [ ] User can login using Facebook (OAuth login flow)   
@@ -46,7 +46,7 @@ Please list two areas of the assignment you'd like to **discuss further with you
 
 Here's a walkthrough of so far implemented user stories:
 
-<img src='https://github.com/TummyOnTrack/TummyOnTrack/blob/master/TummyOnTrackSprint2_Walkthrough.gif' alt='Video Walkthrough' />
+<img src='https://github.com/TummyOnTrack/TummyOnTrack/blob/master/TummyOnTrackApp_Features_Walkthrough.gif' alt='Video Walkthrough' />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
