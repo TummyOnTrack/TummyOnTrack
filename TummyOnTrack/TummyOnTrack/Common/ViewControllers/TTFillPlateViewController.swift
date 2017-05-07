@@ -17,21 +17,23 @@ class TTFillPlateViewController: UIViewController, UITableViewDelegate, UITableV
     var foodItems = [TTFoodItem]()
     var dayOfWeek: String!
     var message: String!
+    var fullDayOfWeek: NSDictionary! = ["Sun": "Sunday", "Mon": "Monday", "Tues" : "Tuesday", "Wed" : "Wednesday", "Fri" : "Friday", "Sat" : "Saturday"]
     
     @IBOutlet weak var pointsLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        message = "Fetching food entries for " + dayOfWeek
+        message = "Fetching food entries for " + (fullDayOfWeek[dayOfWeek] as! String)
         foodItems = []
-        navigationItem.title = dayOfWeek + "'s Food"
+        
+        navigationItem.title = (fullDayOfWeek[dayOfWeek] as! String) + "'s Food Blog"
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         
         if foodBlog.count == 0 {
-            message = "Oops, No food entries for " + dayOfWeek
+            message = "Oops, No food entries for " + (fullDayOfWeek[dayOfWeek] as! String)
         }
         else {
             for i in 0...(foodBlog.count - 1) {

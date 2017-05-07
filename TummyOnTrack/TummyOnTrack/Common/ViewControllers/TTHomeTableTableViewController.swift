@@ -230,6 +230,8 @@ class TTHomeTableTableViewController: UITableViewController, UINavigationControl
         super.viewDidAppear(animated)
 
         weeklyFoodBlog = [:]
+        dayPoints = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+        noChartsView.isHidden = false
         self.weekSummaryLabel.text = "Tracking Weekly Meals Made Easier!"
         TTProfile.currentProfile?.getWeeklyFoodBlog(success: { (aFoodBlog: [TTDailyFoodEntry]) in
             if aFoodBlog.count > 0 {
@@ -253,21 +255,24 @@ class TTHomeTableTableViewController: UITableViewController, UINavigationControl
                         self.weeklyFoodBlog?.setObject(dictArray_, forKey: self.weekdays[blog.weekDay!-1] as NSCopying)
                     }
                 }
-                let limitLine = ChartLimitLine(limit: 0, label: "")
-                limitLine.lineColor = UIColor.white.withAlphaComponent(0.3)
-                limitLine.lineWidth = 1
-                
-                self.chartsView.leftAxis.addLimitLine(limitLine)
-                self.chartsView.xAxis.labelFont = UIFont(name: "Helvetica", size: 15)!
-                
-                self.chartsView.chartDescription?.text = "Daily Food Points"
-                self.chartsView.setBarChartData(xValues: self.weekdays, yValues: self.dayPoints, label: "Weekdays")
-                self.chartsView.delegate = self
-                self.chartsView.animate(yAxisDuration: 0.9)
                 self.noChartsView.isHidden = true
                 self.weekSummaryLabel.text = "This Week's Summary"
-                self.populatePoints()
             }
+            let limitLine = ChartLimitLine(limit: 0, label: "")
+            limitLine.lineColor = UIColor.white.withAlphaComponent(0.3)
+            limitLine.lineWidth = 1
+            
+            self.chartsView.leftAxis.addLimitLine(limitLine)
+            self.chartsView.xAxis.labelFont = UIFont(name: "Helvetica", size: 15)!
+            
+            self.chartsView.chartDescription?.text = "Daily Points"
+            self.chartsView.chartDescription?.font = UIFont(name: "Helvetica", size: 14)!
+            self.chartsView.setBarChartData(xValues: self.weekdays, yValues: self.dayPoints, label: "Weekdays")
+            self.chartsView.delegate = self
+            self.chartsView.animate(yAxisDuration: 0.9)
+            
+            self.populatePoints()
+            
             
             
         }, failure: { (error: Error) in

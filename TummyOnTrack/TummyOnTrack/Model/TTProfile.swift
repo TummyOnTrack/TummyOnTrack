@@ -191,7 +191,7 @@ class TTProfile: NSObject {
                 weeklyFoodBlog.add(blog)
             }
         }
-        //updateProfile(dictionary: ["weeklyEarnedPoints": weeklyEarnedPoints])
+        updateProfile(dictionary: ["weeklyEarnedPoints": weeklyEarnedPoints])
     }
     
     func updateFoodItems(items: [NSDictionary], images: [URL], earnedPoints: Int, success: @escaping () -> (), failure: @escaping (NSError) -> ()) {
