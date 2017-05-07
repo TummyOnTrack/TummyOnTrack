@@ -73,7 +73,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "171"
             endingLineNumber = "171"
-            landmarkName = "populateProfileInfo()"
+            landmarkName = "setCurrentProfileDetails()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
