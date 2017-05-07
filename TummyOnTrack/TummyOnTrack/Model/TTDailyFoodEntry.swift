@@ -12,7 +12,7 @@ class TTDailyFoodEntry: NSObject {
     
     var createdAt: Date?
     var earnedPoints: Int?
-    var items : NSMutableArray?
+    var items : [TTFoodItem]?
     var profileId : String?
     var weekDay: Int?
     
@@ -31,7 +31,8 @@ class TTDailyFoodEntry: NSObject {
         if let itemsDictionary = dictionary["items"] as? NSArray {
             for (_, item) in itemsDictionary.enumerated() {
                 let item_ = TTFoodItem.init(dictionary: item as! NSDictionary)
-                items?.add(item_)
+                //items?.add(item_)
+                items?.append(item_)
             }
         }
     }

@@ -31,18 +31,13 @@ class TTHomeTableTableViewController: UITableViewController, UINavigationControl
 
     var imagePicker: UIImagePickerController!
 
-
-    @IBOutlet weak var monButton: UIButton!
-
-    @IBOutlet weak var satButton: UIButton!
-    @IBOutlet weak var friButton: UIButton!
-    @IBOutlet weak var thursButton: UIButton!
-    @IBOutlet weak var wedButton: UIButton!
-    @IBOutlet weak var tuesButton: UIButton!
-    @IBOutlet weak var sunButton: UIButton!
+    
+    var weeklyFoodBlog: NSMutableDictionary?
 
 
     @IBOutlet weak var chartsView: BarChartView!
+    
+    let weekdays = ["Sun", "Mon", "Tues", "Wed", "Thur", "Fri", "Sat"]
 
 
     override func viewDidLoad() {
@@ -51,7 +46,6 @@ class TTHomeTableTableViewController: UITableViewController, UINavigationControl
         // load default food items
         loadFoodItems()
 
-        
         setTrackingAlarm()
 
         pieLayer = PieLayer()
@@ -74,9 +68,7 @@ class TTHomeTableTableViewController: UITableViewController, UINavigationControl
         let date = Date()
         let calendar = Calendar.current
 
-        //let year = calendar.component(.year, from: date)
-        //let month = calendar.component(.month, from: date)
-        //TODO: Bad logic. Fix it.
+ 
         let day = calendar.component(.weekday, from: date)
         // Sunday
         if day == 1 {
@@ -198,8 +190,6 @@ class TTHomeTableTableViewController: UITableViewController, UINavigationControl
         if currentProfile_?.weeklyEarnedPoints == 0 {
             goalHeaderLabel.text = "Eat healthy, collect points!"
             pointsLabel.text = "Your weekly points will appear here"
-            //goalPointsLabel.text = "Setup Weekly Goal"
-            //setupGoalButton.isHidden = false
             pieColor = UIColor.lightGray
         }
         else {
@@ -221,13 +211,29 @@ class TTHomeTableTableViewController: UITableViewController, UINavigationControl
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        let weekdays = ["Sun", "Mon", "Tues", "Wed", "Thur", "Fri", "Sat"]
+
         var dayPoints = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+        weeklyFoodBlog = [:]
         TTProfile.currentProfile?.getWeeklyFoodBlog(success: { (aFoodBlog: [TTDailyFoodEntry]) in
             for i in 0...(aFoodBlog.count-1) {
                 let blog = aFoodBlog[i]
                 dayPoints[blog.weekDay!-1] = dayPoints[blog.weekDay!-1] + Double(blog.earnedPoints!)
                 self.chartsView.noDataText = "See your weekly points here"
+                
+                let dictBlog_ = self.weeklyFoodBlog?.object(forKey: self.weekdays[blog.weekDay!-1])
+                
+                if dictBlog_ == nil {
+                    let dictArray_: NSMutableArray = []
+                    dictArray_.add(blog)
+                    
+                    self.weeklyFoodBlog?.setObject(dictArray_, forKey: self.weekdays[blog.weekDay!-1] as NSCopying)
+                }
+                else {
+                    let dictArray_: NSMutableArray = dictBlog_ as! NSMutableArray
+                    dictArray_.add(blog)
+
+                    self.weeklyFoodBlog?.setObject(dictArray_, forKey: self.weekdays[blog.weekDay!-1] as NSCopying)
+                }
                 
                 let limitLine = ChartLimitLine(limit: 0, label: "")
                 limitLine.lineColor = UIColor.white.withAlphaComponent(0.3)
@@ -235,14 +241,13 @@ class TTHomeTableTableViewController: UITableViewController, UINavigationControl
                 
                 self.chartsView.leftAxis.addLimitLine(limitLine)
                 self.chartsView.drawGridBackgroundEnabled = false
-                self.chartsView.setBarChartData(xValues: weekdays, yValues: dayPoints, label: "Weekdays")
+                self.chartsView.setBarChartData(xValues: self.weekdays, yValues: dayPoints, label: "Weekdays")
                 self.chartsView.delegate = self
                 self.chartsView.animate(yAxisDuration: 0.9)
             }
         }, failure: { (error: NSError) in
             
         })
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -283,10 +288,22 @@ class TTHomeTableTableViewController: UITableViewController, UINavigationControl
             present(viewController, animated: true, completion: nil)
         }
     }
-
-    func chartValueSelected(chartView: ChartViewBase, entry: ChartDataEntry, dataSetIndex: Int, highlight: Highlight) {
-        //print("\(entry.value) in \(months[entry.xIndex])")
+    
+    func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {
+        performSegue(withIdentifier: "Show Plate View", sender: self.weeklyFoodBlog?.object(forKey: self.weekdays[Int(entry.x)]))
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "Show Plate View") {
+            
+            let vc_ = segue.destination as! TTFillPlateViewController
+            let blog = (sender as? [TTDailyFoodEntry])!
+            vc_.foodBlog = (sender as? [TTDailyFoodEntry])!
+            
+        }
+        
+    }
+
 }
 
 //https://github.com/danielgindi/Charts/issues/1340

@@ -53,6 +53,7 @@
 		E7F0E56A1EB29E7B0088743B /* TTAddPhotoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F0E5691EB29E7B0088743B /* TTAddPhotoTableViewController.swift */; };
 		E7F0E5711EB540280088743B /* TTFirebaseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F0E5701EB540280088743B /* TTFirebaseClient.swift */; };
 		E7F8E39C1EBE6DE8002C7494 /* TTDailyFoodEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F8E39B1EBE6DE8002C7494 /* TTDailyFoodEntry.swift */; };
+		E7F8E39E1EBEAAC0002C7494 /* TTFillPlateTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F8E39D1EBEAAC0002C7494 /* TTFillPlateTableCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -131,6 +132,7 @@
 		E7F0E5691EB29E7B0088743B /* TTAddPhotoTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TTAddPhotoTableViewController.swift; sourceTree = "<group>"; };
 		E7F0E5701EB540280088743B /* TTFirebaseClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TTFirebaseClient.swift; sourceTree = "<group>"; };
 		E7F8E39B1EBE6DE8002C7494 /* TTDailyFoodEntry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TTDailyFoodEntry.swift; sourceTree = "<group>"; };
+		E7F8E39D1EBEAAC0002C7494 /* TTFillPlateTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TTFillPlateTableCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -430,6 +432,7 @@
 			isa = PBXGroup;
 			children = (
 				E7E3B4831EB6F483000F9CA4 /* TTGameCollectionViewCell.swift */,
+				E7F8E39D1EBEAAC0002C7494 /* TTFillPlateTableCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -744,6 +747,7 @@
 				E7BC60561EB10D79000529AC /* SignupViewController.swift in Sources */,
 				D11FC18B1EBC09A3005FDC06 /* VoiceSummaryHeader.swift in Sources */,
 				31DE9B041EB154DF0055B8D8 /* TTPointsViewController.swift in Sources */,
+				E7F8E39E1EBEAAC0002C7494 /* TTFillPlateTableCell.swift in Sources */,
 				E7BC60581EB11220000529AC /* TTUser.swift in Sources */,
 				311B02EE1EB994E000DAA2ED /* RewardsHeaderView.swift in Sources */,
 				D1B1EFD71EB3953D0032BEE1 /* TTFoodItem.swift in Sources */,

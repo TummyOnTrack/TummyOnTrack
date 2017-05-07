@@ -166,6 +166,7 @@
                         <outlet property="pointsLabel" destination="NXg-uM-WNM" id="TVn-UH-9vh"/>
                         <outlet property="profileImageView" destination="BDC-Md-k7F" id="BGt-gW-CjU"/>
                         <outlet property="setupGoalButton" destination="i6j-Y6-wPh" id="eTt-jv-Uwt"/>
+                        <segue destination="e0x-T0-KYU" kind="show" identifier="Show Plate View" id="AjU-2M-tCj"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="11c-ic-tMb" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -256,135 +257,56 @@
                         <viewControllerLayoutGuide type="bottom" id="7pg-ID-61S"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="oT4-Z3-bmP">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="za0-uE-6BW">
-                                <rect key="frame" x="67" y="143" width="250" height="250"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="32w-x3-JAx">
-                                        <rect key="frame" x="24" y="29" width="90" height="90"/>
-                                        <color key="backgroundColor" red="0.95686274510000002" green="0.75686274509999996" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="90" id="lhZ-wn-aaP"/>
-                                            <constraint firstAttribute="height" constant="90" id="ns2-bW-1CT"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
-                                        <state key="normal" title="Fruits">
-                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="94" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="1ki-XA-gbq">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FillFoodCell" rowHeight="94" id="TOK-RT-o8a" customClass="TTFillPlateTableCell" customModule="TummyOnTrack" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="94"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="TOK-RT-o8a" id="DXh-1J-tdS">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="93.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="L4r-Vf-zcb">
+                                                    <rect key="frame" x="18" y="8" width="78" height="78"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="foodName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6SC-HA-uUy">
+                                                    <rect key="frame" x="104" y="36" width="80" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Na5-IL-ko5">
+                                                    <rect key="frame" x="304" y="22" width="50" height="50"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
+                                            </subviews>
+                                        </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="DvD-o0-nvg" kind="show" identifier="Show Fruits" id="Ya6-4B-WPS"/>
+                                            <outlet property="foodImageView" destination="L4r-Vf-zcb" id="2Sf-Rh-yEl"/>
+                                            <outlet property="foodNameLabel" destination="6SC-HA-uUy" id="hRn-XT-NCv"/>
+                                            <outlet property="smileyImageView" destination="Na5-IL-ko5" id="MxL-iM-8PP"/>
                                         </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tSV-t4-lDU">
-                                        <rect key="frame" x="140" y="29" width="90" height="90"/>
-                                        <color key="backgroundColor" red="0.95686274510000002" green="0.75686274509999996" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="90" id="0Uy-BC-yRs"/>
-                                            <constraint firstAttribute="height" constant="90" id="8fO-TI-lZp"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
-                                        <state key="normal" title="Veggies">
-                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <segue destination="DvD-o0-nvg" kind="show" identifier="Show Veggies" id="Omq-JW-x1g"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jBE-Au-iFZ">
-                                        <rect key="frame" x="43" y="145" width="174" height="76"/>
-                                        <color key="backgroundColor" red="0.95686274510000002" green="0.75686274509999996" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="76" id="1ke-hA-Ulq"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
-                                        <state key="normal" title="Main Dish/Protein">
-                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <segue destination="DvD-o0-nvg" kind="show" identifier="Show Main Dish" id="V2x-FU-Tgf"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" red="0.95686274510000002" green="0.4514970767" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="250" id="FiJ-Sc-B6y"/>
-                                    <constraint firstItem="jBE-Au-iFZ" firstAttribute="leading" secondItem="za0-uE-6BW" secondAttribute="leading" constant="43" id="GPu-Yu-EQN"/>
-                                    <constraint firstItem="32w-x3-JAx" firstAttribute="top" secondItem="za0-uE-6BW" secondAttribute="top" constant="29" id="PQZ-Oh-Y5d"/>
-                                    <constraint firstItem="32w-x3-JAx" firstAttribute="leading" secondItem="za0-uE-6BW" secondAttribute="leading" constant="24" id="VZb-mh-PvP"/>
-                                    <constraint firstAttribute="bottom" secondItem="jBE-Au-iFZ" secondAttribute="bottom" constant="29" id="Ybs-tS-nLp"/>
-                                    <constraint firstAttribute="trailing" secondItem="jBE-Au-iFZ" secondAttribute="trailing" constant="33" id="gaj-yP-HiD"/>
-                                    <constraint firstAttribute="height" constant="250" id="h9Q-48-k5e"/>
-                                    <constraint firstItem="tSV-t4-lDU" firstAttribute="top" secondItem="za0-uE-6BW" secondAttribute="top" constant="29" id="hcR-ph-Uml"/>
-                                    <constraint firstAttribute="trailing" secondItem="tSV-t4-lDU" secondAttribute="trailing" constant="20" id="ufs-lA-EY9"/>
-                                </constraints>
-                            </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bFL-82-9lW">
-                                <rect key="frame" x="16" y="84" width="108" height="108"/>
-                                <color key="backgroundColor" red="0.50196081400000003" green="0.25098040700000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="108" id="gUh-ee-9Ui"/>
-                                    <constraint firstAttribute="width" constant="108" id="w0W-Ty-cCZ"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
-                                <state key="normal" title="Dairy">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
+                                    </tableViewCell>
+                                </prototypes>
                                 <connections>
-                                    <segue destination="DvD-o0-nvg" kind="show" identifier="Show Dairy" id="TIx-vF-Qqt"/>
+                                    <outlet property="dataSource" destination="e0x-T0-KYU" id="pc2-yO-6eb"/>
+                                    <outlet property="delegate" destination="e0x-T0-KYU" id="wuC-x6-ECv"/>
                                 </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Btq-Ge-Lek">
-                                <rect key="frame" x="248" y="411" width="90" height="85"/>
-                                <color key="backgroundColor" red="0.95686274510000002" green="0.4514970767" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="85" id="6jE-cp-MB3"/>
-                                    <constraint firstAttribute="width" constant="90" id="odA-Et-4sn"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
-                                <state key="normal" title="Drink">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Snr-yC-V3n">
-                                <rect key="frame" x="259" y="84" width="108" height="108"/>
-                                <color key="backgroundColor" red="0.50196081400000003" green="0.25098040700000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="108" id="9gT-4d-dmF"/>
-                                    <constraint firstAttribute="height" constant="108" id="Woh-NY-sDv"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
-                                <state key="normal" title="Dessert">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="DvD-o0-nvg" kind="show" identifier="Show Dessert" id="nfJ-Kx-e3X"/>
-                                </connections>
-                            </button>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="Btq-Ge-Lek" secondAttribute="trailing" constant="21" id="0WY-Ip-WWf"/>
-                            <constraint firstItem="bFL-82-9lW" firstAttribute="leading" secondItem="oT4-Z3-bmP" secondAttribute="leadingMargin" id="Cdn-BH-eoY"/>
-                            <constraint firstItem="Snr-yC-V3n" firstAttribute="trailing" secondItem="oT4-Z3-bmP" secondAttribute="trailingMargin" constant="8" id="PbJ-Rl-Wg0"/>
-                            <constraint firstItem="Btq-Ge-Lek" firstAttribute="top" secondItem="za0-uE-6BW" secondAttribute="bottom" constant="18" id="RZz-9H-1MD"/>
-                            <constraint firstItem="Btq-Ge-Lek" firstAttribute="top" secondItem="za0-uE-6BW" secondAttribute="bottom" constant="18" id="YIC-61-Xtc"/>
-                            <constraint firstItem="za0-uE-6BW" firstAttribute="top" secondItem="J1D-xX-Kyt" secondAttribute="bottom" constant="123" id="f6o-dA-3z3"/>
-                            <constraint firstItem="Snr-yC-V3n" firstAttribute="top" secondItem="J1D-xX-Kyt" secondAttribute="bottom" constant="64" id="gGb-hF-XMd"/>
-                            <constraint firstItem="za0-uE-6BW" firstAttribute="leading" secondItem="oT4-Z3-bmP" secondAttribute="leadingMargin" constant="51" id="ndu-Dz-vTZ"/>
-                            <constraint firstItem="bFL-82-9lW" firstAttribute="top" secondItem="J1D-xX-Kyt" secondAttribute="bottom" constant="64" id="vMb-o3-iX5"/>
-                        </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <connections>
-                        <outlet property="dairyButton" destination="bFL-82-9lW" id="cBS-V6-2px"/>
-                        <outlet property="dessertButton" destination="Snr-yC-V3n" id="nqD-2G-oDy"/>
-                        <outlet property="drinkButton" destination="Btq-Ge-Lek" id="aiv-yi-sZi"/>
-                        <outlet property="fruitsButton" destination="32w-x3-JAx" id="QIt-c4-13b"/>
-                        <outlet property="mainDishButton" destination="jBE-Au-iFZ" id="iU5-5p-nLS"/>
-                        <outlet property="plateView" destination="za0-uE-6BW" id="k7E-fN-Vfw"/>
-                        <outlet property="veggiesButton" destination="tSV-t4-lDU" id="4Ab-Oa-7Hc"/>
+                        <outlet property="tableView" destination="1ki-XA-gbq" id="75i-Zr-gvf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zh6-ac-NBf" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -595,6 +517,6 @@
         <image name="cross_grey" width="40" height="40"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="V2x-FU-Tgf"/>
+        <segue reference="AjU-2M-tCj"/>
     </inferredMetricsTieBreakers>
 </document>

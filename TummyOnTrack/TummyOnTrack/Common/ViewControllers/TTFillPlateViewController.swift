@@ -8,36 +8,42 @@
 
 import UIKit
 
-class TTFillPlateViewController: UIViewController {
+class TTFillPlateViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
-    @IBOutlet weak var plateView: UIView!
-    @IBOutlet weak var fruitsButton: UIButton!
+    var foodBlog: [TTDailyFoodEntry]!
+    var foodItems = [TTFoodItem]()
     
-    @IBOutlet weak var veggiesButton: UIButton!
-    
-    @IBOutlet weak var mainDishButton: UIButton!
-    
-    @IBOutlet weak var dairyButton: UIButton!
-    
-    @IBOutlet weak var drinkButton: UIButton!
-    @IBOutlet weak var dessertButton: UIButton!
+    @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        plateView.layer.masksToBounds = true
-        plateView.layer.cornerRadius = plateView.frame.height/2
-        fruitsButton.layer.cornerRadius = fruitsButton.frame.height/2
-        veggiesButton.layer.cornerRadius = veggiesButton.frame.height/2
-        mainDishButton.layer.cornerRadius = mainDishButton.frame.height/2
-        dairyButton.layer.cornerRadius = dairyButton.frame.height/2
-        drinkButton.layer.cornerRadius = drinkButton.frame.height/2
-        dessertButton.layer.cornerRadius = dessertButton.frame.height/2
+        foodItems = []
+        
+        for i in 0...(foodBlog.count - 1) {
+            let blog = foodBlog[i] as TTDailyFoodEntry
+            for j in 0...((blog.items?.count)! - 1) {
+                let item_ = blog.items?[j]
+                foodItems.append(item_!)
+            }
+        }
+        tableView.reloadData()
         
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    }
+    
+    // MARK: - TableView
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return foodItems.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier:
+            "FillFoodCell") as! TTFillPlateTableCell
+        cell.foodItem = foodItems[indexPath.row]
+        return cell
     }
     
 
