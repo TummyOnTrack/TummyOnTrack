@@ -174,7 +174,7 @@
                         </connections>
                     </tableView>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
-                    <navigationItem key="navigationItem" title="Hi Kid!" id="lyg-az-Lqc"/>
+                    <navigationItem key="navigationItem" title="Home" id="lyg-az-Lqc"/>
                     <connections>
                         <outlet property="chartsView" destination="HkA-dX-SDa" id="Kpd-Fv-GGj"/>
                         <outlet property="goalHeaderLabel" destination="ERA-Es-AKo" id="wUp-RM-eVd"/>
@@ -281,7 +281,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zh6-ac-NBf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1209" y="5"/>
+            <point key="canvasLocation" x="1772" y="5"/>
         </scene>
     </scenes>
     <resources>

@@ -12,15 +12,16 @@ import AFNetworking
 class TTPointsViewController: UIViewController {
 
     @IBOutlet weak var pointsTodayLabel: UILabel!
-
+    @IBOutlet weak var profileNameLabel: UILabel!
     @IBOutlet weak var awesomeLabel: UILabel!
+    @IBOutlet weak var profileImageView: UIImageView!
 
     let awesomeSynonyms = [ "Awesome", "Excellent", "Great", "Incredible", "Marvelous", "Unbelievable", "Wonderful"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let weeklyEarnedPoints = TTProfile.currentProfile == nil ? 0 : TTProfile.currentProfile?.weeklyEarnedPoints
+        let weeklyEarnedPoints = TTProfile.currentProfile?.weeklyEarnedPoints
 
         if weeklyEarnedPoints == 0 {
             pointsTodayLabel.text = "Eat healthy, collect points!"
@@ -30,6 +31,14 @@ class TTPointsViewController: UIViewController {
             let randomIndex = Int(arc4random_uniform(UInt32(awesomeSynonyms.count)))
             awesomeLabel.text = "\(awesomeSynonyms[randomIndex])!"
             awesomeLabel.isHidden = false
+        }
+
+        if let currentProfile = TTProfile.currentProfile {
+            profileNameLabel.text = currentProfile.name?.capitalized
+            if let profileImageURL = currentProfile.profileImageURL {
+                profileImageView.setImageWith(profileImageURL)
+                profileImageView.layer.cornerRadius = profileImageView.frame.width/2
+            }
         }
     }
 

@@ -16,10 +16,6 @@ import UserNotifications
 
 class TTHomeTableTableViewController: UITableViewController, UINavigationControllerDelegate, ChartViewDelegate {
     
-    @IBAction func unwindToHome(segue: UIStoryboardSegue) {
-        
-    }
-
     @IBOutlet weak var profileNameLabel: UILabel!
     @IBOutlet weak var setupGoalButton: UIButton!
     @IBOutlet weak var goalPointsLabel: UILabel!
@@ -28,18 +24,13 @@ class TTHomeTableTableViewController: UITableViewController, UINavigationControl
     @IBOutlet weak var pieView: UIView!
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var profileName: UILabel!
+    @IBOutlet weak var chartsView: BarChartView!
+
     var pieLayer : PieLayer! = nil
-
     var imagePicker: UIImagePickerController!
-
-    
     var weeklyFoodBlog: NSMutableDictionary?
 
-
-    @IBOutlet weak var chartsView: BarChartView!
-    
     let weekdays = ["Sun", "Mon", "Tues", "Wed", "Thur", "Fri", "Sat"]
-
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,14 +48,12 @@ class TTHomeTableTableViewController: UITableViewController, UINavigationControl
         pieLayer.maxRadius = Float(pieView.frame.width/2)
 
         view.layer.addSublayer(pieLayer)
-        
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setToday()
         setCurrentProfileDetails()
-
     }
 
     func setToday() {
@@ -84,8 +73,7 @@ class TTHomeTableTableViewController: UITableViewController, UINavigationControl
                 defaults.set("true", forKey: "weeklyPointsReset")
                 defaults.synchronize()
             }
-        }
-        else {
+        } else {
             let defaults = UserDefaults.standard
             let weekPointsFlag = defaults.object(forKey: "weeklyPointsReset")
             if weekPointsFlag != nil {
@@ -130,11 +118,8 @@ class TTHomeTableTableViewController: UITableViewController, UINavigationControl
                         print("There was a problem!")
                     }
                 }
-
             }
-            
         }
-        
     }
 
     @IBAction func onWhatDidEatClick(_ sender: Any) {
@@ -174,42 +159,47 @@ class TTHomeTableTableViewController: UITableViewController, UINavigationControl
     }
 
     func setCurrentProfileDetails() {
-        if TTProfile.currentProfile != nil {
-            populateProfileInfo()
-        }
+        populateProfileInfo()
+
         TTUser.currentUser?.getProfiles(success: { (aProfiles: [TTProfile]) in
             
-        }) { (error: NSError) in
+        }) { (error: Error) in
             
         }
     }
 
     func populateProfileInfo() {
-        let currentProfile_ = TTProfile.currentProfile
-        self.navigationItem.title = "Home" //"Hi " + (currentProfile_?.name)! + "!"
-        profileNameLabel.text = (currentProfile_?.name)!
-        self.profileImageView.setImageWith((currentProfile_?.profileImageURL)!)
-        //setupGoalButton.isHidden = true
-        var pieColor = UIColor.init(red: 244/255.0, green: 115/255.0, blue: 0/255.0, alpha: 1)
-        if currentProfile_?.weeklyEarnedPoints == 0 {
+        guard let currentProfile = TTProfile.currentProfile  else {
+            return
+        }
+
+        profileNameLabel.text = currentProfile.name?.capitalized
+
+        if let profileImageURL = currentProfile.profileImageURL {
+            profileImageView.setImageWith(profileImageURL)
+        }
+
+        var pieColor = themeColor
+        if currentProfile.weeklyEarnedPoints == 0 {
             goalHeaderLabel.text = "Eat healthy, collect points!"
             pointsLabel.text = "Your weekly points will appear here"
             pieColor = UIColor.lightGray
-        }
-        else {
-            pointsLabel.text = "You earned " + "\(currentProfile_?.weeklyEarnedPoints ?? 0)" + " points this week!"
-            if (currentProfile_?.weeklyEarnedPoints)! > (currentProfile_?.goalPoints)!/2 {
+        } else {
+            pointsLabel.text = "You earned \(currentProfile.weeklyEarnedPoints) points this week!"
+            if currentProfile.weeklyEarnedPoints > currentProfile.goalPoints/2 {
                 goalHeaderLabel.text = "Awesome! You are half way through!"
             }
         }
-        goalPointsLabel.text = "Goal: " + "\((currentProfile_?.goalPoints)!)" + "Pts"
+
+        goalPointsLabel.text = "Goal: \(currentProfile.goalPoints)Pts"
         
         if pieLayer.values != nil && pieLayer.values.count == 2 {
             pieLayer.deleteValues([pieLayer.values[0], pieLayer.values[1]], animated: true)
         }
-        let greyPoints = Float((currentProfile_?.goalPoints)! - (currentProfile_?.weeklyEarnedPoints)!)
 
-        pieLayer.addValues([PieElement(value: Float((currentProfile_?.weeklyEarnedPoints)!), color: pieColor),
+        let greyPoints = Float(currentProfile.goalPoints - currentProfile.weeklyEarnedPoints)
+
+        pieLayer.addValues([PieElement(value: Float(currentProfile.weeklyEarnedPoints), color: pieColor),
                             PieElement(value: greyPoints, color: UIColor.lightGray)], animated: true)
     }
 
@@ -248,17 +238,12 @@ class TTHomeTableTableViewController: UITableViewController, UINavigationControl
             
             self.chartsView.leftAxis.addLimitLine(limitLine)
             self.chartsView.xAxis.labelFont = UIFont(name: "Helvetica", size: 15)!
-            
-            
+
             self.chartsView.chartDescription?.text = "Daily Food Points"
             self.chartsView.setBarChartData(xValues: self.weekdays, yValues: dayPoints, label: "Weekdays")
             self.chartsView.delegate = self
             self.chartsView.animate(yAxisDuration: 0.9)
-            
-            //[self.lineChartView highlightValueWithX:self.lineChartView.chartXMax dataSetIndex:0 callDelegate:YES];
-                
-            
-        }, failure: { (error: NSError) in
+        }, failure: { (error: Error) in
             
         })
     }
@@ -282,11 +267,8 @@ class TTHomeTableTableViewController: UITableViewController, UINavigationControl
             else {
                 vc_.foodBlog = []
             }
-            
         }
-        
     }
-
 }
 
 //https://github.com/danielgindi/Charts/issues/1340
@@ -303,7 +285,6 @@ extension BarChartView {
         init(labels: [String]) {
             super.init()
             self.labels = labels
-            
         }
     }
 
@@ -313,32 +294,24 @@ extension BarChartView {
         //var valueColors = [UIColor]()
         for i in 0..<yValues.count {
             let dataEntry = BarChartDataEntry(x: Double(i), y: yValues[i])
-            //valueColors.append(colorPicker(value: Double(i)))
-            
             dataEntries.append(dataEntry)
         }
 
         let chartDataSet = BarChartDataSet(values: dataEntries, label: label)
         chartDataSet.colors = ChartColorTemplates.colorful()
-        //chartDataSet.valueColors = valueColors
         chartDataSet.valueFont = UIFont(name: "Helvetica-Bold", size: 15)!
         
         let chartData = BarChartData(dataSet: chartDataSet)
-        
         let chartFormatter = BarChartFormatter(labels: xValues)
-        
         let xAxis = XAxis()
         xAxis.valueFormatter = chartFormatter
         self.xAxis.drawGridLinesEnabled = false
         self.xAxis.valueFormatter = xAxis.valueFormatter
         self.rightAxis.enabled = false
- 
         self.data = chartData
-        
     }
     
     func colorPicker(value : Double) -> UIColor {
-        
         //input your own logic for how you actually want to color the x axis
         if value == 3 {
             return UIColor.red
