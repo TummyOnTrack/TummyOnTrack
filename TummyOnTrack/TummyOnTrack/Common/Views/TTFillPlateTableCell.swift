@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class TTFillPlateTableCell: UITableViewCell {
 
@@ -23,9 +24,10 @@ class TTFillPlateTableCell: UITableViewCell {
         didSet {
             foodNameLabel.text = foodItem.name
             if let imageurlstring = foodItem.images?[0] {
-                if let data = try? Data(contentsOf: imageurlstring) {
+                /*if let data = try? Data(contentsOf: imageurlstring) {
                     foodImageView.image = UIImage(data: data)
-                }
+                }*/
+                foodImageView.sd_setImage(with: imageurlstring)
             }
             if foodItem.points! <= 0 {
                 smileyImageView.image = UIImage(named: "Upside_down")

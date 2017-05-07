@@ -298,7 +298,12 @@ class TTHomeTableTableViewController: UITableViewController, UINavigationControl
             
             let vc_ = segue.destination as! TTFillPlateViewController
             vc_.dayOfWeek = sender as! String
-            vc_.foodBlog = (self.weeklyFoodBlog?.object(forKey: sender as! String) as? [TTDailyFoodEntry])!
+            if self.weeklyFoodBlog?.object(forKey: sender as! String) != nil {
+                vc_.foodBlog = (self.weeklyFoodBlog?.object(forKey: sender as! String) as? [TTDailyFoodEntry])!
+            }
+            else {
+                vc_.foodBlog = []
+            }
             
         }
         

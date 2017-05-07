@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class VoiceCollectionViewCell: UICollectionViewCell {
 
@@ -17,9 +18,10 @@ class VoiceCollectionViewCell: UICollectionViewCell {
         didSet {
             foodNameLabel.text = foodItem.name
             if let imageurlstring = foodItem.images?[0] {
-                if let data = try? Data(contentsOf: imageurlstring) {
+                /*if let data = try? Data(contentsOf: imageurlstring) {
                     foodImageView.image = UIImage(data: data)
-                }
+                }*/
+                foodImageView.sd_setImage(with: imageurlstring)
             }
         }
     }

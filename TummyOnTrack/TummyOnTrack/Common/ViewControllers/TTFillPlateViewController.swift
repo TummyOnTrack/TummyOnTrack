@@ -14,27 +14,32 @@ class TTFillPlateViewController: UIViewController, UITableViewDelegate, UITableV
     var foodBlog: [TTDailyFoodEntry]!
     var foodItems = [TTFoodItem]()
     var dayOfWeek: String!
+    var message: String!
     
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        message = "Fetching food entries for " + dayOfWeek
         foodItems = []
         navigationItem.title = dayOfWeek + "'s Food"
-        
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         
-        for i in 0...(foodBlog.count - 1) {
-            let blog = foodBlog[i] as TTDailyFoodEntry
-            for j in 0...((blog.items?.count)! - 1) {
-                let item_ = blog.items?[j]
-                foodItems.append(item_!)
+        if foodBlog.count == 0 {
+            message = "Oops, No food entries for " + dayOfWeek
+        }
+        else {
+            for i in 0...(foodBlog.count - 1) {
+                let blog = foodBlog[i] as TTDailyFoodEntry
+                for j in 0...((blog.items?.count)! - 1) {
+                    let item_ = blog.items?[j]
+                    foodItems.append(item_!)
+                }
             }
         }
+        
         
         tableView.reloadData()
     }
@@ -52,7 +57,7 @@ class TTFillPlateViewController: UIViewController, UITableViewDelegate, UITableV
             let label = UILabel(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: tableView.bounds.size.height))
             // label.center = CGPoint(x: 160, y: 285)
             label.textAlignment = .center
-            label.text = "Fetching Food Items"
+            label.text = message
             label.numberOfLines = 0
             tableView.backgroundView = label
             return 0
