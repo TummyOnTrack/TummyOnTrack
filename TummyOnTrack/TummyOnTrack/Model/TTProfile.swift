@@ -170,15 +170,28 @@ class TTProfile: NSObject {
     }
     
     func extractWeeklyBlog() {
+        weeklyEarnedPoints = 0
         let weekDay = Calendar.current.component(.weekday, from: Date())
-        let daysAgo = Calendar.current.date(byAdding: .day, value: -(weekDay-1), to: Date())
+        
+        let dateDaysAgo = Calendar.current.date(byAdding: .day, value: -(weekDay-1), to: Date())
         
         for i in 0...(foodBlog.count-1) {
             let blog = foodBlog[i] as! TTDailyFoodEntry
-            if Double((blog.createdAt?.timeIntervalSince1970)!) >= Double((daysAgo?.timeIntervalSince1970)!) {
+            /**/
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd"
+            let date1String = dateFormatter.string(from: blog.createdAt!)
+            let date2String = dateFormatter.string(from: dateDaysAgo!)
+            // compare today's dates separately, otherwise it creates problems with timestamp
+            if date1String >= date2String {
+                weeklyFoodBlog.add(blog)
+                weeklyEarnedPoints = weeklyEarnedPoints + blog.earnedPoints!
+            }
+            else if blog.createdAt! >= dateDaysAgo! {
                 weeklyFoodBlog.add(blog)
             }
         }
+        updateProfile(dictionary: ["weeklyEarnedPoints": weeklyEarnedPoints])
     }
     
     func updateFoodItems(items: [NSDictionary], images: [URL], earnedPoints: Int, success: @escaping () -> (), failure: @escaping (NSError) -> ()) {
@@ -213,11 +226,10 @@ class TTProfile: NSObject {
             print("No profile created")
         }
     }
-
-
     
     func setGoalPoints(aGoalPoints: Int) {
         goalPoints = aGoalPoints
+        updateProfile(dictionary: ["goalPoints": goalPoints])
         TTUser.currentUser?.replaceProfile(aProfile: self)
     }
     
