@@ -23,7 +23,6 @@ class TTHomeTableTableViewController: UITableViewController, UINavigationControl
     @IBOutlet weak var goalHeaderLabel: UILabel!
     @IBOutlet weak var pieView: UIView!
     @IBOutlet weak var profileImageView: UIImageView!
-    @IBOutlet weak var profileName: UILabel!
     @IBOutlet weak var chartsView: BarChartView!
 
     var pieLayer : PieLayer! = nil
@@ -52,7 +51,7 @@ class TTHomeTableTableViewController: UITableViewController, UINavigationControl
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        setToday()
+        //setToday()
         setCurrentProfileDetails()
     }
 
@@ -62,22 +61,25 @@ class TTHomeTableTableViewController: UITableViewController, UINavigationControl
 
  
         let day = calendar.component(.weekday, from: date)
+        
+        let key_ = "weeklyPointsReset_" + (TTProfile.currentProfile?.name)!
         // Sunday
         if day == 1 {
+            
             // reset weekly points on every Sunday
             let defaults = UserDefaults.standard
             let weekPointsFlag = defaults.object(forKey: "weeklyPointsReset")
             if weekPointsFlag == nil {
                 TTProfile.currentProfile?.updateProfile(dictionary: ["weeklyEarnedPoints": 0])
                 let defaults = UserDefaults.standard
-                defaults.set("true", forKey: "weeklyPointsReset")
+                defaults.set("true", forKey: key_)
                 defaults.synchronize()
             }
         } else {
             let defaults = UserDefaults.standard
-            let weekPointsFlag = defaults.object(forKey: "weeklyPointsReset")
+            let weekPointsFlag = defaults.object(forKey: key_)
             if weekPointsFlag != nil {
-                defaults.removeObject(forKey: "weeklyPointsReset")
+                defaults.removeObject(forKey: key_)
                 defaults.synchronize()
             }
         }
@@ -172,13 +174,13 @@ class TTHomeTableTableViewController: UITableViewController, UINavigationControl
         guard let currentProfile = TTProfile.currentProfile  else {
             return
         }
-
+        setToday()
         profileNameLabel.text = currentProfile.name?.capitalized
-
+        
         if let profileImageURL = currentProfile.profileImageURL {
             profileImageView.setImageWith(profileImageURL)
         }
-
+        
         var pieColor = themeColor
         if currentProfile.weeklyEarnedPoints == 0 {
             goalHeaderLabel.text = "Eat healthy, collect points!"
@@ -190,15 +192,15 @@ class TTHomeTableTableViewController: UITableViewController, UINavigationControl
                 goalHeaderLabel.text = "Awesome! You are half way through!"
             }
         }
-
+        
         goalPointsLabel.text = "Goal: \(currentProfile.goalPoints)Pts"
         
         if pieLayer.values != nil && pieLayer.values.count == 2 {
             pieLayer.deleteValues([pieLayer.values[0], pieLayer.values[1]], animated: true)
         }
-
+        
         let greyPoints = Float(currentProfile.goalPoints - currentProfile.weeklyEarnedPoints)
-
+        
         pieLayer.addValues([PieElement(value: Float(currentProfile.weeklyEarnedPoints), color: pieColor),
                             PieElement(value: greyPoints, color: UIColor.lightGray)], animated: true)
     }
