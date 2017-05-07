@@ -42,6 +42,8 @@ class TTHomeTableTableViewController: UITableViewController, UINavigationControl
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        profileImageView.layer.cornerRadius = profileImageView.frame.width/2
 
         // load default food items
         loadFoodItems()

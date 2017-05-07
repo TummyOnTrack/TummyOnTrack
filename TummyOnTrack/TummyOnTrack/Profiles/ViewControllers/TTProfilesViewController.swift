@@ -21,16 +21,17 @@ class TTProfilesViewController: UITableViewController {
         collectionView.allowsMultipleSelection = false
         collectionView.delegate = self
         collectionView.dataSource = self
+        getAllProfiles()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        getAllProfiles()
+        
     }
 
     func getAllProfiles() {
         SVProgressHUD.show()
-        
+        profiles.removeAll()
         TTUser.currentUser?.getProfiles(success: { (profiles) in
             SVProgressHUD.dismiss()
             self.profiles = profiles
