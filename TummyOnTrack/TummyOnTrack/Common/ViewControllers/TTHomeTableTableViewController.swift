@@ -196,7 +196,12 @@ class TTHomeTableTableViewController: UITableViewController, UINavigationControl
         if let profileImageURL = currentProfile.profileImageURL {
             profileImageView.setImageWith(profileImageURL)
         }
-        
+    }
+    
+    func populatePoints() {
+        guard let currentProfile = TTProfile.currentProfile  else {
+            return
+        }
         var pieColor = themeColor
         if currentProfile.weeklyEarnedPoints == 0 {
             goalHeaderLabel.text = "Eat Healthy, Collect Points!"
@@ -261,6 +266,7 @@ class TTHomeTableTableViewController: UITableViewController, UINavigationControl
                 self.chartsView.animate(yAxisDuration: 0.9)
                 self.noChartsView.isHidden = true
                 self.weekSummaryLabel.text = "This Week's Summary"
+                self.populatePoints()
             }
             
             

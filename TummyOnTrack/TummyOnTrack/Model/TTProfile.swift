@@ -170,6 +170,7 @@ class TTProfile: NSObject {
     }
     
     func extractWeeklyBlog() {
+        weeklyEarnedPoints = 0
         let weekDay = Calendar.current.component(.weekday, from: Date())
         
         let dateDaysAgo = Calendar.current.date(byAdding: .day, value: -(weekDay-1), to: Date())
@@ -184,11 +185,13 @@ class TTProfile: NSObject {
             // compare today's dates separately, otherwise it creates problems with timestamp
             if date1String >= date2String {
                 weeklyFoodBlog.add(blog)
+                weeklyEarnedPoints = weeklyEarnedPoints + blog.earnedPoints!
             }
             else if blog.createdAt! >= dateDaysAgo! {
                 weeklyFoodBlog.add(blog)
             }
         }
+        //updateProfile(dictionary: ["weeklyEarnedPoints": weeklyEarnedPoints])
     }
     
     func updateFoodItems(items: [NSDictionary], images: [URL], earnedPoints: Int, success: @escaping () -> (), failure: @escaping (NSError) -> ()) {
