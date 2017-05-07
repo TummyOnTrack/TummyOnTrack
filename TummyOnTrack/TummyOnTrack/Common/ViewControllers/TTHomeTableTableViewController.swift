@@ -14,7 +14,7 @@ import Firebase
 import Charts
 import UserNotifications
 
-class TTHomeTableTableViewController: UITableViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, ChartViewDelegate {
+class TTHomeTableTableViewController: UITableViewController, UINavigationControllerDelegate, ChartViewDelegate {
     
     @IBAction func unwindToHome(segue: UIStoryboardSegue) {
         
@@ -267,41 +267,6 @@ class TTHomeTableTableViewController: UITableViewController, UINavigationControl
         super.didReceiveMemoryWarning()
     }
 
-    @IBAction func onCameraClick(_ sender: Any) {
-        let alertController =  UIAlertController()
-        let  takePhotoButton = UIAlertAction(title: "Take Photo", style: .destructive, handler: { (action) -> Void in
-
-            self.imagePicker =  UIImagePickerController()
-            self.imagePicker.delegate = self
-            self.imagePicker.sourceType = .camera
-
-            self.present(self.imagePicker, animated: true, completion: nil)
-
-        })
-
-        let galleryButton = UIAlertAction(title: "Choose From Photos", style: .cancel, handler: { (action) -> Void in
-            self.imagePicker =  UIImagePickerController()
-            self.imagePicker.delegate = self
-            self.imagePicker.sourceType = .photoLibrary
-
-            self.present(self.imagePicker, animated: true, completion: nil)
-        })
-
-
-        alertController.addAction(takePhotoButton)
-        alertController.addAction(galleryButton)
-
-        self.navigationController!.present(alertController, animated: true, completion: nil)
-    }
-
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        imagePicker.dismiss(animated: true, completion: nil)
-        if let viewController = UIStoryboard(name: "CommonStoryboard", bundle: nil).instantiateViewController(withIdentifier: "AddPhotoView") as? TTAddPhotoTableViewController {
-            viewController.photoImage = info[UIImagePickerControllerOriginalImage] as? UIImage
-            present(viewController, animated: true, completion: nil)
-        }
-    }
-    
     func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {
         performSegue(withIdentifier: "Show Plate View", sender: self.weekdays[Int(entry.x)])
     }

@@ -16,6 +16,8 @@
 		311B02F21EBA8C3200DAA2ED /* TTDecorateRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311B02F11EBA8C3200DAA2ED /* TTDecorateRoomViewController.swift */; };
 		3151A33E1EBD969400084B88 /* TTNavigationControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3151A33D1EBD969400084B88 /* TTNavigationControllerDelegate.swift */; };
 		3151A3421EBD9C8500084B88 /* TTCircleTransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3151A3411EBD9C8500084B88 /* TTCircleTransitionAnimator.swift */; };
+		3151A3441EBF685A00084B88 /* TTFillPlateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3151A3431EBF685A00084B88 /* TTFillPlateViewController.swift */; };
+		3151A3461EBF686700084B88 /* TTFillPlateTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3151A3451EBF686700084B88 /* TTFillPlateTableCell.swift */; };
 		31DE9B041EB154DF0055B8D8 /* TTPointsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31DE9B031EB154DF0055B8D8 /* TTPointsViewController.swift */; };
 		31DE9B061EB155120055B8D8 /* Rewards.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 31DE9B051EB155120055B8D8 /* Rewards.storyboard */; };
 		D11FC18B1EBC09A3005FDC06 /* VoiceSummaryHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11FC18A1EBC09A3005FDC06 /* VoiceSummaryHeader.swift */; };
@@ -45,15 +47,10 @@
 		E7BC60561EB10D79000529AC /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BC60531EB10D79000529AC /* SignupViewController.swift */; };
 		E7BC60581EB11220000529AC /* TTUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BC60571EB11220000529AC /* TTUser.swift */; };
 		E7E3B4771EB69DFF000F9CA4 /* TTProfilesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7E3B4761EB69DFF000F9CA4 /* TTProfilesViewController.swift */; };
-		E7E3B47D1EB6C04D000F9CA4 /* TTFillPlateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7E3B47C1EB6C04D000F9CA4 /* TTFillPlateViewController.swift */; };
-		E7E3B47F1EB6C705000F9CA4 /* TTGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7E3B47E1EB6C705000F9CA4 /* TTGameViewController.swift */; };
-		E7E3B4841EB6F483000F9CA4 /* TTGameCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7E3B4831EB6F483000F9CA4 /* TTGameCollectionViewCell.swift */; };
 		E7F0E5641EB269B00088743B /* CommonStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7F0E5631EB269B00088743B /* CommonStoryboard.storyboard */; };
 		E7F0E5661EB2801F0088743B /* TTFoodInputWaysViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F0E5651EB2801F0088743B /* TTFoodInputWaysViewController.swift */; };
-		E7F0E56A1EB29E7B0088743B /* TTAddPhotoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F0E5691EB29E7B0088743B /* TTAddPhotoTableViewController.swift */; };
 		E7F0E5711EB540280088743B /* TTFirebaseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F0E5701EB540280088743B /* TTFirebaseClient.swift */; };
 		E7F8E39C1EBE6DE8002C7494 /* TTDailyFoodEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F8E39B1EBE6DE8002C7494 /* TTDailyFoodEntry.swift */; };
-		E7F8E39E1EBEAAC0002C7494 /* TTFillPlateTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F8E39D1EBEAAC0002C7494 /* TTFillPlateTableCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,6 +85,8 @@
 		311B02F11EBA8C3200DAA2ED /* TTDecorateRoomViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TTDecorateRoomViewController.swift; path = TummyOnTrack/Rewards/TTDecorateRoomViewController.swift; sourceTree = SOURCE_ROOT; };
 		3151A33D1EBD969400084B88 /* TTNavigationControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TTNavigationControllerDelegate.swift; path = TummyOnTrack/Rewards/TTNavigationControllerDelegate.swift; sourceTree = SOURCE_ROOT; };
 		3151A3411EBD9C8500084B88 /* TTCircleTransitionAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TTCircleTransitionAnimator.swift; path = TummyOnTrack/Rewards/TTCircleTransitionAnimator.swift; sourceTree = SOURCE_ROOT; };
+		3151A3431EBF685A00084B88 /* TTFillPlateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TTFillPlateViewController.swift; sourceTree = "<group>"; };
+		3151A3451EBF686700084B88 /* TTFillPlateTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TTFillPlateTableCell.swift; sourceTree = "<group>"; };
 		31DE9B031EB154DF0055B8D8 /* TTPointsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TTPointsViewController.swift; path = TummyOnTrack/Rewards/TTPointsViewController.swift; sourceTree = SOURCE_ROOT; };
 		31DE9B051EB155120055B8D8 /* Rewards.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Rewards.storyboard; sourceTree = "<group>"; };
 		95D98D94BFFCF67DC2115B6F /* Pods-TummyOnTrackTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TummyOnTrackTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TummyOnTrackTests/Pods-TummyOnTrackTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -124,15 +123,10 @@
 		E7BC60531EB10D79000529AC /* SignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		E7BC60571EB11220000529AC /* TTUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TTUser.swift; sourceTree = "<group>"; };
 		E7E3B4761EB69DFF000F9CA4 /* TTProfilesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TTProfilesViewController.swift; sourceTree = "<group>"; };
-		E7E3B47C1EB6C04D000F9CA4 /* TTFillPlateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TTFillPlateViewController.swift; sourceTree = "<group>"; };
-		E7E3B47E1EB6C705000F9CA4 /* TTGameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TTGameViewController.swift; sourceTree = "<group>"; };
-		E7E3B4831EB6F483000F9CA4 /* TTGameCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TTGameCollectionViewCell.swift; sourceTree = "<group>"; };
 		E7F0E5631EB269B00088743B /* CommonStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CommonStoryboard.storyboard; sourceTree = "<group>"; };
 		E7F0E5651EB2801F0088743B /* TTFoodInputWaysViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TTFoodInputWaysViewController.swift; sourceTree = "<group>"; };
-		E7F0E5691EB29E7B0088743B /* TTAddPhotoTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TTAddPhotoTableViewController.swift; sourceTree = "<group>"; };
 		E7F0E5701EB540280088743B /* TTFirebaseClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TTFirebaseClient.swift; sourceTree = "<group>"; };
 		E7F8E39B1EBE6DE8002C7494 /* TTDailyFoodEntry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TTDailyFoodEntry.swift; sourceTree = "<group>"; };
-		E7F8E39D1EBEAAC0002C7494 /* TTFillPlateTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TTFillPlateTableCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -242,7 +236,6 @@
 				E7BC603F1EB109F0000529AC /* Model */,
 				E7BC60401EB109F9000529AC /* OnBoarding */,
 				E7BC60441EB10A13000529AC /* VoiceEntry */,
-				E7BC60421EB10A07000529AC /* Gamification */,
 				E7BC60411EB10A00000529AC /* Rewards */,
 				E7BC60431EB10A0D000529AC /* Common */,
 				E038F5681EB694C1002E55DE /* Profiles */,
@@ -308,15 +301,6 @@
 			path = Rewards;
 			sourceTree = "<group>";
 		};
-		E7BC60421EB10A07000529AC /* Gamification */ = {
-			isa = PBXGroup;
-			children = (
-				E7BC60471EB10BCD000529AC /* ViewControllers */,
-				E7BC60481EB10BCD000529AC /* Views */,
-			);
-			path = Gamification;
-			sourceTree = "<group>";
-		};
 		E7BC60431EB10A0D000529AC /* Common */ = {
 			isa = PBXGroup;
 			children = (
@@ -354,20 +338,6 @@
 			path = views;
 			sourceTree = "<group>";
 		};
-		E7BC60471EB10BCD000529AC /* ViewControllers */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewControllers;
-			sourceTree = "<group>";
-		};
-		E7BC60481EB10BCD000529AC /* Views */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
 		E7BC60491EB10BD5000529AC /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -392,11 +362,9 @@
 		E7BC604B1EB10BDC000529AC /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				3151A3431EBF685A00084B88 /* TTFillPlateViewController.swift */,
 				E7834F291EB14BB500FD2F1C /* TTHomeTableTableViewController.swift */,
 				E7F0E5651EB2801F0088743B /* TTFoodInputWaysViewController.swift */,
-				E7F0E5691EB29E7B0088743B /* TTAddPhotoTableViewController.swift */,
-				E7E3B47C1EB6C04D000F9CA4 /* TTFillPlateViewController.swift */,
-				E7E3B47E1EB6C705000F9CA4 /* TTGameViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -431,8 +399,7 @@
 		E7E3B4801EB6F44E000F9CA4 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				E7E3B4831EB6F483000F9CA4 /* TTGameCollectionViewCell.swift */,
-				E7F8E39D1EBEAAC0002C7494 /* TTFillPlateTableCell.swift */,
+				3151A3451EBF686700084B88 /* TTFillPlateTableCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -742,29 +709,26 @@
 				D1B1EFD51EB395250032BEE1 /* TTVoiceSummaryViewController.swift in Sources */,
 				E7F8E39C1EBE6DE8002C7494 /* TTDailyFoodEntry.swift in Sources */,
 				E7BC60551EB10D79000529AC /* SignupLoginViewController.swift in Sources */,
-				E7E3B4841EB6F483000F9CA4 /* TTGameCollectionViewCell.swift in Sources */,
 				311B02E81EB459EC00DAA2ED /* TTReward.swift in Sources */,
 				E7BC60561EB10D79000529AC /* SignupViewController.swift in Sources */,
 				D11FC18B1EBC09A3005FDC06 /* VoiceSummaryHeader.swift in Sources */,
 				31DE9B041EB154DF0055B8D8 /* TTPointsViewController.swift in Sources */,
-				E7F8E39E1EBEAAC0002C7494 /* TTFillPlateTableCell.swift in Sources */,
 				E7BC60581EB11220000529AC /* TTUser.swift in Sources */,
 				311B02EE1EB994E000DAA2ED /* RewardsHeaderView.swift in Sources */,
 				D1B1EFD71EB3953D0032BEE1 /* TTFoodItem.swift in Sources */,
 				E7570FF41EB6F5F300E2FE2D /* TTProfileCollectionViewCell.swift in Sources */,
-				E7E3B47F1EB6C705000F9CA4 /* TTGameViewController.swift in Sources */,
+				3151A3461EBF686700084B88 /* TTFillPlateTableCell.swift in Sources */,
 				D1B1EF9B1EB141970032BEE1 /* TTVoiceViewController.swift in Sources */,
 				E08BD2A31EB28B4100FD5404 /* Helpers.swift in Sources */,
 				E7B940E51EAE790C0078AB5E /* AppDelegate.swift in Sources */,
 				E7F0E5711EB540280088743B /* TTFirebaseClient.swift in Sources */,
 				E038F5731EB6A80C002E55DE /* AddTTProfileViewController.swift in Sources */,
-				E7F0E56A1EB29E7B0088743B /* TTAddPhotoTableViewController.swift in Sources */,
 				E7E3B4771EB69DFF000F9CA4 /* TTProfilesViewController.swift in Sources */,
 				E7B940ED1EAE790C0078AB5E /* TummyOnTrack.xcdatamodeld in Sources */,
 				311B02E61EB4513900DAA2ED /* RewardCell.swift in Sources */,
 				311B02F21EBA8C3200DAA2ED /* TTDecorateRoomViewController.swift in Sources */,
+				3151A3441EBF685A00084B88 /* TTFillPlateViewController.swift in Sources */,
 				E7BC60541EB10D79000529AC /* LoginViewController.swift in Sources */,
-				E7E3B47D1EB6C04D000F9CA4 /* TTFillPlateViewController.swift in Sources */,
 				3151A3421EBD9C8500084B88 /* TTCircleTransitionAnimator.swift in Sources */,
 				311B02EC1EB4B41E00DAA2ED /* TTProfile.swift in Sources */,
 			);
