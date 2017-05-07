@@ -12,11 +12,14 @@ class TTProfileCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var profilePhotoImageView: UIImageView!
     @IBOutlet weak var profileName: UILabel!
     @IBOutlet weak var bgView: UIView!
+    @IBOutlet weak var star: UIImageView!
+    
     
     var profile: TTProfile! {
         didSet {
-//            self.contentView.backgroundColor = isSelected ? UIColor.yellow : UIColor.white
-            
+            setUI()
+            self.contentView.backgroundColor = isSelected ? UIColor.orange : UIColor.white
+
             bgView.backgroundColor = UIColor.black.withAlphaComponent(0.4)
             profileName.textColor = .white
             profilePhotoImageView.layer.cornerRadius = 3.5
@@ -28,27 +31,19 @@ class TTProfileCollectionViewCell: UICollectionViewCell {
             if let imageUrl = profile.profileImageURL {
                 profilePhotoImageView.setImageWith(imageUrl)
             }
-            
+    
         }
     }
     
-//    func setUI(aProfile: TTProfile) {
-//        profile = aProfile
-//        profileName.text = aProfile.name
-//        profilePhotoImageView.layer.cornerRadius = 3.5
-//        /*if TTProfile.currentProfile?.name == aProfile.name {
-//            isSelected = true
-//        }
-//        else {
-//            isSelected = false
-//        }*/
-//        if aProfile.profileImageURL != nil {
-//            profilePhotoImageView.setImageWith(aProfile.profileImageURL!)
-//        }
-//        else {
-//            profilePhotoImageView.image = UIImage(named: "plus-simple-7")
-//        }
-//    }
+    func setUI() {
+
+        if TTProfile.currentProfile?.name == profile.name {
+            isSelected = true
+        }
+        else {
+            isSelected = false
+        }
+    }
     
   
 }
