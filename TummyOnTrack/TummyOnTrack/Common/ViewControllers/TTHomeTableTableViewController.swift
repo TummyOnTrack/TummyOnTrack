@@ -202,6 +202,12 @@ class TTHomeTableTableViewController: UITableViewController, UINavigationControl
             //setupGoalButton.isHidden = false
             pieColor = UIColor.lightGray
         }
+        else {
+            pointsLabel.text = "You earned " + "\(currentProfile_?.weeklyEarnedPoints ?? 0)" + " points this week!"
+            if (currentProfile_?.weeklyEarnedPoints)! > (currentProfile_?.goalPoints)!/2 {
+                goalHeaderLabel.text = "Awesome! You are half way through!"
+            }
+        }
         goalPointsLabel.text = "Goal: " + "\((currentProfile_?.goalPoints)!)" + "Pts"
         
         if pieLayer.values != nil && pieLayer.values.count == 2 {

@@ -26,7 +26,8 @@ class TTVoiceSummaryViewController: UIViewController, UICollectionViewDataSource
             print(error.localizedDescription)
         }
         
-        performSegue(withIdentifier: "unwindVoiceToHome", sender: self)
+        //performSegue(withIdentifier: "unwindVoiceToHome", sender: self)
+        navigationController?.popToViewController((self.navigationController?.viewControllers[0])!, animated: true)
         
     }
     

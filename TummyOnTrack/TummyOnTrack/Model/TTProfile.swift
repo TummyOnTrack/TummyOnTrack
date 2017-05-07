@@ -106,6 +106,7 @@ class TTProfile: NSObject {
                 if let profilesData = profilesData {
                     for (_, profilevalue) in profilesData {
                         let dictionary = try! JSONSerialization.jsonObject(with: profilevalue, options: []) as! NSDictionary
+                        //dictionary["profileId"] = profilesData.key
                         _currentProfile = TTProfile(dictionary: dictionary)
                         if profiles[(_currentProfile?.name)!] == nil {
                             profiles[(_currentProfile?.name)!] = _currentProfile
