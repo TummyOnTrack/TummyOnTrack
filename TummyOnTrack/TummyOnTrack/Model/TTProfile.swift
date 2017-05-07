@@ -24,11 +24,6 @@ class TTProfile: NSObject {
     var dictionary: NSMutableDictionary?
     var weeklyFoodBlog: NSMutableArray
     var foodBlog: NSMutableArray
-    
-    /*override init() {
-        super.init()
-        self.weeklyFoodBlog = []
-    }*/
 
     init(dictionary: NSDictionary) {
         name = dictionary["name"] as? String
@@ -176,7 +171,7 @@ class TTProfile: NSObject {
     
     func extractWeeklyBlog() {
         let weekDay = Calendar.current.component(.weekday, from: Date())
-        let daysAgo = Calendar.current.date(byAdding: .day, value: -weekDay-1, to: Date())
+        let daysAgo = Calendar.current.date(byAdding: .day, value: -(weekDay-1), to: Date())
         
         for i in 0...(foodBlog.count-1) {
             let blog = foodBlog[i] as! TTDailyFoodEntry
@@ -227,13 +222,6 @@ class TTProfile: NSObject {
     }
     
     func updateProfile(dictionary: NSDictionary) {
-        
-        name = dictionary["name"] as? String
-        age = dictionary["age"] as? Int
-        
-        if let profileImageString = dictionary["profilePhoto"] as? String {
-            profileImageURL = URL(string: profileImageString)
-        }
         
         if let isParent = dictionary["isParent"] as? Bool {
             self.isParent = isParent

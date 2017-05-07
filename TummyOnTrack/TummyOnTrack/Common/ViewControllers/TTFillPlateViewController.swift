@@ -36,9 +36,11 @@ class TTFillPlateViewController: UIViewController, UITableViewDelegate, UITableV
         else {
             for i in 0...(foodBlog.count - 1) {
                 let blog = foodBlog[i] as TTDailyFoodEntry
-                for j in 0...((blog.items?.count)! - 1) {
-                    let item_ = blog.items?[j]
-                    foodItems.append(item_!)
+                if blog.items != nil && (blog.items?.count)! > 0 {
+                    for j in 0...((blog.items?.count)! - 1) {
+                        let item_ = blog.items?[j]
+                        foodItems.append(item_!)
+                    }
                 }
             }
         }
