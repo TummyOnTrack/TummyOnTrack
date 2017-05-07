@@ -99,7 +99,7 @@
         <!--Navigation Controller-->
         <scene sceneID="dRR-om-g1e">
             <objects>
-                <navigationController title="fff" automaticallyAdjustsScrollViewInsets="NO" id="AMa-f1-Q9E" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="AMa-f1-Q9E" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Points" image="star" id="Rjw-af-kwF"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="wsD-fi-NRM">
