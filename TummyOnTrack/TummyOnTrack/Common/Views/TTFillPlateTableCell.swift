@@ -27,6 +27,12 @@ class TTFillPlateTableCell: UITableViewCell {
                     foodImageView.image = UIImage(data: data)
                 }
             }
+            if foodItem.points! <= 0 {
+                smileyImageView.image = UIImage(named: "Upside_down")
+            }
+            else {
+                smileyImageView.image = UIImage(named: "Slightly_Smiling")
+            }
             
         }
     }

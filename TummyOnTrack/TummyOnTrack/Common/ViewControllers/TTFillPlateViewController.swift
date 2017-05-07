@@ -7,17 +7,26 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 class TTFillPlateViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     var foodBlog: [TTDailyFoodEntry]!
     var foodItems = [TTFoodItem]()
+    var dayOfWeek: String!
     
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
 
         foodItems = []
+        navigationItem.title = dayOfWeek + "'s Food"
+        
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
         
         for i in 0...(foodBlog.count - 1) {
             let blog = foodBlog[i] as TTDailyFoodEntry
@@ -26,8 +35,8 @@ class TTFillPlateViewController: UIViewController, UITableViewDelegate, UITableV
                 foodItems.append(item_!)
             }
         }
-        tableView.reloadData()
         
+        tableView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -36,7 +45,24 @@ class TTFillPlateViewController: UIViewController, UITableViewDelegate, UITableV
     
     // MARK: - TableView
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return foodItems.count
+        
+        // When movie view is empty, then show the empty view.
+        // It will show the error from the server call if that is the reason for the empty movie set.
+        if(foodItems.count == 0) {
+            let label = UILabel(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: tableView.bounds.size.height))
+            // label.center = CGPoint(x: 160, y: 285)
+            label.textAlignment = .center
+            label.text = "Fetching Food Items"
+            label.numberOfLines = 0
+            tableView.backgroundView = label
+            return 0
+        }
+        else {
+            
+            return foodItems.count
+            
+        }
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

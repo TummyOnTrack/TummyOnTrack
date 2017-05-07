@@ -290,15 +290,15 @@ class TTHomeTableTableViewController: UITableViewController, UINavigationControl
     }
     
     func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {
-        performSegue(withIdentifier: "Show Plate View", sender: self.weeklyFoodBlog?.object(forKey: self.weekdays[Int(entry.x)]))
+        performSegue(withIdentifier: "Show Plate View", sender: self.weekdays[Int(entry.x)])
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "Show Plate View") {
             
             let vc_ = segue.destination as! TTFillPlateViewController
-            let blog = (sender as? [TTDailyFoodEntry])!
-            vc_.foodBlog = (sender as? [TTDailyFoodEntry])!
+            vc_.dayOfWeek = sender as! String
+            vc_.foodBlog = (self.weeklyFoodBlog?.object(forKey: sender as! String) as? [TTDailyFoodEntry])!
             
         }
         
