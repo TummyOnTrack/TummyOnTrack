@@ -16,6 +16,7 @@ class TTFillPlateViewController: UIViewController, UITableViewDelegate, UITableV
     var dayOfWeek: String!
     var message: String!
     
+    @IBOutlet weak var pointsLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()

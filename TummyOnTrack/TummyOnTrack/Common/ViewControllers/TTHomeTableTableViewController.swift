@@ -243,9 +243,11 @@ class TTHomeTableTableViewController: UITableViewController, UINavigationControl
                 
                 self.chartsView.leftAxis.addLimitLine(limitLine)
                 self.chartsView.drawGridBackgroundEnabled = false
+                self.chartsView.chartDescription?.text = "Daily Food Points"
                 self.chartsView.setBarChartData(xValues: self.weekdays, yValues: dayPoints, label: "Weekdays")
                 self.chartsView.delegate = self
                 self.chartsView.animate(yAxisDuration: 0.9)
+                
             }
         }, failure: { (error: NSError) in
             

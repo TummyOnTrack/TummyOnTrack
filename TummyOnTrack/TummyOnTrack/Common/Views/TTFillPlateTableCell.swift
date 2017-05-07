@@ -15,6 +15,7 @@ class TTFillPlateTableCell: UITableViewCell {
     @IBOutlet weak var smileyImageView: UIImageView!
     @IBOutlet weak var foodImageView: UIImageView!
     
+    @IBOutlet weak var pointsLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -29,6 +30,7 @@ class TTFillPlateTableCell: UITableViewCell {
                 }*/
                 foodImageView.sd_setImage(with: imageurlstring)
             }
+            pointsLabel.text = "\(foodItem.points ?? 0)" + " points"
             if foodItem.points! <= 0 {
                 smileyImageView.image = UIImage(named: "Upside_down")
             }
