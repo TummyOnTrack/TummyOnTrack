@@ -148,24 +148,16 @@ class TTProfile: NSObject {
     
     func getWeeklyFoodBlog(success: @escaping ([TTDailyFoodEntry]) -> (), failure: @escaping (NSError) -> ()) {
         
-        /*if weeklyFoodBlog.count > 0 {
-            success(weeklyFoodBlog as! [TTDailyFoodEntry])
-            return
-        }*/
         weeklyFoodBlog.removeAllObjects()
         foodBlog.removeAllObjects()
         let ref = FIRDatabase.database().reference(fromURL: BASE_URL).child(DAILYFOOD_TABLE)
-        
-        //let weekDay = Calendar.current.component(.weekday, from: Date())
-        //let daysAgo = Calendar.current.date(byAdding: .day, value: -weekDay-1, to: Date())
         
         let query = ref.queryOrdered(byChild: "profileId").queryEqual(toValue: profileId)
         //.queryOrdered(byChild: "createdAt").queryStarting(atValue: Date().timeIntervalSince1970).queryEnding(atValue: daysAgo?.timeIntervalSince1970)
         
         query.observeSingleEvent(of: .value, with: { snapshot in
             if !snapshot.exists() {
-                //success() //self.weeklyFoodBlog as! [TTDailyFoodEntry])
-                //failure(nil)
+                success([TTDailyFoodEntry]())
                 return
             }
             for profile in snapshot.children.allObjects as! [FIRDataSnapshot] {
@@ -207,11 +199,17 @@ class TTProfile: NSObject {
                     let ref2 = FIRDatabase.database().reference(fromURL: BASE_URL).child(DAILYFOOD_TABLE).childByAutoId()
                     let dailyEntry = ["profile": self.dictionary as Any, "items": items, "images": images, "earnedPoints" : earnedPoints, "createdAt": Date().timeIntervalSince1970, "updatedAt": Date().timeIntervalSince1970, "profileId": snap_.key] as [String: Any]
                     self.weeklyFoodBlog.add(TTDailyFoodEntry.init(dictionary: dailyEntry as NSDictionary))
+                    
                     ref2.updateChildValues(dailyEntry)
                     
                     let ref3 = FIRDatabase.database().reference(fromURL: BASE_URL).child(PROFILES_TABLE+"/\(snap_.key)")
                     let totalUnused = earnedPoints + (self.unusedPoints)
                     let totalWeekly = earnedPoints + (self.weeklyEarnedPoints)
+                    //locally update points
+                    self.unusedPoints = self.unusedPoints + earnedPoints
+                    self.totalPoints = self.totalPoints + earnedPoints
+                    self.weeklyEarnedPoints = self.weeklyEarnedPoints + earnedPoints
+                    TTUser.currentUser?.replaceProfile(aProfile: self)
                     ref3.updateChildValues(["unusedPoints": totalUnused, "weeklyPoints": totalWeekly])
                 }
             })

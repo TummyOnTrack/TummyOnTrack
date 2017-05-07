@@ -219,38 +219,45 @@ class TTHomeTableTableViewController: UITableViewController, UINavigationControl
         var dayPoints = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
         weeklyFoodBlog = [:]
         TTProfile.currentProfile?.getWeeklyFoodBlog(success: { (aFoodBlog: [TTDailyFoodEntry]) in
-            for i in 0...(aFoodBlog.count-1) {
-                let blog = aFoodBlog[i]
-                dayPoints[blog.weekDay!-1] = dayPoints[blog.weekDay!-1] + Double(blog.earnedPoints!)
-                self.chartsView.noDataText = "See your weekly points here"
-                
-                let dictBlog_ = self.weeklyFoodBlog?.object(forKey: self.weekdays[blog.weekDay!-1])
-                
-                if dictBlog_ == nil {
-                    let dictArray_: NSMutableArray = []
-                    dictArray_.add(blog)
+            if aFoodBlog.count > 0 {
+                for i in 0...(aFoodBlog.count-1) {
+                    let blog = aFoodBlog[i]
+                    dayPoints[blog.weekDay!-1] = dayPoints[blog.weekDay!-1] + Double(blog.earnedPoints!)
+                    self.chartsView.noDataText = "See your weekly points here"
                     
-                    self.weeklyFoodBlog?.setObject(dictArray_, forKey: self.weekdays[blog.weekDay!-1] as NSCopying)
-                }
-                else {
-                    let dictArray_: NSMutableArray = dictBlog_ as! NSMutableArray
-                    dictArray_.add(blog)
+                    let dictBlog_ = self.weeklyFoodBlog?.object(forKey: self.weekdays[blog.weekDay!-1])
+                    
+                    if dictBlog_ == nil {
+                        let dictArray_: NSMutableArray = []
+                        dictArray_.add(blog)
+                        
+                        self.weeklyFoodBlog?.setObject(dictArray_, forKey: self.weekdays[blog.weekDay!-1] as NSCopying)
+                    }
+                    else {
+                        let dictArray_: NSMutableArray = dictBlog_ as! NSMutableArray
+                        dictArray_.add(blog)
 
-                    self.weeklyFoodBlog?.setObject(dictArray_, forKey: self.weekdays[blog.weekDay!-1] as NSCopying)
+                        self.weeklyFoodBlog?.setObject(dictArray_, forKey: self.weekdays[blog.weekDay!-1] as NSCopying)
+                    }
                 }
-                
-                let limitLine = ChartLimitLine(limit: 0, label: "")
-                limitLine.lineColor = UIColor.white.withAlphaComponent(0.3)
-                limitLine.lineWidth = 1
-                
-                self.chartsView.leftAxis.addLimitLine(limitLine)
-                self.chartsView.drawGridBackgroundEnabled = false
-                self.chartsView.chartDescription?.text = "Daily Food Points"
-                self.chartsView.setBarChartData(xValues: self.weekdays, yValues: dayPoints, label: "Weekdays")
-                self.chartsView.delegate = self
-                self.chartsView.animate(yAxisDuration: 0.9)
-                
             }
+            
+            let limitLine = ChartLimitLine(limit: 0, label: "")
+            limitLine.lineColor = UIColor.white.withAlphaComponent(0.3)
+            limitLine.lineWidth = 1
+            
+            self.chartsView.leftAxis.addLimitLine(limitLine)
+            self.chartsView.xAxis.labelFont = UIFont(name: "Helvetica", size: 15)!
+            
+            
+            self.chartsView.chartDescription?.text = "Daily Food Points"
+            self.chartsView.setBarChartData(xValues: self.weekdays, yValues: dayPoints, label: "Weekdays")
+            self.chartsView.delegate = self
+            self.chartsView.animate(yAxisDuration: 0.9)
+            
+            //[self.lineChartView highlightValueWithX:self.lineChartView.chartXMax dataSetIndex:0 callDelegate:YES];
+                
+            
         }, failure: { (error: NSError) in
             
         })
@@ -331,27 +338,48 @@ extension BarChartView {
         init(labels: [String]) {
             super.init()
             self.labels = labels
+            
         }
     }
 
     func setBarChartData(xValues: [String], yValues: [Double], label: String) {
 
         var dataEntries: [BarChartDataEntry] = []
-
+        //var valueColors = [UIColor]()
         for i in 0..<yValues.count {
             let dataEntry = BarChartDataEntry(x: Double(i), y: yValues[i])
+            //valueColors.append(colorPicker(value: Double(i)))
+            
             dataEntries.append(dataEntry)
         }
 
         let chartDataSet = BarChartDataSet(values: dataEntries, label: label)
         chartDataSet.colors = ChartColorTemplates.colorful()
+        //chartDataSet.valueColors = valueColors
+        chartDataSet.valueFont = UIFont(name: "Helvetica-Bold", size: 15)!
+        
         let chartData = BarChartData(dataSet: chartDataSet)
-
+        
         let chartFormatter = BarChartFormatter(labels: xValues)
+        
         let xAxis = XAxis()
         xAxis.valueFormatter = chartFormatter
+        self.xAxis.drawGridLinesEnabled = false
         self.xAxis.valueFormatter = xAxis.valueFormatter
-
+        self.rightAxis.enabled = false
+ 
         self.data = chartData
+        
+    }
+    
+    func colorPicker(value : Double) -> UIColor {
+        
+        //input your own logic for how you actually want to color the x axis
+        if value == 3 {
+            return UIColor.red
+        }
+        else {
+            return UIColor.black
+        }
     }
 }
