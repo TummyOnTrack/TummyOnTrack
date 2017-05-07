@@ -6,6 +6,8 @@
 //  Copyright © 2017 Gauri Tikekar. All rights reserved.
 //
 
+// Emoji icons https://emojiisland.com/pages/free-download-emoji-icons-png
+
 import UIKit
 import SVProgressHUD
 

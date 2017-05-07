@@ -32,7 +32,7 @@ class TTFillPlateTableCell: UITableViewCell {
             }
             pointsLabel.text = "\(foodItem.points ?? 0)" + " points"
             if foodItem.points! <= 0 {
-                smileyImageView.image = UIImage(named: "Upside_down")
+                smileyImageView.image = UIImage(named: "OMG_Face_Emoji")
             }
             else {
                 smileyImageView.image = UIImage(named: "Slightly_Smiling")

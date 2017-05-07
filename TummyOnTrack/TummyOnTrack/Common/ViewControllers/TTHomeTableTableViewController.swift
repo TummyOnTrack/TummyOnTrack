@@ -20,6 +20,7 @@ class TTHomeTableTableViewController: UITableViewController, UINavigationControl
         
     }
 
+    @IBOutlet weak var profileNameLabel: UILabel!
     @IBOutlet weak var setupGoalButton: UIButton!
     @IBOutlet weak var goalPointsLabel: UILabel!
     @IBOutlet weak var pointsLabel: UILabel!
@@ -185,7 +186,8 @@ class TTHomeTableTableViewController: UITableViewController, UINavigationControl
 
     func populateProfileInfo() {
         let currentProfile_ = TTProfile.currentProfile
-        self.navigationItem.title = "Hi " + (currentProfile_?.name)! + "!"
+        self.navigationItem.title = "Home" //"Hi " + (currentProfile_?.name)! + "!"
+        profileNameLabel.text = (currentProfile_?.name)!
         self.profileImageView.setImageWith((currentProfile_?.profileImageURL)!)
         //setupGoalButton.isHidden = true
         var pieColor = UIColor.init(red: 244/255.0, green: 115/255.0, blue: 0/255.0, alpha: 1)

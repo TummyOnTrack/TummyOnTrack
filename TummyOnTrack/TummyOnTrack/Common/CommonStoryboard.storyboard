@@ -34,7 +34,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Smiling_Face_Blushed" translatesAutoresizingMaskIntoConstraints="NO" id="BDC-Md-k7F">
-                                                    <rect key="frame" x="8" y="8" width="60" height="60"/>
+                                                    <rect key="frame" x="13" y="8" width="60" height="60"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="60" id="RIT-gO-f1h"/>
                                                         <constraint firstAttribute="height" constant="60" id="Ve7-eA-hWD"/>
@@ -85,15 +85,23 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ProfileName" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iE5-Nm-mz3">
+                                                    <rect key="frame" x="-4" y="76" width="94" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="NXg-uM-WNM" firstAttribute="top" secondItem="FxA-XQ-pd6" secondAttribute="bottom" constant="13" id="7hf-yL-YQM"/>
-                                                <constraint firstItem="ERA-Es-AKo" firstAttribute="leading" secondItem="BDC-Md-k7F" secondAttribute="trailing" constant="-60" id="Blx-fH-cac"/>
+                                                <constraint firstItem="ERA-Es-AKo" firstAttribute="leading" secondItem="BDC-Md-k7F" secondAttribute="trailing" constant="-65" id="Blx-fH-cac"/>
                                                 <constraint firstItem="BDC-Md-k7F" firstAttribute="top" secondItem="vsz-0h-FaW" secondAttribute="topMargin" id="Dt9-Fp-2tw"/>
-                                                <constraint firstItem="FxA-XQ-pd6" firstAttribute="leading" secondItem="BDC-Md-k7F" secondAttribute="trailing" constant="64" id="UtL-P5-OHR"/>
+                                                <constraint firstItem="FxA-XQ-pd6" firstAttribute="leading" secondItem="BDC-Md-k7F" secondAttribute="trailing" constant="59" id="UtL-P5-OHR"/>
+                                                <constraint firstItem="iE5-Nm-mz3" firstAttribute="top" secondItem="BDC-Md-k7F" secondAttribute="bottom" constant="8" id="Zv6-gA-gkg"/>
+                                                <constraint firstItem="iE5-Nm-mz3" firstAttribute="centerX" secondItem="BDC-Md-k7F" secondAttribute="centerX" id="ecR-tz-9lu"/>
                                                 <constraint firstItem="FxA-XQ-pd6" firstAttribute="top" secondItem="vsz-0h-FaW" secondAttribute="topMargin" constant="34" id="fYc-Ss-gOx"/>
                                                 <constraint firstItem="ERA-Es-AKo" firstAttribute="top" secondItem="vsz-0h-FaW" secondAttribute="topMargin" id="hrD-2T-Jms"/>
-                                                <constraint firstItem="BDC-Md-k7F" firstAttribute="leading" secondItem="vsz-0h-FaW" secondAttribute="leadingMargin" id="qeB-OT-GGf"/>
+                                                <constraint firstItem="BDC-Md-k7F" firstAttribute="leading" secondItem="vsz-0h-FaW" secondAttribute="leadingMargin" constant="5" id="qeB-OT-GGf"/>
                                                 <constraint firstItem="NXg-uM-WNM" firstAttribute="centerX" secondItem="vsz-0h-FaW" secondAttribute="centerX" id="v8T-Bq-nnD"/>
                                                 <constraint firstItem="ERA-Es-AKo" firstAttribute="trailing" secondItem="vsz-0h-FaW" secondAttribute="trailingMargin" id="wfx-UL-GGl"/>
                                             </constraints>
@@ -174,6 +182,7 @@
                         <outlet property="pieView" destination="FxA-XQ-pd6" id="GWx-Wl-mhF"/>
                         <outlet property="pointsLabel" destination="NXg-uM-WNM" id="TVn-UH-9vh"/>
                         <outlet property="profileImageView" destination="BDC-Md-k7F" id="BGt-gW-CjU"/>
+                        <outlet property="profileNameLabel" destination="iE5-Nm-mz3" id="X6n-q1-0g9"/>
                         <outlet property="setupGoalButton" destination="i6j-Y6-wPh" id="eTt-jv-Uwt"/>
                         <segue destination="e0x-T0-KYU" kind="show" identifier="Show Plate View" id="AjU-2M-tCj"/>
                     </connections>

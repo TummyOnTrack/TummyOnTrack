@@ -85,10 +85,6 @@ class TTUser: NSObject {
                     ref.updateChildValues(profileValues)
                     let addedProfile = TTProfile.init(dictionary: profileValues as NSDictionary)
                     self.profiles.add(addedProfile)
-                    /*TTFirebaseClient.initializeCurrentProfile(success: { (aProfile: TTProfile?) in
-                     
-                     }, failure: { (error: NSError) -> ()  in
-                     })*/
                     self.changeCurrentProfile(aProfile: addedProfile)
                     completionHandler(true)
                     
