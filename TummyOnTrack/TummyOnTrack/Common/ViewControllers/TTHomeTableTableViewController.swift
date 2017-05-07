@@ -168,12 +168,19 @@ class TTHomeTableTableViewController: UITableViewController, UINavigationControl
         slider.maximumValue = 100
         slider.minimumValue = 10
         slider.value = Float(TTProfile.currentProfile!.goalPoints)
+        slider.addTarget(self, action: #selector(sliderValueDidChange(_:)), for: .valueChanged)
         alert.view.addSubview(slider)
         alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler:{(action: UIAlertAction!) in
             self.goalPointsLabel.text = "Goal: " + "\(Int(slider.value))" + "Pts"
             TTProfile.currentProfile?.setGoalPoints(aGoalPoints: Int(slider.value))
         }))
         present(alert, animated: true, completion: nil)
+    }
+    
+    func sliderValueDidChange(_ sender:UISlider!)
+    {
+        print("Slider value changed")
+        goalPointsLabel.text = "Goal: \(Int(sender.value))Pts"
     }
 
     func setCurrentProfileDetails() {

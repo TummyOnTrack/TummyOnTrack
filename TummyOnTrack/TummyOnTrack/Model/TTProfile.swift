@@ -229,6 +229,7 @@ class TTProfile: NSObject {
     
     func setGoalPoints(aGoalPoints: Int) {
         goalPoints = aGoalPoints
+        updateProfile(dictionary: ["goalPoints": goalPoints])
         TTUser.currentUser?.replaceProfile(aProfile: self)
     }
     
