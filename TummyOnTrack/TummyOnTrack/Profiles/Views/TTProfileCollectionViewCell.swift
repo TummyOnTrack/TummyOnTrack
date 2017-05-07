@@ -17,8 +17,8 @@ class TTProfileCollectionViewCell: UICollectionViewCell {
     
     var profile: TTProfile! {
         didSet {
-            setUI()
-            self.contentView.backgroundColor = isSelected ? UIColor.orange : UIColor.white
+//            setUI()
+//            self.contentView.backgroundColor = isSelected ? UIColor.orange : UIColor.white
 
             bgView.backgroundColor = UIColor.black.withAlphaComponent(0.4)
             profileName.textColor = .white
@@ -35,15 +35,21 @@ class TTProfileCollectionViewCell: UICollectionViewCell {
         }
     }
     
-    func setUI() {
-
-        if TTProfile.currentProfile?.name == profile.name {
-            isSelected = true
-        }
-        else {
-            isSelected = false
+    override var isSelected: Bool {
+        didSet {
+            self.contentView.backgroundColor = isSelected ? UIColor.orange : UIColor.white
         }
     }
+    
+//    func setUI() {
+//
+//        if TTProfile.currentProfile?.name == profile.name {
+//            isSelected = true
+//        }
+//        else {
+//            isSelected = false
+//        }
+//    }
     
   
 }
