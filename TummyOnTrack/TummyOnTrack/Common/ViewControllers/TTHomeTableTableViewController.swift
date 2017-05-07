@@ -16,6 +16,8 @@ import UserNotifications
 
 class TTHomeTableTableViewController: UITableViewController, UINavigationControllerDelegate, ChartViewDelegate {
     
+    @IBOutlet weak var weekSummaryLabel: UILabel!
+    @IBOutlet weak var noChartsView: UIView!
     @IBOutlet weak var profileNameLabel: UILabel!
     @IBOutlet weak var setupGoalButton: UIButton!
     @IBOutlet weak var goalPointsLabel: UILabel!
@@ -30,11 +32,16 @@ class TTHomeTableTableViewController: UITableViewController, UINavigationControl
     var weeklyFoodBlog: NSMutableDictionary?
 
     let weekdays = ["Sun", "Mon", "Tues", "Wed", "Thur", "Fri", "Sat"]
+    var dayPoints = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         profileImageView.layer.cornerRadius = profileImageView.frame.width/2
+        noChartsView.layer.borderColor = UIColor.lightGray.cgColor
+        noChartsView.layer.borderWidth = 1
+        
+        initializeNavigationBarTitleView()
 
         // load default food items
         loadFoodItems()
@@ -48,11 +55,20 @@ class TTHomeTableTableViewController: UITableViewController, UINavigationControl
 
         view.layer.addSublayer(pieLayer)
     }
+    
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        //setToday()
         setCurrentProfileDetails()
+    }
+    
+    func initializeNavigationBarTitleView() {
+        if let image_ = UIImage(named: "carrot") {
+            let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 38, height: 38))
+            imageView.contentMode = .scaleAspectFit
+            imageView.image = image_
+            navigationItem.titleView = imageView
+        }
     }
 
     func setToday() {
@@ -183,7 +199,7 @@ class TTHomeTableTableViewController: UITableViewController, UINavigationControl
         
         var pieColor = themeColor
         if currentProfile.weeklyEarnedPoints == 0 {
-            goalHeaderLabel.text = "Eat healthy, collect points!"
+            goalHeaderLabel.text = "Eat Healthy, Collect Points!"
             pointsLabel.text = "Your weekly points will appear here"
             pieColor = UIColor.lightGray
         } else {
@@ -208,13 +224,13 @@ class TTHomeTableTableViewController: UITableViewController, UINavigationControl
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
-        var dayPoints = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
         weeklyFoodBlog = [:]
+        self.weekSummaryLabel.text = "Tracking Weekly Meals Made Easier!"
         TTProfile.currentProfile?.getWeeklyFoodBlog(success: { (aFoodBlog: [TTDailyFoodEntry]) in
             if aFoodBlog.count > 0 {
                 for i in 0...(aFoodBlog.count-1) {
                     let blog = aFoodBlog[i]
-                    dayPoints[blog.weekDay!-1] = dayPoints[blog.weekDay!-1] + Double(blog.earnedPoints!)
+                    self.dayPoints[blog.weekDay!-1] = self.dayPoints[blog.weekDay!-1] + Double(blog.earnedPoints!)
                     self.chartsView.noDataText = "See your weekly points here"
                     
                     let dictBlog_ = self.weeklyFoodBlog?.object(forKey: self.weekdays[blog.weekDay!-1])
@@ -232,19 +248,22 @@ class TTHomeTableTableViewController: UITableViewController, UINavigationControl
                         self.weeklyFoodBlog?.setObject(dictArray_, forKey: self.weekdays[blog.weekDay!-1] as NSCopying)
                     }
                 }
+                let limitLine = ChartLimitLine(limit: 0, label: "")
+                limitLine.lineColor = UIColor.white.withAlphaComponent(0.3)
+                limitLine.lineWidth = 1
+                
+                self.chartsView.leftAxis.addLimitLine(limitLine)
+                self.chartsView.xAxis.labelFont = UIFont(name: "Helvetica", size: 15)!
+                
+                self.chartsView.chartDescription?.text = "Daily Food Points"
+                self.chartsView.setBarChartData(xValues: self.weekdays, yValues: self.dayPoints, label: "Weekdays")
+                self.chartsView.delegate = self
+                self.chartsView.animate(yAxisDuration: 0.9)
+                self.noChartsView.isHidden = true
+                self.weekSummaryLabel.text = "This Week's Summary"
             }
             
-            let limitLine = ChartLimitLine(limit: 0, label: "")
-            limitLine.lineColor = UIColor.white.withAlphaComponent(0.3)
-            limitLine.lineWidth = 1
             
-            self.chartsView.leftAxis.addLimitLine(limitLine)
-            self.chartsView.xAxis.labelFont = UIFont(name: "Helvetica", size: 15)!
-
-            self.chartsView.chartDescription?.text = "Daily Food Points"
-            self.chartsView.setBarChartData(xValues: self.weekdays, yValues: dayPoints, label: "Weekdays")
-            self.chartsView.delegate = self
-            self.chartsView.animate(yAxisDuration: 0.9)
         }, failure: { (error: Error) in
             
         })
