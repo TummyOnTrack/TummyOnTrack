@@ -116,9 +116,7 @@ class TTProfile: NSObject {
             if profile == nil {
                 profiles.removeValue(forKey: (_currentProfile?.name)!)
                 _currentProfile = profile
-
-            }
-            else {
+            } else {
                 _currentProfile = profile
                 profiles[(_currentProfile?.name)!] = _currentProfile
             }
@@ -127,8 +125,7 @@ class TTProfile: NSObject {
 
             if profiles.isEmpty {
                 defaults.removeObject(forKey: "currentProfileData")
-            }
-            else {
+            } else {
                 var profileData = [String: Data]()
                 for (profilekey, profilevalue) in profiles {
                     let data = try! JSONSerialization.data(withJSONObject: profilevalue.dictionary!, options: [])
@@ -136,37 +133,29 @@ class TTProfile: NSObject {
                 }
                 defaults.set(profileData, forKey: "currentProfileData")
             }
-
             defaults.synchronize()
         }
     }
     
     func getWeeklyFoodBlog(success: @escaping ([TTDailyFoodEntry]) -> (), failure: @escaping (NSError) -> ()) {
-        
         weeklyFoodBlog.removeAllObjects()
         foodBlog.removeAllObjects()
         let ref = FIRDatabase.database().reference(fromURL: BASE_URL).child(DAILYFOOD_TABLE)
-        
         let query = ref.queryOrdered(byChild: "profileId").queryEqual(toValue: profileId)
-        //.queryOrdered(byChild: "createdAt").queryStarting(atValue: Date().timeIntervalSince1970).queryEnding(atValue: daysAgo?.timeIntervalSince1970)
-        
+
         query.observeSingleEvent(of: .value, with: { snapshot in
             if !snapshot.exists() {
                 success([TTDailyFoodEntry]())
                 return
             }
             for profile in snapshot.children.allObjects as! [FIRDataSnapshot] {
-                
                 let val = profile.value as! [String: Any]
                 let blog = TTDailyFoodEntry(dictionary: val as NSDictionary)
                 self.foodBlog.add(blog)
-                
             }
             self.extractWeeklyBlog()
             success(self.weeklyFoodBlog as! [TTDailyFoodEntry])
-            
         })
-        
     }
     
     func extractWeeklyBlog() {
@@ -234,7 +223,6 @@ class TTProfile: NSObject {
     }
     
     func updateProfile(dictionary: NSDictionary) {
-        
         if let isParent = dictionary["isParent"] as? Bool {
             self.isParent = isParent
         } else {
@@ -286,8 +274,6 @@ class TTProfile: NSObject {
                 ref2.updateChildValues(dictionary as! [AnyHashable : Any])
             }
         })
-        
-
     }
 
     class func changeProfile(profile: TTProfile) {
@@ -305,6 +291,7 @@ class TTProfile: NSObject {
                 }
             }
         }
+
         if profiles[profile.name!] != nil {
             profiles.removeValue(forKey: profile.name!)
         }

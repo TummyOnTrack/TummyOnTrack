@@ -16,11 +16,19 @@ class TTPointsViewController: UIViewController {
     @IBOutlet weak var awesomeLabel: UILabel!
     @IBOutlet weak var profileImageView: UIImageView!
 
-    let awesomeSynonyms = [ "Awesome", "Excellent", "Great", "Incredible", "Marvelous", "Unbelievable", "Wonderful"]
+    fileprivate let awesomeSynonyms = [ "Awesome", "Excellent", "Great", "Incredible", "Marvelous", "Unbelievable", "Wonderful"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        populateProfile()
+        animateAchievement()
+    }
+
+    func populateProfile() {
         let weeklyEarnedPoints = TTProfile.currentProfile?.weeklyEarnedPoints
 
         if weeklyEarnedPoints == 0 {
@@ -40,11 +48,6 @@ class TTPointsViewController: UIViewController {
                 profileImageView.layer.cornerRadius = profileImageView.frame.width/2
             }
         }
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        animateAchievement()
     }
 
     func animateAchievement() {
