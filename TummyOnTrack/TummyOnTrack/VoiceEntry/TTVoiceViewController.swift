@@ -10,7 +10,7 @@ import UIKit
 import Speech
 import Firebase
 
-class TTVoiceViewController: UIViewController, SFSpeechRecognizerDelegate {
+class TTVoiceViewController: UIViewController, SFSpeechRecognizerDelegate, AVSpeechSynthesizerDelegate {
 
     @IBOutlet weak var microphoneButton: UIButton!
     @IBOutlet weak var userSpeechToTextLabel: UILabel!
@@ -19,8 +19,8 @@ class TTVoiceViewController: UIViewController, SFSpeechRecognizerDelegate {
     @IBOutlet weak var awesomeLabel: UILabel!
     var utterance: AVSpeechUtterance!
     var synthesizer: AVSpeechSynthesizer!
-    let speechText = "What did you eat today?"
     var selectedfoodstring = String()
+    var audioEngineIsStopped = true
     //object that handles speech recognition
     private let speechRecognizer = SFSpeechRecognizer(locale: Locale.init(identifier: "en-US"))
     
@@ -34,20 +34,23 @@ class TTVoiceViewController: UIViewController, SFSpeechRecognizerDelegate {
     @IBAction func microphoneButton(_ sender: UIButton) {
         setupViewsForRippleEffect()
         if audioEngine.isRunning {
-            audioEngine.stop()
-            recognitionRequest?.endAudio()
-            microphoneButton.isEnabled = false
-          //  microphoneButton.setTitle("P", for: .normal)
-            let image = UIImage(named: "microphone")
-            microphoneButton.setImage(image , for: .normal)
-            awesomeLabel.isHidden = false
+            audioEngine.pause()
+            settingsToPauseRecording()
         }
         else {
-         //   userSpeechToTextLabel.text = ""
-            startRecording()
-          //  microphoneButton.setTitle("S", for: .normal)
-            let image = UIImage(named: "pause")
-            microphoneButton.setImage(image, for: .normal)
+            if audioEngineIsStopped {
+                audioEngineIsStopped = false
+                startRecording()
+            }
+            else {
+                do {
+                    try audioEngine.start()
+                } catch {
+                    print("audioEngine couldn't start because of an error.")
+                }
+            }
+            
+            settingsToStartRecording()
         }
 
     }
@@ -56,6 +59,7 @@ class TTVoiceViewController: UIViewController, SFSpeechRecognizerDelegate {
         super.viewDidLoad()
         awesomeLabel.isHidden = true
         microphoneButton.layer.cornerRadius = microphoneButton.frame.size.width / 2
+        microphoneButton.isEnabled = false
 
         //disable the microphone button until the speech recognizer is activated
         microphoneButton.isEnabled = false
@@ -88,6 +92,15 @@ class TTVoiceViewController: UIViewController, SFSpeechRecognizerDelegate {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        synthesizer = AVSpeechSynthesizer()
+        synthesizer.delegate = self
+        utterance = AVSpeechUtterance(string: "What did you eat today?")
+        utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
+        //   utterance.rate = 0.5
+        synthesizer.speak(utterance)
     }
     
     func setupViewsForRippleEffect() {
@@ -156,8 +169,7 @@ class TTVoiceViewController: UIViewController, SFSpeechRecognizerDelegate {
             var isFinal = false
             
             if result != nil {
-                //   self.textView.text = result?.bestTranscription.formattedString
-    
+
                 self.userSpeechToTextLabel.text = result?.bestTranscription.formattedString
                 self.selectedfoodstring = (result?.bestTranscription.formattedString)!
                 isFinal = (result?.isFinal)!
@@ -198,17 +210,36 @@ class TTVoiceViewController: UIViewController, SFSpeechRecognizerDelegate {
         }
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        
-        utterance = AVSpeechUtterance(string: speechText)
-        synthesizer = AVSpeechSynthesizer()
-        utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
-        //   utterance.rate = 0.5
-        synthesizer.speak(utterance)
+    func settingsToStartRecording() {
+        let image = UIImage(named: "pause")
+        microphoneButton.setImage(image, for: .normal)
+    }
+    
+    func settingsToPauseRecording() {
+        let image = UIImage(named: "microphone")
+        microphoneButton.setImage(image , for: .normal)
+        awesomeLabel.isHidden = false
+    }
+    
+    func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
+        if audioEngine.isRunning {
+            settingsToPauseRecording()
+        }
+        else {
+            startRecording()
+            audioEngineIsStopped = false
+            settingsToStartRecording()
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ShowVoiceSummary" {
+            if audioEngine.isRunning {
+                settingsToPauseRecording()
+                audioEngine.stop()
+                audioEngineIsStopped = true
+                recognitionRequest?.endAudio()
+            }
             let destinationVC = segue.destination as! TTVoiceSummaryViewController
             destinationVC.selectedFoodString = self.selectedfoodstring.lowercased()
         }
