@@ -13,8 +13,7 @@ class TTProfilesViewController: UITableViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var addProfilesLabel: UILabel!
-    var profiles = [TTProfile]()
-
+    fileprivate var profiles = [TTProfile]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,8 +44,6 @@ class TTProfilesViewController: UITableViewController {
         super.didReceiveMemoryWarning()
     }
 
-
-
     @IBAction func logoutUser(_ sender: Any) {
         do {
             try FIRAuth.auth()?.signOut()
@@ -59,7 +56,6 @@ class TTProfilesViewController: UITableViewController {
         let navController = UINavigationController(rootViewController: onboardingRootController)
         self.present(navController, animated: true, completion: nil)
     }
-  
 }
 
 extension TTProfilesViewController: UICollectionViewDelegate, UICollectionViewDataSource {
@@ -86,10 +82,6 @@ extension TTProfilesViewController: UICollectionViewDelegate, UICollectionViewDa
         if indexPath.row > 0 {
             TTProfile.currentProfile = self.profiles[indexPath.row-1]
             tabBarController?.selectedIndex = 0
-
         }
-
     }
-
-
 }

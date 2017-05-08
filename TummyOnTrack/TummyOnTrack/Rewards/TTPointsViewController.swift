@@ -16,7 +16,7 @@ class TTPointsViewController: UIViewController {
     @IBOutlet weak var awesomeLabel: UILabel!
     @IBOutlet weak var profileImageView: UIImageView!
 
-    let awesomeSynonyms = [ "Awesome", "Excellent", "Great", "Incredible", "Marvelous", "Unbelievable", "Wonderful"]
+    fileprivate let awesomeSynonyms = [ "Awesome", "Excellent", "Great", "Incredible", "Marvelous", "Unbelievable", "Wonderful"]
 
     override func viewDidLoad() {
         super.viewDidLoad()

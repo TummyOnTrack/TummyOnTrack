@@ -273,4 +273,3 @@ private extension TTRewardsViewController {
         usedPointsTextLabel.sizeToFit()
     }
 }
-
