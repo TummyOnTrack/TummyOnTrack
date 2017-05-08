@@ -86,6 +86,7 @@
                             <constraint firstItem="vCJ-0m-Eao" firstAttribute="centerX" secondItem="ijA-g9-g4v" secondAttribute="centerX" id="Mf2-ha-J93"/>
                             <constraint firstItem="1Ts-bl-dvq" firstAttribute="top" secondItem="vCJ-0m-Eao" secondAttribute="bottom" constant="8" id="UeF-nh-fX1"/>
                             <constraint firstItem="vCJ-0m-Eao" firstAttribute="centerX" secondItem="b0v-FR-Jb6" secondAttribute="centerX" id="Xre-wp-2jA"/>
+                            <constraint firstItem="vCJ-0m-Eao" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Emv-Rj-iZK" secondAttribute="bottom" constant="8" id="fzs-RK-Vgt"/>
                             <constraint firstItem="Emv-Rj-iZK" firstAttribute="top" secondItem="Jma-KQ-FNZ" secondAttribute="bottom" constant="20" id="izK-4r-uth"/>
                             <constraint firstItem="Emv-Rj-iZK" firstAttribute="leading" secondItem="b0v-FR-Jb6" secondAttribute="leading" constant="16" id="mFB-iS-EE2"/>
                             <constraint firstItem="vCJ-0m-Eao" firstAttribute="centerY" secondItem="ijA-g9-g4v" secondAttribute="centerY" id="tMZ-o8-kom"/>
@@ -210,7 +211,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hmV-8v-T4H" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1607" y="32"/>
+            <point key="canvasLocation" x="1788" y="32"/>
         </scene>
     </scenes>
     <resources>
