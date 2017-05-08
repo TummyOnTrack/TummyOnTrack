@@ -20,7 +20,7 @@ class TTVoiceViewController: UIViewController, SFSpeechRecognizerDelegate, AVSpe
     var utterance: AVSpeechUtterance!
     var synthesizer: AVSpeechSynthesizer!
     var selectedfoodstring = String()
-    var audioEngineIsStopped = true
+    
     //object that handles speech recognition
     private let speechRecognizer = SFSpeechRecognizer(locale: Locale.init(identifier: "en-US"))
     
@@ -33,23 +33,17 @@ class TTVoiceViewController: UIViewController, SFSpeechRecognizerDelegate, AVSpe
 
     @IBAction func microphoneButton(_ sender: UIButton) {
         setupViewsForRippleEffect()
+        
         if audioEngine.isRunning {
             audioEngine.pause()
             settingsToPauseRecording()
         }
         else {
-            if audioEngineIsStopped {
-                audioEngineIsStopped = false
-                startRecording()
+            do {
+                try audioEngine.start()
+            } catch {
+                print("audioEngine couldn't start because of an error.")
             }
-            else {
-                do {
-                    try audioEngine.start()
-                } catch {
-                    print("audioEngine couldn't start because of an error.")
-                }
-            }
-            
             settingsToStartRecording()
         }
 
@@ -59,34 +53,12 @@ class TTVoiceViewController: UIViewController, SFSpeechRecognizerDelegate, AVSpe
         super.viewDidLoad()
         awesomeLabel.isHidden = true
         microphoneButton.layer.cornerRadius = microphoneButton.frame.size.width / 2
-        microphoneButton.isEnabled = false
 
         //disable the microphone button until the speech recognizer is activated
         microphoneButton.isEnabled = false
         speechRecognizer?.delegate = self
 
-        //request the authorization of Speech Recognition
-        SFSpeechRecognizer.requestAuthorization { (authStatus) in
-            
-            var isButtonEnabled = false
-            
-            switch authStatus {
-            case .authorized:
-                isButtonEnabled = true
-            case .denied:
-                isButtonEnabled = false
-                print("User denied access to speech recognition")
-            case .notDetermined:
-                isButtonEnabled = false
-                print("Speech recognition not yet authorized")
-            case .restricted:
-                isButtonEnabled = false
-                print("Speech recognition restricted on this device")
-            }
-            OperationQueue.main.addOperation() {
-                self.microphoneButton.isEnabled = isButtonEnabled
-            }
-        }
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -94,13 +66,16 @@ class TTVoiceViewController: UIViewController, SFSpeechRecognizerDelegate, AVSpe
         // Dispose of any resources that can be recreated.
     }
     
-    override func viewDidAppear(_ animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
+        
+        microphoneButton.isEnabled = false
         synthesizer = AVSpeechSynthesizer()
         synthesizer.delegate = self
         utterance = AVSpeechUtterance(string: "What did you eat today?")
         utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
         //   utterance.rate = 0.5
         synthesizer.speak(utterance)
+
     }
     
     func setupViewsForRippleEffect() {
@@ -141,7 +116,8 @@ class TTVoiceViewController: UIViewController, SFSpeechRecognizerDelegate, AVSpe
         
         let audioSession = AVAudioSession.sharedInstance()
         do {
-            try audioSession.setCategory(AVAudioSessionCategoryRecord)
+         //   try audioSession.setCategory(AVAudioSessionCategoryRecord)
+            try audioSession.setCategory(AVAudioSessionCategoryPlayAndRecord)
             try audioSession.setMode(AVAudioSessionModeMeasurement)
             try audioSession.setActive(true, with: .notifyOthersOnDeactivation)
         } catch {
@@ -222,24 +198,42 @@ class TTVoiceViewController: UIViewController, SFSpeechRecognizerDelegate, AVSpe
     }
     
     func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
-        if audioEngine.isRunning {
-            settingsToPauseRecording()
+        //request the authorization of Speech Recognition
+        SFSpeechRecognizer.requestAuthorization { (authStatus) in
+            
+            var isButtonEnabled = false
+            
+            switch authStatus {
+            case .authorized:
+                isButtonEnabled = true
+            case .denied:
+                isButtonEnabled = false
+                print("User denied access to speech recognition")
+            case .notDetermined:
+                isButtonEnabled = false
+                print("Speech recognition not yet authorized")
+            case .restricted:
+                isButtonEnabled = false
+                print("Speech recognition restricted on this device")
+            }
+            OperationQueue.main.addOperation() {
+                self.microphoneButton.isEnabled = isButtonEnabled
+            }
         }
-        else {
+        
+        if !(audioEngine.isRunning) {
+
             startRecording()
-            audioEngineIsStopped = false
             settingsToStartRecording()
         }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ShowVoiceSummary" {
-            if audioEngine.isRunning {
-                settingsToPauseRecording()
-                audioEngine.stop()
-                audioEngineIsStopped = true
-                recognitionRequest?.endAudio()
-            }
+            settingsToPauseRecording()
+            audioEngine.stop()
+            recognitionRequest?.endAudio()
+
             let destinationVC = segue.destination as! TTVoiceSummaryViewController
             destinationVC.selectedFoodString = self.selectedfoodstring.lowercased()
         }
