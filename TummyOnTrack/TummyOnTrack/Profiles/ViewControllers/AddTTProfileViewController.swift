@@ -58,13 +58,10 @@ class AddTTProfileViewController: UIViewController {
         })
     }
 
-
-
     @IBAction func cancelButtonClicked(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
 
-    
     @IBAction func uploadProfileImageClicked(_ sender: UITapGestureRecognizer) {
         let actionSheet = UIAlertController()
         self.imagePicker.delegate = self
@@ -122,10 +119,9 @@ class AddTTProfileViewController: UIViewController {
             actionSheet.popoverPresentationController!.permittedArrowDirections = UIPopoverArrowDirection.up
             actionSheet.popoverPresentationController!.sourceRect = CGRect(x:self.view.frame.size.width/2, y:135, width:1.0, height:1.0)
         }
-        self.present(actionSheet, animated: true, completion: nil)
-        
-    }
 
+        self.present(actionSheet, animated: true, completion: nil)
+    }
 }
 
 extension AddTTProfileViewController: UINavigationControllerDelegate, UIImagePickerControllerDelegate {
@@ -176,7 +172,6 @@ extension AddTTProfileViewController: UINavigationControllerDelegate, UIImagePic
         DispatchQueue.main.async(execute: {
            self.present(self.imagePicker, animated: true, completion: nil)
         })
-        
     }
     
     fileprivate func accessPhotoLibrary() {
@@ -188,7 +183,5 @@ extension AddTTProfileViewController: UINavigationControllerDelegate, UIImagePic
         DispatchQueue.main.async(execute: {
              self.present(self.imagePicker, animated: true, completion: nil)
         })
-
-       
     }
 }

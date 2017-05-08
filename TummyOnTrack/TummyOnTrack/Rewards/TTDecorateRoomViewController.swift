@@ -18,8 +18,6 @@ class TTDecorateRoomViewController: UIViewController {
     fileprivate var trayUp: CGPoint!
     fileprivate var trayDown: CGPoint!
     fileprivate var trayOriginalCenter: CGPoint!
-    fileprivate var myRewards: [TTReward]?
-
     fileprivate var originalRewardCenter: CGPoint!
     fileprivate var newlyCreatedReward: UIImageView!
     fileprivate var newlyCreatedRewardCenter: CGPoint!
@@ -32,14 +30,14 @@ class TTDecorateRoomViewController: UIViewController {
         trayUp = trayOriginalCenter
         trayDown = CGPoint(x: trayView.center.x ,y: trayView.center.y - trayDownOffset)
         trayView.layer.cornerRadius = 3
+    }
 
-        myRewards = TTProfile.currentProfile?.rewards
-
+    override func viewDidAppear(_ animated: Bool) {
         loadRewards()
     }
 
     func loadRewards() -> Void {
-        if let myRewards = myRewards {
+        if let myRewards = TTProfile.currentProfile?.rewards {
             var x = 0, y = 30
             let xOffset = 55, yOffset = 55
 
