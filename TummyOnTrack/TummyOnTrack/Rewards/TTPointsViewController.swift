@@ -20,7 +20,15 @@ class TTPointsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        populateProfile()
+        animateAchievement()
+    }
+
+    func populateProfile() {
         let weeklyEarnedPoints = TTProfile.currentProfile?.weeklyEarnedPoints
 
         if weeklyEarnedPoints == 0 {
@@ -40,11 +48,6 @@ class TTPointsViewController: UIViewController {
                 profileImageView.layer.cornerRadius = profileImageView.frame.width/2
             }
         }
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        animateAchievement()
     }
 
     func animateAchievement() {

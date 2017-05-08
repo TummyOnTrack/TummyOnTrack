@@ -76,8 +76,9 @@ class TTRewardsViewController: UIViewController {
         super.viewDidLoad()
         collectionView.dataSource = self
         collectionView.delegate = self
+    }
 
-        // Load reward items
+    override func viewDidAppear(_ animated: Bool) {
         loadRewards()
     }
 

@@ -25,7 +25,7 @@ class TTProfileCollectionViewCell: UICollectionViewCell {
             profilePhotoImageView.layer.cornerRadius = 3.5
             
             if let name = profile.name {
-                profileName.text = name
+                profileName.text = name.capitalized
             }
             
             if let imageUrl = profile.profileImageURL {

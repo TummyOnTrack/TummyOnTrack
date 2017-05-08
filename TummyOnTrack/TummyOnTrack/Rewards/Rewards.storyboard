@@ -198,19 +198,19 @@
                                                     <rect key="frame" x="5" y="5" width="100" height="110"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reward" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vcx-ce-c3F">
-                                                    <rect key="frame" x="30.5" y="106" width="49" height="17"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <rect key="frame" x="36" y="106.5" width="39" height="13.5"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="11"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Id-0H-3Gn">
-                                                    <rect key="frame" x="78" y="-3" width="16" height="16"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <rect key="frame" x="80" y="0.0" width="14" height="13.5"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="11"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star" translatesAutoresizingMaskIntoConstraints="NO" id="SJ4-eu-p15">
-                                                    <rect key="frame" x="94" y="-3" width="16" height="16"/>
+                                                    <rect key="frame" x="94" y="-2.5" width="16" height="16"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="16" id="0R4-I7-xJ7"/>
                                                         <constraint firstAttribute="width" constant="16" id="KkD-7s-Fd1"/>
@@ -222,10 +222,10 @@
                                             </subviews>
                                         </view>
                                         <constraints>
-                                            <constraint firstAttribute="bottom" secondItem="vcx-ce-c3F" secondAttribute="bottom" constant="-3" id="3a9-cq-SK2"/>
+                                            <constraint firstAttribute="bottom" secondItem="vcx-ce-c3F" secondAttribute="bottom" id="3a9-cq-SK2"/>
                                             <constraint firstItem="SJ4-eu-p15" firstAttribute="leading" secondItem="3Id-0H-3Gn" secondAttribute="trailing" id="3bp-EU-FhG"/>
                                             <constraint firstItem="jDI-JD-5iK" firstAttribute="leading" secondItem="fiy-dS-v0e" secondAttribute="leading" constant="5" id="9a0-rw-gfh"/>
-                                            <constraint firstItem="3Id-0H-3Gn" firstAttribute="top" secondItem="fiy-dS-v0e" secondAttribute="top" constant="-3" id="D32-D3-4Zv"/>
+                                            <constraint firstItem="3Id-0H-3Gn" firstAttribute="top" secondItem="fiy-dS-v0e" secondAttribute="top" id="D32-D3-4Zv"/>
                                             <constraint firstItem="R6V-zE-nEU" firstAttribute="centerX" secondItem="fiy-dS-v0e" secondAttribute="centerX" id="GJj-bl-TYU"/>
                                             <constraint firstAttribute="trailing" secondItem="SJ4-eu-p15" secondAttribute="trailing" id="Gpq-f9-HIR"/>
                                             <constraint firstItem="SJ4-eu-p15" firstAttribute="bottom" secondItem="3Id-0H-3Gn" secondAttribute="bottom" id="IPH-tn-B5A"/>
@@ -300,7 +300,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="u6j-Dt-qZY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1887" y="-201"/>
+            <point key="canvasLocation" x="1885.5999999999999" y="-201.04947526236884"/>
         </scene>
     </scenes>
     <resources>
@@ -311,6 +311,6 @@
         <image name="star" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="NfR-1w-UPl"/>
+        <segue reference="TCo-MD-7tg"/>
     </inferredMetricsTieBreakers>
 </document>
