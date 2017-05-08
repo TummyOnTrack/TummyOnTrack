@@ -11,7 +11,6 @@ import UIKit
 class TTNavigationControllerDelegate: NSObject, UINavigationControllerDelegate {
 
     @IBOutlet weak var navigationController: UINavigationController?
-    var interactionController: UIPercentDrivenInteractiveTransition?
 
     func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationControllerOperation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
 //        guard ((fromVC as? TTRewardsViewController) != nil) else {
@@ -20,9 +19,5 @@ class TTNavigationControllerDelegate: NSObject, UINavigationControllerDelegate {
 //
 //        return TTCircleTransitionAnimator()
         return nil
-    }
-
-    func navigationController(_ navigationController: UINavigationController, interactionControllerFor animationController: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
-        return interactionController
     }
 }
