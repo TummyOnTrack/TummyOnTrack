@@ -146,9 +146,10 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uUt-O9-5NI">
                                                     <rect key="frame" x="18" y="40" width="338" height="247"/>
                                                     <subviews>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="microphone" translatesAutoresizingMaskIntoConstraints="NO" id="J2R-sd-yN4">
+                                                        <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="microphone" translatesAutoresizingMaskIntoConstraints="NO" id="J2R-sd-yN4">
                                                             <rect key="frame" x="148" y="4" width="40" height="40"/>
                                                             <color key="backgroundColor" red="0.95686274510000002" green="0.4514970767" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <gestureRecognizers/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="40" id="Q5z-Lv-mXb"/>
                                                                 <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="40" id="U7H-w2-pWG"/>
@@ -160,6 +161,9 @@
                                                                     <integer key="value" value="20"/>
                                                                 </userDefinedRuntimeAttribute>
                                                             </userDefinedRuntimeAttributes>
+                                                            <connections>
+                                                                <outletCollection property="gestureRecognizers" destination="b99-KS-lQo" appends="YES" id="qMP-4K-z9H"/>
+                                                            </connections>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Just tell us what you ate!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MFt-CV-X6W">
                                                             <rect key="frame" x="0.0" y="52" width="338" height="21"/>
@@ -180,7 +184,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Shop for rewards!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ost-Mq-Qmd">
-                                                            <rect key="frame" x="0.0" y="190" width="338" height="30"/>
+                                                            <rect key="frame" x="0.0" y="195" width="338" height="30"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="30" id="8hQ-8l-BHA"/>
                                                             </constraints>
@@ -188,9 +192,10 @@
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star" translatesAutoresizingMaskIntoConstraints="NO" id="CVq-tT-Rzt">
+                                                        <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star" translatesAutoresizingMaskIntoConstraints="NO" id="CVq-tT-Rzt">
                                                             <rect key="frame" x="149" y="81" width="40" height="40"/>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                            <gestureRecognizers/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="40" id="TLI-0V-8xe"/>
                                                                 <constraint firstAttribute="width" constant="40" id="ihP-Kb-cjB"/>
@@ -200,10 +205,14 @@
                                                                     <integer key="value" value="20"/>
                                                                 </userDefinedRuntimeAttribute>
                                                             </userDefinedRuntimeAttributes>
+                                                            <connections>
+                                                                <outletCollection property="gestureRecognizers" destination="Jes-kg-V9n" appends="YES" id="QMt-aU-aip"/>
+                                                            </connections>
                                                         </imageView>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="package_games_kids" translatesAutoresizingMaskIntoConstraints="NO" id="eYf-Xu-ZpH">
+                                                        <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="package_games_kids" translatesAutoresizingMaskIntoConstraints="NO" id="eYf-Xu-ZpH">
                                                             <rect key="frame" x="149" y="156" width="40" height="40"/>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                            <gestureRecognizers/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="40" id="Apo-BT-KKx"/>
                                                                 <constraint firstAttribute="width" constant="40" id="DOG-cV-3Og"/>
@@ -215,6 +224,9 @@
                                                                     <integer key="value" value="20"/>
                                                                 </userDefinedRuntimeAttribute>
                                                             </userDefinedRuntimeAttributes>
+                                                            <connections>
+                                                                <outletCollection property="gestureRecognizers" destination="p0z-RW-E9X" appends="YES" id="AVp-OL-VBf"/>
+                                                            </connections>
                                                         </imageView>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -234,7 +246,7 @@
                                                         <constraint firstAttribute="trailing" secondItem="xUb-Co-SLV" secondAttribute="trailing" id="p8c-bx-DEf"/>
                                                         <constraint firstItem="MFt-CV-X6W" firstAttribute="leading" secondItem="uUt-O9-5NI" secondAttribute="leading" id="ycO-og-J30"/>
                                                         <constraint firstItem="J2R-sd-yN4" firstAttribute="centerX" secondItem="uUt-O9-5NI" secondAttribute="centerX" constant="-1" id="zwa-V5-3jU"/>
-                                                        <constraint firstItem="Ost-Mq-Qmd" firstAttribute="top" secondItem="xUb-Co-SLV" secondAttribute="bottom" constant="42" id="zzc-Gu-Qyn"/>
+                                                        <constraint firstItem="Ost-Mq-Qmd" firstAttribute="top" secondItem="xUb-Co-SLV" secondAttribute="bottom" constant="47" id="zzc-Gu-Qyn"/>
                                                     </constraints>
                                                 </view>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="microphone" translatesAutoresizingMaskIntoConstraints="NO" id="AAy-ep-oFP">
@@ -276,17 +288,35 @@
                         <outlet property="chartsView" destination="HkA-dX-SDa" id="Kpd-Fv-GGj"/>
                         <outlet property="goalHeaderLabel" destination="ERA-Es-AKo" id="wUp-RM-eVd"/>
                         <outlet property="goalPointsLabel" destination="SgH-L7-qxv" id="yHq-BU-gvW"/>
+                        <outlet property="microphoneImageView" destination="J2R-sd-yN4" id="DE7-84-ttu"/>
                         <outlet property="noChartsView" destination="uUt-O9-5NI" id="bm1-PE-2zc"/>
                         <outlet property="pieView" destination="FxA-XQ-pd6" id="GWx-Wl-mhF"/>
                         <outlet property="pointsLabel" destination="NXg-uM-WNM" id="TVn-UH-9vh"/>
                         <outlet property="profileImageView" destination="BDC-Md-k7F" id="BGt-gW-CjU"/>
                         <outlet property="profileNameLabel" destination="iE5-Nm-mz3" id="X6n-q1-0g9"/>
+                        <outlet property="rewardsImageView" destination="eYf-Xu-ZpH" id="Mjd-li-dbY"/>
                         <outlet property="setupGoalButton" destination="i6j-Y6-wPh" id="eTt-jv-Uwt"/>
+                        <outlet property="starImageView" destination="CVq-tT-Rzt" id="C1a-3j-vKN"/>
                         <outlet property="weekSummaryLabel" destination="WPS-5f-7ua" id="uN1-EW-MD1"/>
                         <segue destination="e0x-T0-KYU" kind="show" identifier="Show Plate View" id="AjU-2M-tCj"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="11c-ic-tMb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="b99-KS-lQo">
+                    <connections>
+                        <action selector="onImageTap:" destination="ex1-eT-I06" id="lrn-bc-062"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="Jes-kg-V9n">
+                    <connections>
+                        <action selector="onImageTap:" destination="ex1-eT-I06" id="RID-fy-ggK"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="p0z-RW-E9X">
+                    <connections>
+                        <action selector="onImageTap:" destination="ex1-eT-I06" id="mOm-cR-0lt"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="652" y="4.9475262368815596"/>
         </scene>
