@@ -68,7 +68,7 @@ class TTHomeTableTableViewController: UITableViewController, UINavigationControl
     }
     
     func initializeNavigationBarTitleView() {
-        if let image_ = UIImage(named: "carrot") {
+        if let image_ = UIImage(named: "logo1") {
             let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 38, height: 38))
             imageView.contentMode = .scaleAspectFit
             imageView.image = image_

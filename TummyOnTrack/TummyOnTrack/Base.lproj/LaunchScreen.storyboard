@@ -21,24 +21,33 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="fCC-Th-iVg">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to TummyOnTrack" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uey-Ps-dQS">
-                                <rect key="frame" x="45.5" y="396" width="285" height="26"/>
+                                <rect key="frame" x="45.5" y="416" width="285" height="26"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="22"/>
-                                <color key="textColor" red="0.99038309010152281" green="0.26843812886775731" blue="0.089091210798692685" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launchScreenIage.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="py5-M7-xht">
-                                <rect key="frame" x="112" y="220" width="150" height="150"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launchScreenIage2.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="py5-M7-xht">
+                                <rect key="frame" x="102" y="220" width="170" height="170"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="150" id="QwB-eu-owS"/>
-                                    <constraint firstAttribute="width" constant="150" id="owA-mc-om5"/>
+                                    <constraint firstAttribute="height" constant="170" id="QwB-eu-owS"/>
+                                    <constraint firstAttribute="width" constant="170" id="owA-mc-om5"/>
                                 </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="fCC-Th-iVg" secondAttribute="bottom" id="9zW-xc-vGj"/>
+                            <constraint firstItem="fCC-Th-iVg" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="JOb-Tq-jP2"/>
+                            <constraint firstAttribute="trailing" secondItem="fCC-Th-iVg" secondAttribute="trailing" id="K7f-X2-evU"/>
                             <constraint firstItem="Uey-Ps-dQS" firstAttribute="top" secondItem="py5-M7-xht" secondAttribute="bottom" constant="26" id="OtC-JI-WSR"/>
+                            <constraint firstItem="fCC-Th-iVg" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="U7A-gX-8fb"/>
+                            <constraint firstItem="fCC-Th-iVg" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="V37-T3-eEO"/>
                             <constraint firstItem="py5-M7-xht" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="200" id="dCZ-JJ-zPc"/>
+                            <constraint firstItem="fCC-Th-iVg" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="hsw-Lx-TF2"/>
                             <constraint firstItem="Uey-Ps-dQS" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="kTH-e9-QDw"/>
                             <constraint firstItem="py5-M7-xht" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="wwU-I3-z8k"/>
                         </constraints>
@@ -50,6 +59,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="launchScreenIage.jpg" width="1999" height="1999"/>
+        <image name="background.jpg" width="600" height="900"/>
+        <image name="launchScreenIage2.jpg" width="1999" height="1999"/>
     </resources>
 </document>
