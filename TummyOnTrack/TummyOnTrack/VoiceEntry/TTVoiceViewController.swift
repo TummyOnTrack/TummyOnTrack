@@ -53,6 +53,7 @@ class TTVoiceViewController: UIViewController, SFSpeechRecognizerDelegate, AVSpe
         super.viewDidLoad()
         awesomeLabel.isHidden = true
         microphoneButton.layer.cornerRadius = microphoneButton.frame.size.width / 2
+        TTFoodItem.voiceSelectedFoodItems.removeAll()
 
         //disable the microphone button until the speech recognizer is activated
         microphoneButton.isEnabled = false
@@ -230,6 +231,7 @@ class TTVoiceViewController: UIViewController, SFSpeechRecognizerDelegate, AVSpe
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ShowVoiceSummary" {
+            TTFoodItem.getFoodItemsFromSpokenString(selectedFoodString: selectedfoodstring.capitalized)
             settingsToPauseRecording()
             audioEngine.stop()
             recognitionRequest?.endAudio()

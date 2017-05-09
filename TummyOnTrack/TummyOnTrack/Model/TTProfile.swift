@@ -198,7 +198,7 @@ class TTProfile: NSObject {
                     self.weeklyFoodBlog.add(TTDailyFoodEntry.init(dictionary: dailyEntry as NSDictionary))
                     
                     ref2.updateChildValues(dailyEntry)
-                    
+
                     let ref3 = FIRDatabase.database().reference(fromURL: BASE_URL).child(PROFILES_TABLE+"/\(snap_.key)")
                     let totalUnused = earnedPoints + (self.unusedPoints)
                     let totalWeekly = earnedPoints + (self.weeklyEarnedPoints)

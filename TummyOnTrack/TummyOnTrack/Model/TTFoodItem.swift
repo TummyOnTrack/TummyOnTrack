@@ -32,7 +32,8 @@ class TTFoodItem {
         }
     }
 
-    static var defaultFoodList = [TTFoodItem]()
+ //   static var defaultFoodList = [TTFoodItem]()
+    static var defaultFoodDictionary = Dictionary<String, TTFoodItem>()
 
     class func getFoodItems(success: @escaping () -> (), failure: @escaping (NSError) -> ()) {
         let reference = FIRDatabase.database().reference(fromURL: BASE_URL).child(FOODITEM_TABLE)
@@ -43,9 +44,27 @@ class TTFoodItem {
                 let snap_ = snap as! FIRDataSnapshot
                 let foodItem = TTFoodItem(dictionary: snap_.value! as! NSDictionary)
 
-                self.defaultFoodList.append(foodItem)
+   //             self.defaultFoodList.append(foodItem)
+                
+                self.defaultFoodDictionary[snap_.key] = foodItem
+                
             }
         })
+    }
+    
+    static var voiceSelectedFoodItems = Dictionary<String, TTFoodItem>()
+    
+    class func getFoodItemsFromSpokenString(selectedFoodString: String) {
+        
+    //    let selectedFoodString = foodString.capitalized
+        
+      //  if selectedFoodString != nil {
+            for (foodKey, foodValue) in TTFoodItem.defaultFoodDictionary {
+                if (selectedFoodString.range(of: foodKey) != nil) {
+                    voiceSelectedFoodItems[foodKey] = foodValue
+                }
+            }
+   //     }
     }
     
     /*class func updateFoodItems(items: [NSDictionary], images: [URL], earnedPoints: Int, success: @escaping () -> (), failure: @escaping (NSError) -> ()) {
