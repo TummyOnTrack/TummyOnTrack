@@ -14,12 +14,16 @@ class TTVoiceSummaryViewController: UIViewController, UICollectionViewDataSource
     @IBOutlet weak var collectionView: UICollectionView!
 
     var selectedFoodString: String!
-    var defaultFoodNames = [String]()
-    var selectedFoodItems = [TTFoodItem]()
     var selectedFoodNSDictionary = [NSDictionary]()
     var totalPointsEarned = 0
+    var foodKeyArray:[String]!
+    var foodValueArray:[TTFoodItem]!
     
     @IBAction func doneBarButton(_ sender: UIBarButtonItem) {
+        
+        for food in foodValueArray {
+            selectedFoodNSDictionary.append(food.dictionary!)
+        }
         TTProfile.currentProfile?.updateFoodItems(items: selectedFoodNSDictionary, images: [], earnedPoints: totalPointsEarned, success: {
             
         }) { (error: NSError) in
@@ -36,35 +40,14 @@ class TTVoiceSummaryViewController: UIViewController, UICollectionViewDataSource
         collectionView.dataSource = self
         collectionView.delegate = self
         
-        checkForFoodItemsPresent()
+        foodKeyArray = Array(TTFoodItem.voiceSelectedFoodItems.keys)
+        foodValueArray = Array(TTFoodItem.voiceSelectedFoodItems.values)
+        
+        for food in foodValueArray {
+            totalPointsEarned = totalPointsEarned + (food.points ?? 0)
+        }
+        
         collectionView.reloadData()
-    }
-    
-    func checkForFoodItemsPresent() {
-        for food in TTFoodItem.defaultFoodList {
-            if let name = food.name?.lowercased() {
-                defaultFoodNames.append(name)
-            }
-        }
-
-        if selectedFoodString != nil {
-            let selectedFoodArray = selectedFoodString.components(separatedBy: " ")
-            for selectedFood in selectedFoodArray {
-               _ = TTFoodItem.defaultFoodList.contains(where: { (food: TTFoodItem) -> Bool in
-                    if selectedFood == food.name?.lowercased() {
-                        selectedFoodItems.append(food)
-                        selectedFoodNSDictionary.append(food.dictionary!)
-                        if let points = food.points {
-                           totalPointsEarned = totalPointsEarned + points
-                        }
-                        return true
-                    }
-                    else {
-                        return false
-                    }
-                })
-            }
-        }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
@@ -83,12 +66,12 @@ class TTVoiceSummaryViewController: UIViewController, UICollectionViewDataSource
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return selectedFoodItems.count
+        return TTFoodItem.voiceSelectedFoodItems.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "voiceCollectionCell", for: indexPath) as! VoiceCollectionViewCell
-        let foodInCell = selectedFoodItems[indexPath.row]
+        let foodInCell = foodValueArray[indexPath.row]
         cell.foodItem = foodInCell
         
         return cell

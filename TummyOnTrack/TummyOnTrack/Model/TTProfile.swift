@@ -198,7 +198,7 @@ class TTProfile: NSObject {
                     self.weeklyFoodBlog.add(TTDailyFoodEntry.init(dictionary: dailyEntry as NSDictionary))
                     
                     ref2.updateChildValues(dailyEntry)
-                    
+
                     let ref3 = FIRDatabase.database().reference(fromURL: BASE_URL).child(PROFILES_TABLE+"/\(snap_.key)")
                     let totalUnused = earnedPoints + (self.unusedPoints)
                     let totalWeekly = earnedPoints + (self.weeklyEarnedPoints)
@@ -210,6 +210,39 @@ class TTProfile: NSObject {
                     ref3.updateChildValues(["unusedPoints": totalUnused, "weeklyPoints": totalWeekly])
                 }
             })
+        }
+        else {
+            print("No profile created")
+        }
+    }
+    
+    
+    //At present only included unusedPoints and rewards[]. Include all other points that need to be updated.
+    //Note-rewards is [NSDictionary]. In the calling function create [NSDictionary] and append it with "rewardsobject.dictionary"
+    func updateRewards(unusedPoints: Int, rewards: [NSDictionary], success: @escaping () -> (), failure: @escaping (NSError) -> ()) {
+        
+        if let currentProfileName_ = TTProfile.currentProfile?.name {
+            let ref1 = FIRDatabase.database().reference(fromURL: BASE_URL).child(PROFILES_TABLE)
+            let query = ref1.queryOrdered(byChild: "name").queryEqual(toValue: currentProfileName_)
+            
+            query.observeSingleEvent(of: .value, with: { (snapshot) in
+                for snap in snapshot.children {
+                    let snap_ = snap as! FIRDataSnapshot
+                    print(snap_.key)
+                    
+                    let ref2 = FIRDatabase.database().reference(fromURL: BASE_URL).child(PROFILES_TABLE+"/\(snap_.key)")
+                    
+                    //locally update points here if not already done
+               //     self.unusedPoints = unusedPoints
+                    
+                    
+                    
+                    TTUser.currentUser?.replaceProfile(aProfile: self)
+                    //update points in DB
+                    ref2.updateChildValues(["unusedPoints": unusedPoints, "rewards": rewards])
+                }
+            })
+            
         }
         else {
             print("No profile created")

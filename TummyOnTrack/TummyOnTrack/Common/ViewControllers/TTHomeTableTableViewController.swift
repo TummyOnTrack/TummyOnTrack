@@ -26,6 +26,7 @@ class TTHomeTableTableViewController: UITableViewController, UINavigationControl
     @IBOutlet weak var pieView: UIView!
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var chartsView: BarChartView!
+    @IBOutlet weak var whatDoYouEatTodayButton: UIButton!
 
     @IBOutlet weak var microphoneImageView: UIImageView!
     @IBOutlet weak var starImageView: UIImageView!
@@ -45,6 +46,7 @@ class TTHomeTableTableViewController: UITableViewController, UINavigationControl
         profileImageView.layer.cornerRadius = profileImageView.frame.width/2
         noChartsView.layer.borderColor = UIColor.lightGray.cgColor
         noChartsView.layer.borderWidth = 1
+        whatDoYouEatTodayButton.layer.cornerRadius = 3.5
         
         initializeNavigationBarTitleView()
 
@@ -68,7 +70,7 @@ class TTHomeTableTableViewController: UITableViewController, UINavigationControl
     }
     
     func initializeNavigationBarTitleView() {
-        if let image_ = UIImage(named: "carrot") {
+        if let image_ = UIImage(named: "logo1") {
             let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 38, height: 38))
             imageView.contentMode = .scaleAspectFit
             imageView.image = image_

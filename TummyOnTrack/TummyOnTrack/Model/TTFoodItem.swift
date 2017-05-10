@@ -32,7 +32,7 @@ class TTFoodItem {
         }
     }
 
-    static var defaultFoodList = [TTFoodItem]()
+    static var defaultFoodDictionary = Dictionary<String, TTFoodItem>()
 
     class func getFoodItems(success: @escaping () -> (), failure: @escaping (NSError) -> ()) {
         let reference = FIRDatabase.database().reference(fromURL: BASE_URL).child(FOODITEM_TABLE)
@@ -42,35 +42,21 @@ class TTFoodItem {
             for snap in snapshot.children {
                 let snap_ = snap as! FIRDataSnapshot
                 let foodItem = TTFoodItem(dictionary: snap_.value! as! NSDictionary)
-
-                self.defaultFoodList.append(foodItem)
+                
+                self.defaultFoodDictionary[snap_.key] = foodItem
+                
             }
         })
     }
     
-    /*class func updateFoodItems(items: [NSDictionary], images: [URL], earnedPoints: Int, success: @escaping () -> (), failure: @escaping (NSError) -> ()) {
-        if let currentProfileName_ = TTProfile.currentProfile?.name {
-            let ref1 = FIRDatabase.database().reference(fromURL: BASE_URL).child(PROFILES_TABLE)
-            let query = ref1.queryOrdered(byChild: "name").queryEqual(toValue: currentProfileName_)
-            
-            query.observeSingleEvent(of: .value, with: { (snapshot) in
-                for snap in snapshot.children {
-                    let snap_ = snap as! FIRDataSnapshot
-                    print(snap_.key)
-                    
-                    let ref2 = FIRDatabase.database().reference(fromURL: BASE_URL).child(DAILYFOOD_TABLE).childByAutoId()
-                    let dailyEntry = ["profile": TTProfile.currentProfile?.dictionary as Any, "items": items, "images": images, "earnedPoints" : earnedPoints, "createdAt": Date().timeIntervalSince1970, "updatedAt": Date().timeIntervalSince1970, "profileId": snap_.key] as [String: Any]
-                    ref2.updateChildValues(dailyEntry)
-                    
-                    let ref3 = FIRDatabase.database().reference(fromURL: BASE_URL).child(PROFILES_TABLE+"/\(snap_.key)")
-                    let totalUnused = earnedPoints + (TTProfile.currentProfile?.unusedPoints)!
-                    let totalWeekly = earnedPoints + (TTProfile.currentProfile?.weeklyEarnedPoints)!
-                    ref3.updateChildValues(["unusedPoints": totalUnused, "weeklyPoints": totalWeekly])
+    static var voiceSelectedFoodItems = Dictionary<String, TTFoodItem>()
+    
+    class func getFoodItemsFromSpokenString(selectedFoodString: String) {
+
+            for (foodKey, foodValue) in TTFoodItem.defaultFoodDictionary {
+                if (selectedFoodString.range(of: foodKey) != nil) {
+                    voiceSelectedFoodItems[foodKey] = foodValue
                 }
-            })
-        }
-        else {
-            print("No profile created")
-        }
-    }*/
+            }
+    }
 }

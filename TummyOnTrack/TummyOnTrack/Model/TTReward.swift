@@ -17,6 +17,7 @@ class TTReward: NSObject {
     var thumbnail: UIImage?
     var thumbnailURL: URL?
     var largeImageURL: URL?
+    var dictionary: NSDictionary?
 
     static var rewards = [String: TTReward]()
 

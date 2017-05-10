@@ -68,12 +68,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TummyOnTrack/Common/ViewControllers/TTHomeTableTableViewController.swift"
-            timestampString = "515880454.126763"
+            timestampString = "516049893.633041"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "171"
-            endingLineNumber = "171"
-            landmarkName = "setCurrentProfileDetails()"
+            startingLineNumber = "173"
+            endingLineNumber = "173"
+            landmarkName = "onSetupGoalClick(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
