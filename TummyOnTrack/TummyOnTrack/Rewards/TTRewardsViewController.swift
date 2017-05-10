@@ -119,10 +119,20 @@ class TTRewardsViewController: UIViewController {
 
         if let unusedPoints = TTProfile.currentProfile?.unusedPoints {
             if pointsUsed > 0 && unusedPoints >= pointsUsed {
-                TTProfile.currentProfile!.unusedPoints = unusedPoints - pointsUsed
-                TTProfile.currentProfile!.rewards += selectedRewards
+                rewards += selectedRewards
+
+                var rewardsDictionary = [NSDictionary]()
+                for reward in rewards {
+                    rewardsDictionary.append(reward.dictionary)
+                }
+
+                TTProfile.currentProfile!.updateRewards(unusedPoints: (unusedPoints - pointsUsed), rewards: rewardsDictionary, success: {
+                    print("You just used \(pointsUsed) to buy rewards")
+                }, failure: { (Error) in
+                    print("Unable to update rewards!")
+                })
+
                 buying = false
-                print("You just used \(pointsUsed) to buy rewards")
 
                 let rewardsStoryboard = UIStoryboard(name: "Rewards", bundle: nil)
                 let decorateMyRoomVC = rewardsStoryboard.instantiateViewController(withIdentifier: "DecorateMyRoom") as! TTDecorateRoomViewController

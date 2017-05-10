@@ -219,7 +219,7 @@ class TTProfile: NSObject {
     
     //At present only included unusedPoints and rewards[]. Include all other points that need to be updated.
     //Note-rewards is [NSDictionary]. In the calling function create [NSDictionary] and append it with "rewardsobject.dictionary"
-    func updateRewards(unusedPoints: Int, rewards: [NSDictionary], success: @escaping () -> (), failure: @escaping (NSError) -> ()) {
+    func updateRewards(unusedPoints: Int, rewards: [NSDictionary], success: @escaping () -> (), failure: @escaping (Error) -> ()) {
         
         if let currentProfileName_ = TTProfile.currentProfile?.name {
             let ref1 = FIRDatabase.database().reference(fromURL: BASE_URL).child(PROFILES_TABLE)
@@ -232,17 +232,14 @@ class TTProfile: NSObject {
                     
                     let ref2 = FIRDatabase.database().reference(fromURL: BASE_URL).child(PROFILES_TABLE+"/\(snap_.key)")
                     
-                    //locally update points here if not already done
-               //     self.unusedPoints = unusedPoints
-                    
-                    
-                    
+                    // locally update points here if not already done
+                    // self.unusedPoints = unusedPoints
+
                     TTUser.currentUser?.replaceProfile(aProfile: self)
                     //update points in DB
                     ref2.updateChildValues(["unusedPoints": unusedPoints, "rewards": rewards])
                 }
             })
-            
         }
         else {
             print("No profile created")

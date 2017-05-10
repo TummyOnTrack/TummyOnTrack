@@ -44,7 +44,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Awesome!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3po-bD-1dB">
-                                <rect key="frame" x="136" y="541" width="103" height="27"/>
+                                <rect key="frame" x="136" y="546" width="103" height="27"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -74,7 +74,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="fCq-7k-1I7" firstAttribute="top" secondItem="3po-bD-1dB" secondAttribute="bottom" constant="15" id="0ab-JV-Urf"/>
+                            <constraint firstItem="fCq-7k-1I7" firstAttribute="top" secondItem="3po-bD-1dB" secondAttribute="bottom" constant="10" id="0ab-JV-Urf"/>
                             <constraint firstItem="fCq-7k-1I7" firstAttribute="leading" secondItem="g1i-TT-Ltj" secondAttribute="leading" constant="80" id="6zv-vP-U6P"/>
                             <constraint firstItem="sgs-3O-fwn" firstAttribute="top" secondItem="0Vt-IG-VGS" secondAttribute="bottom" constant="20" id="8ho-Iq-1dg"/>
                             <constraint firstAttribute="trailing" secondItem="uSQ-nh-cZQ" secondAttribute="trailing" id="8yb-yq-Yp9"/>
