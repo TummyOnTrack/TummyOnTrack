@@ -70,7 +70,7 @@ class TTFillPlateViewController: UIViewController, UITableViewDelegate, UITableV
             return 0
         }
         else {
-            
+            tableView.backgroundView = nil
             return foodItems.count
             
         }

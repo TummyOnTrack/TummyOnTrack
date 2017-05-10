@@ -46,14 +46,13 @@ class TTHomeTableTableViewController: UITableViewController, UINavigationControl
         profileImageView.layer.cornerRadius = profileImageView.frame.width/2
         noChartsView.layer.borderColor = UIColor.lightGray.cgColor
         noChartsView.layer.borderWidth = 1
-        whatDoYouEatTodayButton.layer.cornerRadius = 3.5
+        noChartsView.layer.cornerRadius = 3
+        whatDoYouEatTodayButton.layer.cornerRadius = 3
         
         initializeNavigationBarTitleView()
 
         // load default food items
         loadFoodItems()
-
-        setTrackingAlarm()
 
         pieLayer = PieLayer()
         pieLayer.frame = pieView.frame
@@ -116,35 +115,48 @@ class TTHomeTableTableViewController: UITableViewController, UINavigationControl
             if(settings.authorizationStatus == .notDetermined)
             {
                 print("Push authorized")
-                UNUserNotificationCenter.current().requestAuthorization(options: [.alert])
-                { (success, error) in
-                    if success {
-                        print("Permission Granted")
-                        let content = UNMutableNotificationContent()
-                        content.title = "What did you eat today?"
-                        content.body = "Did you track your meals today?"
-                        content.categoryIdentifier = "alarm"
-                        content.userInfo = ["customData": "fizzbuzz"]
-                        content.sound = UNNotificationSound.default()
-                        
-                        var dateComponents = DateComponents()
-                        dateComponents.hour = 20
-                        dateComponents.minute = 5
-                        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
-                        
-                        //let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 24, repeats: true)//UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
-                        
-                        let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
-                        
-                        center.removeAllDeliveredNotifications()
-                        center.removeAllPendingNotificationRequests()
-                        center.add(request)
-                    } else {
-                        print("There was a problem!")
+                DispatchQueue.main.async {
+                    _ = Timer.scheduledTimer(withTimeInterval: 5, repeats: false) { timer in
+                        self.getPushPermission()
                     }
                 }
+                
+                
+           
             }
         }
+    }
+    
+    func getPushPermission() {
+        let center = UNUserNotificationCenter.current()
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert])
+        { (success, error) in
+            if success {
+                print("Permission Granted")
+                let content = UNMutableNotificationContent()
+                content.title = "What did you eat today?"
+                content.body = "Did you track your meals today?"
+                content.categoryIdentifier = "alarm"
+                content.userInfo = ["customData": "fizzbuzz"]
+                content.sound = UNNotificationSound.default()
+                
+                var dateComponents = DateComponents()
+                dateComponents.hour = 20
+                dateComponents.minute = 5
+                let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
+                
+                //let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 24, repeats: true)//UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
+                
+                let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+                
+                center.removeAllDeliveredNotifications()
+                center.removeAllPendingNotificationRequests()
+                center.add(request)
+            } else {
+                print("There was a problem!")
+            }
+        }
+
     }
 
     @IBAction func onWhatDidEatClick(_ sender: Any) {
@@ -270,6 +282,7 @@ class TTHomeTableTableViewController: UITableViewController, UINavigationControl
                     }
                 }
                 self.noChartsView.isHidden = true
+                self.setTrackingAlarm()
                 self.weekSummaryLabel.text = "This Week's Summary"
             }
             let limitLine = ChartLimitLine(limit: 0, label: "")
