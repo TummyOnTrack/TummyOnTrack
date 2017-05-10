@@ -17,6 +17,10 @@ class TTNavigationControllerDelegate: NSObject, UINavigationControllerDelegate {
             return nil
         }
 
+        guard ((toVC as? TTDecorateRoomViewController) != nil) else {
+            return nil
+        }
+
         return TTCircleTransitionAnimator()
     }
 }

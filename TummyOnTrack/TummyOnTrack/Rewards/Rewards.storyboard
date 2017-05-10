@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Points-->
+        <!--Rewards-->
         <scene sceneID="WK9-JI-xj5">
             <objects>
                 <viewController storyboardIdentifier="PointsViewController" id="5Fz-pW-Kly" customClass="TTPointsViewController" customModule="TummyOnTrack" customModuleProvider="target" sceneMemberID="viewController">
@@ -21,7 +21,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fruits_water" translatesAutoresizingMaskIntoConstraints="NO" id="uSQ-nh-cZQ">
+                            <imageView userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fruits_water" translatesAutoresizingMaskIntoConstraints="NO" id="uSQ-nh-cZQ">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Smiling_Face_Blushed" translatesAutoresizingMaskIntoConstraints="NO" id="sF7-FQ-s6v">
@@ -37,62 +37,70 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You have earned 20 points" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mgs-x9-jLO">
-                                <rect key="frame" x="79" y="50" width="240" height="24"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20 unused points" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mgs-x9-jLO">
+                                <rect key="frame" x="128.5" y="50" width="119" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Awesome!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3po-bD-1dB">
-                                <rect key="frame" x="136" y="534" width="103" height="27"/>
+                                <rect key="frame" x="136" y="541" width="103" height="27"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Vt-IG-VGS">
-                                <rect key="frame" x="117" y="614" width="142" height="33"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                <state key="normal" title="Decorate my room"/>
-                                <connections>
-                                    <segue destination="bsw-bU-wH7" kind="show" id="NfR-1w-UPl"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fCq-7k-1I7">
-                                <rect key="frame" x="135" y="571" width="106" height="33"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                <state key="normal" title="Shop rewards"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fCq-7k-1I7">
+                                <rect key="frame" x="80" y="583" width="64" height="64"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="DFF-eZ-S23"/>
+                                    <constraint firstAttribute="width" constant="64" id="mUf-CG-jbk"/>
+                                </constraints>
+                                <state key="normal" title="Shop Rewards" image="shopping-cart"/>
                                 <connections>
                                     <segue destination="94s-sg-Cll" kind="show" id="jIT-FI-vS7"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Vt-IG-VGS">
+                                <rect key="frame" x="231" y="583" width="64" height="64"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="gGp-cK-KBl"/>
+                                    <constraint firstAttribute="width" constant="64" id="rgG-Gw-2kY"/>
+                                </constraints>
+                                <state key="normal" title="Decorate My Room" image="bedroom"/>
+                                <connections>
+                                    <segue destination="bsw-bU-wH7" kind="show" id="NfR-1w-UPl"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="fCq-7k-1I7" firstAttribute="centerX" secondItem="g1i-TT-Ltj" secondAttribute="centerX" id="0ZX-tG-BEr"/>
-                            <constraint firstItem="0Vt-IG-VGS" firstAttribute="centerX" secondItem="g1i-TT-Ltj" secondAttribute="centerX" id="7ho-Iv-aH5"/>
+                            <constraint firstItem="fCq-7k-1I7" firstAttribute="top" secondItem="3po-bD-1dB" secondAttribute="bottom" constant="15" id="0ab-JV-Urf"/>
+                            <constraint firstItem="fCq-7k-1I7" firstAttribute="leading" secondItem="g1i-TT-Ltj" secondAttribute="leading" constant="80" id="6zv-vP-U6P"/>
+                            <constraint firstItem="sgs-3O-fwn" firstAttribute="top" secondItem="0Vt-IG-VGS" secondAttribute="bottom" constant="20" id="8ho-Iq-1dg"/>
                             <constraint firstAttribute="trailing" secondItem="uSQ-nh-cZQ" secondAttribute="trailing" id="8yb-yq-Yp9"/>
                             <constraint firstItem="mgs-x9-jLO" firstAttribute="top" secondItem="lVw-8H-vuQ" secondAttribute="bottom" constant="30" id="A1B-EV-pVt"/>
                             <constraint firstItem="0NX-Fa-BIA" firstAttribute="centerX" secondItem="sF7-FQ-s6v" secondAttribute="centerX" id="D4J-Yc-mKb"/>
-                            <constraint firstItem="0Vt-IG-VGS" firstAttribute="top" secondItem="fCq-7k-1I7" secondAttribute="bottom" constant="10" id="Ibg-vX-6lF"/>
                             <constraint firstItem="sF7-FQ-s6v" firstAttribute="top" secondItem="g1i-TT-Ltj" secondAttribute="top" constant="10" id="JLZ-OA-Bf4"/>
-                            <constraint firstItem="mgs-x9-jLO" firstAttribute="leading" secondItem="sF7-FQ-s6v" secondAttribute="trailing" constant="5" id="OuZ-70-gE1"/>
+                            <constraint firstItem="mgs-x9-jLO" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="sF7-FQ-s6v" secondAttribute="trailing" constant="5" id="OuZ-70-gE1"/>
                             <constraint firstItem="3po-bD-1dB" firstAttribute="centerX" secondItem="g1i-TT-Ltj" secondAttribute="centerX" id="QF4-sq-50Y"/>
                             <constraint firstItem="uSQ-nh-cZQ" firstAttribute="top" secondItem="g1i-TT-Ltj" secondAttribute="top" id="XIi-pr-2LV"/>
                             <constraint firstItem="uSQ-nh-cZQ" firstAttribute="leading" secondItem="g1i-TT-Ltj" secondAttribute="leading" id="Xbp-6j-0iY"/>
-                            <constraint firstItem="mgs-x9-jLO" firstAttribute="centerX" secondItem="g1i-TT-Ltj" secondAttribute="centerX" constant="11.5" id="Yq9-N1-uGE"/>
+                            <constraint firstItem="mgs-x9-jLO" firstAttribute="centerX" secondItem="g1i-TT-Ltj" secondAttribute="centerX" id="Yq9-N1-uGE"/>
                             <constraint firstItem="0NX-Fa-BIA" firstAttribute="top" secondItem="sF7-FQ-s6v" secondAttribute="bottom" constant="5" id="bjM-eV-XJ4"/>
-                            <constraint firstItem="sgs-3O-fwn" firstAttribute="top" secondItem="0Vt-IG-VGS" secondAttribute="bottom" constant="20" id="dny-sx-zjF"/>
-                            <constraint firstItem="fCq-7k-1I7" firstAttribute="top" secondItem="3po-bD-1dB" secondAttribute="bottom" constant="10" id="gyz-Q1-SwP"/>
+                            <constraint firstAttribute="trailing" secondItem="0Vt-IG-VGS" secondAttribute="trailing" constant="80" id="e6t-jf-DJf"/>
+                            <constraint firstItem="sgs-3O-fwn" firstAttribute="top" secondItem="fCq-7k-1I7" secondAttribute="bottom" constant="20" id="hvQ-fE-LuI"/>
                             <constraint firstItem="sgs-3O-fwn" firstAttribute="top" secondItem="uSQ-nh-cZQ" secondAttribute="bottom" id="jcD-h3-xog"/>
                             <constraint firstItem="sF7-FQ-s6v" firstAttribute="leading" secondItem="g1i-TT-Ltj" secondAttribute="leading" constant="10" id="k0W-DY-LJW"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Points" id="CDB-Rg-rb2"/>
+                    <navigationItem key="navigationItem" title="Rewards" id="CDB-Rg-rb2"/>
                     <connections>
                         <outlet property="awesomeLabel" destination="3po-bD-1dB" id="KXP-6f-jQT"/>
+                        <outlet property="decorateButton" destination="0Vt-IG-VGS" id="C20-hz-Dnv"/>
                         <outlet property="pointsTodayLabel" destination="mgs-x9-jLO" id="pk9-P3-MOv"/>
                         <outlet property="profileImageView" destination="sF7-FQ-s6v" id="RtD-np-fli"/>
                         <outlet property="profileNameLabel" destination="0NX-Fa-BIA" id="8Ig-hK-iX3"/>
+                        <outlet property="shopButton" destination="fCq-7k-1I7" id="nrW-rR-VQ0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aaP-yS-DqM" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -164,7 +172,7 @@
             </objects>
             <point key="canvasLocation" x="1885.5999999999999" y="652.62368815592208"/>
         </scene>
-        <!--Rewards-->
+        <!--Shop-->
         <scene sceneID="lQE-fy-bdh">
             <objects>
                 <viewController storyboardIdentifier="RewardsViewController" id="94s-sg-Cll" customClass="TTRewardsViewController" customModule="TummyOnTrack" customModuleProvider="target" sceneMemberID="viewController">
@@ -197,12 +205,6 @@
                                                 <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jDI-JD-5iK">
                                                     <rect key="frame" x="5" y="5" width="100" height="110"/>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reward" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vcx-ce-c3F">
-                                                    <rect key="frame" x="36" y="106.5" width="39" height="13.5"/>
-                                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="11"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Id-0H-3Gn">
                                                     <rect key="frame" x="80" y="0.0" width="14" height="13.5"/>
                                                     <fontDescription key="fontDescription" type="system" weight="light" pointSize="11"/>
@@ -222,7 +224,6 @@
                                             </subviews>
                                         </view>
                                         <constraints>
-                                            <constraint firstAttribute="bottom" secondItem="vcx-ce-c3F" secondAttribute="bottom" id="3a9-cq-SK2"/>
                                             <constraint firstItem="SJ4-eu-p15" firstAttribute="leading" secondItem="3Id-0H-3Gn" secondAttribute="trailing" id="3bp-EU-FhG"/>
                                             <constraint firstItem="jDI-JD-5iK" firstAttribute="leading" secondItem="fiy-dS-v0e" secondAttribute="leading" constant="5" id="9a0-rw-gfh"/>
                                             <constraint firstItem="3Id-0H-3Gn" firstAttribute="top" secondItem="fiy-dS-v0e" secondAttribute="top" id="D32-D3-4Zv"/>
@@ -232,14 +233,12 @@
                                             <constraint firstItem="jDI-JD-5iK" firstAttribute="top" secondItem="fiy-dS-v0e" secondAttribute="top" constant="5" id="KJC-5y-tYU"/>
                                             <constraint firstAttribute="bottom" secondItem="jDI-JD-5iK" secondAttribute="bottom" constant="5" id="aAv-r9-OVx"/>
                                             <constraint firstItem="R6V-zE-nEU" firstAttribute="centerY" secondItem="fiy-dS-v0e" secondAttribute="centerY" id="fE6-qV-Ntk"/>
-                                            <constraint firstItem="vcx-ce-c3F" firstAttribute="centerX" secondItem="fiy-dS-v0e" secondAttribute="centerX" id="gzn-P6-33o"/>
                                             <constraint firstAttribute="trailing" secondItem="jDI-JD-5iK" secondAttribute="trailing" constant="5" id="jkm-bt-0Qf"/>
                                         </constraints>
                                         <connections>
                                             <outlet property="activityIndicator" destination="R6V-zE-nEU" id="SXm-L5-xCP"/>
                                             <outlet property="pointsLabel" destination="3Id-0H-3Gn" id="I5n-Jh-Enn"/>
                                             <outlet property="rewardImageView" destination="jDI-JD-5iK" id="BjA-VC-cNg"/>
-                                            <outlet property="rewardLabel" destination="vcx-ce-c3F" id="PMt-SE-vEd"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -248,8 +247,8 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You have 20 points" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4IC-rX-h5O">
-                                            <rect key="frame" x="96" y="13" width="183" height="24"/>
-                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                            <rect key="frame" x="116" y="15" width="143.5" height="20.5"/>
+                                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -286,7 +285,7 @@
                             <constraint firstItem="uGY-Qw-U2Y" firstAttribute="top" secondItem="W2R-AD-hUi" secondAttribute="bottom" id="eZT-2W-xkw"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Rewards" id="qEh-0I-Idv">
+                    <navigationItem key="navigationItem" title="Shop" id="qEh-0I-Idv">
                         <barButtonItem key="rightBarButtonItem" title="Select" id="zvX-3L-lJD">
                             <connections>
                                 <action selector="buy:" destination="94s-sg-Cll" id="5ru-cs-jnp"/>
@@ -305,12 +304,14 @@
     </scenes>
     <resources>
         <image name="Smiling_Face_Blushed" width="640" height="640"/>
+        <image name="bedroom" width="64" height="64"/>
         <image name="bookshelf" width="564" height="1053"/>
         <image name="down_arrow" width="20" height="14"/>
         <image name="fruits_water" width="800" height="1200"/>
+        <image name="shopping-cart" width="64" height="64"/>
         <image name="star" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="TCo-MD-7tg"/>
+        <segue reference="NfR-1w-UPl"/>
     </inferredMetricsTieBreakers>
 </document>

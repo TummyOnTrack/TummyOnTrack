@@ -8,6 +8,7 @@
 
 import UIKit
 import AFNetworking
+import AVFoundation
 
 class TTPointsViewController: UIViewController {
 
@@ -15,11 +16,16 @@ class TTPointsViewController: UIViewController {
     @IBOutlet weak var profileNameLabel: UILabel!
     @IBOutlet weak var awesomeLabel: UILabel!
     @IBOutlet weak var profileImageView: UIImageView!
+    @IBOutlet weak var shopButton: UIButton!
+    @IBOutlet weak var decorateButton: UIButton!
+    fileprivate var bubbleSound: SystemSoundID!
 
     fileprivate let awesomeSynonyms = [ "Awesome", "Excellent", "Great", "Incredible", "Marvelous", "Unbelievable", "Wonderful"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        bubbleSound = createBubbleSound()
+        animateButton()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -29,20 +35,23 @@ class TTPointsViewController: UIViewController {
     }
 
     func populateProfile() {
-        let weeklyEarnedPoints = TTProfile.currentProfile?.weeklyEarnedPoints
+        let unusedPoints = TTProfile.currentProfile?.unusedPoints
 
-        if weeklyEarnedPoints == 0 {
+        if unusedPoints == 0 {
             pointsTodayLabel.text = "Eat healthy, collect points!"
             awesomeLabel.isHidden = true
         } else {
-            pointsTodayLabel.text = "You have \(String(describing: weeklyEarnedPoints!)) points this week!"
+            pointsTodayLabel.text = "\(String(describing: unusedPoints!)) unused points!"
             let randomIndex = Int(arc4random_uniform(UInt32(awesomeSynonyms.count)))
             awesomeLabel.text = "\(awesomeSynonyms[randomIndex])!"
             awesomeLabel.isHidden = false
         }
 
+        pointsTodayLabel.backgroundColor = UIColor.black.withAlphaComponent(0.4)
+
         if let currentProfile = TTProfile.currentProfile {
             profileNameLabel.text = currentProfile.name?.capitalized
+            profileNameLabel.backgroundColor = UIColor.black.withAlphaComponent(0.4)
             if let profileImageURL = currentProfile.profileImageURL {
                 profileImageView.setImageWith(profileImageURL)
                 profileImageView.layer.cornerRadius = profileImageView.frame.width/2
@@ -87,6 +96,31 @@ class TTPointsViewController: UIViewController {
             // add the animation
             square.layer.add(anim, forKey: "animate position along path")
         }
+    }
+
+    func animateButton() {
+        AudioServicesPlaySystemSound(bubbleSound)
+        shopButton.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
+        decorateButton.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
+
+        UIView.animate(withDuration: 2,
+                       delay: 0,
+                       usingSpringWithDamping: 0.2,
+                       initialSpringVelocity: 6.0,
+                       options: .allowUserInteraction,
+                       animations: {
+                        self.shopButton.transform = .identity
+                        self.decorateButton.transform = .identity
+        }, completion: { finished in
+                        self.animateButton()
+        })
+    }
+
+    func createBubbleSound() -> SystemSoundID {
+        var soundID: SystemSoundID = 0
+        let soundURL = CFBundleCopyResourceURL(CFBundleGetMainBundle(), "bubble" as CFString!, "mp3" as CFString!, nil)
+        AudioServicesCreateSystemSoundID(soundURL!, &soundID)
+        return soundID
     }
 
     override func didReceiveMemoryWarning() {

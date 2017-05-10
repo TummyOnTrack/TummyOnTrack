@@ -18,6 +18,7 @@
 		3151A3421EBD9C8500084B88 /* TTCircleTransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3151A3411EBD9C8500084B88 /* TTCircleTransitionAnimator.swift */; };
 		3151A3441EBF685A00084B88 /* TTFillPlateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3151A3431EBF685A00084B88 /* TTFillPlateViewController.swift */; };
 		3151A3461EBF686700084B88 /* TTFillPlateTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3151A3451EBF686700084B88 /* TTFillPlateTableCell.swift */; };
+		3151A3481EC2DA7300084B88 /* bubble.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3151A3471EC2DA7300084B88 /* bubble.mp3 */; };
 		31DE9B041EB154DF0055B8D8 /* TTPointsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31DE9B031EB154DF0055B8D8 /* TTPointsViewController.swift */; };
 		31DE9B061EB155120055B8D8 /* Rewards.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 31DE9B051EB155120055B8D8 /* Rewards.storyboard */; };
 		D11FC18B1EBC09A3005FDC06 /* VoiceSummaryHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11FC18A1EBC09A3005FDC06 /* VoiceSummaryHeader.swift */; };
@@ -90,6 +91,7 @@
 		3151A3411EBD9C8500084B88 /* TTCircleTransitionAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TTCircleTransitionAnimator.swift; path = TummyOnTrack/Rewards/TTCircleTransitionAnimator.swift; sourceTree = SOURCE_ROOT; };
 		3151A3431EBF685A00084B88 /* TTFillPlateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TTFillPlateViewController.swift; sourceTree = "<group>"; };
 		3151A3451EBF686700084B88 /* TTFillPlateTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TTFillPlateTableCell.swift; sourceTree = "<group>"; };
+		3151A3471EC2DA7300084B88 /* bubble.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bubble.mp3; sourceTree = "<group>"; };
 		31DE9B031EB154DF0055B8D8 /* TTPointsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TTPointsViewController.swift; path = TummyOnTrack/Rewards/TTPointsViewController.swift; sourceTree = SOURCE_ROOT; };
 		31DE9B051EB155120055B8D8 /* Rewards.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Rewards.storyboard; sourceTree = "<group>"; };
 		95D98D94BFFCF67DC2115B6F /* Pods-TummyOnTrackTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TummyOnTrackTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TummyOnTrackTests/Pods-TummyOnTrackTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -249,6 +251,7 @@
 				E7B940E81EAE790C0078AB5E /* Main.storyboard */,
 				E7B940EE1EAE790C0078AB5E /* Assets.xcassets */,
 				E06516AB1EC1166A00D4E1A7 /* launchScreenIage.jpg */,
+				3151A3471EC2DA7300084B88 /* bubble.mp3 */,
 				E028BE4A1EC2463D00637398 /* background.jpg */,
 				E028BE481EC2454600637398 /* launchScreenIage2.jpg */,
 				E7B940F01EAE790C0078AB5E /* LaunchScreen.storyboard */,
@@ -542,6 +545,7 @@
 				E7B940F21EAE790C0078AB5E /* LaunchScreen.storyboard in Resources */,
 				E7BC60501EB10D6A000529AC /* Onboarding.storyboard in Resources */,
 				D1B1EF9D1EB141E40032BEE1 /* VoiceEntry.storyboard in Resources */,
+				3151A3481EC2DA7300084B88 /* bubble.mp3 in Resources */,
 				E7F0E5641EB269B00088743B /* CommonStoryboard.storyboard in Resources */,
 				E028BE491EC2454600637398 /* launchScreenIage2.jpg in Resources */,
 				E7B940EF1EAE790C0078AB5E /* Assets.xcassets in Resources */,

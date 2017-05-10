@@ -100,7 +100,7 @@
         <scene sceneID="dRR-om-g1e">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="AMa-f1-Q9E" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Points" image="star" id="Rjw-af-kwF"/>
+                    <tabBarItem key="tabBarItem" title="Rewards" image="star" id="Rjw-af-kwF"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="wsD-fi-NRM">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>

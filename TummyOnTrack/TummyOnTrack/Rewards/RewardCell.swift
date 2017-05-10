@@ -12,7 +12,6 @@ class RewardCell: UICollectionViewCell {
     
     @IBOutlet weak var pointsLabel: UILabel!
     @IBOutlet weak var rewardImageView: UIImageView!
-    @IBOutlet weak var rewardLabel: UILabel!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
 
     var reward: TTReward! {
@@ -22,7 +21,6 @@ class RewardCell: UICollectionViewCell {
             }
 
             pointsLabel.text = "\(String(describing: reward.points!))"
-            rewardLabel.text = reward.name
 
             if let rewardImageUrl = reward.thumbnailURL {
                 rewardImageView.setImageWith(rewardImageUrl)
