@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TTCircleTransitionAnimator: NSObject, UIViewControllerAnimatedTransitioning {
+class TTCircleTransitionAnimator: NSObject, UIViewControllerAnimatedTransitioning, CAAnimationDelegate {
     weak var transitionContext: UIViewControllerContextTransitioning?
 
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
@@ -38,8 +38,13 @@ class TTCircleTransitionAnimator: NSObject, UIViewControllerAnimatedTransitionin
         maskLayerAnimation.fromValue = circleMaskPathInitial.cgPath
         maskLayerAnimation.toValue = circleMaskPathFinal.cgPath
         maskLayerAnimation.duration = self.transitionDuration(using: transitionContext)
-        maskLayerAnimation.delegate = self as? CAAnimationDelegate
+        maskLayerAnimation.delegate = self
         maskLayer.add(maskLayerAnimation, forKey: "path")
+    }
+
+    func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
+        self.transitionContext?.completeTransition(!self.transitionContext!.transitionWasCancelled)
+        self.transitionContext?.viewController(forKey: UITransitionContextViewControllerKey.from)?.view.layer.mask = nil
     }
 
     func animationEnded(_ transitionCompleted: Bool) {
