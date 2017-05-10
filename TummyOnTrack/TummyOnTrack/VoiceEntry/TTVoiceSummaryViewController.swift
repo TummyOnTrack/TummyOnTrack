@@ -59,6 +59,18 @@ class TTVoiceSummaryViewController: UIViewController, UICollectionViewDataSource
         headerView.totalPointsLabel.text = "You have scored \(totalPointsEarned) points!"
         return headerView
     }
+    
+    func  onLongPressed(longPressGestureRecognizer: UILongPressGestureRecognizer) {
+        print("pressed")
+        if longPressGestureRecognizer.state == .began {
+            let pressed = longPressGestureRecognizer.location(in: self.collectionView)
+            let indexPath = self.collectionView.indexPathForItem(at: pressed)
+            let cell = self.collectionView.cellForItem(at: indexPath!) as! VoiceCollectionViewCell
+            
+            cell.selectToDelete()
+        }
+        
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -72,7 +84,9 @@ class TTVoiceSummaryViewController: UIViewController, UICollectionViewDataSource
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "voiceCollectionCell", for: indexPath) as! VoiceCollectionViewCell
         let foodInCell = foodValueArray[indexPath.row]
+        let press = UILongPressGestureRecognizer(target: self, action: #selector(onLongPressed(longPressGestureRecognizer:)))
         cell.foodItem = foodInCell
+        cell.foodCellView.addGestureRecognizer(press)
         
         return cell
     }
