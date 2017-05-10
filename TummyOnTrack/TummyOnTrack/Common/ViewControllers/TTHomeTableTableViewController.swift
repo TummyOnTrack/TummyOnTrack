@@ -46,7 +46,8 @@ class TTHomeTableTableViewController: UITableViewController, UINavigationControl
         profileImageView.layer.cornerRadius = profileImageView.frame.width/2
         noChartsView.layer.borderColor = UIColor.lightGray.cgColor
         noChartsView.layer.borderWidth = 1
-        whatDoYouEatTodayButton.layer.cornerRadius = 3.5
+        noChartsView.layer.cornerRadius = 3
+        whatDoYouEatTodayButton.layer.cornerRadius = 3
         
         initializeNavigationBarTitleView()
 
