@@ -107,12 +107,12 @@ class TTPointsViewController: UIViewController {
                        delay: 0,
                        usingSpringWithDamping: 0.2,
                        initialSpringVelocity: 6.0,
-                       options: .allowUserInteraction,
+                       options: [.allowUserInteraction, .repeat],
                        animations: {
                         self.shopButton.transform = .identity
                         self.decorateButton.transform = .identity
         }, completion: { finished in
-                        self.animateButton()
+            print("Animation for points view buttons complete")
         })
     }
 
