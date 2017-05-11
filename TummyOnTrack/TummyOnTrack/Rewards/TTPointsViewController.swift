@@ -112,7 +112,7 @@ class TTPointsViewController: UIViewController {
                         self.shopButton.transform = .identity
                         self.decorateButton.transform = .identity
         }, completion: { finished in
-            print("Animation for points view buttons complete")
+            // print("Animation for points view buttons complete")
         })
     }
 

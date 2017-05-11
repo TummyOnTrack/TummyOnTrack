@@ -72,12 +72,10 @@ class TTProfile: NSObject {
             }
         }
 
-        if let rewardsItems = dictionary["rewards"] as? [String] {
-            rewards = [TTReward]()
+        if let rewardsItems = dictionary["rewards"] as? [NSDictionary] {
             for rewardsItem in rewardsItems {
-                if let reward = TTReward.rewards[rewardsItem] {
-                    rewards.append(reward)
-                }
+                let reward = TTReward(dictionary: rewardsItem)
+                rewards.append(reward)
             }
         }
 
@@ -191,8 +189,6 @@ class TTProfile: NSObject {
             query.observeSingleEvent(of: .value, with: { (snapshot) in
                 for snap in snapshot.children {
                     let snap_ = snap as! FIRDataSnapshot
-                    print(snap_.key)
-                    
                     let ref2 = FIRDatabase.database().reference(fromURL: BASE_URL).child(DAILYFOOD_TABLE).childByAutoId()
                     let dailyEntry = ["profile": self.dictionary as Any, "items": items, "images": images, "earnedPoints" : earnedPoints, "createdAt": Date().timeIntervalSince1970, "updatedAt": Date().timeIntervalSince1970, "profileId": snap_.key] as [String: Any]
                     self.weeklyFoodBlog.add(TTDailyFoodEntry.init(dictionary: dailyEntry as NSDictionary))
@@ -216,28 +212,28 @@ class TTProfile: NSObject {
         }
     }
     
-    
-    //At present only included unusedPoints and rewards[]. Include all other points that need to be updated.
-    //Note-rewards is [NSDictionary]. In the calling function create [NSDictionary] and append it with "rewardsobject.dictionary"
-    func updateRewards(unusedPoints: Int, rewards: [NSDictionary], success: @escaping () -> (), failure: @escaping (Error) -> ()) {
-        
+    // Updates unusedPoints and rewards array
+    func updateRewards(unusedPoints: Int, rewards: [TTReward], success: @escaping () -> (), failure: @escaping (Error) -> ()) {
         if let currentProfileName_ = TTProfile.currentProfile?.name {
             let ref1 = FIRDatabase.database().reference(fromURL: BASE_URL).child(PROFILES_TABLE)
             let query = ref1.queryOrdered(byChild: "name").queryEqual(toValue: currentProfileName_)
-            
+
+            var rewardsDictionary = [NSDictionary]()
+            for reward in rewards {
+                rewardsDictionary.append(reward.dictionary)
+            }
+
             query.observeSingleEvent(of: .value, with: { (snapshot) in
                 for snap in snapshot.children {
                     let snap_ = snap as! FIRDataSnapshot
-                    print(snap_.key)
-                    
                     let ref2 = FIRDatabase.database().reference(fromURL: BASE_URL).child(PROFILES_TABLE+"/\(snap_.key)")
                     
-                    // locally update points here if not already done
-                    // self.unusedPoints = unusedPoints
+                    // locally update points and rewards
+                    self.unusedPoints = unusedPoints
+                    self.rewards = rewards
 
                     TTUser.currentUser?.replaceProfile(aProfile: self)
-                    //update points in DB
-                    ref2.updateChildValues(["unusedPoints": unusedPoints, "rewards": rewards])
+                    ref2.updateChildValues(["unusedPoints": unusedPoints, "rewards": rewardsDictionary])
                 }
             })
         }
@@ -298,7 +294,6 @@ class TTProfile: NSObject {
         query.observeSingleEvent(of: .value, with: { (snapshot) in
             for snap in snapshot.children {
                 let snap_ = snap as! FIRDataSnapshot
-                print(snap_.key)
                 let ref2 = FIRDatabase.database().reference(fromURL: BASE_URL).child(PROFILES_TABLE+"/\(snap_.key)")
 
                 ref2.updateChildValues(dictionary as! [AnyHashable : Any])

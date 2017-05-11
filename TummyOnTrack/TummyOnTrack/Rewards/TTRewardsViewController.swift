@@ -121,12 +121,7 @@ class TTRewardsViewController: UIViewController {
             if pointsUsed > 0 && unusedPoints >= pointsUsed {
                 rewards += selectedRewards
 
-                var rewardsDictionary = [NSDictionary]()
-                for reward in rewards {
-                    rewardsDictionary.append(reward.dictionary)
-                }
-
-                TTProfile.currentProfile!.updateRewards(unusedPoints: (unusedPoints - pointsUsed), rewards: rewardsDictionary, success: {
+                TTProfile.currentProfile!.updateRewards(unusedPoints: (unusedPoints - pointsUsed), rewards: rewards, success: {
                     print("You just used \(pointsUsed) to buy rewards")
                 }, failure: { (Error) in
                     print("Unable to update rewards!")
@@ -192,12 +187,6 @@ extension TTRewardsViewController: UICollectionViewDataSource {
         cell.activityIndicator.stopAnimating()
 
         return cell
-    }
-
-    func collectionView(_ collectionView: UICollectionView, moveItemAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-        print("HERERE")
-        let reward = rewards.remove(at: sourceIndexPath.row)
-        rewards.insert(reward, at: destinationIndexPath.row)
     }
 }
 

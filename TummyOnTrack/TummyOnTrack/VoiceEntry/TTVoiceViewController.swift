@@ -122,17 +122,6 @@ class TTVoiceViewController: UIViewController, SFSpeechRecognizerDelegate, AVSpe
         // Dispose of any resources that can be recreated.
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        
-        
-//        synthesizer = AVSpeechSynthesizer()
-//        synthesizer.delegate = self
-//        utterance = AVSpeechUtterance(string: "What did you eat today?")
-//        utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
-        //   utterance.rate = 0.5
-
-    }
-    
     func setupViewsForRippleEffect() {
         rippleView.layer.cornerRadius = rippleView.frame.size.width / 2
         rippleView.clipsToBounds = true
@@ -187,7 +176,7 @@ class TTVoiceViewController: UIViewController, SFSpeechRecognizerDelegate, AVSpe
         guard let inputNode = audioEngine.inputNode else {
             fatalError("Audio engine has no input node")
         }
-        
+
         guard let recognitionRequest = recognitionRequest else {
             fatalError("Unable to create an SFSpeechAudioBufferRecognitionRequest object")
         }
@@ -198,16 +187,14 @@ class TTVoiceViewController: UIViewController, SFSpeechRecognizerDelegate, AVSpe
         //completion handler will be called every time the recognition engine has received input, has refined its current recognition, or has been canceled or stopped, and will return a final transcript
         recognitionTask = speechRecognizer?.recognitionTask(with: recognitionRequest, resultHandler: { (result, error) in
             var isFinal = false
-            
-            if result != nil {
 
+            if result != nil {
                 self.userSpeechToTextLabel.text = result?.bestTranscription.formattedString
                 self.selectedfoodstring = (result?.bestTranscription.formattedString)!
                 isFinal = (result?.isFinal)!
             }
             
             if isFinal {
-                
                 self.audioEngine.stop()
                 inputNode.removeTap(onBus: 0)
                 
@@ -216,7 +203,7 @@ class TTVoiceViewController: UIViewController, SFSpeechRecognizerDelegate, AVSpe
                 self.microphoneButton.isEnabled = true
                 
             }
-            
+
             if error != nil {
                 self.audioEngine.stop()
                 inputNode.removeTap(onBus: 0)
@@ -226,50 +213,41 @@ class TTVoiceViewController: UIViewController, SFSpeechRecognizerDelegate, AVSpe
                 self.microphoneButton.isEnabled = true
             }
         })
-        
+
         //audio input to the recognitionRequest
         let recordingFormat = inputNode.outputFormat(forBus: 0)
         inputNode.installTap(onBus: 0, bufferSize: 1024, format: recordingFormat) { (buffer: AVAudioPCMBuffer, when: AVAudioTime) in
             self.recognitionRequest?.append(buffer)
         }
         audioEngine.prepare()
-        
+
         do {
             try audioEngine.start()
         } catch {
             print("audioEngine couldn't start because of an error.")
         }
     }
-    
+
     func settingsToStartRecording() {
         let image = UIImage(named: "pause")
         microphoneButton.setImage(image, for: .normal)
     }
-    
+
     func settingsToPauseRecording() {
         let image = UIImage(named: "microphone")
         microphoneButton.setImage(image , for: .normal)
         awesomeLabel.isHidden = false
     }
-    
+
     func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
         self.microphoneButton.isEnabled = true
-        
-        
+
         if !(audioEngine.isRunning) {
-            
-            //                do {
-            //                    try audioEngine.start()
-            //                } catch {
-            //                    print("audioEngine couldn't start because of an error.")
-            //                }
             startRecording()
             settingsToStartRecording()
         }
-        
-        
     }
-    
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ShowVoiceSummary" {
             TTFoodItem.getFoodItemsFromSpokenString(selectedFoodString: selectedfoodstring.capitalized)
