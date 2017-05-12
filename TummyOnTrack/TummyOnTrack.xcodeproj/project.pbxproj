@@ -50,6 +50,7 @@
 		E7BC60551EB10D79000529AC /* SignupLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BC60521EB10D79000529AC /* SignupLoginViewController.swift */; };
 		E7BC60561EB10D79000529AC /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BC60531EB10D79000529AC /* SignupViewController.swift */; };
 		E7BC60581EB11220000529AC /* TTUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BC60571EB11220000529AC /* TTUser.swift */; };
+		E7D2931F1EC66EC100F16899 /* TTMessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D2931E1EC66EC100F16899 /* TTMessageTableViewCell.swift */; };
 		E7E3B4771EB69DFF000F9CA4 /* TTProfilesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7E3B4761EB69DFF000F9CA4 /* TTProfilesViewController.swift */; };
 		E7F0E5641EB269B00088743B /* CommonStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7F0E5631EB269B00088743B /* CommonStoryboard.storyboard */; };
 		E7F0E5661EB2801F0088743B /* TTFoodInputWaysViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F0E5651EB2801F0088743B /* TTFoodInputWaysViewController.swift */; };
@@ -130,6 +131,7 @@
 		E7BC60521EB10D79000529AC /* SignupLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupLoginViewController.swift; sourceTree = "<group>"; };
 		E7BC60531EB10D79000529AC /* SignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		E7BC60571EB11220000529AC /* TTUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TTUser.swift; sourceTree = "<group>"; };
+		E7D2931E1EC66EC100F16899 /* TTMessageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TTMessageTableViewCell.swift; sourceTree = "<group>"; };
 		E7E3B4761EB69DFF000F9CA4 /* TTProfilesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TTProfilesViewController.swift; sourceTree = "<group>"; };
 		E7F0E5631EB269B00088743B /* CommonStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CommonStoryboard.storyboard; sourceTree = "<group>"; };
 		E7F0E5651EB2801F0088743B /* TTFoodInputWaysViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TTFoodInputWaysViewController.swift; sourceTree = "<group>"; };
@@ -412,6 +414,7 @@
 			isa = PBXGroup;
 			children = (
 				3151A3451EBF686700084B88 /* TTFillPlateTableCell.swift */,
+				E7D2931E1EC66EC100F16899 /* TTMessageTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -743,6 +746,7 @@
 				E7B940ED1EAE790C0078AB5E /* TummyOnTrack.xcdatamodeld in Sources */,
 				311B02E61EB4513900DAA2ED /* RewardCell.swift in Sources */,
 				311B02F21EBA8C3200DAA2ED /* TTDecorateRoomViewController.swift in Sources */,
+				E7D2931F1EC66EC100F16899 /* TTMessageTableViewCell.swift in Sources */,
 				3151A3441EBF685A00084B88 /* TTFillPlateViewController.swift in Sources */,
 				E7BC60541EB10D79000529AC /* LoginViewController.swift in Sources */,
 				3151A3421EBD9C8500084B88 /* TTCircleTransitionAnimator.swift in Sources */,

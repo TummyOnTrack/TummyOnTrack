@@ -66,9 +66,11 @@ class TTFillPlateViewController: UIViewController, UITableViewDelegate, UITableV
                 continue
             }
             if (tags_?.count)! > 0 {
+                var flag = false
                 for j in 0...(tags_?.count)!-1 {
                     //let tag = categories.contains(tags_?[j]) .object(forKey: tags_?[j] ?? "x")
                     //if tag != nil {
+                    print(tags_?[j] ?? "xx")
                     if categories.contains(tags_?[j] ?? "xx") {
                         let objs_ = sectionFoodItems.object(forKey: tags_?[j] ?? "x")
                         if objs_ == nil {
@@ -80,8 +82,13 @@ class TTFillPlateViewController: UIViewController, UITableViewDelegate, UITableV
                             //sectionFoodItems.setObject(objArr_, forKey: tag as! NSCopying)
                             sectionFoodItems.setObject([item_], forKey: tags_?[j] as NSCopying? ?? "x" as NSCopying)
                         }
+                        flag = true
+                        break
                     }
-                    break
+                    
+                }
+                if flag == false {
+                    sectionFoodItems.setObject([item_], forKey: "Other" as NSCopying)
                 }
             }
         }
