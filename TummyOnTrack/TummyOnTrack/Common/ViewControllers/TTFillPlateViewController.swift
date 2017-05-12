@@ -20,7 +20,9 @@ class TTFillPlateViewController: UIViewController, UITableViewDelegate, UITableV
     var message: String!
     var fullDayOfWeek: NSDictionary! = ["Sun": "Sunday", "Mon": "Monday", "Tues" : "Tuesday", "Wed" : "Wednesday", "Fri" : "Friday", "Sat" : "Saturday"]
     
-    var categories: NSDictionary! = ["Protein": "Proteins", "Carbohydrate": "Carbs", "Vegetable" : "Vegetable", "Drink" : "Drink", "Fruit": "Fruits", "Dairy" : "Dairy", "Dessert" : "Desserts and Sweets", "Other" : "Other"]
+    var categoryMessage: NSDictionary! = ["Protein": "Proteins make your bones stronger!", "Carbohydrate": "Eating carbs gives you energy to run around.", "Vegetable" : "Vegetables are full of Vitamins.", "Drink" : "A glass of water is the best drink for your body", "Fruit": "Fruits are yummy and good for you", "Dairy" : "Milk and cheese are full of calcium and proteins", "Dessert" : "Good job skipping dessert today!", "Other" : "Other"]
+    
+    var categories : NSArray! = ["Protein", "Vegetable", "Fruit", "Carbohydrate", "Dairy", "Drink", "Dessert", "Other" ]
     
     @IBOutlet weak var pointsLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
@@ -65,8 +67,9 @@ class TTFillPlateViewController: UIViewController, UITableViewDelegate, UITableV
             }
             if (tags_?.count)! > 0 {
                 for j in 0...(tags_?.count)!-1 {
-                    let tag = categories.object(forKey: tags_?[j] ?? "x")
-                    if tag != nil {
+                    //let tag = categories.contains(tags_?[j]) .object(forKey: tags_?[j] ?? "x")
+                    //if tag != nil {
+                    if categories.contains(tags_?[j] ?? "xx") {
                         let objs_ = sectionFoodItems.object(forKey: tags_?[j] ?? "x")
                         if objs_ == nil {
                             sectionFoodItems.setObject([item_], forKey: tags_?[j] as NSCopying? ?? "x" as NSCopying)
@@ -93,7 +96,8 @@ class TTFillPlateViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return categories.object(forKey: categories.allKeys[section]) as? String
+        //return categories.object(forKey: categories.allKeys[section]) as? String
+        return categories.object(at: section) as? String
     }
     
     // MARK: - TableView
@@ -110,20 +114,28 @@ class TTFillPlateViewController: UIViewController, UITableViewDelegate, UITableV
         }
         else {
             tableView.backgroundView = nil
-            if sectionFoodItems.object(forKey: categories.allKeys[section]) == nil {
-                return 0
+            if sectionFoodItems.object(forKey: categories.object(at: section)) == nil {
+                return 1
             }
-            return (sectionFoodItems.object(forKey: categories.allKeys[section]) as! Array<Any>).count //foodItems.count
+            return (sectionFoodItems.object(forKey: categories.object(at: section)) as! Array<Any>).count //foodItems.count
             
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let objs_ = sectionFoodItems.object(forKey: categories.object(at: indexPath.section))
+        if objs_ == nil {
+            let cell = tableView.dequeueReusableCell(withIdentifier:
+                "MessageCell") as! TTMessageTableViewCell
+            cell.messageLabel.text = categoryMessage.object(forKey: categories.object(at: indexPath.section)) as? String
+            return cell
+        }
+        let objArr_ = objs_ as! Array<Any>
         let cell = tableView.dequeueReusableCell(withIdentifier:
             "FillFoodCell") as! TTFillPlateTableCell
         //cell.foodItem = foodItems[indexPath.row]
-        let objs_ = sectionFoodItems.object(forKey: categories.allKeys[indexPath.section]) as! Array<Any>
-        cell.foodItem = objs_[indexPath.row] as! TTFoodItem
+        
+        cell.foodItem = objArr_[indexPath.row] as! TTFoodItem
         return cell
     }
     
