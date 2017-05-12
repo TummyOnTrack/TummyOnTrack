@@ -111,9 +111,7 @@ class TTPointsViewController: UIViewController {
                        animations: {
                         self.shopButton.transform = .identity
                         self.decorateButton.transform = .identity
-        }, completion: { finished in
-            // print("Animation for points view buttons complete")
-        })
+        }, completion: nil)
     }
 
     func createBubbleSound() -> SystemSoundID {

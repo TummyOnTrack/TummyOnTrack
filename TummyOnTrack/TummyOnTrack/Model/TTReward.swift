@@ -85,42 +85,4 @@ class TTReward: NSObject {
 
         return returnSize
     }
-
-    /*
-    // TODO Make this upload multiple images
-    class func addReward(filename: String, points: Int) {
-        let imageSizes = [1]
-
-        for imageSize in imageSizes {
-            let imageName = "\(filename)-\(imageSize)x"
-            let image = UIImage(named: imageName)
-            let storageRef = FIRStorage.storage().reference().child("rewardImages").child("\(imageName).png")
-
-            if let imgData = UIImagePNGRepresentation(image!) {
-                storageRef.put(imgData, metadata: nil) { (metaData, error) in
-                    if error != nil {
-                        print("Error when uploading reward image to storage \(String(describing: error)) in TTReward")
-                    }
-                    var imagesURLsArray = [String]()
-
-                    if let imageUrl = metaData?.downloadURL()?.absoluteString {
-                        // Metadata contains file metadata such as size, content-type, and download URL.
-                        imagesURLsArray.append(imageUrl)
-                    }
-
-                    // Use the imagesURLsArray to create a reward object to add to the firebase database
-                    let reference = FIRDatabase.database().reference(fromURL: BASE_URL).child(REWARDS_TABLE).childByAutoId()
-                    let values = [
-                        "name": filename,
-                        "points": points,
-                        "createdAt": Date().timeIntervalSince1970,
-                        "updatedAt": Date().timeIntervalSince1970,
-                        "images" : imagesURLsArray,
-                        ] as [String : Any]
-
-                    reference.updateChildValues(values)
-                }
-            }
-        }
-    }*/
 }
