@@ -18,6 +18,8 @@ class TTPointsViewController: UIViewController {
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var shopButton: UIButton!
     @IBOutlet weak var decorateButton: UIButton!
+    
+    var animationImages : [UIImageView]! = []
     fileprivate var bubbleSound: SystemSoundID!
 
     fileprivate let awesomeSynonyms = [ "Awesome", "Excellent", "Great", "Incredible", "Marvelous", "Unbelievable", "Wonderful"]
@@ -67,7 +69,7 @@ class TTPointsViewController: UIViewController {
             // Add image to the square
             square.image = UIImage(named: "carrot")
             self.view.addSubview(square)
-
+            animationImages.append(square)
             // randomly create a value between 0.0 and 150.0
             let randomYOffset = CGFloat( arc4random_uniform(150))
 
@@ -125,4 +127,37 @@ class TTPointsViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        for i in 0...animationImages.count-1 {
+            let img_ = animationImages[i] as UIImageView
+            img_.layer.removeAllAnimations()
+        }
+        super.viewWillDisappear(animated)
+    }
+    
+    /*- (void) doPageCleanup {
+    // BEFORE DOING SO CHECK THAT TIMER MUST NOT BE ALREADY INVALIDATED
+    // Always nil your timer after invalidating so that
+    // it does not cause crash due to duplicate invalidate
+    if (self.timers != nil) {
+    int timerCount = (int)[self.timers count];
+    for (int i=0; i < timerCount; i++) {
+    NSTimer *timer = self.timers[i];
+    if (timer) {
+    [timer invalidate];
+    timer = nil;
+    }
+    }
+    }
+    
+    if (self.runningAnimations != nil) {
+    for (id key in self.runningAnimations) {
+    AnimationRunner *animation = [self.runningAnimations objectForKey:key];
+    if (animation) {
+    [animation stop];
+    }
+    }
+    }
+    }*/
 }
