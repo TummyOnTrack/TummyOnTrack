@@ -24,6 +24,8 @@ class TTPointsViewController: UIViewController {
 
     fileprivate let awesomeSynonyms = [ "Awesome", "Excellent", "Great", "Incredible", "Marvelous", "Unbelievable", "Wonderful"]
     
+    // This needs to be property of the class so that its scope remains till the object exists.
+    // This is required for the sound to play
     let animationRunner = AnimationRunner()
 
     override func viewDidLoad() {

@@ -54,6 +54,8 @@
 		E7D293251EC684EA00F16899 /* fun_kids_half.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E7D293231EC684EA00F16899 /* fun_kids_half.mp3 */; };
 		E7D293261EC684EA00F16899 /* ping.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E7D293241EC684EA00F16899 /* ping.mp3 */; };
 		E7D293281EC7728F00F16899 /* AnimationRunner.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D293271EC7728F00F16899 /* AnimationRunner.swift */; };
+		E7D2932A1EC7A98600F16899 /* TTSortGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D293291EC7A98600F16899 /* TTSortGameViewController.swift */; };
+		E7D2932C1EC7B53100F16899 /* sort_food.wav in Resources */ = {isa = PBXBuildFile; fileRef = E7D2932B1EC7B53100F16899 /* sort_food.wav */; };
 		E7E3B4771EB69DFF000F9CA4 /* TTProfilesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7E3B4761EB69DFF000F9CA4 /* TTProfilesViewController.swift */; };
 		E7F0E5641EB269B00088743B /* CommonStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7F0E5631EB269B00088743B /* CommonStoryboard.storyboard */; };
 		E7F0E5661EB2801F0088743B /* TTFoodInputWaysViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F0E5651EB2801F0088743B /* TTFoodInputWaysViewController.swift */; };
@@ -138,6 +140,8 @@
 		E7D293231EC684EA00F16899 /* fun_kids_half.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = fun_kids_half.mp3; sourceTree = "<group>"; };
 		E7D293241EC684EA00F16899 /* ping.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ping.mp3; sourceTree = "<group>"; };
 		E7D293271EC7728F00F16899 /* AnimationRunner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationRunner.swift; sourceTree = "<group>"; };
+		E7D293291EC7A98600F16899 /* TTSortGameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TTSortGameViewController.swift; sourceTree = "<group>"; };
+		E7D2932B1EC7B53100F16899 /* sort_food.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = sort_food.wav; sourceTree = "<group>"; };
 		E7E3B4761EB69DFF000F9CA4 /* TTProfilesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TTProfilesViewController.swift; sourceTree = "<group>"; };
 		E7F0E5631EB269B00088743B /* CommonStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CommonStoryboard.storyboard; sourceTree = "<group>"; };
 		E7F0E5651EB2801F0088743B /* TTFoodInputWaysViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TTFoodInputWaysViewController.swift; sourceTree = "<group>"; };
@@ -386,6 +390,7 @@
 				3151A3431EBF685A00084B88 /* TTFillPlateViewController.swift */,
 				E7834F291EB14BB500FD2F1C /* TTHomeTableTableViewController.swift */,
 				E7F0E5651EB2801F0088743B /* TTFoodInputWaysViewController.swift */,
+				E7D293291EC7A98600F16899 /* TTSortGameViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -420,6 +425,7 @@
 		E7D293201EC6847A00F16899 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				E7D2932B1EC7B53100F16899 /* sort_food.wav */,
 				E7D293231EC684EA00F16899 /* fun_kids_half.mp3 */,
 				E7D293241EC684EA00F16899 /* ping.mp3 */,
 			);
@@ -570,6 +576,7 @@
 				3151A3481EC2DA7300084B88 /* bubble.mp3 in Resources */,
 				E7F0E5641EB269B00088743B /* CommonStoryboard.storyboard in Resources */,
 				E028BE491EC2454600637398 /* launchScreenIage2.jpg in Resources */,
+				E7D2932C1EC7B53100F16899 /* sort_food.wav in Resources */,
 				E7B940EF1EAE790C0078AB5E /* Assets.xcassets in Resources */,
 				E06516AC1EC1166A00D4E1A7 /* launchScreenIage.jpg in Resources */,
 				E038F56B1EB694DA002E55DE /* ProfileStoryboard.storyboard in Resources */,
@@ -742,6 +749,7 @@
 				311B02E41EB448D700DAA2ED /* TTRewardsViewController.swift in Sources */,
 				E7F0E5661EB2801F0088743B /* TTFoodInputWaysViewController.swift in Sources */,
 				E7834F2A1EB14BB500FD2F1C /* TTHomeTableTableViewController.swift in Sources */,
+				E7D2932A1EC7A98600F16899 /* TTSortGameViewController.swift in Sources */,
 				D1B1EFE81EB3BDF80032BEE1 /* VoiceCollectionViewCell.swift in Sources */,
 				3151A33E1EBD969400084B88 /* TTNavigationControllerDelegate.swift in Sources */,
 				D1B1EFD51EB395250032BEE1 /* TTVoiceSummaryViewController.swift in Sources */,
