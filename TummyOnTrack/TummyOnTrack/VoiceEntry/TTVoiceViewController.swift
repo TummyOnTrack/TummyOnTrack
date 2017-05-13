@@ -12,6 +12,10 @@ import Firebase
 
 class TTVoiceViewController: UIViewController, SFSpeechRecognizerDelegate, AVSpeechSynthesizerDelegate {
     
+    @IBOutlet weak var rightTrailingConstraint: NSLayoutConstraint!
+    
+    @IBOutlet weak var rightArrowImage: UIImageView!
+    
     @IBOutlet weak var arrowImage: UIImageView!
     @IBOutlet weak var microphoneButton: UIButton!
     @IBOutlet weak var userSpeechToTextLabel: UILabel!

@@ -60,7 +60,14 @@
                                     <action selector="microphoneButton:" destination="W6W-PW-D6v" eventType="touchUpInside" id="yis-8T-1lf"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="orangeUpArrow" translatesAutoresizingMaskIntoConstraints="NO" id="E8S-s3-YGR">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pointFinger" translatesAutoresizingMaskIntoConstraints="NO" id="3k6-8D-Hcq">
+                                <rect key="frame" x="87.5" y="611" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="FOc-jx-MrX"/>
+                                    <constraint firstAttribute="height" constant="40" id="Wna-Sb-xPA"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pointFinger" translatesAutoresizingMaskIntoConstraints="NO" id="E8S-s3-YGR">
                                 <rect key="frame" x="309" y="28" width="30" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="30" id="pWg-54-CCo"/>
@@ -72,6 +79,7 @@
                         <constraints>
                             <constraint firstItem="Jma-KQ-FNZ" firstAttribute="top" secondItem="uJ1-2C-ESq" secondAttribute="bottom" constant="60" id="42y-68-yBm"/>
                             <constraint firstItem="E8S-s3-YGR" firstAttribute="top" secondItem="uJ1-2C-ESq" secondAttribute="bottom" constant="8" id="4ci-1g-oQF"/>
+                            <constraint firstItem="vCJ-0m-Eao" firstAttribute="leading" secondItem="3k6-8D-Hcq" secondAttribute="trailing" constant="40" id="9ck-b4-Mjp"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Emv-Rj-iZK" secondAttribute="trailing" constant="16" id="B5t-Go-EGh"/>
                             <constraint firstItem="vCJ-0m-Eao" firstAttribute="centerX" secondItem="ijA-g9-g4v" secondAttribute="centerX" id="Mf2-ha-J93"/>
                             <constraint firstAttribute="trailing" secondItem="E8S-s3-YGR" secondAttribute="trailing" constant="36" id="Mza-Iu-WZ2"/>
@@ -80,6 +88,7 @@
                             <constraint firstAttribute="trailing" secondItem="Jma-KQ-FNZ" secondAttribute="trailing" constant="16" id="fXP-X2-r6c"/>
                             <constraint firstItem="vCJ-0m-Eao" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Emv-Rj-iZK" secondAttribute="bottom" constant="8" id="fzs-RK-Vgt"/>
                             <constraint firstItem="Emv-Rj-iZK" firstAttribute="top" secondItem="Jma-KQ-FNZ" secondAttribute="bottom" constant="20" id="izK-4r-uth"/>
+                            <constraint firstItem="RyT-vi-3xh" firstAttribute="top" secondItem="3k6-8D-Hcq" secondAttribute="bottom" constant="16" id="lCj-zt-BH1"/>
                             <constraint firstItem="Emv-Rj-iZK" firstAttribute="leading" secondItem="b0v-FR-Jb6" secondAttribute="leading" constant="16" id="mFB-iS-EE2"/>
                             <constraint firstItem="vCJ-0m-Eao" firstAttribute="centerY" secondItem="ijA-g9-g4v" secondAttribute="centerY" id="tMZ-o8-kom"/>
                         </constraints>
@@ -95,6 +104,8 @@
                     <connections>
                         <outlet property="arrowImage" destination="E8S-s3-YGR" id="WXz-Eg-P6U"/>
                         <outlet property="microphoneButton" destination="vCJ-0m-Eao" id="uyd-32-qjs"/>
+                        <outlet property="rightArrowImage" destination="3k6-8D-Hcq" id="h6D-kO-yep"/>
+                        <outlet property="rightTrailingConstraint" destination="9ck-b4-Mjp" id="MTJ-yg-7Ok"/>
                         <outlet property="rippleView" destination="ijA-g9-g4v" id="6fm-9T-HcS"/>
                         <outlet property="userSpeechToTextLabel" destination="Emv-Rj-iZK" id="O5E-E6-5ZU"/>
                         <outlet property="whatDidEatLabel" destination="Jma-KQ-FNZ" id="LBt-1I-hAj"/>
@@ -234,6 +245,6 @@
     <resources>
         <image name="delete" width="128" height="128"/>
         <image name="microphone" width="159" height="151"/>
-        <image name="orangeUpArrow" width="569" height="600"/>
+        <image name="pointFinger" width="256" height="256"/>
     </resources>
 </document>
