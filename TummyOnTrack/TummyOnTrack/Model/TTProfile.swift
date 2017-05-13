@@ -205,6 +205,8 @@ class TTProfile: NSObject {
                     self.weeklyEarnedPoints = self.weeklyEarnedPoints + earnedPoints
                     TTUser.currentUser?.replaceProfile(aProfile: self)
                     ref3.updateChildValues(["unusedPoints": totalUnused, "weeklyPoints": totalWeekly])
+                    
+                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "ProfileChanged"), object: nil)
                 }
             })
         }
@@ -298,6 +300,7 @@ class TTProfile: NSObject {
                 let ref2 = FIRDatabase.database().reference(fromURL: BASE_URL).child(PROFILES_TABLE+"/\(snap_.key)")
 
                 ref2.updateChildValues(dictionary as! [AnyHashable : Any])
+                
             }
         })
     }

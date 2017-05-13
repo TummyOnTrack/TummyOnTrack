@@ -65,13 +65,7 @@ class TTHomeTableTableViewController: UITableViewController, UINavigationControl
         NotificationCenter.default.addObserver(self, selector: #selector(setCurrentProfileDetails), name: NSNotification.Name(rawValue: "ProfileChanged"), object: nil)
         
         setCurrentProfileDetails()
-        
-        // When like/unlike clicked from user page, then reflect that in the main feed page also
-        /*[[NSNotificationCenter defaultCenter] removeObserver:self name:@"MediaLiked" object:nil];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(mediaLiked:) name:@"MediaLiked" object:nil];*/
-        
 
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
