@@ -105,7 +105,7 @@ class TTFillPlateViewController: UIViewController, UITableViewDelegate, UITableV
                             var objArr_ = objs_ as! Array<Any>
                             objArr_.append(item_)
                             //sectionFoodItems.setObject(objArr_, forKey: tag as! NSCopying)
-                            sectionFoodItems.setObject([item_], forKey: tags_?[j] as NSCopying? ?? "x" as NSCopying)
+                            sectionFoodItems.setObject(objArr_, forKey: tags_?[j] as NSCopying? ?? "x" as NSCopying)
                         }
                         flag = true
                         break
