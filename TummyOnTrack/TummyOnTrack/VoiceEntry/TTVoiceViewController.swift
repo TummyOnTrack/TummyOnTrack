@@ -23,6 +23,7 @@ class TTVoiceViewController: UIViewController, SFSpeechRecognizerDelegate, AVSpe
     var selectedfoodstring = String()
     var isSpeechRecognizerAuthorized = false
     var isMicrophoneAuthorized = false
+    var viewSummaryEnabled = false
     
     //object that handles speech recognition
     private let speechRecognizer = SFSpeechRecognizer(locale: Locale.init(identifier: "en-US"))
@@ -54,13 +55,15 @@ class TTVoiceViewController: UIViewController, SFSpeechRecognizerDelegate, AVSpe
         
     override func viewDidLoad() {
         super.viewDidLoad()
-        awesomeLabel.isHidden = true
+ //       awesomeLabel.isHidden = true
+        self.navigationItem.rightBarButtonItem?.title = "View Summary"
+        self.navigationItem.rightBarButtonItem?.isEnabled = false
         
         whatDidEatLabel.layer.cornerRadius = whatDidEatLabel.frame.height/2
         whatDidEatLabel.layer.masksToBounds = true
         
-        awesomeLabel.layer.cornerRadius = awesomeLabel.frame.height/2
-        awesomeLabel.layer.masksToBounds = true
+//        awesomeLabel.layer.cornerRadius = awesomeLabel.frame.height/2
+//        awesomeLabel.layer.masksToBounds = true
         
         microphoneButton.layer.cornerRadius = microphoneButton.frame.size.width / 2
         TTFoodItem.voiceSelectedFoodItems.removeAll()
@@ -200,6 +203,11 @@ class TTVoiceViewController: UIViewController, SFSpeechRecognizerDelegate, AVSpe
                 self.userSpeechToTextLabel.text = result?.bestTranscription.formattedString
                 self.selectedfoodstring = (result?.bestTranscription.formattedString)!
                 isFinal = (result?.isFinal)!
+                
+                if self.viewSummaryEnabled == false {
+                    self.viewSummaryEnabled = true
+                    self.navigationItem.rightBarButtonItem?.isEnabled = true
+                }
             }
             
             if isFinal {
@@ -244,7 +252,7 @@ class TTVoiceViewController: UIViewController, SFSpeechRecognizerDelegate, AVSpe
     func settingsToPauseRecording() {
         let image = UIImage(named: "microphone")
         microphoneButton.setImage(image , for: .normal)
-        awesomeLabel.isHidden = false
+ //       awesomeLabel.isHidden = false
     }
 
     func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
