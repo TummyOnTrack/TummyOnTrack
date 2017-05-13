@@ -23,10 +23,12 @@ class TTPointsViewController: UIViewController {
     fileprivate var bubbleSound: SystemSoundID!
 
     fileprivate let awesomeSynonyms = [ "Awesome", "Excellent", "Great", "Incredible", "Marvelous", "Unbelievable", "Wonderful"]
+    
+    let animationRunner = AnimationRunner()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        bubbleSound = createBubbleSound()
+        //bubbleSound = createBubbleSound()
         animateButton()
     }
 
@@ -101,7 +103,8 @@ class TTPointsViewController: UIViewController {
     }
 
     func animateButton() {
-        AudioServicesPlaySystemSound(bubbleSound)
+        createBubbleSound()
+        //AudioServicesPlaySystemSound(bubbleSound)
         shopButton.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
         decorateButton.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
 
@@ -116,11 +119,13 @@ class TTPointsViewController: UIViewController {
         }, completion: nil)
     }
 
-    func createBubbleSound() -> SystemSoundID {
-        var soundID: SystemSoundID = 0
+    func createBubbleSound() {
+        
+        /*var soundID: SystemSoundID = 0
         let soundURL = CFBundleCopyResourceURL(CFBundleGetMainBundle(), "bubble" as CFString!, "mp3" as CFString!, nil)
         AudioServicesCreateSystemSoundID(soundURL!, &soundID)
-        return soundID
+        return soundID*/
+        animationRunner.playMusic(resourceString: "bubble", resourceType: "mp3")
     }
 
     override func didReceiveMemoryWarning() {

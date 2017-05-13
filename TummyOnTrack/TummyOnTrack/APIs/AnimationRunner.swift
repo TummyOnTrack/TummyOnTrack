@@ -13,10 +13,10 @@ class AnimationRunner: NSObject, AVAudioPlayerDelegate {
     
     var audioPlayer : AVAudioPlayer!
     
-    func playMusic() {
+    func playMusic(resourceString: String, resourceType: String) {
         
         //let alertSound = NSURL(fileURLWithPath: Bundle.main.path(forResource: "bubble", ofType: "mp3")!)
-        let alertSound = CFBundleCopyResourceURL(CFBundleGetMainBundle(), "fun_kids_half" as CFString!, "mp3" as CFString!, nil)!
+        let alertSound = CFBundleCopyResourceURL(CFBundleGetMainBundle(), resourceString as CFString!, resourceType as CFString!, nil)!
         
         do {
             

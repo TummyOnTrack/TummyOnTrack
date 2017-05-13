@@ -160,7 +160,7 @@ class TTFillPlateViewController: UIViewController, UITableViewDelegate, UITableV
     
     func animateAchievement() {
         
-        animationRunner.playMusic()
+        animationRunner.playMusic(resourceString: "fun_kids_half", resourceType: "mp3")
         
         // create a square image view
         let square1 = UIImageView()
