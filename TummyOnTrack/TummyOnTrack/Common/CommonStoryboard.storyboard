@@ -427,6 +427,14 @@
                                     <outlet property="delegate" destination="e0x-T0-KYU" id="wuC-x6-ECv"/>
                                 </connections>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rgN-42-uwc">
+                                <rect key="frame" x="166" y="12" width="43" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button" image="star-2"/>
+                                <connections>
+                                    <action selector="onStarClick:" destination="e0x-T0-KYU" eventType="touchUpInside" id="cob-P0-bLZ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -438,6 +446,7 @@
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <connections>
+                        <outlet property="starButton" destination="rgN-42-uwc" id="Qkr-wc-sxA"/>
                         <outlet property="tableView" destination="1ki-XA-gbq" id="75i-Zr-gvf"/>
                     </connections>
                 </viewController>
@@ -453,5 +462,6 @@
         <image name="microphone" width="159" height="151"/>
         <image name="package_games_kids" width="128" height="128"/>
         <image name="star-1" width="128" height="128"/>
+        <image name="star-2" width="300" height="300"/>
     </resources>
 </document>

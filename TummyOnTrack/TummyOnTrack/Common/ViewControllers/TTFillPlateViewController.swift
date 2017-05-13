@@ -7,6 +7,7 @@
 //
 
 // Emoji icons https://emojiisland.com/pages/free-download-emoji-icons-png
+// star from https://clipartfest.com/categories/view/fa420d176735bb6ea61227cb310a9d5fa33efc1b/cute-star-clipart-png.html
 
 import UIKit
 import SVProgressHUD
@@ -23,6 +24,8 @@ class TTFillPlateViewController: UIViewController, UITableViewDelegate, UITableV
     var categoryMessage: NSDictionary! = ["Protein": "Proteins make your bones stronger!", "Carbohydrate": "Eating carbs gives you energy to run around.", "Vegetable" : "Vegetables are full of Vitamins.", "Drink" : "A glass of water is the best drink for your body", "Fruit": "Fruits are yummy and good for you", "Dairy" : "Milk and cheese are full of calcium and proteins", "Dessert" : "Good job skipping dessert today!", "Other" : "Other"]
     
     var categories : NSArray! = ["Protein", "Vegetable", "Fruit", "Carbohydrate", "Dairy", "Drink", "Dessert", "Other" ]
+    
+    @IBOutlet weak var starButton: UIButton!
     
     @IBOutlet weak var pointsLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
@@ -145,6 +148,56 @@ class TTFillPlateViewController: UIViewController, UITableViewDelegate, UITableV
         cell.foodItem = objArr_[indexPath.row] as! TTFoodItem
         return cell
     }
+    
+    @IBAction func onStarClick(_ sender: Any) {
+        animateAchievement()
+    }
+    
+    func animateAchievement() {
+        
+        
+        // create a square image view
+        let square1 = UIImageView()
+        square1.frame = starButton.frame
+        // Add image to the square
+        square1.image = UIImage(named: "star-2")
+        self.view.addSubview(square1)
+        
+        let square2 = UIImageView()
+        square2.frame = starButton.frame
+        // Add image to the square
+        square2.image = UIImage(named: "star-2")
+        self.view.addSubview(square2)
+        
+        let square3 = UIImageView()
+        square3.frame = starButton.frame
+        // Add image to the square
+        square3.image = UIImage(named: "star-2")
+        self.view.addSubview(square3)
+        
+        let square4 = UIImageView()
+        square4.frame = starButton.frame
+        // Add image to the square
+        square4.image = UIImage(named: "star-2")
+        self.view.addSubview(square4)
+        
+            UIView.animate(withDuration: 2, delay: 0, options: UIViewAnimationOptions.curveEaseInOut, animations: {
+                square1.frame = CGRect(x: 0, y: self.view.frame.height+30, width: self.starButton.frame.size.width, height: self.starButton.frame.size.height)
+                square2.frame = CGRect(x: 300, y: self.view.frame.height+30, width: self.starButton.frame.size.width, height: self.starButton.frame.size.height)
+                square3.frame = CGRect(x: 140, y: self.view.frame.height+30, width: self.starButton.frame.size.width, height: self.starButton.frame.size.height)
+                square4.frame = CGRect(x: 200, y: self.view.frame.height+30, width: self.starButton.frame.size.width, height: self.starButton.frame.size.height)
+            }, completion: { (Bool) in
+                square1.removeFromSuperview()
+                square2.removeFromSuperview()
+                square3.removeFromSuperview()
+                square4.removeFromSuperview()
+            })
+        
+    
+        
+        
+    }
+
     
 
     /*
