@@ -50,6 +50,7 @@ class TTProfilesViewController: UITableViewController {
         }catch let error {
             print(error)
         }
+        
         UserDefaults.standard.removeObject(forKey: "email")
 //        UserDefaults.standard.removeObject(forKey: "currentProfileData")
 //        UserDefaults.standard.removeObject(forKey: "currentUserData")
@@ -82,7 +83,8 @@ extension TTProfilesViewController: UICollectionViewDelegate, UICollectionViewDa
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if indexPath.row > 0 {
-            TTProfile.currentProfile = self.profiles[indexPath.row-1]
+            //TTProfile.currentProfile = self.profiles[indexPath.row-1]
+            TTUser.currentUser?.changeCurrentProfile(aProfile: self.profiles[indexPath.row-1])
             tabBarController?.selectedIndex = 0
         }
     }

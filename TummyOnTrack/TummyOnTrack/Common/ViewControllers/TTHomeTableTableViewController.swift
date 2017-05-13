@@ -61,11 +61,22 @@ class TTHomeTableTableViewController: UITableViewController, UINavigationControl
 
         view.layer.addSublayer(pieLayer)
         
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "ProfileChanged"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(setCurrentProfileDetails), name: NSNotification.Name(rawValue: "ProfileChanged"), object: nil)
+        
+        setCurrentProfileDetails()
+        
+        // When like/unlike clicked from user page, then reflect that in the main feed page also
+        /*[[NSNotificationCenter defaultCenter] removeObserver:self name:@"MediaLiked" object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(mediaLiked:) name:@"MediaLiked" object:nil];*/
+        
+
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        setCurrentProfileDetails()
+        
     }
     
     func initializeNavigationBarTitleView() {
@@ -205,11 +216,13 @@ class TTHomeTableTableViewController: UITableViewController, UINavigationControl
     func setCurrentProfileDetails() {
         populateProfileInfo()
 
-        TTUser.currentUser?.getProfiles(success: { (aProfiles: [TTProfile]) in
+        /*TTUser.currentUser?.getProfiles(success: { (aProfiles: [TTProfile]) in
             
         }) { (error: Error) in
             
-        }
+        }*/
+        
+        populateCharts()
     }
 
     func populateProfileInfo() {
@@ -255,6 +268,9 @@ class TTHomeTableTableViewController: UITableViewController, UINavigationControl
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
+    }
+    
+    func populateCharts() {
         weeklyFoodBlog = [:]
         dayPoints = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
         noChartsView.isHidden = false
@@ -277,7 +293,7 @@ class TTHomeTableTableViewController: UITableViewController, UINavigationControl
                     else {
                         let dictArray_: NSMutableArray = dictBlog_ as! NSMutableArray
                         dictArray_.add(blog)
-
+                        
                         self.weeklyFoodBlog?.setObject(dictArray_, forKey: self.weekdays[blog.weekDay!-1] as NSCopying)
                     }
                 }
@@ -305,6 +321,7 @@ class TTHomeTableTableViewController: UITableViewController, UINavigationControl
         }, failure: { (error: Error) in
             
         })
+
     }
     
     @IBAction func onImageTap(_ sender: UITapGestureRecognizer) {

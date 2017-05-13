@@ -68,6 +68,7 @@ class TTUser: NSObject {
     
     func changeCurrentProfile( aProfile: TTProfile ) {
         TTProfile.currentProfile = aProfile
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "ProfileChanged"), object: nil)
     }
     
     func addProfile(name: String, age: Int, image: UIImage, completionHandler: @escaping(Bool) -> Void) {
