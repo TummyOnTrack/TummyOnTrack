@@ -150,8 +150,6 @@ class TTHomeTableTableViewController: UITableViewController, UINavigationControl
                 dateComponents.minute = 5
                 let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
                 
-                //let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 24, repeats: true)//UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
-                
                 let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
                 
                 center.removeAllDeliveredNotifications()
@@ -320,7 +318,6 @@ class TTHomeTableTableViewController: UITableViewController, UINavigationControl
     
     @IBAction func onImageTap(_ sender: UITapGestureRecognizer) {
         print("image tapped")
-        //animateAchievement()
     }
 
     override func didReceiveMemoryWarning() {
@@ -328,7 +325,9 @@ class TTHomeTableTableViewController: UITableViewController, UINavigationControl
     }
 
     func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {
-        performSegue(withIdentifier: "Show Plate View", sender: self.weekdays[Int(entry.x)])
+        if highlight.y > 0 {
+            performSegue(withIdentifier: "Show Plate View", sender: self.weekdays[Int(entry.x)])
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -345,43 +344,6 @@ class TTHomeTableTableViewController: UITableViewController, UINavigationControl
         }
     }
     
-    func animateAchievement() {
-        
-            // create a square image view
-        let square1 = UIImageView()
-        square1.frame = CGRect(x: 180, y: 400, width: self.rewardsImageView.frame.size.width, height: self.rewardsImageView.frame.size.height)
-            // Add image to the square
-        square1.image = UIImage(named: "Duckling-1x")
-        self.view.addSubview(square1)
-        
-        let square2 = UIImageView()
-        square2.frame = CGRect(x: 180, y: 400, width: self.rewardsImageView.frame.size.width, height: self.rewardsImageView.frame.size.height)
-        // Add image to the square
-        square2.image = UIImage(named: "Hippo-1x")
-        self.view.addSubview(square2)
-        
-        let square3 = UIImageView()
-        square3.frame = CGRect(x: 180, y: 400, width: self.rewardsImageView.frame.size.width, height: self.rewardsImageView.frame.size.height)
-        // Add image to the square
-        square3.image = UIImage(named: "Gorilla-1x")
-        self.view.addSubview(square3)
-        
-        let square4 = UIImageView()
-        square4.frame = CGRect(x: 180, y: 400, width: self.rewardsImageView.frame.size.width, height: self.rewardsImageView.frame.size.height)
-        // Add image to the square
-        square4.image = UIImage(named: "Cat-1x")
-        self.view.addSubview(square4)
-
-        UIView.animate(withDuration: 0.5, animations: {
-            square1.frame = CGRect(x: 0, y: 30, width: self.rewardsImageView.frame.size.width, height: self.rewardsImageView.frame.size.height)
-            square2.frame = CGRect(x: 300, y: 30, width: self.rewardsImageView.frame.size.width, height: self.rewardsImageView.frame.size.height)
-            square3.frame = CGRect(x: 140, y: 30, width: self.rewardsImageView.frame.size.width, height: self.rewardsImageView.frame.size.height)
-            square4.frame = CGRect(x: 200, y: 30, width: self.rewardsImageView.frame.size.width, height: self.rewardsImageView.frame.size.height)
-        })
-            
-        
-    }
-
 }
 
 //https://github.com/danielgindi/Charts/issues/1340

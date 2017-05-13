@@ -43,12 +43,17 @@ class TTFillPlateViewController: UIViewController, UITableViewDelegate, UITableV
         foodItems = []
         
         navigationItem.title = (fullDayOfWeek[dayOfWeek] as! String) + "'s Food Blog"
+        populateFood()
         
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         
+    }
+    
+    func populateFood() {
+    
         if foodBlog.count == 0 {
             message = "Oops, No food entries for " + (fullDayOfWeek[dayOfWeek] as! String)
             enablePlayGameButton(aFlag: false)
@@ -68,6 +73,7 @@ class TTFillPlateViewController: UIViewController, UITableViewDelegate, UITableV
             tableView.reloadData()
         }
         
+
     }
     
     func enablePlayGameButton(aFlag : Bool) {
