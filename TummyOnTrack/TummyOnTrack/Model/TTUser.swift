@@ -66,7 +66,7 @@ class TTUser: NSObject {
         })
     }
     
-    func changeCurrentProfile( aProfile: TTProfile ) {
+    func changeCurrentProfile( aProfile: TTProfile? ) {
         TTProfile.currentProfile = aProfile
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "ProfileChanged"), object: nil)
     }
@@ -166,6 +166,22 @@ class TTUser: NSObject {
         if userAccounts[user.username] != nil {
             _currentUser = user
         }
+    }
+    
+    func logoutCurrentUser() {
+        let defaults = UserDefaults.standard
+        defaults.removeObject(forKey: "currentUserData")
+        defaults.removeObject(forKey: "currentProfileData")
+        defaults.removeObject(forKey: "email")
+        defaults.synchronize()
+        TTUser.currentUser = nil
+        changeCurrentProfile(aProfile: nil)
+        do {
+            try FIRAuth.auth()?.signOut()
+        }catch let error {
+            print(error)
+        }
+
     }
     
     class func delete(user: TTUser) {

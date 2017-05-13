@@ -45,7 +45,7 @@ class TTProfilesViewController: UITableViewController {
     }
 
     @IBAction func logoutUser(_ sender: Any) {
-        do {
+        /*do {
             try FIRAuth.auth()?.signOut()
         }catch let error {
             print(error)
@@ -53,7 +53,8 @@ class TTProfilesViewController: UITableViewController {
         
         UserDefaults.standard.removeObject(forKey: "email")
 //        UserDefaults.standard.removeObject(forKey: "currentProfileData")
-//        UserDefaults.standard.removeObject(forKey: "currentUserData")
+//        UserDefaults.standard.removeObject(forKey: "currentUserData")*/
+        TTUser.currentUser?.logoutCurrentUser()
         let onboardingStoryboard = UIStoryboard(name: "Onboarding", bundle: nil)
         let onboardingRootController = onboardingStoryboard.instantiateViewController(withIdentifier: "SignupLoginViewController")
         let navController = UINavigationController(rootViewController: onboardingRootController)

@@ -114,6 +114,7 @@ class TTProfile: NSObject {
             if profile == nil {
                 profiles.removeValue(forKey: (_currentProfile?.name)!)
                 _currentProfile = profile
+                return
             } else {
                 _currentProfile = profile
                 profiles[(_currentProfile?.name)!] = _currentProfile

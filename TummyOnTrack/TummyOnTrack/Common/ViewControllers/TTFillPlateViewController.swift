@@ -20,7 +20,7 @@ class TTFillPlateViewController: UIViewController, UITableViewDelegate, UITableV
     var sectionFoodItems : NSMutableDictionary = [:]
     var dayOfWeek: String!
     var message: String!
-    var fullDayOfWeek: NSDictionary! = ["Sun": "Sunday", "Mon": "Monday", "Tues" : "Tuesday", "Wed" : "Wednesday", "Fri" : "Friday", "Sat" : "Saturday"]
+    var fullDayOfWeek: NSDictionary! = ["Sun": "Sunday", "Mon": "Monday", "Tues" : "Tuesday", "Wed" : "Wednesday", "Thur": "Thursday", "Fri" : "Friday", "Sat" : "Saturday"]
     
     var categoryMessage: NSDictionary! = ["Protein": "Proteins make your bones stronger!", "Carbohydrate": "Eating carbs gives you energy to run around.", "Vegetable" : "Vegetables are full of Vitamins.", "Drink" : "A glass of water is the best drink for your body", "Fruit": "Fruits are yummy and good for you", "Dairy" : "Milk and cheese are full of calcium and proteins", "Dessert" : "Good job skipping dessert today!", "Other" : "Other"]
     

@@ -101,7 +101,7 @@ class TTHomeTableTableViewController: UITableViewController, UINavigationControl
             
             // reset weekly points on every Sunday
             let defaults = UserDefaults.standard
-            let weekPointsFlag = defaults.object(forKey: "weeklyPointsReset")
+            let weekPointsFlag = defaults.object(forKey: key_)
             if weekPointsFlag == nil {
                 TTProfile.currentProfile?.updateProfile(dictionary: ["weeklyEarnedPoints": 0])
                 let defaults = UserDefaults.standard
