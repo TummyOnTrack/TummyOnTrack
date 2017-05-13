@@ -11,13 +11,12 @@ import Speech
 import Firebase
 
 class TTVoiceViewController: UIViewController, SFSpeechRecognizerDelegate, AVSpeechSynthesizerDelegate {
-
+    
+    @IBOutlet weak var arrowImage: UIImageView!
     @IBOutlet weak var microphoneButton: UIButton!
     @IBOutlet weak var userSpeechToTextLabel: UILabel!
-
     @IBOutlet weak var whatDidEatLabel: UILabel!
     @IBOutlet weak var rippleView: UIView!
-    @IBOutlet weak var awesomeLabel: UILabel!
     var utterance: AVSpeechUtterance!
     var synthesizer: AVSpeechSynthesizer!
     var selectedfoodstring = String()
@@ -58,12 +57,14 @@ class TTVoiceViewController: UIViewController, SFSpeechRecognizerDelegate, AVSpe
  //       awesomeLabel.isHidden = true
         self.navigationItem.rightBarButtonItem?.title = "View Summary"
         self.navigationItem.rightBarButtonItem?.isEnabled = false
+        arrowImage.isHidden = true
         
         whatDidEatLabel.layer.cornerRadius = whatDidEatLabel.frame.height/2
         whatDidEatLabel.layer.masksToBounds = true
         
 //        awesomeLabel.layer.cornerRadius = awesomeLabel.frame.height/2
 //        awesomeLabel.layer.masksToBounds = true
+        
         
         microphoneButton.layer.cornerRadius = microphoneButton.frame.size.width / 2
         TTFoodItem.voiceSelectedFoodItems.removeAll()

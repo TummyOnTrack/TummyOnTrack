@@ -29,7 +29,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What did you eat today?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jma-KQ-FNZ">
-                                <rect key="frame" x="126" y="80" width="230" height="36"/>
+                                <rect key="frame" x="129" y="80" width="230" height="36"/>
                                 <color key="backgroundColor" red="0.95686274510000002" green="0.4514970767" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="36" id="UTm-BT-d25"/>
@@ -73,11 +73,11 @@
                             <constraint firstItem="Jma-KQ-FNZ" firstAttribute="top" secondItem="uJ1-2C-ESq" secondAttribute="bottom" constant="60" id="42y-68-yBm"/>
                             <constraint firstItem="E8S-s3-YGR" firstAttribute="top" secondItem="uJ1-2C-ESq" secondAttribute="bottom" constant="8" id="4ci-1g-oQF"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Emv-Rj-iZK" secondAttribute="trailing" constant="16" id="B5t-Go-EGh"/>
-                            <constraint firstItem="Jma-KQ-FNZ" firstAttribute="leading" secondItem="b0v-FR-Jb6" secondAttribute="leading" constant="126" id="HLc-mW-jEb"/>
                             <constraint firstItem="vCJ-0m-Eao" firstAttribute="centerX" secondItem="ijA-g9-g4v" secondAttribute="centerX" id="Mf2-ha-J93"/>
                             <constraint firstAttribute="trailing" secondItem="E8S-s3-YGR" secondAttribute="trailing" constant="36" id="Mza-Iu-WZ2"/>
                             <constraint firstItem="vCJ-0m-Eao" firstAttribute="centerX" secondItem="b0v-FR-Jb6" secondAttribute="centerX" id="Xre-wp-2jA"/>
                             <constraint firstItem="RyT-vi-3xh" firstAttribute="top" secondItem="vCJ-0m-Eao" secondAttribute="bottom" constant="16" id="dLg-n9-PSN"/>
+                            <constraint firstAttribute="trailing" secondItem="Jma-KQ-FNZ" secondAttribute="trailing" constant="16" id="fXP-X2-r6c"/>
                             <constraint firstItem="vCJ-0m-Eao" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Emv-Rj-iZK" secondAttribute="bottom" constant="8" id="fzs-RK-Vgt"/>
                             <constraint firstItem="Emv-Rj-iZK" firstAttribute="top" secondItem="Jma-KQ-FNZ" secondAttribute="bottom" constant="20" id="izK-4r-uth"/>
                             <constraint firstItem="Emv-Rj-iZK" firstAttribute="leading" secondItem="b0v-FR-Jb6" secondAttribute="leading" constant="16" id="mFB-iS-EE2"/>
@@ -93,6 +93,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="arrowImage" destination="E8S-s3-YGR" id="WXz-Eg-P6U"/>
                         <outlet property="microphoneButton" destination="vCJ-0m-Eao" id="uyd-32-qjs"/>
                         <outlet property="rippleView" destination="ijA-g9-g4v" id="6fm-9T-HcS"/>
                         <outlet property="userSpeechToTextLabel" destination="Emv-Rj-iZK" id="O5E-E6-5ZU"/>
