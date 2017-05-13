@@ -22,6 +22,7 @@ class TTFillPlateViewController: UIViewController, UITableViewDelegate, UITableV
     var message: String!
     var fullDayOfWeek: NSDictionary! = ["Sun": "Sunday", "Mon": "Monday", "Tues" : "Tuesday", "Wed" : "Wednesday", "Thur": "Thursday", "Fri" : "Friday", "Sat" : "Saturday"]
     
+    @IBOutlet weak var playGameButton: UIButton!
     var categoryMessage: NSDictionary! = ["Protein": "Proteins make your bones stronger!", "Carbohydrate": "Eating carbs gives you energy to run around.", "Vegetable" : "Vegetables are full of Vitamins.", "Drink" : "A glass of water is the best drink for your body", "Fruit": "Fruits are yummy and good for you", "Dairy" : "Milk and cheese are full of calcium and proteins", "Dessert" : "Good job skipping dessert today!", "Other" : "Other"]
     
     var categories : NSArray! = ["Protein", "Vegetable", "Fruit", "Carbohydrate", "Dairy", "Drink", "Dessert", "Other" ]
@@ -37,11 +38,12 @@ class TTFillPlateViewController: UIViewController, UITableViewDelegate, UITableV
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //audioPlayer = AVAudioPlayer()
+        
         message = "Fetching food entries for " + (fullDayOfWeek[dayOfWeek] as! String)
         foodItems = []
         
         navigationItem.title = (fullDayOfWeek[dayOfWeek] as! String) + "'s Food Blog"
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -49,6 +51,7 @@ class TTFillPlateViewController: UIViewController, UITableViewDelegate, UITableV
         
         if foodBlog.count == 0 {
             message = "Oops, No food entries for " + (fullDayOfWeek[dayOfWeek] as! String)
+            enablePlayGameButton(aFlag: false)
         }
         else {
             for i in 0...(foodBlog.count - 1) {
@@ -60,9 +63,21 @@ class TTFillPlateViewController: UIViewController, UITableViewDelegate, UITableV
                     }
                 }
             }
+            enablePlayGameButton(aFlag: true)
+            populateSectionFoodItems()
+            tableView.reloadData()
         }
-        populateSectionFoodItems()
-        tableView.reloadData()
+        
+    }
+    
+    func enablePlayGameButton(aFlag : Bool) {
+        playGameButton.isEnabled = aFlag
+        if aFlag == true {
+            playGameButton.alpha = 1
+        }
+        else {
+            playGameButton.alpha = 0.4
+        }
     }
     
     func populateSectionFoodItems() {
