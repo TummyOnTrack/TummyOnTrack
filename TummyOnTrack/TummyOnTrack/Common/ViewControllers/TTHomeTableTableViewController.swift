@@ -236,7 +236,7 @@ class TTHomeTableTableViewController: UITableViewController, UINavigationControl
         } else {
             pointsLabel.text = "You earned \(currentProfile.weeklyEarnedPoints) points this week!"
             if currentProfile.weeklyEarnedPoints > currentProfile.goalPoints/2 {
-                goalHeaderLabel.text = "Awesome! You are half way through!"
+                goalHeaderLabel.text = "Well done! Half way through!"
             }
         }
         
