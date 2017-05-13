@@ -56,6 +56,7 @@
 		E7D293281EC7728F00F16899 /* AnimationRunner.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D293271EC7728F00F16899 /* AnimationRunner.swift */; };
 		E7D2932A1EC7A98600F16899 /* TTSortGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D293291EC7A98600F16899 /* TTSortGameViewController.swift */; };
 		E7D2932C1EC7B53100F16899 /* sort_food.wav in Resources */ = {isa = PBXBuildFile; fileRef = E7D2932B1EC7B53100F16899 /* sort_food.wav */; };
+		E7D2932E1EC7C6AC00F16899 /* TTJoke.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D2932D1EC7C6AC00F16899 /* TTJoke.swift */; };
 		E7E3B4771EB69DFF000F9CA4 /* TTProfilesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7E3B4761EB69DFF000F9CA4 /* TTProfilesViewController.swift */; };
 		E7F0E5641EB269B00088743B /* CommonStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7F0E5631EB269B00088743B /* CommonStoryboard.storyboard */; };
 		E7F0E5661EB2801F0088743B /* TTFoodInputWaysViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F0E5651EB2801F0088743B /* TTFoodInputWaysViewController.swift */; };
@@ -142,6 +143,7 @@
 		E7D293271EC7728F00F16899 /* AnimationRunner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationRunner.swift; sourceTree = "<group>"; };
 		E7D293291EC7A98600F16899 /* TTSortGameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TTSortGameViewController.swift; sourceTree = "<group>"; };
 		E7D2932B1EC7B53100F16899 /* sort_food.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = sort_food.wav; sourceTree = "<group>"; };
+		E7D2932D1EC7C6AC00F16899 /* TTJoke.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TTJoke.swift; sourceTree = "<group>"; };
 		E7E3B4761EB69DFF000F9CA4 /* TTProfilesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TTProfilesViewController.swift; sourceTree = "<group>"; };
 		E7F0E5631EB269B00088743B /* CommonStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CommonStoryboard.storyboard; sourceTree = "<group>"; };
 		E7F0E5651EB2801F0088743B /* TTFoodInputWaysViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TTFoodInputWaysViewController.swift; sourceTree = "<group>"; };
@@ -301,6 +303,7 @@
 				311B02E71EB459EC00DAA2ED /* TTReward.swift */,
 				311B02EB1EB4B41D00DAA2ED /* TTProfile.swift */,
 				E7F8E39B1EBE6DE8002C7494 /* TTDailyFoodEntry.swift */,
+				E7D2932D1EC7C6AC00F16899 /* TTJoke.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -754,6 +757,7 @@
 				3151A33E1EBD969400084B88 /* TTNavigationControllerDelegate.swift in Sources */,
 				D1B1EFD51EB395250032BEE1 /* TTVoiceSummaryViewController.swift in Sources */,
 				E7F8E39C1EBE6DE8002C7494 /* TTDailyFoodEntry.swift in Sources */,
+				E7D2932E1EC7C6AC00F16899 /* TTJoke.swift in Sources */,
 				E7BC60551EB10D79000529AC /* SignupLoginViewController.swift in Sources */,
 				311B02E81EB459EC00DAA2ED /* TTReward.swift in Sources */,
 				E7BC60561EB10D79000529AC /* SignupViewController.swift in Sources */,

@@ -12,6 +12,7 @@
 import UIKit
 import SVProgressHUD
 import AVFoundation
+import Speech
 
 class TTFillPlateViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, AVAudioPlayerDelegate {
 
@@ -33,12 +34,16 @@ class TTFillPlateViewController: UIViewController, UITableViewDelegate, UITableV
     @IBOutlet weak var tableView: UITableView!
     
     let animationRunner = AnimationRunner()
+    var utterance: AVSpeechUtterance!
+    var synthesizer: AVSpeechSynthesizer!
     
     var animate : Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        synthesizer = AVSpeechSynthesizer()
+        //synthesizer.delegate = self
         message = "Fetching food entries for " + (fullDayOfWeek[dayOfWeek] as! String)
         foodItems = []
         
@@ -175,6 +180,21 @@ class TTFillPlateViewController: UIViewController, UITableViewDelegate, UITableV
         cell.animate = animate
         cell.foodItem = objArr_[indexPath.row] as! TTFoodItem
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let objs_ = sectionFoodItems.object(forKey: categories.object(at: indexPath.section))
+        if objs_ != nil {
+            let objArr_ = objs_ as! Array<Any>
+            let foodItem = objArr_[indexPath.row] as! TTFoodItem
+            if foodItem.joke != nil {
+                animationRunner.playMusic(resourceString: "ping", resourceType: "mp3")
+                self.utterance = AVSpeechUtterance(string: "Joke of the day. " + foodItem.joke!)
+                self.utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
+                self.synthesizer.speak(self.utterance)
+            }
+        }
+        
     }
     
     @IBAction func onStarClick(_ sender: Any) {
