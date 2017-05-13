@@ -15,6 +15,7 @@ class TTVoiceViewController: UIViewController, SFSpeechRecognizerDelegate, AVSpe
     @IBOutlet weak var microphoneButton: UIButton!
     @IBOutlet weak var userSpeechToTextLabel: UILabel!
 
+    @IBOutlet weak var whatDidEatLabel: UILabel!
     @IBOutlet weak var rippleView: UIView!
     @IBOutlet weak var awesomeLabel: UILabel!
     var utterance: AVSpeechUtterance!
@@ -54,6 +55,13 @@ class TTVoiceViewController: UIViewController, SFSpeechRecognizerDelegate, AVSpe
     override func viewDidLoad() {
         super.viewDidLoad()
         awesomeLabel.isHidden = true
+        
+        whatDidEatLabel.layer.cornerRadius = whatDidEatLabel.frame.height/2
+        whatDidEatLabel.layer.masksToBounds = true
+        
+        awesomeLabel.layer.cornerRadius = awesomeLabel.frame.height/2
+        awesomeLabel.layer.masksToBounds = true
+        
         microphoneButton.layer.cornerRadius = microphoneButton.frame.size.width / 2
         TTFoodItem.voiceSelectedFoodItems.removeAll()
 
