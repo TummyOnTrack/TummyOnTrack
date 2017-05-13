@@ -11,8 +11,9 @@
 
 import UIKit
 import SVProgressHUD
+import AVFoundation
 
-class TTFillPlateViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class TTFillPlateViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, AVAudioPlayerDelegate {
 
     var foodBlog: [TTDailyFoodEntry]!
     var foodItems = [TTFoodItem]()
@@ -29,8 +30,12 @@ class TTFillPlateViewController: UIViewController, UITableViewDelegate, UITableV
     
     @IBOutlet weak var pointsLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
+    
+    let animationRunner = AnimationRunner()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        //audioPlayer = AVAudioPlayer()
         message = "Fetching food entries for " + (fullDayOfWeek[dayOfWeek] as! String)
         foodItems = []
         
@@ -155,6 +160,7 @@ class TTFillPlateViewController: UIViewController, UITableViewDelegate, UITableV
     
     func animateAchievement() {
         
+        animationRunner.playMusic()
         
         // create a square image view
         let square1 = UIImageView()
@@ -193,13 +199,8 @@ class TTFillPlateViewController: UIViewController, UITableViewDelegate, UITableV
                 square4.removeFromSuperview()
             })
         
-    
-        
-        
     }
-
     
-
     /*
     // MARK: - Navigation
 

@@ -25,9 +25,6 @@ class TTFillPlateTableCell: UITableViewCell {
         didSet {
             foodNameLabel.text = foodItem.name
             if let imageurlstring = foodItem.images?[0] {
-                /*if let data = try? Data(contentsOf: imageurlstring) {
-                    foodImageView.image = UIImage(data: data)
-                }*/
                 foodImageView.sd_setImage(with: imageurlstring)
             }
             pointsLabel.text = "\(foodItem.points ?? 0)" + " points"
@@ -37,9 +34,28 @@ class TTFillPlateTableCell: UITableViewCell {
             else {
                 smileyImageView.image = UIImage(named: "Slightly_Smiling")
             }
+            shakeView()
             
         }
     }
+    
+    func shakeView(){
+        let shake:CABasicAnimation = CABasicAnimation(keyPath: "position")
+        shake.duration = 1
+        shake.repeatCount = 10
+        shake.autoreverses = true
+        
+        let from_point = CGPoint(x: foodImageView.center.x - 5, y: foodImageView.center.y)  //
+        let from_value = NSValue(cgPoint:from_point)
+        
+        let to_point:CGPoint = CGPoint(x:foodImageView.center.x + 5,y: foodImageView.center.y)
+        let to_value:NSValue = NSValue(cgPoint: to_point)
+        
+        shake.fromValue = from_value
+        shake.toValue = to_value
+        foodImageView.layer.add(shake, forKey: "position")
+    }
+
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)

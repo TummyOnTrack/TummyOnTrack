@@ -51,6 +51,9 @@
 		E7BC60561EB10D79000529AC /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BC60531EB10D79000529AC /* SignupViewController.swift */; };
 		E7BC60581EB11220000529AC /* TTUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BC60571EB11220000529AC /* TTUser.swift */; };
 		E7D2931F1EC66EC100F16899 /* TTMessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D2931E1EC66EC100F16899 /* TTMessageTableViewCell.swift */; };
+		E7D293251EC684EA00F16899 /* fun_kids_half.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E7D293231EC684EA00F16899 /* fun_kids_half.mp3 */; };
+		E7D293261EC684EA00F16899 /* ping.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E7D293241EC684EA00F16899 /* ping.mp3 */; };
+		E7D293281EC7728F00F16899 /* AnimationRunner.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D293271EC7728F00F16899 /* AnimationRunner.swift */; };
 		E7E3B4771EB69DFF000F9CA4 /* TTProfilesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7E3B4761EB69DFF000F9CA4 /* TTProfilesViewController.swift */; };
 		E7F0E5641EB269B00088743B /* CommonStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7F0E5631EB269B00088743B /* CommonStoryboard.storyboard */; };
 		E7F0E5661EB2801F0088743B /* TTFoodInputWaysViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F0E5651EB2801F0088743B /* TTFoodInputWaysViewController.swift */; };
@@ -132,6 +135,9 @@
 		E7BC60531EB10D79000529AC /* SignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		E7BC60571EB11220000529AC /* TTUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TTUser.swift; sourceTree = "<group>"; };
 		E7D2931E1EC66EC100F16899 /* TTMessageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TTMessageTableViewCell.swift; sourceTree = "<group>"; };
+		E7D293231EC684EA00F16899 /* fun_kids_half.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = fun_kids_half.mp3; sourceTree = "<group>"; };
+		E7D293241EC684EA00F16899 /* ping.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ping.mp3; sourceTree = "<group>"; };
+		E7D293271EC7728F00F16899 /* AnimationRunner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationRunner.swift; sourceTree = "<group>"; };
 		E7E3B4761EB69DFF000F9CA4 /* TTProfilesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TTProfilesViewController.swift; sourceTree = "<group>"; };
 		E7F0E5631EB269B00088743B /* CommonStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CommonStoryboard.storyboard; sourceTree = "<group>"; };
 		E7F0E5651EB2801F0088743B /* TTFoodInputWaysViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TTFoodInputWaysViewController.swift; sourceTree = "<group>"; };
@@ -249,6 +255,7 @@
 				E7BC60411EB10A00000529AC /* Rewards */,
 				E7BC60431EB10A0D000529AC /* Common */,
 				E038F5681EB694C1002E55DE /* Profiles */,
+				E7D293201EC6847A00F16899 /* Resources */,
 				E7B940E41EAE790C0078AB5E /* AppDelegate.swift */,
 				E7B940E81EAE790C0078AB5E /* Main.storyboard */,
 				E7B940EE1EAE790C0078AB5E /* Assets.xcassets */,
@@ -410,6 +417,15 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		E7D293201EC6847A00F16899 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				E7D293231EC684EA00F16899 /* fun_kids_half.mp3 */,
+				E7D293241EC684EA00F16899 /* ping.mp3 */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 		E7E3B4801EB6F44E000F9CA4 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -423,6 +439,7 @@
 			isa = PBXGroup;
 			children = (
 				E7F0E5701EB540280088743B /* TTFirebaseClient.swift */,
+				E7D293271EC7728F00F16899 /* AnimationRunner.swift */,
 			);
 			path = APIs;
 			sourceTree = "<group>";
@@ -545,6 +562,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E7D293251EC684EA00F16899 /* fun_kids_half.mp3 in Resources */,
 				D197BC7E1EC3923B000615BF /* GoogleService-Info.plist in Resources */,
 				E7B940F21EAE790C0078AB5E /* LaunchScreen.storyboard in Resources */,
 				E7BC60501EB10D6A000529AC /* Onboarding.storyboard in Resources */,
@@ -555,6 +573,7 @@
 				E7B940EF1EAE790C0078AB5E /* Assets.xcassets in Resources */,
 				E06516AC1EC1166A00D4E1A7 /* launchScreenIage.jpg in Resources */,
 				E038F56B1EB694DA002E55DE /* ProfileStoryboard.storyboard in Resources */,
+				E7D293261EC684EA00F16899 /* ping.mp3 in Resources */,
 				E028BE4B1EC2463D00637398 /* background.jpg in Resources */,
 				31DE9B061EB155120055B8D8 /* Rewards.storyboard in Resources */,
 				E7B940EA1EAE790C0078AB5E /* Main.storyboard in Resources */,
@@ -730,6 +749,7 @@
 				E7BC60551EB10D79000529AC /* SignupLoginViewController.swift in Sources */,
 				311B02E81EB459EC00DAA2ED /* TTReward.swift in Sources */,
 				E7BC60561EB10D79000529AC /* SignupViewController.swift in Sources */,
+				E7D293281EC7728F00F16899 /* AnimationRunner.swift in Sources */,
 				D11FC18B1EBC09A3005FDC06 /* VoiceSummaryHeader.swift in Sources */,
 				31DE9B041EB154DF0055B8D8 /* TTPointsViewController.swift in Sources */,
 				E7BC60581EB11220000529AC /* TTUser.swift in Sources */,
