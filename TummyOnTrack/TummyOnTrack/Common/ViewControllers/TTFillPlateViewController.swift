@@ -33,6 +33,8 @@ class TTFillPlateViewController: UIViewController, UITableViewDelegate, UITableV
     
     let animationRunner = AnimationRunner()
     
+    var animate : Bool = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         //audioPlayer = AVAudioPlayer()
@@ -149,7 +151,7 @@ class TTFillPlateViewController: UIViewController, UITableViewDelegate, UITableV
         let cell = tableView.dequeueReusableCell(withIdentifier:
             "FillFoodCell") as! TTFillPlateTableCell
         //cell.foodItem = foodItems[indexPath.row]
-        
+        cell.animate = animate
         cell.foodItem = objArr_[indexPath.row] as! TTFoodItem
         return cell
     }
@@ -161,7 +163,8 @@ class TTFillPlateViewController: UIViewController, UITableViewDelegate, UITableV
     func animateAchievement() {
         
         animationRunner.playMusic(resourceString: "fun_kids_half", resourceType: "mp3")
-        
+        animate = true
+        tableView.reloadData()
         // create a square image view
         let square1 = UIImageView()
         square1.frame = starButton.frame
