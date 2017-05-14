@@ -327,12 +327,7 @@ class TTHomeTableTableViewController: UITableViewController, UINavigationControl
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "WeekdayCell", for: indexPath) as! TTWeekdayCollectionViewCell
         cell.weekdayLabel.text = weekdays[indexPath.row].uppercased()
         cell.pointsLabel.text =  "\(dayPoints[indexPath.row])"
-        if dayPoints[indexPath.row] == 0 {
-            cell.starImageView.image = UIImage(named: "Face_With_Rolling")
-        }
-        else {
-            cell.starImageView.image = UIImage(named: "Smiling_Face_Blushed")
-        }
+        
         let date = Date()
         let calendar = Calendar.current
         let day = calendar.component(.weekday, from: date)
@@ -345,6 +340,19 @@ class TTHomeTableTableViewController: UITableViewController, UINavigationControl
             cell.weekdayLabel.textColor = UIColor.black
             cell.layer.borderColor = UIColor.lightGray.cgColor
             cell.layer.borderWidth = 1
+        }
+        cell.alpha = 1
+        if indexPath.row + 1 > day {
+            cell.starImageView.image = nil
+            cell.pointsLabel.text = ""
+            cell.alpha = 0.7
+        }
+        else if dayPoints[indexPath.row] == 0 {
+            cell.starImageView.image = UIImage(named: "Face_With_Rolling")
+            cell.alpha = 0.7
+        }
+        else {
+            cell.starImageView.image = UIImage(named: "Smiling_Face_Blushed")
         }
         
         return cell
