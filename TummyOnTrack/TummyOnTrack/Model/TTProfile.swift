@@ -237,28 +237,38 @@ class TTProfile: NSObject {
     
     // Updates unusedPoints and rewards array
     func updateRewards(unusedPoints: Int, rewards: [TTReward], success: @escaping () -> (), failure: @escaping (Error) -> ()) {
-        if let currentProfileName_ = TTProfile.currentProfile?.name {
-            let ref1 = FIRDatabase.database().reference(fromURL: BASE_URL).child(PROFILES_TABLE)
-            let query = ref1.queryOrdered(byChild: "name").queryEqual(toValue: currentProfileName_)
-
+//        if let currentProfileName_ = TTProfile.currentProfile?.name {
+//            let ref1 = FIRDatabase.database().reference(fromURL: BASE_URL).child(PROFILES_TABLE)
+//            let query = ref1.queryOrdered(byChild: "name").queryEqual(toValue: currentProfileName_)
+//
+//            var rewardsDictionary = [NSDictionary]()
+//            for reward in rewards {
+//                rewardsDictionary.append(reward.dictionary)
+//            }
+//
+//            query.observeSingleEvent(of: .value, with: { (snapshot) in
+//                for snap in snapshot.children {
+//                    let snap_ = snap as! FIRDataSnapshot
+//                    let ref2 = FIRDatabase.database().reference(fromURL: BASE_URL).child(PROFILES_TABLE+"/\(snap_.key)")
+//                    
+//                    // locally update points and rewards
+//                    self.unusedPoints = unusedPoints
+//                    self.rewards = rewards
+//
+//                    TTUser.currentUser?.replaceProfile(aProfile: self)
+//                    ref2.updateChildValues(["unusedPoints": unusedPoints, "rewards": rewardsDictionary])
+//                }
+//            })
+        if let currentProfileId_ = TTProfile.currentProfile?.profileId {
+            let ref1 = FIRDatabase.database().reference(fromURL: BASE_URL).child(PROFILES_TABLE+"/\(currentProfileId_)")
             var rewardsDictionary = [NSDictionary]()
             for reward in rewards {
                 rewardsDictionary.append(reward.dictionary)
             }
-
-            query.observeSingleEvent(of: .value, with: { (snapshot) in
-                for snap in snapshot.children {
-                    let snap_ = snap as! FIRDataSnapshot
-                    let ref2 = FIRDatabase.database().reference(fromURL: BASE_URL).child(PROFILES_TABLE+"/\(snap_.key)")
-                    
-                    // locally update points and rewards
-                    self.unusedPoints = unusedPoints
-                    self.rewards = rewards
-
-                    TTUser.currentUser?.replaceProfile(aProfile: self)
-                    ref2.updateChildValues(["unusedPoints": unusedPoints, "rewards": rewardsDictionary])
-                }
-            })
+            self.unusedPoints = unusedPoints
+            self.rewards = rewards
+            TTUser.currentUser?.replaceProfile(aProfile: self)
+            ref1.updateChildValues(["unusedPoints": unusedPoints, "rewards": rewardsDictionary])
         }
         else {
             print("No profile created")
