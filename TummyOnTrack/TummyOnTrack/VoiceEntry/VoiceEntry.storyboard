@@ -29,7 +29,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What did you eat today?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jma-KQ-FNZ">
-                                <rect key="frame" x="129" y="80" width="230" height="36"/>
+                                <rect key="frame" x="129" y="32" width="230" height="36"/>
                                 <color key="backgroundColor" red="0.95686274510000002" green="0.4514970767" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="36" id="UTm-BT-d25"/>
@@ -40,7 +40,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Emv-Rj-iZK">
-                                <rect key="frame" x="16" y="136" width="0.0" height="0.0"/>
+                                <rect key="frame" x="16" y="88" width="0.0" height="0.0"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -61,25 +61,25 @@
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pointFinger" translatesAutoresizingMaskIntoConstraints="NO" id="3k6-8D-Hcq">
-                                <rect key="frame" x="87.5" y="611" width="40" height="40"/>
+                                <rect key="frame" x="107.5" y="611" width="40" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="40" id="FOc-jx-MrX"/>
                                     <constraint firstAttribute="height" constant="40" id="Wna-Sb-xPA"/>
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pointFinger" translatesAutoresizingMaskIntoConstraints="NO" id="E8S-s3-YGR">
-                                <rect key="frame" x="309" y="28" width="30" height="30"/>
+                                <rect key="frame" x="299" y="22" width="40" height="40"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="30" id="pWg-54-CCo"/>
-                                    <constraint firstAttribute="height" constant="30" id="tTN-MS-VCn"/>
+                                    <constraint firstAttribute="width" constant="40" id="pWg-54-CCo"/>
+                                    <constraint firstAttribute="height" constant="40" id="tTN-MS-VCn"/>
                                 </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Jma-KQ-FNZ" firstAttribute="top" secondItem="uJ1-2C-ESq" secondAttribute="bottom" constant="60" id="42y-68-yBm"/>
-                            <constraint firstItem="E8S-s3-YGR" firstAttribute="top" secondItem="uJ1-2C-ESq" secondAttribute="bottom" constant="8" id="4ci-1g-oQF"/>
-                            <constraint firstItem="vCJ-0m-Eao" firstAttribute="leading" secondItem="3k6-8D-Hcq" secondAttribute="trailing" constant="40" id="9ck-b4-Mjp"/>
+                            <constraint firstItem="Jma-KQ-FNZ" firstAttribute="top" secondItem="uJ1-2C-ESq" secondAttribute="bottom" constant="12" id="42y-68-yBm"/>
+                            <constraint firstItem="E8S-s3-YGR" firstAttribute="top" secondItem="uJ1-2C-ESq" secondAttribute="bottom" constant="2" id="4ci-1g-oQF"/>
+                            <constraint firstItem="vCJ-0m-Eao" firstAttribute="leading" secondItem="3k6-8D-Hcq" secondAttribute="trailing" constant="20" id="9ck-b4-Mjp"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Emv-Rj-iZK" secondAttribute="trailing" constant="16" id="B5t-Go-EGh"/>
                             <constraint firstItem="vCJ-0m-Eao" firstAttribute="centerX" secondItem="ijA-g9-g4v" secondAttribute="centerX" id="Mf2-ha-J93"/>
                             <constraint firstAttribute="trailing" secondItem="E8S-s3-YGR" secondAttribute="trailing" constant="36" id="Mza-Iu-WZ2"/>
@@ -102,11 +102,12 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="arrowImage" destination="E8S-s3-YGR" id="WXz-Eg-P6U"/>
                         <outlet property="microphoneButton" destination="vCJ-0m-Eao" id="uyd-32-qjs"/>
                         <outlet property="rightArrowImage" destination="3k6-8D-Hcq" id="h6D-kO-yep"/>
-                        <outlet property="rightTrailingConstraint" destination="9ck-b4-Mjp" id="MTJ-yg-7Ok"/>
+                        <outlet property="rightArrowTrailingConstraint" destination="9ck-b4-Mjp" id="Xne-h3-0Dd"/>
                         <outlet property="rippleView" destination="ijA-g9-g4v" id="6fm-9T-HcS"/>
+                        <outlet property="topConstraint" destination="42y-68-yBm" id="fSc-AT-lqE"/>
+                        <outlet property="upArrowImage" destination="E8S-s3-YGR" id="Yc3-MH-7J5"/>
                         <outlet property="userSpeechToTextLabel" destination="Emv-Rj-iZK" id="O5E-E6-5ZU"/>
                         <outlet property="whatDidEatLabel" destination="Jma-KQ-FNZ" id="LBt-1I-hAj"/>
                     </connections>
