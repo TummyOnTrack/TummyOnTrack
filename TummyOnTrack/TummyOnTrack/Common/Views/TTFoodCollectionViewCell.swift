@@ -29,24 +29,23 @@ class TTFoodCollectionViewCell: UICollectionViewCell {
             else {
                 smileyImageView.image = UIImage(named: "Slightly_Smiling")
             }
-            if animate {
-                shakeView()
-                rotateSmiley()
-            }
+            
+            shakeView()
+            rotateSmiley()
             
         }
     }
     
     func shakeView(){
         let shake:CABasicAnimation = CABasicAnimation(keyPath: "position")
-        shake.duration = 0.6
-        shake.repeatCount = 30
+        shake.duration = 0.3
+        shake.repeatCount = 2
         shake.autoreverses = true
         
-        let from_point = CGPoint(x: foodImageView.center.x - 10, y: foodImageView.center.y)  //
+        let from_point = CGPoint(x: foodImageView.center.x - 5, y: foodImageView.center.y)  //
         let from_value = NSValue(cgPoint:from_point)
         
-        let to_point:CGPoint = CGPoint(x:foodImageView.center.x + 10,y: foodImageView.center.y)
+        let to_point:CGPoint = CGPoint(x:foodImageView.center.x + 5,y: foodImageView.center.y)
         let to_value:NSValue = NSValue(cgPoint: to_point)
         
         shake.fromValue = from_value
@@ -58,8 +57,8 @@ class TTFoodCollectionViewCell: UICollectionViewCell {
         let rotationAnimation = CABasicAnimation(keyPath: "transform.rotation")
         rotationAnimation.fromValue = 0.0
         rotationAnimation.toValue = Double.pi
-        rotationAnimation.duration = 0.6
-        rotationAnimation.repeatCount = 30
+        rotationAnimation.duration = 0.3
+        rotationAnimation.repeatCount = 2
         
         smileyImageView.layer.add(rotationAnimation, forKey: nil)
     }

@@ -31,8 +31,10 @@ class TTFoodSummaryViewController: UIViewController, UICollectionViewDelegate, U
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         synthesizer = AVSpeechSynthesizer()
+        
+        animationRunner.playMusic(resourceString: "ping", resourceType: "mp3")
         //synthesizer.delegate = self
         message = "Fetching food entries for " + (fullDayOfWeek[dayOfWeek] as! String)
         foodItems = []
