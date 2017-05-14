@@ -234,14 +234,26 @@ class TTHomeTableTableViewController: UITableViewController, UINavigationControl
             return
         }
         var pieColor = themeColor
+        var greyColor = UIColor.lightGray
         if currentProfile.weeklyEarnedPoints == 0 {
             goalHeaderLabel.text = "Eat Healthy, Collect Points!"
             pointsLabel.text = "Your weekly points will appear here"
             pieColor = UIColor.lightGray
         } else {
+            print(currentProfile.weeklyEarnedPoints)
+            let greyPoints = Float(currentProfile.goalPoints - currentProfile.weeklyEarnedPoints)
             pointsLabel.text = "You earned \(currentProfile.weeklyEarnedPoints) points this week!"
-            if currentProfile.weeklyEarnedPoints > currentProfile.goalPoints/2 {
+            if currentProfile.weeklyEarnedPoints >= currentProfile.goalPoints {
+                goalHeaderLabel.text = "Awesome! You did it!"
+            }
+            else if greyPoints <= 10 {
+                goalHeaderLabel.text = "Keep going! Almost there!"
+            }
+            else if currentProfile.weeklyEarnedPoints > currentProfile.goalPoints/2 {
                 goalHeaderLabel.text = "Well done! Half way through!"
+            }
+            else {
+                goalHeaderLabel.text = "Eat Healthy, Collect Points!"
             }
         }
         
@@ -250,11 +262,14 @@ class TTHomeTableTableViewController: UITableViewController, UINavigationControl
         if pieLayer.values != nil && pieLayer.values.count == 2 {
             pieLayer.deleteValues([pieLayer.values[0], pieLayer.values[1]], animated: true)
         }
-        
+        print(currentProfile.weeklyEarnedPoints)
         let greyPoints = Float(currentProfile.goalPoints - currentProfile.weeklyEarnedPoints)
         
+        if greyPoints <= 0 {
+            greyColor = themeColor
+        }
         pieLayer.addValues([PieElement(value: Float(currentProfile.weeklyEarnedPoints), color: pieColor),
-                            PieElement(value: greyPoints, color: UIColor.lightGray)], animated: true)
+                            PieElement(value: greyPoints, color: greyColor)], animated: true)
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -326,7 +341,7 @@ class TTHomeTableTableViewController: UITableViewController, UINavigationControl
 
     func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {
         if highlight.y > 0 {
-            performSegue(withIdentifier: "Show Plate View", sender: self.weekdays[Int(entry.x)])
+            performSegue(withIdentifier: "Show Food Summary", sender: self.weekdays[Int(entry.x)])
         }
     }
     
@@ -342,6 +357,18 @@ class TTHomeTableTableViewController: UITableViewController, UINavigationControl
                 vc_.foodBlog = []
             }
         }
+        if (segue.identifier == "Show Food Summary") {
+            
+            let vc_ = segue.destination as! TTFoodSummaryViewController
+            vc_.dayOfWeek = sender as! String
+            if self.weeklyFoodBlog?.object(forKey: sender as! String) != nil {
+                vc_.foodBlog = (self.weeklyFoodBlog?.object(forKey: sender as! String) as? [TTDailyFoodEntry])!
+            }
+            else {
+                vc_.foodBlog = []
+            }
+        }
+        
     }
     
 }

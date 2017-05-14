@@ -1,21 +1,17 @@
 //
-//  TTFillPlateViewController.swift
+//  TTFoodSummaryViewController.swift
 //  TummyOnTrack
 //
-//  Created by Gauri Tikekar on 4/30/17.
+//  Created by Gauri Tikekar on 5/13/17.
 //  Copyright © 2017 Gauri Tikekar. All rights reserved.
 //
 
-// Emoji icons https://emojiisland.com/pages/free-download-emoji-icons-png
-// star from https://clipartfest.com/categories/view/fa420d176735bb6ea61227cb310a9d5fa33efc1b/cute-star-clipart-png.html
-
 import UIKit
-import SVProgressHUD
-import AVFoundation
 import Speech
 
-class TTFillPlateViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, AVAudioPlayerDelegate {
-
+class TTFoodSummaryViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    @IBOutlet weak var collectionView: UICollectionView!
+    
     var foodBlog: [TTDailyFoodEntry]!
     var foodItems = [TTFoodItem]()
     var sectionFoodItems : NSMutableDictionary = [:]
@@ -23,42 +19,32 @@ class TTFillPlateViewController: UIViewController, UITableViewDelegate, UITableV
     var message: String!
     var fullDayOfWeek: NSDictionary! = ["Sun": "Sunday", "Mon": "Monday", "Tues" : "Tuesday", "Wed" : "Wednesday", "Thur": "Thursday", "Fri" : "Friday", "Sat" : "Saturday"]
     
-    @IBOutlet weak var playGameButton: UIButton!
     var categoryMessage: NSDictionary! = ["Protein": "Proteins make your bones stronger!", "Carbohydrate": "Eating carbs gives you energy to run around.", "Vegetable" : "Vegetables are full of Vitamins.", "Drink" : "A glass of water is the best drink for your body", "Fruit": "Fruits are yummy and good for you", "Dairy" : "Milk and cheese are full of calcium and proteins", "Dessert" : "Good job skipping dessert today!", "Other" : "Other"]
     
     var categories : NSArray! = ["Protein", "Vegetable", "Fruit", "Carbohydrate", "Dairy", "Drink", "Dessert", "Other" ]
-    
-    @IBOutlet weak var starButton: UIButton!
-    
-    @IBOutlet weak var pointsLabel: UILabel!
-    @IBOutlet weak var tableView: UITableView!
     
     let animationRunner = AnimationRunner()
     var utterance: AVSpeechUtterance!
     var synthesizer: AVSpeechSynthesizer!
     
     var animate : Bool = false
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
         synthesizer = AVSpeechSynthesizer()
+        
+        animationRunner.playMusic(resourceString: "ping", resourceType: "mp3")
         //synthesizer.delegate = self
         message = "Fetching food entries for " + (fullDayOfWeek[dayOfWeek] as! String)
         foodItems = []
         
         navigationItem.title = (fullDayOfWeek[dayOfWeek] as! String) + "'s Food Blog"
         populateFood()
-        
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(true)
-        
     }
     
     func populateFood() {
-    
+        
         if foodBlog.count == 0 {
             message = "Oops, No food entries for " + (fullDayOfWeek[dayOfWeek] as! String)
             enablePlayGameButton(aFlag: false)
@@ -75,20 +61,18 @@ class TTFillPlateViewController: UIViewController, UITableViewDelegate, UITableV
             }
             enablePlayGameButton(aFlag: true)
             populateSectionFoodItems()
-            tableView.reloadData()
+            collectionView.reloadData()
         }
         
-
+        
     }
     
     func enablePlayGameButton(aFlag : Bool) {
-        playGameButton.isEnabled = aFlag
-        if aFlag == true {
-            playGameButton.alpha = 1
-        }
-        else {
-            playGameButton.alpha = 0.4
-        }
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Game", style: .plain, target: self, action: #selector(gameTapped))
+    }
+    
+    func gameTapped() {
+        performSegue(withIdentifier: "Show Game Page", sender: nil)
     }
     
     func populateSectionFoodItems() {
@@ -104,8 +88,6 @@ class TTFillPlateViewController: UIViewController, UITableViewDelegate, UITableV
             if (tags_?.count)! > 0 {
                 var flag = false
                 for j in 0...(tags_?.count)!-1 {
-                    //let tag = categories.contains(tags_?[j]) .object(forKey: tags_?[j] ?? "x")
-                    //if tag != nil {
                     print(tags_?[j] ?? "xx")
                     if categories.contains(tags_?[j] ?? "xx") {
                         let objs_ = sectionFoodItems.object(forKey: tags_?[j] ?? "x")
@@ -115,13 +97,11 @@ class TTFillPlateViewController: UIViewController, UITableViewDelegate, UITableV
                         else {
                             var objArr_ = objs_ as! Array<Any>
                             objArr_.append(item_)
-                            //sectionFoodItems.setObject(objArr_, forKey: tag as! NSCopying)
                             sectionFoodItems.setObject(objArr_, forKey: tags_?[j] as NSCopying? ?? "x" as NSCopying)
                         }
                         flag = true
                         break
                     }
-                    
                 }
                 if flag == false {
                     sectionFoodItems.setObject([item_], forKey: "Other" as NSCopying)
@@ -129,60 +109,70 @@ class TTFillPlateViewController: UIViewController, UITableViewDelegate, UITableV
             }
         }
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
     
-    func numberOfSections(in tableView: UITableView) -> Int {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
         return categories.count
     }
     
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        //return categories.object(forKey: categories.allKeys[section]) as? String
-        return categories.object(at: section) as? String
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        let objs_ = sectionFoodItems.object(forKey: categories.object(at: section))
+        if objs_ == nil{
+            return CGSize(width: collectionView.frame.size.width, height: 66)
+        }
+        return CGSize(width: collectionView.frame.size.width, height: 40.0)
     }
     
-    // MARK: - TableView
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "FoodTypeHeader", for: indexPath)
+        var label_ = headerView.viewWithTag(1) as! UILabel
+        label_.text = categories.object(at: indexPath.section) as? String
+        label_ = headerView.viewWithTag(2) as! UILabel
+        let img_ = headerView.viewWithTag(3) as! UIImageView
+        let objs_ = sectionFoodItems.object(forKey: categories.object(at: indexPath.section))
+        if objs_ == nil {
+            label_.text = categoryMessage.object(forKey: categories.object(at: indexPath.section)) as? String
+            img_.image = UIImage(named: "Face_With_Rolling")
+        }
+        else {
+            label_.text = ""
+            img_.image = nil
+        }
+        return headerView
+    }
+    
+    
+       
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if(sectionFoodItems.count == 0) {
-            let label = UILabel(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: tableView.bounds.size.height))
+            let label = UILabel(frame: CGRect(x: 0, y: 0, width: collectionView.bounds.size.width, height: collectionView.bounds.size.height))
             // label.center = CGPoint(x: 160, y: 285)
             label.textAlignment = .center
             label.text = message
             label.numberOfLines = 0
-            tableView.backgroundView = label
+            collectionView.backgroundView = label
             return 0
         }
         else {
-            tableView.backgroundView = nil
+            collectionView.backgroundView = nil
             if sectionFoodItems.object(forKey: categories.object(at: section)) == nil {
-                return 1
+                return 0
             }
-            return (sectionFoodItems.object(forKey: categories.object(at: section)) as! Array<Any>).count //foodItems.count
-            
+            return (sectionFoodItems.object(forKey: categories.object(at: section)) as! Array<Any>).count
         }
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
         let objs_ = sectionFoodItems.object(forKey: categories.object(at: indexPath.section))
-        if objs_ == nil {
-            let cell = tableView.dequeueReusableCell(withIdentifier:
-                "MessageCell") as! TTMessageTableViewCell
-            cell.messageLabel.text = categoryMessage.object(forKey: categories.object(at: indexPath.section)) as? String
-            return cell
-        }
+        
         let objArr_ = objs_ as! Array<Any>
-        let cell = tableView.dequeueReusableCell(withIdentifier:
-            "FillFoodCell") as! TTFillPlateTableCell
-        //cell.foodItem = foodItems[indexPath.row]
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FoodSummaryCell", for: indexPath) as! TTFoodCollectionViewCell
         cell.animate = animate
         cell.foodItem = objArr_[indexPath.row] as! TTFoodItem
-        return cell
+        return cell        
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let objs_ = sectionFoodItems.object(forKey: categories.object(at: indexPath.section))
         if objs_ != nil {
             let objArr_ = objs_ as! Array<Any>
@@ -194,57 +184,14 @@ class TTFillPlateViewController: UIViewController, UITableViewDelegate, UITableV
                 self.synthesizer.speak(self.utterance)
             }
         }
-        
     }
     
-    @IBAction func onStarClick(_ sender: Any) {
-        animateAchievement()
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
     }
     
-    func animateAchievement() {
-        
-        animationRunner.playMusic(resourceString: "fun_kids_half", resourceType: "mp3")
-        animate = true
-        tableView.reloadData()
-        // create a square image view
-        let square1 = UIImageView()
-        square1.frame = starButton.frame
-        // Add image to the square
-        square1.image = UIImage(named: "star-2")
-        self.view.addSubview(square1)
-        
-        let square2 = UIImageView()
-        square2.frame = starButton.frame
-        // Add image to the square
-        square2.image = UIImage(named: "star-2")
-        self.view.addSubview(square2)
-        
-        let square3 = UIImageView()
-        square3.frame = starButton.frame
-        // Add image to the square
-        square3.image = UIImage(named: "star-2")
-        self.view.addSubview(square3)
-        
-        let square4 = UIImageView()
-        square4.frame = starButton.frame
-        // Add image to the square
-        square4.image = UIImage(named: "star-2")
-        self.view.addSubview(square4)
-        
-            UIView.animate(withDuration: 2, delay: 0, options: UIViewAnimationOptions.curveEaseInOut, animations: {
-                square1.frame = CGRect(x: 0, y: self.view.frame.height+30, width: self.starButton.frame.size.width, height: self.starButton.frame.size.height)
-                square2.frame = CGRect(x: 300, y: self.view.frame.height+30, width: self.starButton.frame.size.width, height: self.starButton.frame.size.height)
-                square3.frame = CGRect(x: 140, y: self.view.frame.height+30, width: self.starButton.frame.size.width, height: self.starButton.frame.size.height)
-                square4.frame = CGRect(x: 200, y: self.view.frame.height+30, width: self.starButton.frame.size.width, height: self.starButton.frame.size.height)
-            }, completion: { (Bool) in
-                square1.removeFromSuperview()
-                square2.removeFromSuperview()
-                square3.removeFromSuperview()
-                square4.removeFromSuperview()
-            })
-        
-    }
-    
+
     
     // MARK: - Navigation
 
@@ -254,8 +201,7 @@ class TTFillPlateViewController: UIViewController, UITableViewDelegate, UITableV
             
             let vc_ = segue.destination as! TTSortGameViewController
             vc_.foodItems = self.foodItems
-        }
-    }
+        }    }
     
 
 }

@@ -15,6 +15,7 @@ class TTFoodItem {
     var tags: [String]?
     var images: [URL]?
     var dictionary: NSDictionary?
+    var joke: String?
     
     init(dictionary: NSDictionary) {
         self.dictionary = dictionary
@@ -30,6 +31,7 @@ class TTFoodItem {
             }
             images = imageurls
         }
+        joke = TTJoke.getJokeFor(aWord: name!)
     }
 
     static var defaultFoodDictionary = Dictionary<String, TTFoodItem>()
