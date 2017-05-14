@@ -20,7 +20,7 @@ class TTVoiceSummaryViewController: UIViewController, UICollectionViewDataSource
     var foodValueArray:[TTFoodItem]!
     var selectedBoolArray = [Bool]()
     var animateOnLongPress = true
-    
+    let animationRunner = AnimationRunner()
     
     @IBAction func doneBarButton(_ sender: UIBarButtonItem) {
         
@@ -74,6 +74,7 @@ class TTVoiceSummaryViewController: UIViewController, UICollectionViewDataSource
             let cell = self.collectionView.cellForItem(at: indexPath!) as! VoiceCollectionViewCell
             let originalTransform = cell.foodImageView.transform
             UIView.animate(withDuration: 2.0, animations: {
+                self.animationRunner.playMusic(resourceString: "bubble", resourceType: "mp3")
                 cell.foodImageView.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi))
                 cell.foodImageView.transform = originalTransform
             }, completion: { (value:Bool) in
