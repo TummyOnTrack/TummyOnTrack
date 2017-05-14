@@ -179,7 +179,7 @@ class TTFoodSummaryViewController: UIViewController, UICollectionViewDelegate, U
             let foodItem = objArr_[indexPath.row] as! TTFoodItem
             if foodItem.joke != nil {
                 animationRunner.playMusic(resourceString: "ping", resourceType: "mp3")
-                self.utterance = AVSpeechUtterance(string: "Joke of the day. " + foodItem.joke!)
+                self.utterance = AVSpeechUtterance(string: foodItem.joke!)
                 self.utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
                 self.synthesizer.speak(self.utterance)
             }

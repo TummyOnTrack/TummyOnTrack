@@ -29,9 +29,10 @@ class TTFoodCollectionViewCell: UICollectionViewCell {
             else {
                 smileyImageView.image = UIImage(named: "Slightly_Smiling")
             }
-            
-            shakeView()
-            rotateSmiley()
+            if animate == true {
+                shakeView()
+                rotateSmiley()
+            }
             
         }
     }
