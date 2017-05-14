@@ -187,7 +187,7 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uUt-O9-5NI">
                                                     <rect key="frame" x="18" y="40" width="338" height="247"/>
                                                     <subviews>
-                                                        <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="microphone" translatesAutoresizingMaskIntoConstraints="NO" id="J2R-sd-yN4">
+                                                        <imageView alpha="0.75" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="microphone" translatesAutoresizingMaskIntoConstraints="NO" id="J2R-sd-yN4">
                                                             <rect key="frame" x="148" y="4" width="40" height="40"/>
                                                             <color key="backgroundColor" red="0.95686274510000002" green="0.4514970767" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <gestureRecognizers/>
@@ -216,7 +216,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Get points!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xUb-Co-SLV">
-                                                            <rect key="frame" x="0.0" y="113" width="338" height="35"/>
+                                                            <rect key="frame" x="0.0" y="114" width="338" height="35"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="35" id="It1-Lz-gJ2"/>
                                                             </constraints>
@@ -225,7 +225,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Shop for rewards!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ost-Mq-Qmd">
-                                                            <rect key="frame" x="0.0" y="195" width="338" height="30"/>
+                                                            <rect key="frame" x="0.0" y="196" width="338" height="30"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="30" id="8hQ-8l-BHA"/>
                                                             </constraints>
@@ -233,7 +233,7 @@
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star-1" translatesAutoresizingMaskIntoConstraints="NO" id="CVq-tT-Rzt">
+                                                        <imageView clipsSubviews="YES" alpha="0.80000000000000004" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star-1" translatesAutoresizingMaskIntoConstraints="NO" id="CVq-tT-Rzt">
                                                             <rect key="frame" x="149" y="81" width="40" height="40"/>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                             <gestureRecognizers/>
@@ -250,7 +250,7 @@
                                                                 <outletCollection property="gestureRecognizers" destination="Jes-kg-V9n" appends="YES" id="QMt-aU-aip"/>
                                                             </connections>
                                                         </imageView>
-                                                        <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="package_games_kids" translatesAutoresizingMaskIntoConstraints="NO" id="eYf-Xu-ZpH">
+                                                        <imageView alpha="0.59999999999999998" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="package_games_kids" translatesAutoresizingMaskIntoConstraints="NO" id="eYf-Xu-ZpH">
                                                             <rect key="frame" x="149" y="156" width="40" height="40"/>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                             <gestureRecognizers/>
@@ -273,10 +273,10 @@
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstItem="MFt-CV-X6W" firstAttribute="top" secondItem="uUt-O9-5NI" secondAttribute="top" constant="52" id="0YC-S2-78r"/>
-                                                        <constraint firstItem="xUb-Co-SLV" firstAttribute="top" secondItem="MFt-CV-X6W" secondAttribute="bottom" constant="40" id="1Qs-6x-Tgb"/>
+                                                        <constraint firstItem="xUb-Co-SLV" firstAttribute="top" secondItem="MFt-CV-X6W" secondAttribute="bottom" constant="41" id="1Qs-6x-Tgb"/>
                                                         <constraint firstItem="CVq-tT-Rzt" firstAttribute="centerX" secondItem="uUt-O9-5NI" secondAttribute="centerX" id="2Kc-zl-TDU"/>
                                                         <constraint firstItem="xUb-Co-SLV" firstAttribute="leading" secondItem="uUt-O9-5NI" secondAttribute="leading" id="3mF-w5-sak"/>
-                                                        <constraint firstItem="eYf-Xu-ZpH" firstAttribute="top" secondItem="xUb-Co-SLV" secondAttribute="bottom" constant="8" id="3vN-7y-eAP"/>
+                                                        <constraint firstItem="eYf-Xu-ZpH" firstAttribute="top" secondItem="xUb-Co-SLV" secondAttribute="bottom" constant="7" id="3vN-7y-eAP"/>
                                                         <constraint firstItem="Ost-Mq-Qmd" firstAttribute="leading" secondItem="uUt-O9-5NI" secondAttribute="leading" id="CkS-I2-jNj"/>
                                                         <constraint firstAttribute="trailing" secondItem="MFt-CV-X6W" secondAttribute="trailing" id="EWB-ya-r3e"/>
                                                         <constraint firstAttribute="trailing" secondItem="Ost-Mq-Qmd" secondAttribute="trailing" id="Ka1-os-jT5"/>
