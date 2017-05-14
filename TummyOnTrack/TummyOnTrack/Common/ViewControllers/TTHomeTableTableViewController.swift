@@ -193,7 +193,7 @@ class TTHomeTableTableViewController: UITableViewController, UINavigationControl
         slider.addTarget(self, action: #selector(sliderValueDidChange(_:)), for: .valueChanged)
         alert.view.addSubview(slider)
         alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler:{(action: UIAlertAction!) in
-            self.goalPointsLabel.text = "Goal: " + "\(Int(slider.value))" + "Pts"
+            self.goalPointsLabel.text = "Goal " + "\(Int(slider.value))" + "Pts"
             TTProfile.currentProfile?.setGoalPoints(aGoalPoints: Int(slider.value))
         }))
         present(alert, animated: true, completion: nil)
@@ -202,7 +202,7 @@ class TTHomeTableTableViewController: UITableViewController, UINavigationControl
     func sliderValueDidChange(_ sender:UISlider!)
     {
         print("Slider value changed")
-        goalPointsLabel.text = "Goal: \(Int(sender.value))Pts"
+        goalPointsLabel.text = "Goal \(Int(sender.value))Pts"
     }
 
     func setCurrentProfileDetails() {
@@ -257,7 +257,7 @@ class TTHomeTableTableViewController: UITableViewController, UINavigationControl
             }
         }
         
-        goalPointsLabel.text = "Goal: \(currentProfile.goalPoints)Pts"
+        goalPointsLabel.text = "Goal \(currentProfile.goalPoints)Pts"
         
         if pieLayer.values != nil && pieLayer.values.count == 2 {
             pieLayer.deleteValues([pieLayer.values[0], pieLayer.values[1]], animated: true)
@@ -337,9 +337,13 @@ class TTHomeTableTableViewController: UITableViewController, UINavigationControl
         let day = calendar.component(.weekday, from: date)
         if day == indexPath.row + 1 {
             cell.weekdayLabel.textColor = themeColor
+            cell.layer.borderColor = themeColor.cgColor
+            cell.layer.borderWidth = 1
         }
         else {
             cell.weekdayLabel.textColor = UIColor.black
+            cell.layer.borderColor = UIColor.lightGray.cgColor
+            cell.layer.borderWidth = 1
         }
         
         return cell
