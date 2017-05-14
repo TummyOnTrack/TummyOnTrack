@@ -46,7 +46,7 @@ Please list two areas of the assignment you'd like to **discuss further with you
 
 Here's a walkthrough of so far implemented user stories:
 
-<img src='https://github.com/TummyOnTrack/TummyOnTrack/blob/master/TummyOnTrackDemoSprint3.gif' alt='Video Walkthrough' />
+<img src='https://github.com/TummyOnTrack/TummyOnTrack/blob/master/TummyOnTrackDemo3.gif' alt='Video Walkthrough' />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
