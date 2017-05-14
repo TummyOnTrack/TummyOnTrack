@@ -46,7 +46,7 @@ class TTReward: NSObject {
 
     class func getRewards(success: @escaping ([TTReward]) -> (), failure: @escaping (NSError) -> ()) {
         let reference = FIRDatabase.database().reference(fromURL: BASE_URL).child(REWARDS_TABLE)
-        let query = reference.queryOrdered(byChild: "name")
+        let query = reference.queryOrdered(byChild: "points")
 
         query.observeSingleEvent(of: .value, with: { snapshot in
             var rewards = [TTReward]()

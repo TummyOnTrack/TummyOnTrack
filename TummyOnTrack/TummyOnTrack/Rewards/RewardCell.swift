@@ -31,7 +31,9 @@ class RewardCell: UICollectionViewCell {
     // MARK: - Properties
     override var isSelected: Bool {
         didSet {
-            rewardImageView.layer.borderWidth = isSelected ? 1 : 0
+            if alpha == 1 {
+                rewardImageView.layer.borderWidth = isSelected ? 1 : 0
+            }
         }
     }
 

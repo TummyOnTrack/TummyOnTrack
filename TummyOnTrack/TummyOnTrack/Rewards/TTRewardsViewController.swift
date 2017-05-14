@@ -167,7 +167,16 @@ extension TTRewardsViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! RewardCell
         cell.reward = rewardForIndexPath(indexPath)
-
+        
+        if let unusedPoints = TTProfile.currentProfile?.unusedPoints {
+            if unusedPoints < cell.reward.points! {
+                cell.alpha = 0.5
+            }
+            else {
+                cell.alpha = 1
+            }
+        }
+        
         cell.activityIndicator.stopAnimating()
 
         guard indexPath == largePhotoIndexPath else {
@@ -187,6 +196,7 @@ extension TTRewardsViewController: UICollectionViewDataSource {
         cell.activityIndicator.startAnimating()
         cell.rewardImageView.setImageWith(cell.reward.thumbnailURL!)
         cell.activityIndicator.stopAnimating()
+        
 
         return cell
     }
@@ -207,7 +217,12 @@ extension TTRewardsViewController: UICollectionViewDelegate {
         guard buying else {
             return
         }
-
+        if let unusedPoints = TTProfile.currentProfile?.unusedPoints {
+            if unusedPoints < rewardForIndexPath(indexPath).points! {
+                
+                return
+            }
+        }
         let photo = rewardForIndexPath(indexPath)
         selectedRewards.append(photo)
         updateSelectedRewardsCount()
