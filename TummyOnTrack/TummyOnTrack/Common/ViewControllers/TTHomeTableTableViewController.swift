@@ -326,7 +326,7 @@ class TTHomeTableTableViewController: UITableViewController, UINavigationControl
 
     func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {
         if highlight.y > 0 {
-            performSegue(withIdentifier: "Show Plate View", sender: self.weekdays[Int(entry.x)])
+            performSegue(withIdentifier: "Show Food Summary", sender: self.weekdays[Int(entry.x)])
         }
     }
     
@@ -342,6 +342,18 @@ class TTHomeTableTableViewController: UITableViewController, UINavigationControl
                 vc_.foodBlog = []
             }
         }
+        if (segue.identifier == "Show Food Summary") {
+            
+            let vc_ = segue.destination as! TTFoodSummaryViewController
+            vc_.dayOfWeek = sender as! String
+            if self.weeklyFoodBlog?.object(forKey: sender as! String) != nil {
+                vc_.foodBlog = (self.weeklyFoodBlog?.object(forKey: sender as! String) as? [TTDailyFoodEntry])!
+            }
+            else {
+                vc_.foodBlog = []
+            }
+        }
+        
     }
     
 }
