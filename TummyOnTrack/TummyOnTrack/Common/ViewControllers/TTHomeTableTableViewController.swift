@@ -193,7 +193,7 @@ class TTHomeTableTableViewController: UITableViewController, UINavigationControl
         slider.addTarget(self, action: #selector(sliderValueDidChange(_:)), for: .valueChanged)
         alert.view.addSubview(slider)
         alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler:{(action: UIAlertAction!) in
-            self.goalPointsLabel.text = "Goal " + "\(Int(slider.value))" + "Pts"
+            self.goalPointsLabel.text = "\(TTProfile.currentProfile?.weeklyEarnedPoints ?? 0)" + " / " + "\(Int(slider.value))"
             TTProfile.currentProfile?.setGoalPoints(aGoalPoints: Int(slider.value))
         }))
         present(alert, animated: true, completion: nil)
@@ -202,7 +202,8 @@ class TTHomeTableTableViewController: UITableViewController, UINavigationControl
     func sliderValueDidChange(_ sender:UISlider!)
     {
         print("Slider value changed")
-        goalPointsLabel.text = "Goal \(Int(sender.value))Pts"
+        
+        goalPointsLabel.text = "\(TTProfile.currentProfile?.weeklyEarnedPoints ?? 0)" + " / " + "\(Int(sender.value))"
     }
 
     func setCurrentProfileDetails() {
@@ -257,7 +258,7 @@ class TTHomeTableTableViewController: UITableViewController, UINavigationControl
             }
         }
         
-        goalPointsLabel.text = "Goal \(currentProfile.goalPoints)Pts"
+        goalPointsLabel.text = "\(currentProfile.weeklyEarnedPoints) / \(currentProfile.goalPoints)"
         
         if pieLayer.values != nil && pieLayer.values.count == 2 {
             pieLayer.deleteValues([pieLayer.values[0], pieLayer.values[1]], animated: true)
