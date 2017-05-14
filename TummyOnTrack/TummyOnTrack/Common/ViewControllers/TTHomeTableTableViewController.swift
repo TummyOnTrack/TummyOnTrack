@@ -241,9 +241,19 @@ class TTHomeTableTableViewController: UITableViewController, UINavigationControl
             pieColor = UIColor.lightGray
         } else {
             print(currentProfile.weeklyEarnedPoints)
+            let greyPoints = Float(currentProfile.goalPoints - currentProfile.weeklyEarnedPoints)
             pointsLabel.text = "You earned \(currentProfile.weeklyEarnedPoints) points this week!"
-            if currentProfile.weeklyEarnedPoints > currentProfile.goalPoints/2 {
+            if currentProfile.weeklyEarnedPoints >= currentProfile.goalPoints {
+                goalHeaderLabel.text = "Awesome! You did it!"
+            }
+            else if greyPoints <= 10 {
+                goalHeaderLabel.text = "Keep going! Almost there!"
+            }
+            else if currentProfile.weeklyEarnedPoints > currentProfile.goalPoints/2 {
                 goalHeaderLabel.text = "Well done! Half way through!"
+            }
+            else {
+                goalHeaderLabel.text = "Eat Healthy, Collect Points!"
             }
         }
         
