@@ -18,11 +18,16 @@ class TTVoiceSummaryViewController: UIViewController, UICollectionViewDataSource
     var totalPointsEarned = 0
     var foodKeyArray:[String]!
     var foodValueArray:[TTFoodItem]!
+    var selectedBoolArray = [Bool]()
+    var animateOnLongPress = true
+    
     
     @IBAction func doneBarButton(_ sender: UIBarButtonItem) {
         
-        for food in foodValueArray {
-            selectedFoodNSDictionary.append(food.dictionary!)
+        for (index, food) in foodValueArray.enumerated() {
+            if selectedBoolArray[index] {
+                selectedFoodNSDictionary.append(food.dictionary!)
+            }
         }
         TTProfile.currentProfile?.updateFoodItems(items: selectedFoodNSDictionary, images: [], earnedPoints: totalPointsEarned, success: {
             
@@ -45,6 +50,7 @@ class TTVoiceSummaryViewController: UIViewController, UICollectionViewDataSource
         
         for food in foodValueArray {
             totalPointsEarned = totalPointsEarned + (food.points ?? 0)
+            selectedBoolArray.append(true)
         }
         
         collectionView.reloadData()
@@ -56,20 +62,43 @@ class TTVoiceSummaryViewController: UIViewController, UICollectionViewDataSource
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "VoiceSummaryHeader", for: indexPath) as! VoiceSummaryHeader
-        headerView.totalPointsLabel.text = "You have scored \(totalPointsEarned) points!"
+        headerView.points = totalPointsEarned
         return headerView
     }
     
     func  onLongPressed(longPressGestureRecognizer: UILongPressGestureRecognizer) {
-        print("pressed")
-        if longPressGestureRecognizer.state == .began {
-            let pressed = longPressGestureRecognizer.location(in: self.collectionView)
-            let indexPath = self.collectionView.indexPathForItem(at: pressed)
+        if animateOnLongPress == true {
+            animateOnLongPress = false
+            let location = longPressGestureRecognizer.location(in: self.collectionView)
+            let indexPath = self.collectionView.indexPathForItem(at: location)
             let cell = self.collectionView.cellForItem(at: indexPath!) as! VoiceCollectionViewCell
-            
-            cell.selectToDelete()
+            let originalTransform = cell.foodImageView.transform
+            UIView.animate(withDuration: 2.0, animations: {
+                cell.foodImageView.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi))
+                cell.foodImageView.transform = originalTransform
+            }, completion: { (value:Bool) in
+                self.animateOnLongPress = true
+            })
         }
+
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let cell = self.collectionView.cellForItem(at: indexPath) as! VoiceCollectionViewCell
         
+        if selectedBoolArray[indexPath.row] == true {
+            //make it deleted
+            selectedBoolArray[indexPath.row] = false
+            totalPointsEarned = totalPointsEarned - foodValueArray[indexPath.row].points!
+        }
+        else {
+            //make selected
+            selectedBoolArray[indexPath.row] = true
+            totalPointsEarned = totalPointsEarned + foodValueArray[indexPath.row].points!
+        }
+
+        self.collectionView.reloadSections(IndexSet(integer: 0))
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -86,6 +115,7 @@ class TTVoiceSummaryViewController: UIViewController, UICollectionViewDataSource
         let foodInCell = foodValueArray[indexPath.row]
         let press = UILongPressGestureRecognizer(target: self, action: #selector(onLongPressed(longPressGestureRecognizer:)))
         cell.foodItem = foodInCell
+        cell.isSelectedFoodItem = selectedBoolArray[indexPath.row]
         cell.foodCellView.addGestureRecognizer(press)
         
         return cell

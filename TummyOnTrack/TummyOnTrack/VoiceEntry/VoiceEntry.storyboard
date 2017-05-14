@@ -161,7 +161,7 @@
                                                                 <constraint firstAttribute="height" constant="60" id="wPG-HP-zZK"/>
                                                             </constraints>
                                                         </imageView>
-                                                        <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="delete" translatesAutoresizingMaskIntoConstraints="NO" id="Bpv-4E-Xjj">
+                                                        <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tickmark" translatesAutoresizingMaskIntoConstraints="NO" id="Bpv-4E-Xjj">
                                                             <rect key="frame" x="76" y="0.0" width="20" height="20"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="20" id="VdO-eG-w2Q"/>
@@ -244,8 +244,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="delete" width="128" height="128"/>
         <image name="microphone" width="159" height="151"/>
         <image name="pointFinger" width="256" height="256"/>
+        <image name="tickmark" width="128" height="128"/>
     </resources>
 </document>

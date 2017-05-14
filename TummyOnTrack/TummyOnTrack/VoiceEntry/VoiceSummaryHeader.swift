@@ -10,5 +10,13 @@ import UIKit
 
 class VoiceSummaryHeader: UICollectionReusableView {
     @IBOutlet weak var totalPointsLabel: UILabel!
-        
+    
+    var points: Int {
+        get {
+            return self.points
+        }
+        set(newValue) {
+            totalPointsLabel.text = "You have scored \(newValue) points!"
+        }
+    }
 }
