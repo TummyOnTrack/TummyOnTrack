@@ -53,11 +53,11 @@ class TTPointsViewController: UIViewController {
             awesomeLabel.isHidden = false
         }
 
-        pointsTodayLabel.backgroundColor = UIColor.black.withAlphaComponent(0.4)
+        //pointsTodayLabel.backgroundColor = UIColor.black.withAlphaComponent(0.4)
 
         if let currentProfile = TTProfile.currentProfile {
             profileNameLabel.text = currentProfile.name?.capitalized
-            profileNameLabel.backgroundColor = UIColor.black.withAlphaComponent(0.4)
+            //profileNameLabel.backgroundColor = UIColor.black.withAlphaComponent(0.4)
             if let profileImageURL = currentProfile.profileImageURL {
                 profileImageView.setImageWith(profileImageURL)
                 profileImageView.layer.cornerRadius = profileImageView.frame.width/2

@@ -21,7 +21,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fruits_water" translatesAutoresizingMaskIntoConstraints="NO" id="uSQ-nh-cZQ">
+                            <view alpha="0.45000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3uf-i1-oAN">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="108"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="108" id="ZYQ-j7-hBc"/>
+                                </constraints>
+                            </view>
+                            <imageView userInteractionEnabled="NO" alpha="0.34999999999999998" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fruits_water" translatesAutoresizingMaskIntoConstraints="NO" id="uSQ-nh-cZQ">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Smiling_Face_Blushed" translatesAutoresizingMaskIntoConstraints="NO" id="sF7-FQ-s6v">
@@ -38,8 +45,8 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20 unused points" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mgs-x9-jLO">
-                                <rect key="frame" x="128.5" y="50" width="119" height="18"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <rect key="frame" x="116.5" y="50" width="143.5" height="21.5"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="18"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -86,8 +93,11 @@
                             <constraint firstItem="uSQ-nh-cZQ" firstAttribute="top" secondItem="g1i-TT-Ltj" secondAttribute="top" id="XIi-pr-2LV"/>
                             <constraint firstItem="uSQ-nh-cZQ" firstAttribute="leading" secondItem="g1i-TT-Ltj" secondAttribute="leading" id="Xbp-6j-0iY"/>
                             <constraint firstItem="mgs-x9-jLO" firstAttribute="centerX" secondItem="g1i-TT-Ltj" secondAttribute="centerX" id="Yq9-N1-uGE"/>
+                            <constraint firstAttribute="trailing" secondItem="3uf-i1-oAN" secondAttribute="trailing" id="air-UT-PBd"/>
                             <constraint firstItem="0NX-Fa-BIA" firstAttribute="top" secondItem="sF7-FQ-s6v" secondAttribute="bottom" constant="5" id="bjM-eV-XJ4"/>
+                            <constraint firstItem="3uf-i1-oAN" firstAttribute="top" secondItem="g1i-TT-Ltj" secondAttribute="top" id="crt-ch-IiT"/>
                             <constraint firstAttribute="trailing" secondItem="0Vt-IG-VGS" secondAttribute="trailing" constant="80" id="e6t-jf-DJf"/>
+                            <constraint firstItem="3uf-i1-oAN" firstAttribute="leading" secondItem="g1i-TT-Ltj" secondAttribute="leading" id="eqN-hd-ieb"/>
                             <constraint firstItem="sgs-3O-fwn" firstAttribute="top" secondItem="fCq-7k-1I7" secondAttribute="bottom" constant="20" id="hvQ-fE-LuI"/>
                             <constraint firstItem="sgs-3O-fwn" firstAttribute="top" secondItem="uSQ-nh-cZQ" secondAttribute="bottom" id="jcD-h3-xog"/>
                             <constraint firstItem="sF7-FQ-s6v" firstAttribute="leading" secondItem="g1i-TT-Ltj" secondAttribute="leading" constant="10" id="k0W-DY-LJW"/>
@@ -324,6 +334,6 @@
         <image name="star" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="TCo-MD-7tg"/>
+        <segue reference="NfR-1w-UPl"/>
     </inferredMetricsTieBreakers>
 </document>
