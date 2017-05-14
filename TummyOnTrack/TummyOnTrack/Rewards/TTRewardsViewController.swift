@@ -14,6 +14,7 @@ class TTRewardsViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
 
     @IBOutlet weak var button: UIButton!
+    @IBOutlet weak var headerLabel: UILabel!
 
     fileprivate let sectionInsets = UIEdgeInsets(top: 50.0, left: 10.0, bottom: 50.0, right: 10.0)
     fileprivate let reuseIdentifier = "RewardCell"
@@ -85,10 +86,20 @@ class TTRewardsViewController: UIViewController {
     func loadRewards() {
         TTReward.getRewards(success: { (rewards: [TTReward]) in
             self.rewards = rewards
+            let unusedPoints = TTProfile.currentProfile == nil ? 0 : TTProfile.currentProfile!.unusedPoints
+            self.headerLabel.text = "You have \(String(describing: unusedPoints)) points"
             self.collectionView.reloadData()
         }, failure: { (error: Error) -> ()  in
             print("Failed to load rewards")
         })
+    }
+    
+    func getRemainingUnusedPoints() -> Int {
+        var remainingPoints = TTProfile.currentProfile?.unusedPoints
+        for reward in selectedRewards {
+            remainingPoints = remainingPoints! - reward.points!
+        }
+        return remainingPoints!
     }
 
     override func didReceiveMemoryWarning() {
@@ -102,7 +113,17 @@ class TTRewardsViewController: UIViewController {
         }
 
         guard !selectedRewards.isEmpty else {
+            
             buying = !buying
+            if sender.title! == "Buy"  {
+                headerLabel.text = "Start tapping rewards you want to buy👇"
+            }
+            else {
+                if let unusedPoints = TTProfile.currentProfile?.unusedPoints {
+                    self.headerLabel.text = "You have \(String(describing: unusedPoints)) points"
+                }
+            }
+            
             return
         }
 
@@ -136,6 +157,7 @@ class TTRewardsViewController: UIViewController {
                 navigationController?.pushViewController(decorateMyRoomVC, animated: true)
             } else {
                 print("You have \(unusedPoints) points, but have selected items worth \(pointsUsed)")
+                headerLabel.text = "Oops! you don't have enough points😟"
             }
         } else {
             print("You don't have a saved profile or unused points")
@@ -146,22 +168,6 @@ class TTRewardsViewController: UIViewController {
 extension TTRewardsViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return rewards.count
-    }
-
-    func collectionView(_ collectionView: UICollectionView,
-                        viewForSupplementaryElementOfKind kind: String,
-                        at indexPath: IndexPath) -> UICollectionReusableView {
-        switch kind {
-        case UICollectionElementKindSectionHeader:
-            let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind,
-                                                                             withReuseIdentifier: "RewardsHeaderView",
-                                                                             for: indexPath) as! RewardsHeaderView
-            let unusedPoints = TTProfile.currentProfile == nil ? 0 : TTProfile.currentProfile!.unusedPoints
-            headerView.pointsLabel.text = "You have \(String(describing: unusedPoints)) points"
-            return headerView
-        default:
-            assert(false, "Unexpected element kind")
-        }
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -284,6 +290,13 @@ private extension TTRewardsViewController {
     }
 
     func updateSelectedRewardsCount() {
+        let remainingPoints = getRemainingUnusedPoints()
+        if remainingPoints < 0 {
+            headerLabel.text = "Oops! you don't have enough points😟"
+        }
+        else {
+            headerLabel.text = "You have " + "\(getRemainingUnusedPoints())" + " points"
+        }
         usedPointsTextLabel.textColor = themeColor
         usedPointsTextLabel.text = "\(selectedRewards.count) rewards selected"
         usedPointsTextLabel.sizeToFit()
