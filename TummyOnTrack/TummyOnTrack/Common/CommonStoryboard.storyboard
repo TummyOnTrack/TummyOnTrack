@@ -472,6 +472,7 @@
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="Wsp-lt-pj6" id="DjY-x3-rjF"/>
+                        <segue destination="f4k-fh-19f" kind="show" identifier="Show Game Page" id="gi6-WB-jY6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hhs-SC-K8j" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -707,4 +708,7 @@
         <image name="star-1" width="128" height="128"/>
         <image name="star-2" width="300" height="300"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="gi6-WB-jY6"/>
+    </inferredMetricsTieBreakers>
 </document>
