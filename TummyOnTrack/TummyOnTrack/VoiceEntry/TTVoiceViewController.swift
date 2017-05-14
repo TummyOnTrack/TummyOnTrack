@@ -12,11 +12,11 @@ import Firebase
 
 class TTVoiceViewController: UIViewController, SFSpeechRecognizerDelegate, AVSpeechSynthesizerDelegate {
     
-    @IBOutlet weak var rightTrailingConstraint: NSLayoutConstraint!
-    
+
+    @IBOutlet weak var rightArrowTrailingConstraint: NSLayoutConstraint!
+    @IBOutlet weak var topConstraint: NSLayoutConstraint!
     @IBOutlet weak var rightArrowImage: UIImageView!
-    
-    @IBOutlet weak var arrowImage: UIImageView!
+    @IBOutlet weak var upArrowImage: UIImageView!
     @IBOutlet weak var microphoneButton: UIButton!
     @IBOutlet weak var userSpeechToTextLabel: UILabel!
     @IBOutlet weak var whatDidEatLabel: UILabel!
@@ -27,6 +27,14 @@ class TTVoiceViewController: UIViewController, SFSpeechRecognizerDelegate, AVSpe
     var isSpeechRecognizerAuthorized = false
     var isMicrophoneAuthorized = false
     var viewSummaryEnabled = false
+    let notificationForUpArrow = "startAnimatingUpArrow"
+    let notificationForRightArrow = "startAnimatingRightArrow"
+    var originalRightArrowCenter: CGPoint!
+    var originalUpArrowCenter: CGPoint!
+  //  var originalTopConstraint: NSLayoutConstraint!
+ //   var newTopConstraint: NSLayoutConstraint!
+    var originalConstraintConstant = CGFloat()
+    var originalRightArrowConstraint: NSLayoutConstraint!
     
     //object that handles speech recognition
     private let speechRecognizer = SFSpeechRecognizer(locale: Locale.init(identifier: "en-US"))
@@ -51,6 +59,7 @@ class TTVoiceViewController: UIViewController, SFSpeechRecognizerDelegate, AVSpe
             } catch {
                 print("audioEngine couldn't start because of an error.")
             }
+            rightArrowImage.isHidden = false
             settingsToStartRecording()
         }
 
@@ -58,17 +67,19 @@ class TTVoiceViewController: UIViewController, SFSpeechRecognizerDelegate, AVSpe
         
     override func viewDidLoad() {
         super.viewDidLoad()
- //       awesomeLabel.isHidden = true
         self.navigationItem.rightBarButtonItem?.title = "View Summary"
         self.navigationItem.rightBarButtonItem?.isEnabled = false
-        arrowImage.isHidden = true
+        rightArrowImage.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi / 2))
+        originalUpArrowCenter = upArrowImage.center
+        originalRightArrowCenter = rightArrowImage.center
+        upArrowImage.isHidden = true
+        rightArrowImage.isHidden = true
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(animateUpArrow), name: NSNotification.Name(rawValue: notificationForUpArrow), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(animateRightArrow), name: NSNotification.Name(rawValue: notificationForRightArrow), object: nil)
         
         whatDidEatLabel.layer.cornerRadius = whatDidEatLabel.frame.height/2
         whatDidEatLabel.layer.masksToBounds = true
-        
-//        awesomeLabel.layer.cornerRadius = awesomeLabel.frame.height/2
-//        awesomeLabel.layer.masksToBounds = true
-        
         
         microphoneButton.layer.cornerRadius = microphoneButton.frame.size.width / 2
         TTFoodItem.voiceSelectedFoodItems.removeAll()
@@ -133,9 +144,33 @@ class TTVoiceViewController: UIViewController, SFSpeechRecognizerDelegate, AVSpe
         }
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        originalUpArrowCenter = upArrowImage.center
+        originalConstraintConstant = topConstraint.constant
+        originalRightArrowCenter = rightArrowImage.center
+        originalRightArrowConstraint = rightArrowTrailingConstraint
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func animateUpArrow() {
+        upArrowImage.isHidden = false
+        UIView.animate(withDuration: 2.0, delay: 0, options: [.repeat], animations: {
+            self.upArrowImage.center.y = self.originalUpArrowCenter.y + 12.0
+            self.upArrowImage.center.y = self.originalUpArrowCenter.y
+        }, completion: nil)
+    }
+    
+    func animateRightArrow() {
+        rightArrowImage.isHidden = false
+        UIView.animate(withDuration: 2.0, delay: 0, options: [.repeat], animations: {
+            self.rightArrowImage.center.x = self.originalRightArrowCenter.x
+            self.rightArrowImage.center.x = self.originalRightArrowCenter.x + 12.0
+        }, completion: nil)
+        
     }
     
     func setupViewsForRippleEffect() {
@@ -177,7 +212,6 @@ class TTVoiceViewController: UIViewController, SFSpeechRecognizerDelegate, AVSpe
         
         let audioSession = AVAudioSession.sharedInstance()
         do {
-         //   try audioSession.setCategory(AVAudioSessionCategoryRecord)
             try audioSession.setCategory(AVAudioSessionCategoryPlayAndRecord)
             try audioSession.setMode(AVAudioSessionModeMeasurement)
             try audioSession.setActive(true, with: .notifyOthersOnDeactivation)
@@ -208,11 +242,7 @@ class TTVoiceViewController: UIViewController, SFSpeechRecognizerDelegate, AVSpe
                 self.userSpeechToTextLabel.text = result?.bestTranscription.formattedString
                 self.selectedfoodstring = (result?.bestTranscription.formattedString)!
                 isFinal = (result?.isFinal)!
-                
-                if self.viewSummaryEnabled == false {
-                    self.viewSummaryEnabled = true
-                    self.navigationItem.rightBarButtonItem?.isEnabled = true
-                }
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: self.notificationForRightArrow), object: nil)
             }
             
             if isFinal {
@@ -252,20 +282,30 @@ class TTVoiceViewController: UIViewController, SFSpeechRecognizerDelegate, AVSpe
     func settingsToStartRecording() {
         let image = UIImage(named: "pause")
         microphoneButton.setImage(image, for: .normal)
+        upArrowImage.isHidden = true
+        rightArrowImage.isHidden = true
+        topConstraint.constant = originalConstraintConstant
     }
 
     func settingsToPauseRecording() {
+        if self.viewSummaryEnabled == false {
+            self.viewSummaryEnabled = true
+            self.navigationItem.rightBarButtonItem?.isEnabled = true
+        }
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: notificationForUpArrow), object: nil)
+        topConstraint.constant = originalConstraintConstant + 48.0
+    
+        rightArrowImage.isHidden = true
         let image = UIImage(named: "microphone")
         microphoneButton.setImage(image , for: .normal)
- //       awesomeLabel.isHidden = false
     }
 
     func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
         self.microphoneButton.isEnabled = true
 
         if !(audioEngine.isRunning) {
-            startRecording()
             settingsToStartRecording()
+            startRecording()
         }
     }
 
@@ -275,6 +315,8 @@ class TTVoiceViewController: UIViewController, SFSpeechRecognizerDelegate, AVSpe
             settingsToPauseRecording()
             audioEngine.stop()
             recognitionRequest?.endAudio()
+            NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: notificationForRightArrow), object: nil)
+            NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: notificationForUpArrow), object: nil)
 
             let destinationVC = segue.destination as! TTVoiceSummaryViewController
             destinationVC.selectedFoodString = self.selectedfoodstring.lowercased()
