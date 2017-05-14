@@ -119,9 +119,11 @@ class TTRewardsViewController: UIViewController {
 
         if let unusedPoints = TTProfile.currentProfile?.unusedPoints {
             if pointsUsed > 0 && unusedPoints >= pointsUsed {
-                rewards += selectedRewards
-
-                TTProfile.currentProfile!.updateRewards(unusedPoints: (unusedPoints - pointsUsed), rewards: rewards, success: {
+                // Removed by Gauri
+                //rewards += selectedRewards
+                // Update rewards method was using rewards which actually has all the 31 rewards.
+                // Gauri replaced it with selectedRewards. Please review this change
+                TTProfile.currentProfile!.updateRewards(unusedPoints: (unusedPoints - pointsUsed), rewards: selectedRewards, success: {
                     print("You just used \(pointsUsed) to buy rewards")
                 }, failure: { (Error) in
                     print("Unable to update rewards!")
