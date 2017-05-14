@@ -183,32 +183,52 @@ class TTProfile: NSObject {
     }
     
     func updateFoodItems(items: [NSDictionary], images: [URL], earnedPoints: Int, success: @escaping () -> (), failure: @escaping (NSError) -> ()) {
-        if let currentProfileName_ = TTProfile.currentProfile?.name {
-            let ref1 = FIRDatabase.database().reference(fromURL: BASE_URL).child(PROFILES_TABLE)
-            let query = ref1.queryOrdered(byChild: "name").queryEqual(toValue: currentProfileName_)
-            
-            query.observeSingleEvent(of: .value, with: { (snapshot) in
-                for snap in snapshot.children {
-                    let snap_ = snap as! FIRDataSnapshot
-                    let ref2 = FIRDatabase.database().reference(fromURL: BASE_URL).child(DAILYFOOD_TABLE).childByAutoId()
-                    let dailyEntry = ["profile": self.dictionary as Any, "items": items, "images": images, "earnedPoints" : earnedPoints, "createdAt": Date().timeIntervalSince1970, "updatedAt": Date().timeIntervalSince1970, "profileId": snap_.key] as [String: Any]
-                    self.weeklyFoodBlog.add(TTDailyFoodEntry.init(dictionary: dailyEntry as NSDictionary))
-                    
-                    ref2.updateChildValues(dailyEntry)
 
-                    let ref3 = FIRDatabase.database().reference(fromURL: BASE_URL).child(PROFILES_TABLE+"/\(snap_.key)")
-                    let totalUnused = earnedPoints + (self.unusedPoints)
-                    let totalWeekly = earnedPoints + (self.weeklyEarnedPoints)
-                    //locally update points
-                    self.unusedPoints = self.unusedPoints + earnedPoints
-                    self.totalPoints = self.totalPoints + earnedPoints
-                    self.weeklyEarnedPoints = self.weeklyEarnedPoints + earnedPoints
-                    TTUser.currentUser?.replaceProfile(aProfile: self)
-                    ref3.updateChildValues(["unusedPoints": totalUnused, "weeklyPoints": totalWeekly])
-                    
-                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "ProfileChanged"), object: nil)
-                }
-            })
+        if let currentProfileId_ = TTProfile.currentProfile?.profileId {
+            let ref1 = FIRDatabase.database().reference(fromURL: BASE_URL).child(PROFILES_TABLE+"/\(currentProfileId_)")
+            let ref2 = FIRDatabase.database().reference(fromURL: BASE_URL).child(DAILYFOOD_TABLE).childByAutoId()
+            
+            
+            let dailyEntry = ["profile": self.dictionary as Any, "items": items, "images": images, "earnedPoints" : earnedPoints, "createdAt": Date().timeIntervalSince1970, "updatedAt": Date().timeIntervalSince1970, "profileId": currentProfileId_/*snap_.key*/] as [String: Any]
+            self.weeklyFoodBlog.add(TTDailyFoodEntry.init(dictionary: dailyEntry as NSDictionary))
+            ref2.updateChildValues(dailyEntry)
+            
+            let totalUnused = earnedPoints + (self.unusedPoints)
+            let totalWeekly = earnedPoints + (self.weeklyEarnedPoints)
+            //locally update points
+            self.unusedPoints = self.unusedPoints + earnedPoints
+            self.totalPoints = self.totalPoints + earnedPoints
+            self.weeklyEarnedPoints = self.weeklyEarnedPoints + earnedPoints
+            TTUser.currentUser?.replaceProfile(aProfile: self)
+            ref1.updateChildValues(["unusedPoints": totalUnused, "weeklyPoints": totalWeekly])
+            
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "ProfileChanged"), object: nil)
+            
+//    if let currentProfileName_ = TTProfile.currentProfile?.name {
+//     let ref1 = FIRDatabase.database().reference(fromURL: BASE_URL).child(PROFILES_TABLE)
+//      let query = ref1.queryOrdered(byChild: "name").queryEqual(toValue: currentProfileName_)
+//            query.observeSingleEvent(of: .value, with: { (snapshot) in
+//                for snap in snapshot.children {
+//                    let snap_ = snap as! FIRDataSnapshot
+//                    let ref2 = FIRDatabase.database().reference(fromURL: BASE_URL).child(DAILYFOOD_TABLE).childByAutoId()
+//                    let dailyEntry = ["profile": self.dictionary as Any, "items": items, "images": images, "earnedPoints" : earnedPoints, "createdAt": Date().timeIntervalSince1970, "updatedAt": Date().timeIntervalSince1970, "profileId": currentProfileId_/*snap_.key*/] as [String: Any]
+//                    self.weeklyFoodBlog.add(TTDailyFoodEntry.init(dictionary: dailyEntry as NSDictionary))
+//                    
+//                    ref2.updateChildValues(dailyEntry)
+//
+//                    let ref3 = FIRDatabase.database().reference(fromURL: BASE_URL).child(PROFILES_TABLE+"/\(snap_.key)")
+//                    let totalUnused = earnedPoints + (self.unusedPoints)
+//                    let totalWeekly = earnedPoints + (self.weeklyEarnedPoints)
+//                    //locally update points
+//                    self.unusedPoints = self.unusedPoints + earnedPoints
+//                    self.totalPoints = self.totalPoints + earnedPoints
+//                    self.weeklyEarnedPoints = self.weeklyEarnedPoints + earnedPoints
+//                    TTUser.currentUser?.replaceProfile(aProfile: self)
+//                    ref3.updateChildValues(["unusedPoints": totalUnused, "weeklyPoints": totalWeekly])
+//                    
+//                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "ProfileChanged"), object: nil)
+//                }
+//            })
         }
         else {
             print("No profile created")
