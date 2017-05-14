@@ -59,6 +59,7 @@
 		E7D2932E1EC7C6AC00F16899 /* TTJoke.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D2932D1EC7C6AC00F16899 /* TTJoke.swift */; };
 		E7D293301EC7D40B00F16899 /* TTFoodSummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D2932F1EC7D40B00F16899 /* TTFoodSummaryViewController.swift */; };
 		E7D293321EC7D42100F16899 /* TTFoodCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D293311EC7D42100F16899 /* TTFoodCollectionViewCell.swift */; };
+		E7D293361EC8133F00F16899 /* TTWeekdayCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D293351EC8133F00F16899 /* TTWeekdayCollectionViewCell.swift */; };
 		E7E3B4771EB69DFF000F9CA4 /* TTProfilesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7E3B4761EB69DFF000F9CA4 /* TTProfilesViewController.swift */; };
 		E7F0E5641EB269B00088743B /* CommonStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7F0E5631EB269B00088743B /* CommonStoryboard.storyboard */; };
 		E7F0E5661EB2801F0088743B /* TTFoodInputWaysViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F0E5651EB2801F0088743B /* TTFoodInputWaysViewController.swift */; };
@@ -148,6 +149,7 @@
 		E7D2932D1EC7C6AC00F16899 /* TTJoke.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TTJoke.swift; sourceTree = "<group>"; };
 		E7D2932F1EC7D40B00F16899 /* TTFoodSummaryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TTFoodSummaryViewController.swift; sourceTree = "<group>"; };
 		E7D293311EC7D42100F16899 /* TTFoodCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TTFoodCollectionViewCell.swift; sourceTree = "<group>"; };
+		E7D293351EC8133F00F16899 /* TTWeekdayCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TTWeekdayCollectionViewCell.swift; sourceTree = "<group>"; };
 		E7E3B4761EB69DFF000F9CA4 /* TTProfilesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TTProfilesViewController.swift; sourceTree = "<group>"; };
 		E7F0E5631EB269B00088743B /* CommonStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CommonStoryboard.storyboard; sourceTree = "<group>"; };
 		E7F0E5651EB2801F0088743B /* TTFoodInputWaysViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TTFoodInputWaysViewController.swift; sourceTree = "<group>"; };
@@ -446,6 +448,7 @@
 				3151A3451EBF686700084B88 /* TTFillPlateTableCell.swift */,
 				E7D2931E1EC66EC100F16899 /* TTMessageTableViewCell.swift */,
 				E7D293311EC7D42100F16899 /* TTFoodCollectionViewCell.swift */,
+				E7D293351EC8133F00F16899 /* TTWeekdayCollectionViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -774,6 +777,7 @@
 				31DE9B041EB154DF0055B8D8 /* TTPointsViewController.swift in Sources */,
 				E7BC60581EB11220000529AC /* TTUser.swift in Sources */,
 				311B02EE1EB994E000DAA2ED /* RewardsHeaderView.swift in Sources */,
+				E7D293361EC8133F00F16899 /* TTWeekdayCollectionViewCell.swift in Sources */,
 				D1B1EFD71EB3953D0032BEE1 /* TTFoodItem.swift in Sources */,
 				E7570FF41EB6F5F300E2FE2D /* TTProfileCollectionViewCell.swift in Sources */,
 				3151A3461EBF686700084B88 /* TTFillPlateTableCell.swift in Sources */,

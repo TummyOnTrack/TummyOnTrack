@@ -14,7 +14,7 @@ import Firebase
 import Charts
 import UserNotifications
 
-class TTHomeTableTableViewController: UITableViewController, UINavigationControllerDelegate, ChartViewDelegate {
+class TTHomeTableTableViewController: UITableViewController, UINavigationControllerDelegate, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout,ChartViewDelegate {
     
     @IBOutlet weak var weekSummaryLabel: UILabel!
     @IBOutlet weak var noChartsView: UIView!
@@ -25,7 +25,6 @@ class TTHomeTableTableViewController: UITableViewController, UINavigationControl
     @IBOutlet weak var goalHeaderLabel: UILabel!
     @IBOutlet weak var pieView: UIView!
     @IBOutlet weak var profileImageView: UIImageView!
-    @IBOutlet weak var chartsView: BarChartView!
     @IBOutlet weak var whatDoYouEatTodayButton: UIButton!
 
     @IBOutlet weak var microphoneImageView: UIImageView!
@@ -33,12 +32,13 @@ class TTHomeTableTableViewController: UITableViewController, UINavigationControl
    
     @IBOutlet weak var rewardsImageView: UIImageView!
     
+    @IBOutlet weak var collectionView: UICollectionView!
     var pieLayer : PieLayer! = nil
     var imagePicker: UIImagePickerController!
     var weeklyFoodBlog: NSMutableDictionary?
 
     let weekdays = ["Sun", "Mon", "Tues", "Wed", "Thur", "Fri", "Sat"]
-    var dayPoints = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+    var dayPoints = [0, 0, 0, 0, 0, 0, 0]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -279,15 +279,14 @@ class TTHomeTableTableViewController: UITableViewController, UINavigationControl
     
     func populateCharts() {
         weeklyFoodBlog = [:]
-        dayPoints = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+        dayPoints = [0, 0, 0, 0, 0, 0, 0]
         noChartsView.isHidden = false
         self.weekSummaryLabel.text = "Tracking Weekly Meals Made Easier!"
         TTProfile.currentProfile?.getWeeklyFoodBlog(success: { (aFoodBlog: [TTDailyFoodEntry]) in
             if aFoodBlog.count > 0 {
                 for i in 0...(aFoodBlog.count-1) {
                     let blog = aFoodBlog[i]
-                    self.dayPoints[blog.weekDay!-1] = self.dayPoints[blog.weekDay!-1] + Double(blog.earnedPoints!)
-                    self.chartsView.noDataText = "See your weekly points here"
+                    self.dayPoints[blog.weekDay!-1] = self.dayPoints[blog.weekDay!-1] + Int(blog.earnedPoints!)
                     
                     let dictBlog_ = self.weeklyFoodBlog?.object(forKey: self.weekdays[blog.weekDay!-1])
                     
@@ -308,28 +307,50 @@ class TTHomeTableTableViewController: UITableViewController, UINavigationControl
                 self.setTrackingAlarm()
                 self.weekSummaryLabel.text = "This Week's Summary"
             }
-            let limitLine = ChartLimitLine(limit: 0, label: "")
-            limitLine.lineColor = UIColor.white.withAlphaComponent(0.3)
-            limitLine.lineWidth = 1
             
-            self.chartsView.leftAxis.addLimitLine(limitLine)
-            self.chartsView.xAxis.labelFont = UIFont(name: "Helvetica", size: 15)!
-            
-            self.chartsView.chartDescription?.text = "Daily Points"
-            self.chartsView.chartDescription?.font = UIFont(name: "Helvetica", size: 14)!
-            self.chartsView.setBarChartData(xValues: self.weekdays, yValues: self.dayPoints, label: "Weekdays")
-            self.chartsView.delegate = self
-            self.chartsView.animate(yAxisDuration: 0.9)
-            
+            self.collectionView.reloadData()
             self.populatePoints()
-            
-            
             
         }, failure: { (error: Error) in
             
         })
 
     }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 7
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "WeekdayCell", for: indexPath) as! TTWeekdayCollectionViewCell
+        cell.weekdayLabel.text = weekdays[indexPath.row].uppercased()
+        cell.pointsLabel.text =  "\(dayPoints[indexPath.row])"
+        if dayPoints[indexPath.row] == 0 {
+            cell.starImageView.image = UIImage(named: "Face_With_Rolling")
+        }
+        else {
+            cell.starImageView.image = UIImage(named: "Smiling_Face_Blushed")
+        }
+        let date = Date()
+        let calendar = Calendar.current
+        let day = calendar.component(.weekday, from: date)
+        if day == indexPath.row + 1 {
+            cell.weekdayLabel.textColor = themeColor
+        }
+        else {
+            cell.weekdayLabel.textColor = UIColor.black
+        }
+        
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if dayPoints[indexPath.row] > 0 {
+            performSegue(withIdentifier: "Show Food Summary", sender: self.weekdays[indexPath.row])
+        }
+    }
+
     
     @IBAction func onImageTap(_ sender: UITapGestureRecognizer) {
         print("image tapped")
@@ -370,56 +391,5 @@ class TTHomeTableTableViewController: UITableViewController, UINavigationControl
         }
         
     }
-    
 }
 
-//https://github.com/danielgindi/Charts/issues/1340
-extension BarChartView {
-
-    private class BarChartFormatter: NSObject, IAxisValueFormatter {
-
-        var labels: [String] = []
-
-        func stringForValue(_ value: Double, axis: AxisBase?) -> String {
-            return labels[Int(value)]
-        }
-
-        init(labels: [String]) {
-            super.init()
-            self.labels = labels
-        }
-    }
-
-    func setBarChartData(xValues: [String], yValues: [Double], label: String) {
-
-        var dataEntries: [BarChartDataEntry] = []
-        //var valueColors = [UIColor]()
-        for i in 0..<yValues.count {
-            let dataEntry = BarChartDataEntry(x: Double(i), y: yValues[i])
-            dataEntries.append(dataEntry)
-        }
-
-        let chartDataSet = BarChartDataSet(values: dataEntries, label: label)
-        chartDataSet.colors = ChartColorTemplates.colorful()
-        chartDataSet.valueFont = UIFont(name: "Helvetica-Bold", size: 15)!
-        
-        let chartData = BarChartData(dataSet: chartDataSet)
-        let chartFormatter = BarChartFormatter(labels: xValues)
-        let xAxis = XAxis()
-        xAxis.valueFormatter = chartFormatter
-        self.xAxis.drawGridLinesEnabled = false
-        self.xAxis.valueFormatter = xAxis.valueFormatter
-        self.rightAxis.enabled = false
-        self.data = chartData
-    }
-    
-    func colorPicker(value : Double) -> UIColor {
-        //input your own logic for how you actually want to color the x axis
-        if value == 3 {
-            return UIColor.red
-        }
-        else {
-            return UIColor.black
-        }
-    }
-}
