@@ -119,12 +119,32 @@ class TTFoodSummaryViewController: UIViewController, UICollectionViewDelegate, U
         return categories.count
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        let objs_ = sectionFoodItems.object(forKey: categories.object(at: section))
+        if objs_ == nil{
+            return CGSize(width: collectionView.frame.size.width, height: 66)
+        }
+        return CGSize(width: collectionView.frame.size.width, height: 40.0)
+    }
+    
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "FoodTypeHeader", for: indexPath)
-        let label_ = headerView.subviews[0] as! UILabel;
+        var label_ = headerView.viewWithTag(1) as! UILabel
         label_.text = categories.object(at: indexPath.section) as? String
+        label_ = headerView.viewWithTag(2) as! UILabel
+        let img_ = headerView.viewWithTag(3) as! UIImageView
+        let objs_ = sectionFoodItems.object(forKey: categories.object(at: indexPath.section))
+        if objs_ == nil {
+            label_.text = categoryMessage.object(forKey: categories.object(at: indexPath.section)) as? String
+            img_.image = UIImage(named: "Face_With_Rolling")
+        }
+        else {
+            label_.text = ""
+            img_.image = nil
+        }
         return headerView
     }
+    
     
        
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -141,41 +161,24 @@ class TTFoodSummaryViewController: UIViewController, UICollectionViewDelegate, U
         else {
             collectionView.backgroundView = nil
             if sectionFoodItems.object(forKey: categories.object(at: section)) == nil {
-                return 1
+                return 0
             }
             return (sectionFoodItems.object(forKey: categories.object(at: section)) as! Array<Any>).count
         }
-
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let objs_ = sectionFoodItems.object(forKey: categories.object(at: indexPath.section))
-        if objs_ == nil {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MessageCollectionCell", for: indexPath) as! TTMessageCollectionViewCell
-            cell.messageLabel.text = categoryMessage.object(forKey: categories.object(at: indexPath.section)) as? String
-            return cell
-        }
+        
         let objArr_ = objs_ as! Array<Any>
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FoodSummaryCell", for: indexPath) as! TTFoodCollectionViewCell
-        //cell.foodItem = foodItems[indexPath.row]
         cell.animate = animate
         cell.foodItem = objArr_[indexPath.row] as! TTFoodItem
         return cell
         
     }
     
-    /*func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return CGSize(width: collectionView.frame.size.width, height: 25.0)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "VoiceSummaryHeader", for: indexPath) as! VoiceSummaryHeader
-        headerView.totalPointsLabel.text = "You have scored \(totalPointsEarned) points!"
-        return headerView
-    }*/
-
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
