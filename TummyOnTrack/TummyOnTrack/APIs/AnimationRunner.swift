@@ -29,8 +29,10 @@ class AnimationRunner: NSObject, AVAudioPlayerDelegate {
             assert(false, error.localizedDescription)
         }
         
-        
     }
 
+    func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "finishedPlayingAudio"), object: nil)
+    }
 
 }

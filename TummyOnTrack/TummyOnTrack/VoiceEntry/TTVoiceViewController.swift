@@ -10,8 +10,7 @@ import UIKit
 import Speech
 import Firebase
 
-class TTVoiceViewController: UIViewController, SFSpeechRecognizerDelegate, AVSpeechSynthesizerDelegate {
-    
+class TTVoiceViewController: UIViewController, SFSpeechRecognizerDelegate {
 
     @IBOutlet weak var rightArrowTrailingConstraint: NSLayoutConstraint!
     @IBOutlet weak var topConstraint: NSLayoutConstraint!
@@ -21,8 +20,6 @@ class TTVoiceViewController: UIViewController, SFSpeechRecognizerDelegate, AVSpe
     @IBOutlet weak var userSpeechToTextLabel: UILabel!
     @IBOutlet weak var whatDidEatLabel: UILabel!
     @IBOutlet weak var rippleView: UIView!
-    var utterance: AVSpeechUtterance!
-    var synthesizer: AVSpeechSynthesizer!
     var selectedfoodstring = String()
     var isSpeechRecognizerAuthorized = false
     var isMicrophoneAuthorized = false
@@ -31,10 +28,9 @@ class TTVoiceViewController: UIViewController, SFSpeechRecognizerDelegate, AVSpe
     let notificationForRightArrow = "startAnimatingRightArrow"
     var originalRightArrowCenter: CGPoint!
     var originalUpArrowCenter: CGPoint!
-  //  var originalTopConstraint: NSLayoutConstraint!
- //   var newTopConstraint: NSLayoutConstraint!
     var originalConstraintConstant = CGFloat()
     var originalRightArrowConstraint: NSLayoutConstraint!
+    let animationRunner = AnimationRunner()
     
     //object that handles speech recognition
     private let speechRecognizer = SFSpeechRecognizer(locale: Locale.init(identifier: "en-US"))
@@ -77,6 +73,7 @@ class TTVoiceViewController: UIViewController, SFSpeechRecognizerDelegate, AVSpe
         
         NotificationCenter.default.addObserver(self, selector: #selector(animateUpArrow), name: NSNotification.Name(rawValue: notificationForUpArrow), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(animateRightArrow), name: NSNotification.Name(rawValue: notificationForRightArrow), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(didFinishPlaying), name: NSNotification.Name(rawValue: "finishedPlayingAudio"), object: nil)
         
         whatDidEatLabel.layer.cornerRadius = whatDidEatLabel.frame.height/2
         whatDidEatLabel.layer.masksToBounds = true
@@ -86,10 +83,6 @@ class TTVoiceViewController: UIViewController, SFSpeechRecognizerDelegate, AVSpe
 
         //disable the microphone button until the speech recognizer is activated
         microphoneButton.isEnabled = false
-        
-        synthesizer = AVSpeechSynthesizer()
-        synthesizer.delegate = self
-        
         speechRecognizer?.delegate = self
 
         recognitionRequest = SFSpeechAudioBufferRecognitionRequest()
@@ -133,14 +126,21 @@ class TTVoiceViewController: UIViewController, SFSpeechRecognizerDelegate, AVSpe
                 }
                 
                 if self.isSpeechRecognizerAuthorized && self.isMicrophoneAuthorized {
-                    self.utterance = AVSpeechUtterance(string: "What did you eat today?")
-                    self.utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
-                    self.synthesizer.speak(self.utterance)
+                    self.animationRunner.playMusic(resourceString: "whatDidYouEat", resourceType: "wav")
                 }
                 else {
                     self.navigationItem.rightBarButtonItem?.isEnabled = false
                 }
             }
+        }
+    }
+    
+    func didFinishPlaying() {
+        self.microphoneButton.isEnabled = true
+        
+        if !(self.audioEngine.isRunning) {
+            self.settingsToStartRecording()
+            self.startRecording()
         }
     }
 
@@ -197,7 +197,7 @@ class TTVoiceViewController: UIViewController, SFSpeechRecognizerDelegate, AVSpe
     func speechRecognizer(_ speechRecognizer: SFSpeechRecognizer, availabilityDidChange available: Bool) {
         if available {
             microphoneButton.isEnabled = true
-            synthesizer.speak(utterance)
+            self.animationRunner.playMusic(resourceString: "whatDidYouEat", resourceType: "wav")
         }
         else {
             microphoneButton.isEnabled = false
@@ -299,14 +299,9 @@ class TTVoiceViewController: UIViewController, SFSpeechRecognizerDelegate, AVSpe
         let image = UIImage(named: "microphone")
         microphoneButton.setImage(image , for: .normal)
     }
-
-    func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
-        self.microphoneButton.isEnabled = true
-
-        if !(audioEngine.isRunning) {
-            settingsToStartRecording()
-            startRecording()
-        }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "finishedPlayingAudio"), object: nil)
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

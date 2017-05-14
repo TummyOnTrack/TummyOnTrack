@@ -84,7 +84,6 @@ class TTVoiceSummaryViewController: UIViewController, UICollectionViewDataSource
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let cell = self.collectionView.cellForItem(at: indexPath) as! VoiceCollectionViewCell
         
         if selectedBoolArray[indexPath.row] == true {
             //make it deleted
