@@ -61,15 +61,16 @@ class TTHomeTableTableViewController: UITableViewController, UINavigationControl
 
         view.layer.addSublayer(pieLayer)
         
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "ProfileChanged"), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(setCurrentProfileDetails), name: NSNotification.Name(rawValue: "ProfileChanged"), object: nil)
+        //NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "ProfileChanged"), object: nil)
+        //NotificationCenter.default.addObserver(self, selector: #selector(setCurrentProfileDetails), name: NSNotification.Name(rawValue: "ProfileChanged"), object: nil)
         
-        setCurrentProfileDetails()
+        //setCurrentProfileDetails()
 
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        setCurrentProfileDetails()
         
     }
     
@@ -82,37 +83,6 @@ class TTHomeTableTableViewController: UITableViewController, UINavigationControl
         }
     }
 
-    func setToday() {
-        let date = Date()
-        let calendar = Calendar.current
-
- 
-        let day = calendar.component(.weekday, from: date)
-        
-        let key_ = "weeklyPointsReset_" + (TTProfile.currentProfile?.name)!
-        // Sunday
-        if day == 1 {
-            
-            // reset weekly points on every Sunday
-            let defaults = UserDefaults.standard
-            let weekPointsFlag = defaults.object(forKey: key_)
-            if weekPointsFlag == nil {
-                TTProfile.currentProfile?.updateProfile(dictionary: ["weeklyEarnedPoints": 0])
-                let defaults = UserDefaults.standard
-                defaults.set("true", forKey: key_)
-                defaults.synchronize()
-            }
-        } else {
-            let defaults = UserDefaults.standard
-            let weekPointsFlag = defaults.object(forKey: key_)
-            if weekPointsFlag != nil {
-                defaults.removeObject(forKey: key_)
-                defaults.synchronize()
-            }
-        }
-        
-    }
-    
     func setTrackingAlarm() {
         let center = UNUserNotificationCenter.current()
         
@@ -125,8 +95,6 @@ class TTHomeTableTableViewController: UITableViewController, UINavigationControl
                         self.getPushPermission()
                     }
                 }
-                
-                
            
             }
         }
@@ -208,12 +176,6 @@ class TTHomeTableTableViewController: UITableViewController, UINavigationControl
 
     func setCurrentProfileDetails() {
         populateProfileInfo()
-
-        /*TTUser.currentUser?.getProfiles(success: { (aProfiles: [TTProfile]) in
-            
-        }) { (error: Error) in
-            
-        }*/
         
         populateCharts()
     }
@@ -222,7 +184,7 @@ class TTHomeTableTableViewController: UITableViewController, UINavigationControl
         guard let currentProfile = TTProfile.currentProfile  else {
             return
         }
-        setToday()
+        //setToday()
         profileNameLabel.text = currentProfile.name?.capitalized
         
         if let profileImageURL = currentProfile.profileImageURL {
@@ -279,6 +241,7 @@ class TTHomeTableTableViewController: UITableViewController, UINavigationControl
     }
     
     func populateCharts() {
+        print("populateChartsCalled")
         weeklyFoodBlog = [:]
         dayPoints = [0, 0, 0, 0, 0, 0, 0]
         noChartsView.isHidden = false

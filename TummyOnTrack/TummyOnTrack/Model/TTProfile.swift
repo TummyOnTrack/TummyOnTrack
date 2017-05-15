@@ -66,11 +66,11 @@ class TTProfile: NSObject {
             self.goalPoints = 50
         }
 
-        if let user_name = dictionary["user_name"] as? String {
+        /*if let user_name = dictionary["user_name"] as? String {
             if let user = TTUser.userAccounts[user_name] {
                 self.user = user
             }
-        }
+        }*/
 
         if let rewardsItems = dictionary["rewards"] as? [NSDictionary] {
             for rewardsItem in rewardsItems {
@@ -83,16 +83,16 @@ class TTProfile: NSObject {
     }
     
 
-    static var profiles = [String: TTProfile]()
+    //static var profiles = [String: TTProfile]()
     static var _currentProfile: TTProfile?
 
     class var currentProfile: TTProfile?{
         get {
-            if _currentProfile == nil {
-                if profiles.isEmpty == true {
+            /*if _currentProfile == nil {
+                /*if profiles.isEmpty == true {
                     print("no profiles")
                     
-                }
+                }*/
                 let defaults = UserDefaults.standard
 
                 let profilesData = defaults.object(forKey: "currentProfileData") as? [String: Data]
@@ -101,42 +101,45 @@ class TTProfile: NSObject {
                         let dictionary = try! JSONSerialization.jsonObject(with: profilevalue, options: []) as! NSDictionary
                         //dictionary["profileId"] = profilesData.key
                         _currentProfile = TTProfile(dictionary: dictionary)
-                        if profiles[(_currentProfile?.name)!] == nil {
+                        /*if profiles[(_currentProfile?.name)!] == nil {
                             profiles[(_currentProfile?.name)!] = _currentProfile
-                        }
+                        }*/
                     }
 
+                }
+            }
+            return _currentProfile*/
+            if _currentProfile == nil {
+                let defaults_ = UserDefaults.standard
+                let profileData_ = defaults_.object(forKey: "currentProfileData") as? NSData
+                if let profileData_ = profileData_ {
+                    let dictionary_ = try! JSONSerialization.jsonObject(with: profileData_ as Data, options: []) as! NSDictionary
+                    _currentProfile = TTProfile(dictionary: dictionary_)
                 }
             }
             return _currentProfile
         }
         set(profile) {
-            if profile == nil {
-                profiles.removeValue(forKey: (_currentProfile?.name)!)
-                _currentProfile = profile
-                return
-            } else {
-                _currentProfile = profile
-                profiles[(_currentProfile?.name)!] = _currentProfile
+            
+            _currentProfile = profile
+            let defaults_ = UserDefaults.standard
+            if let profile = profile {
+                
+                let data_ = try! JSONSerialization.data(withJSONObject:  profile.dictionary! as Any, options: [])
+                defaults_.set(data_, forKey: "currentProfileData")
+                defaults_.synchronize()
+                
+            }
+            else {
+                defaults_.removeObject(forKey: "currentProfileData")
+                defaults_.synchronize()
             }
 
-            let defaults = UserDefaults.standard
-
-            if profiles.isEmpty {
-                defaults.removeObject(forKey: "currentProfileData")
-            } else {
-                var profileData = [String: Data]()
-                for (profilekey, profilevalue) in profiles {
-                    let data = try! JSONSerialization.data(withJSONObject: profilevalue.dictionary!, options: [])
-                    profileData[profilekey] = data
-                }
-                defaults.set(profileData, forKey: "currentProfileData")
-            }
-            defaults.synchronize()
         }
     }
     
     func getWeeklyFoodBlog(success: @escaping ([TTDailyFoodEntry]) -> (), failure: @escaping (NSError) -> ()) {
+        print("getWeeklyFoodBlogCalled")
         weeklyFoodBlog.removeAllObjects()
         foodBlog.removeAllObjects()
         let ref = FIRDatabase.database().reference(fromURL: BASE_URL).child(DAILYFOOD_TABLE)
@@ -177,6 +180,7 @@ class TTProfile: NSObject {
             }
             else if blog.createdAt! >= dateDaysAgo! {
                 weeklyFoodBlog.add(blog)
+                weeklyEarnedPoints = weeklyEarnedPoints + blog.earnedPoints!
             }
         }
         updateProfile(dictionary: ["weeklyEarnedPoints": weeklyEarnedPoints])
@@ -202,7 +206,7 @@ class TTProfile: NSObject {
             TTUser.currentUser?.replaceProfile(aProfile: self)
             ref1.updateChildValues(["unusedPoints": totalUnused, "weeklyPoints": totalWeekly])
             
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "ProfileChanged"), object: nil)
+           // NotificationCenter.default.post(name: NSNotification.Name(rawValue: "ProfileChanged"), object: nil)
         }
         else {
             print("No profile created")
@@ -278,11 +282,11 @@ class TTProfile: NSObject {
             self.goalPoints = goalPoints
         }
         
-        if let user_name = dictionary["user_name"] as? String {
+        /*if let user_name = dictionary["user_name"] as? String {
             if let user = TTUser.userAccounts[user_name] {
                 self.user = user
             }
-        }
+        }*/
         
         if let rewardsItems = dictionary["rewards"] as? [String] {
             rewards = [TTReward]()
@@ -310,23 +314,7 @@ class TTProfile: NSObject {
     }
 
     class func changeProfile(profile: TTProfile) {
-        if profiles[profile.name!] != nil {
-            _currentProfile = profile
-        }
+        TTProfile.currentProfile = profile
     }
 
-    class func delete(profile: TTProfile) {
-        if _currentProfile?.name == profile.name {
-            for (_, value) in profiles {
-                if value.name != _currentProfile?.name {
-                    _currentProfile = value
-                    break
-                }
-            }
-        }
-
-        if profiles[profile.name!] != nil {
-            profiles.removeValue(forKey: profile.name!)
-        }
-    }
 }

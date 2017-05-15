@@ -68,7 +68,7 @@ class TTUser: NSObject {
     
     func changeCurrentProfile( aProfile: TTProfile? ) {
         TTProfile.currentProfile = aProfile
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "ProfileChanged"), object: nil)
+       // NotificationCenter.default.post(name: NSNotification.Name(rawValue: "ProfileChanged"), object: nil)
     }
     
     func addProfile(name: String, age: Int, image: UIImage, completionHandler: @escaping(Bool) -> Void) {
@@ -95,59 +95,36 @@ class TTUser: NSObject {
         }
 
     }
-
-    static var userAccounts = [String: TTUser]()
+    
     static var _currentUser: TTUser?
-
-    class var currentUser: TTUser?{
+    
+    class var currentUser : TTUser? {
         get {
             if _currentUser == nil {
-                if userAccounts.isEmpty == true {
-                    print("no users")
-                }
-                let defaults = UserDefaults.standard
-
-                let usersData = defaults.object(forKey: "currentUserData") as? [String: Data]
-                if let usersData = usersData {
-                    for (_, uservalue) in usersData {
-                        let dictionary = try! JSONSerialization.jsonObject(with: uservalue, options: []) as! NSDictionary
-                        _currentUser = TTUser(dictionary: dictionary)
-                        if userAccounts[(_currentUser?.username)!] == nil {
-                            userAccounts[(_currentUser?.username)!] = _currentUser
-                        }
-                    }
-
+                let defaults_ = UserDefaults.standard
+                let userData_ = defaults_.object(forKey: "currentUserData") as? NSData
+                if let userData_ = userData_ {
+                    let dictionary_ = try! JSONSerialization.jsonObject(with: userData_ as Data, options: [])
+                    _currentUser = TTUser.init(dictionary: dictionary_ as! NSDictionary)
                 }
             }
             return _currentUser
         }
         set(user) {
-            if user == nil {
-                userAccounts.removeValue(forKey: (_currentUser?.username)!)
-                _currentUser = user
-
+            _currentUser = user
+            let defaults_ = UserDefaults.standard
+            if let user = user {
+                
+                let data_ = try! JSONSerialization.data(withJSONObject:  user.dictionary! as Any, options: [])
+                defaults_.set(data_, forKey: "currentUserData")
+                defaults_.synchronize()
+                
             }
             else {
-                _currentUser = user
-                userAccounts[(_currentUser?.username)!] = _currentUser
+                defaults_.removeObject(forKey: "currentUserData")
+                defaults_.synchronize()
             }
-
-            let defaults = UserDefaults.standard
-
-            if userAccounts.isEmpty {
-                defaults.removeObject(forKey: "currentUserData")
-            }
-            else {
-                var userData = [String: Data]()
-                for (userkey, uservalue) in userAccounts {
-                    let data = try! JSONSerialization.data(withJSONObject: uservalue.dictionary!, options: [])
-                    userData[userkey] = data
-                }
-                defaults.set(userData, forKey: "currentUserData")
-            }
-
-            defaults.synchronize()
-
+            
         }
     }
     
@@ -162,12 +139,6 @@ class TTUser: NSObject {
         }
     }
 
-    class func changeUser(user: TTUser) {
-        if userAccounts[user.username] != nil {
-            _currentUser = user
-        }
-    }
-    
     func logoutCurrentUser() {
         let defaults = UserDefaults.standard
         defaults.removeObject(forKey: "currentUserData")
@@ -182,19 +153,5 @@ class TTUser: NSObject {
             print(error)
         }
 
-    }
-    
-    class func delete(user: TTUser) {
-        if _currentUser?.username == user.username {
-            for (_, value) in userAccounts {
-                if value.username != _currentUser?.username {
-                    _currentUser = value
-                    break
-                }
-            }
-        }
-        if userAccounts[user.username] != nil {
-            userAccounts.removeValue(forKey: user.username)
-        }
     }
 }
