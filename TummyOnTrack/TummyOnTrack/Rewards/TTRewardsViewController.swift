@@ -113,7 +113,7 @@ class TTRewardsViewController: UIViewController {
         }
 
         guard !selectedRewards.isEmpty else {
-            
+
             buying = !buying
             if sender.title! == "Buy"  {
                 headerLabel.text = "Start tapping rewards you want to buy👇"
@@ -123,7 +123,6 @@ class TTRewardsViewController: UIViewController {
                     self.headerLabel.text = "You have \(String(describing: unusedPoints)) points"
                 }
             }
-            
             return
         }
 
@@ -140,10 +139,6 @@ class TTRewardsViewController: UIViewController {
 
         if let unusedPoints = TTProfile.currentProfile?.unusedPoints {
             if pointsUsed > 0 && unusedPoints >= pointsUsed {
-                // Removed by Gauri
-                //rewards += selectedRewards
-                // Update rewards method was using rewards which actually has all the 31 rewards.
-                // Gauri replaced it with selectedRewards. Please review this change
                 TTProfile.currentProfile!.updateRewards(unusedPoints: (unusedPoints - pointsUsed), rewards: selectedRewards, success: {
                     print("You just used \(pointsUsed) to buy rewards")
                 }, failure: { (Error) in
@@ -202,7 +197,6 @@ extension TTRewardsViewController: UICollectionViewDataSource {
         cell.activityIndicator.startAnimating()
         cell.rewardImageView.setImageWith(cell.reward.thumbnailURL!)
         cell.activityIndicator.stopAnimating()
-        
 
         return cell
     }
@@ -223,12 +217,14 @@ extension TTRewardsViewController: UICollectionViewDelegate {
         guard buying else {
             return
         }
+
         if let unusedPoints = TTProfile.currentProfile?.unusedPoints {
             if unusedPoints < rewardForIndexPath(indexPath).points! {
                 
                 return
             }
         }
+
         let photo = rewardForIndexPath(indexPath)
         selectedRewards.append(photo)
         updateSelectedRewardsCount()

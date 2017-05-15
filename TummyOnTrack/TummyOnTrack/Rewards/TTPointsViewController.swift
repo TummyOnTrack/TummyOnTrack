@@ -22,7 +22,8 @@ class TTPointsViewController: UIViewController {
     var animationImages : [UIImageView]! = []
     fileprivate var bubbleSound: SystemSoundID!
 
-    fileprivate let awesomeSynonyms = [ "Awesome", "Excellent", "Great", "Incredible", "Marvelous", "Unbelievable", "Wonderful"]
+    fileprivate let awesomeSynonyms = [ "Awesome", "Excellent", "Great", "Incredible",
+     "Marvelous", "Unbelievable", "Wonderful"]
     
     // This needs to be property of the class so that its scope remains till the object exists.
     // This is required for the sound to play
@@ -30,7 +31,6 @@ class TTPointsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        //bubbleSound = createBubbleSound()
         animateButton()
     }
 
@@ -44,20 +44,20 @@ class TTPointsViewController: UIViewController {
         let unusedPoints = TTProfile.currentProfile?.unusedPoints
 
         if unusedPoints == 0 {
-            pointsTodayLabel.text = "Eat healthy, collect points!"
+            pointsTodayLabel.text = "Eat Healthy, Collect Points!"
             awesomeLabel.isHidden = true
         } else {
             pointsTodayLabel.text = "\(String(describing: unusedPoints!)) unused points!"
             let randomIndex = Int(arc4random_uniform(UInt32(awesomeSynonyms.count)))
             awesomeLabel.text = "\(awesomeSynonyms[randomIndex])!"
+            awesomeLabel.sizeToFit()
             awesomeLabel.isHidden = false
         }
 
-        //pointsTodayLabel.backgroundColor = UIColor.black.withAlphaComponent(0.4)
+        pointsTodayLabel.sizeToFit()
 
         if let currentProfile = TTProfile.currentProfile {
             profileNameLabel.text = currentProfile.name?.capitalized
-            //profileNameLabel.backgroundColor = UIColor.black.withAlphaComponent(0.4)
             if let profileImageURL = currentProfile.profileImageURL {
                 profileImageView.setImageWith(profileImageURL)
                 profileImageView.layer.cornerRadius = profileImageView.frame.width/2
@@ -106,7 +106,6 @@ class TTPointsViewController: UIViewController {
 
     func animateButton() {
         createBubbleSound()
-        //AudioServicesPlaySystemSound(bubbleSound)
         shopButton.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
         decorateButton.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
 
@@ -122,17 +121,11 @@ class TTPointsViewController: UIViewController {
     }
 
     func createBubbleSound() {
-        
-        /*var soundID: SystemSoundID = 0
-        let soundURL = CFBundleCopyResourceURL(CFBundleGetMainBundle(), "bubble" as CFString!, "mp3" as CFString!, nil)
-        AudioServicesCreateSystemSoundID(soundURL!, &soundID)
-        return soundID*/
         animationRunner.playMusic(resourceString: "bubble", resourceType: "mp3")
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -142,29 +135,4 @@ class TTPointsViewController: UIViewController {
         }
         super.viewWillDisappear(animated)
     }
-    
-    /*- (void) doPageCleanup {
-    // BEFORE DOING SO CHECK THAT TIMER MUST NOT BE ALREADY INVALIDATED
-    // Always nil your timer after invalidating so that
-    // it does not cause crash due to duplicate invalidate
-    if (self.timers != nil) {
-    int timerCount = (int)[self.timers count];
-    for (int i=0; i < timerCount; i++) {
-    NSTimer *timer = self.timers[i];
-    if (timer) {
-    [timer invalidate];
-    timer = nil;
-    }
-    }
-    }
-    
-    if (self.runningAnimations != nil) {
-    for (id key in self.runningAnimations) {
-    AnimationRunner *animation = [self.runningAnimations objectForKey:key];
-    if (animation) {
-    [animation stop];
-    }
-    }
-    }
-    }*/
 }

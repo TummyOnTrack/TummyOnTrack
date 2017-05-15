@@ -60,12 +60,6 @@ class TTHomeTableTableViewController: UITableViewController, UINavigationControl
         pieLayer.maxRadius = Float(pieView.frame.width/2)
 
         view.layer.addSublayer(pieLayer)
-        
-        //NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "ProfileChanged"), object: nil)
-        //NotificationCenter.default.addObserver(self, selector: #selector(setCurrentProfileDetails), name: NSNotification.Name(rawValue: "ProfileChanged"), object: nil)
-        
-        //setCurrentProfileDetails()
-
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -127,7 +121,6 @@ class TTHomeTableTableViewController: UITableViewController, UINavigationControl
                 print("There was a problem!")
             }
         }
-
     }
 
     @IBAction func onWhatDidEatClick(_ sender: Any) {
@@ -149,6 +142,7 @@ class TTHomeTableTableViewController: UITableViewController, UINavigationControl
             print("Failed to load food items")
         })
     }
+
     @IBAction func onSetupGoalClick(_ sender: Any) {
         let alert = UIAlertController(title: "Change Goal Points",
                                       message: "\n\n",
@@ -273,17 +267,15 @@ class TTHomeTableTableViewController: UITableViewController, UINavigationControl
             
             self.collectionView.reloadData()
             self.populatePoints()
-            
         }, failure: { (error: Error) in
-            
-        })
 
+        })
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 7
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "WeekdayCell", for: indexPath) as! TTWeekdayCollectionViewCell
@@ -319,14 +311,13 @@ class TTHomeTableTableViewController: UITableViewController, UINavigationControl
         
         return cell
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if dayPoints[indexPath.row] > 0 {
             performSegue(withIdentifier: "Show Food Summary", sender: self.weekdays[indexPath.row])
         }
     }
 
-    
     @IBAction func onImageTap(_ sender: UITapGestureRecognizer) {
         print("image tapped")
     }
@@ -340,7 +331,7 @@ class TTHomeTableTableViewController: UITableViewController, UINavigationControl
             performSegue(withIdentifier: "Show Food Summary", sender: self.weekdays[Int(entry.x)])
         }
     }
-    
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "Show Plate View") {
             
@@ -364,7 +355,6 @@ class TTHomeTableTableViewController: UITableViewController, UINavigationControl
                 vc_.foodBlog = []
             }
         }
-        
     }
 }
 

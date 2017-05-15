@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="ex1-eT-I06">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="ex1-eT-I06">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -86,7 +86,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ProfileName" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iE5-Nm-mz3">
-                                                    <rect key="frame" x="-4" y="76" width="94" height="21"/>
+                                                    <rect key="frame" x="0.0" y="76" width="86" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -97,6 +97,7 @@
                                                 <constraint firstItem="ERA-Es-AKo" firstAttribute="leading" secondItem="BDC-Md-k7F" secondAttribute="trailing" constant="-65" id="Blx-fH-cac"/>
                                                 <constraint firstItem="BDC-Md-k7F" firstAttribute="top" secondItem="vsz-0h-FaW" secondAttribute="topMargin" id="Dt9-Fp-2tw"/>
                                                 <constraint firstItem="FxA-XQ-pd6" firstAttribute="leading" secondItem="BDC-Md-k7F" secondAttribute="trailing" constant="59" id="UtL-P5-OHR"/>
+                                                <constraint firstItem="iE5-Nm-mz3" firstAttribute="leading" secondItem="vsz-0h-FaW" secondAttribute="leading" id="XEs-TJ-Ncs"/>
                                                 <constraint firstItem="iE5-Nm-mz3" firstAttribute="top" secondItem="BDC-Md-k7F" secondAttribute="bottom" constant="8" id="Zv6-gA-gkg"/>
                                                 <constraint firstItem="iE5-Nm-mz3" firstAttribute="centerX" secondItem="BDC-Md-k7F" secondAttribute="centerX" id="ecR-tz-9lu"/>
                                                 <constraint firstItem="FxA-XQ-pd6" firstAttribute="top" secondItem="vsz-0h-FaW" secondAttribute="topMargin" constant="34" id="fYc-Ss-gOx"/>
@@ -528,7 +529,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hhs-SC-K8j" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1333.5999999999999" y="-76.011994002998506"/>
+            <point key="canvasLocation" x="1772" y="-840"/>
         </scene>
         <!--Fill Plate View Controller-->
         <scene sceneID="idf-6E-f6q">
@@ -747,7 +748,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6gs-Lx-6vg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2440.8000000000002" y="4.9475262368815596"/>
+            <point key="canvasLocation" x="2666" y="5"/>
         </scene>
     </scenes>
     <resources>
