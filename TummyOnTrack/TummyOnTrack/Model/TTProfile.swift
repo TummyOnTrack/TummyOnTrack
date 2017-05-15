@@ -139,7 +139,6 @@ class TTProfile: NSObject {
     }
     
     func getWeeklyFoodBlog(success: @escaping ([TTDailyFoodEntry]) -> (), failure: @escaping (NSError) -> ()) {
-        print("getWeeklyFoodBlogCalled")
         weeklyFoodBlog.removeAllObjects()
         foodBlog.removeAllObjects()
         let ref = FIRDatabase.database().reference(fromURL: BASE_URL).child(DAILYFOOD_TABLE)

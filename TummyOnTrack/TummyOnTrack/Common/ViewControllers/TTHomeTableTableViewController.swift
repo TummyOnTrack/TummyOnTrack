@@ -241,7 +241,6 @@ class TTHomeTableTableViewController: UITableViewController, UINavigationControl
     }
     
     func populateCharts() {
-        print("populateChartsCalled")
         weeklyFoodBlog = [:]
         dayPoints = [0, 0, 0, 0, 0, 0, 0]
         noChartsView.isHidden = false
