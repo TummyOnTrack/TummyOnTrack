@@ -10,19 +10,20 @@ Time spent: **XX** hours spent in total
 The following **required** functionality is completed:
 
 Login/Signup
-- [x]	User can signup/login using username/password  
-- [x]	New user can create an account and add one or more kids' profiles
-- [x]	The current signed in user will be persisted across restarts
-
-Parent Role
-- [ ]	User(Parent role) can set daily target points for each child
+- [x] User can signup/login using username/password  
+- [x] New user can create an account and add one or more kids' profiles
+- [x] Each profile can have a photo taken by camera or selected from the photo gallery.
+- [x] The current signed in user will be persisted across restarts
 
 Parent/Child interactive Activity
-- [ ]	User can update food items eaten by uploading photos
-- [ ]	User can select photos from the gallery
-- [ ]	User can access camera and click photos to upload
+- [x]	User(Parent) can set daily target points for each child
 - [x]	User can update food items eaten by speaking the food names (voice to text)
-- [ ]	User can gamify the experience by dragging or animating food items
+- [x] On the home page, user will see his/her weekly points summary and each day's food blog for that week.
+- [x] Nice sectionized food blog summary based on protein, dairy, vegetable, fruits etc with fun emojis to better drive kids to eat healthy. 
+
+Gaming and Fun elements
+- [x]	User can gamify the experience by dragging or animating food items. Added a drag/drop sorting game for each day's food blog items.
+- [x] On the food blog page, when every food item is clicked, it will tell a joke on that food item. This can be the best user engagement factor of the app. Everyday they would want to enter their food blog and get these kind of surprise and fun elements.
 
 Rewards/Charts Summary
 - [x] User can observe point-wise progress made
@@ -31,22 +32,25 @@ Rewards/Charts Summary
 
 The following **optional** features are implemented:
 - [ ] User can login using Facebook (OAuth login flow)   
-- [ ] The stickers can be used to decorate a virtual kids' room 
+- [x] The stickers can be used to decorate a virtual kids' room 
 - [ ] User should be able to share achievements on social media
-- [ ] User should be able to see a graph of food points vs time(weeks/months)
-- [ ] Messages to encourage the users to achieve their target 
+- [x] User should be able to see a graph of food points. We had added a graphical representation of weekly points. But it did not make much sense for kids domain. So we changed it to fun calendar type of representation 
+- [x] Messages to encourage the users to achieve their target 
 
 The following **additional** features are implemented:
 
 - [ ] List anything else that you can get done to improve the app functionality!
 
+
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
+
+- Our focus of the app is to make it fun and easy to use for any user group. Currently we are targeting kids. But we can add features like photo sharing and blog based on daily photos to make it even fun for any age groups.
 
 ## Video Walkthrough
 
 Here's a walkthrough of so far implemented user stories:
 
-<img src='https://github.com/TummyOnTrack/TummyOnTrack/blob/master/TummyOnTrackDemo3.gif' alt='Video Walkthrough' />
+<img src='https://github.com/TummyOnTrack/TummyOnTrack/blob/master/TummyOnTrackApp_Walkthrough_Full.gif' alt='Video Walkthrough' />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
