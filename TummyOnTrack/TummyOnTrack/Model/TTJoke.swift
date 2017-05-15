@@ -24,7 +24,7 @@ class TTJoke: NSObject {
         "Bread" : "Why are bread jokes always funny? Because they never get mold!",
         "Bagel" : "What do you call a bagel that can fly? A plain bagel.",
         "Burger" : "What do you call a pig thief? A hamburglar.",
-        "HamBurger" : "What do you call a pig thief? A hamburglar.",
+        "Hamburger" : "What do you call a pig thief? A hamburglar.",
         "Bean" : "Knock Knock! Who's there? Bean. Bean who? Bean a while since I last saw you!",
         "Burrito" : "What do call a cat in a blanket? A purrrrito",
         "Cake" : "Why did the students eat their homework? Because the teacher said that it was a piece of cake.",
