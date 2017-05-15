@@ -5,7 +5,6 @@
 //  Created by Pooja Chowdhary on 4/28/17.
 //  Copyright © 2017 Gauri Tikekar. All rights reserved.
 //
-
 import UIKit
 import Firebase
 
@@ -16,7 +15,7 @@ class TTFoodItem {
     var images: [URL]?
     var dictionary: NSDictionary?
     var joke: String?
-    
+
     init(dictionary: NSDictionary) {
         self.dictionary = dictionary
         name = dictionary["name"] as? String
@@ -50,15 +49,14 @@ class TTFoodItem {
             }
         })
     }
-    
-    static var voiceSelectedFoodItems = Dictionary<String, TTFoodItem>()
-    
-    class func getFoodItemsFromSpokenString(selectedFoodString: String) {
 
-            for (foodKey, foodValue) in TTFoodItem.defaultFoodDictionary {
-                if (selectedFoodString.range(of: foodKey) != nil) {
-                    voiceSelectedFoodItems[foodKey] = foodValue
-                }
+    static var voiceSelectedFoodItems = Dictionary<String, TTFoodItem>()
+
+    class func getFoodItemsFromSpokenString(selectedFoodString: String) {
+        for (foodKey, foodValue) in TTFoodItem.defaultFoodDictionary {
+            if (selectedFoodString.range(of: foodKey) != nil) {
+                voiceSelectedFoodItems[foodKey] = foodValue
             }
+        }
     }
 }

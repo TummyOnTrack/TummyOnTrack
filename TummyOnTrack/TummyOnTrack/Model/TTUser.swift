@@ -5,11 +5,9 @@
 //  Created by yanze on 4/25/17.
 //  Copyright © 2017 Gauri Tikekar. All rights reserved.
 //
-
 import UIKit
 import Firebase
 import FirebaseStorage
-
 
 class TTUser: NSObject {
     var username: String
@@ -17,7 +15,6 @@ class TTUser: NSObject {
     var uid: String
     var dictionary: NSDictionary?
     var profiles: NSMutableArray
-    
 
     init(username: String, email: String, uid: String) {
         self.username = username
@@ -34,9 +31,8 @@ class TTUser: NSObject {
         uid = dictionary["uid"] as! String
         profiles = []
     }
-    
+
     func getProfiles(success: @escaping ([TTProfile]) -> (), failure: @escaping (NSError) -> ()) {
-        
         guard let uid = FIRAuth.auth()?.currentUser?.uid else {
             // uid is nil
             return
@@ -65,10 +61,9 @@ class TTUser: NSObject {
 
         })
     }
-    
+
     func changeCurrentProfile( aProfile: TTProfile? ) {
         TTProfile.currentProfile = aProfile
-       // NotificationCenter.default.post(name: NSNotification.Name(rawValue: "ProfileChanged"), object: nil)
     }
     
     func addProfile(name: String, age: Int, image: UIImage, completionHandler: @escaping(Bool) -> Void) {
@@ -89,15 +84,13 @@ class TTUser: NSObject {
                     self.profiles.add(addedProfile)
                     self.changeCurrentProfile(aProfile: addedProfile)
                     completionHandler(true)
-                    
                 }
             }
         }
-
     }
-    
+
     static var _currentUser: TTUser?
-    
+
     class var currentUser : TTUser? {
         get {
             if _currentUser == nil {
@@ -119,15 +112,14 @@ class TTUser: NSObject {
                 defaults_.set(data_, forKey: "currentUserData")
                 defaults_.synchronize()
                 
-            }
-            else {
+            } else {
                 defaults_.removeObject(forKey: "currentUserData")
                 defaults_.synchronize()
             }
             
         }
     }
-    
+
     func replaceProfile(aProfile: TTProfile) {
         if profiles.count > 0 {
             for i in 0...(profiles.count)-1 {
@@ -152,6 +144,5 @@ class TTUser: NSObject {
         }catch let error {
             print(error)
         }
-
     }
 }

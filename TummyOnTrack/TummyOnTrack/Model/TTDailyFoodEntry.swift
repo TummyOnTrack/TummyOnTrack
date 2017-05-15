@@ -9,13 +9,12 @@
 import UIKit
 
 class TTDailyFoodEntry: NSObject {
-    
     var createdAt: Date?
     var earnedPoints: Int?
     var items : [TTFoodItem]?
     var profileId : String?
     var weekDay: Int?
-    
+
     init(dictionary: NSDictionary) {
         profileId = dictionary["profileId"] as? String
         
@@ -36,6 +35,4 @@ class TTDailyFoodEntry: NSObject {
             }
         }
     }
-
-
 }

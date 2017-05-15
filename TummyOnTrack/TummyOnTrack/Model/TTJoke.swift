@@ -5,7 +5,6 @@
 //  Created by Gauri Tikekar on 5/13/17.
 //  Copyright © 2017 Gauri Tikekar. All rights reserved.
 //
-
 import UIKit
 
 //source: http://www.jokes4us.com/miscellaneousjokes/foodjokes/baconjokes.html"
@@ -67,6 +66,4 @@ class TTJoke: NSObject {
         }
         return joke_ as? String
     }
-    
-
 }

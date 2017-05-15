@@ -66,12 +66,6 @@ class TTProfile: NSObject {
             self.goalPoints = 50
         }
 
-        /*if let user_name = dictionary["user_name"] as? String {
-            if let user = TTUser.userAccounts[user_name] {
-                self.user = user
-            }
-        }*/
-
         if let rewardsItems = dictionary["rewards"] as? [NSDictionary] {
             for rewardsItem in rewardsItems {
                 let reward = TTReward(dictionary: rewardsItem)
@@ -81,34 +75,11 @@ class TTProfile: NSObject {
 
         self.dictionary = dictionary.mutableCopy() as? NSMutableDictionary
     }
-    
 
-    //static var profiles = [String: TTProfile]()
     static var _currentProfile: TTProfile?
 
     class var currentProfile: TTProfile?{
         get {
-            /*if _currentProfile == nil {
-                /*if profiles.isEmpty == true {
-                    print("no profiles")
-                    
-                }*/
-                let defaults = UserDefaults.standard
-
-                let profilesData = defaults.object(forKey: "currentProfileData") as? [String: Data]
-                if let profilesData = profilesData {
-                    for (_, profilevalue) in profilesData {
-                        let dictionary = try! JSONSerialization.jsonObject(with: profilevalue, options: []) as! NSDictionary
-                        //dictionary["profileId"] = profilesData.key
-                        _currentProfile = TTProfile(dictionary: dictionary)
-                        /*if profiles[(_currentProfile?.name)!] == nil {
-                            profiles[(_currentProfile?.name)!] = _currentProfile
-                        }*/
-                    }
-
-                }
-            }
-            return _currentProfile*/
             if _currentProfile == nil {
                 let defaults_ = UserDefaults.standard
                 let profileData_ = defaults_.object(forKey: "currentProfileData") as? NSData
@@ -214,28 +185,6 @@ class TTProfile: NSObject {
     
     // Updates unusedPoints and rewards array
     func updateRewards(unusedPoints: Int, rewards: [TTReward], success: @escaping () -> (), failure: @escaping (Error) -> ()) {
-//        if let currentProfileName_ = TTProfile.currentProfile?.name {
-//            let ref1 = FIRDatabase.database().reference(fromURL: BASE_URL).child(PROFILES_TABLE)
-//            let query = ref1.queryOrdered(byChild: "name").queryEqual(toValue: currentProfileName_)
-//
-//            var rewardsDictionary = [NSDictionary]()
-//            for reward in rewards {
-//                rewardsDictionary.append(reward.dictionary)
-//            }
-//
-//            query.observeSingleEvent(of: .value, with: { (snapshot) in
-//                for snap in snapshot.children {
-//                    let snap_ = snap as! FIRDataSnapshot
-//                    let ref2 = FIRDatabase.database().reference(fromURL: BASE_URL).child(PROFILES_TABLE+"/\(snap_.key)")
-//                    
-//                    // locally update points and rewards
-//                    self.unusedPoints = unusedPoints
-//                    self.rewards = rewards
-//
-//                    TTUser.currentUser?.replaceProfile(aProfile: self)
-//                    ref2.updateChildValues(["unusedPoints": unusedPoints, "rewards": rewardsDictionary])
-//                }
-//            })
         if let currentProfileId_ = TTProfile.currentProfile?.profileId {
             let ref1 = FIRDatabase.database().reference(fromURL: BASE_URL).child(PROFILES_TABLE+"/\(currentProfileId_)")
             var rewardsDictionary = [NSDictionary]()
@@ -281,12 +230,6 @@ class TTProfile: NSObject {
             self.goalPoints = goalPoints
         }
         
-        /*if let user_name = dictionary["user_name"] as? String {
-            if let user = TTUser.userAccounts[user_name] {
-                self.user = user
-            }
-        }*/
-        
         if let rewardsItems = dictionary["rewards"] as? [String] {
             rewards = [TTReward]()
             for rewardsItem in rewardsItems {
@@ -315,5 +258,4 @@ class TTProfile: NSObject {
     class func changeProfile(profile: TTProfile) {
         TTProfile.currentProfile = profile
     }
-
 }
