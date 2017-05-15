@@ -195,6 +195,10 @@ class TTProfile: NSObject {
             
             let totalUnused = earnedPoints + (self.unusedPoints)
             let totalWeekly = earnedPoints + (self.weeklyEarnedPoints)
+            //locally update points
+            self.unusedPoints = self.unusedPoints + earnedPoints
+            self.totalPoints = self.totalPoints + earnedPoints
+            self.weeklyEarnedPoints = self.weeklyEarnedPoints + earnedPoints
             TTUser.currentUser?.replaceProfile(aProfile: self)
             ref1.updateChildValues(["unusedPoints": totalUnused, "weeklyPoints": totalWeekly])
             
