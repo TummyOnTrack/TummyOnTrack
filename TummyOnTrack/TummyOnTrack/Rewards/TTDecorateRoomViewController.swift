@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 class TTDecorateRoomViewController: UIViewController {
 
@@ -21,6 +22,8 @@ class TTDecorateRoomViewController: UIViewController {
     fileprivate var originalRewardCenter: CGPoint!
     fileprivate var newlyCreatedReward: UIImageView!
     fileprivate var newlyCreatedRewardCenter: CGPoint!
+    
+    let animationRunner = AnimationRunner()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,6 +72,7 @@ class TTDecorateRoomViewController: UIViewController {
     
     @IBAction func didPanTray(_ sender: UIPanGestureRecognizer) {
         if sender.state == .ended {
+            
             let velocity = sender.velocity(in: view)
             if velocity.y > 0 {
                 UIView.animate(withDuration: 0.3, animations: {
@@ -94,6 +98,7 @@ extension TTDecorateRoomViewController: UIGestureRecognizerDelegate {
         let point = sender.location(in: view)
 
         if sender.state == .began {
+            animationRunner.playMusic(resourceString: "flick", resourceType: "mp3")
             originalRewardCenter = originalRewardImageView.center
 
             if point.y > self.trayView.frame.origin.y {

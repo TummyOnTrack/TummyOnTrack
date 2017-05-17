@@ -50,6 +50,7 @@
 		E7BC60551EB10D79000529AC /* SignupLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BC60521EB10D79000529AC /* SignupLoginViewController.swift */; };
 		E7BC60561EB10D79000529AC /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BC60531EB10D79000529AC /* SignupViewController.swift */; };
 		E7BC60581EB11220000529AC /* TTUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BC60571EB11220000529AC /* TTUser.swift */; };
+		E7C15E5F1ECBF0DB00549A85 /* flick.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E7C15E5E1ECBF0DB00549A85 /* flick.mp3 */; };
 		E7D2931F1EC66EC100F16899 /* TTMessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D2931E1EC66EC100F16899 /* TTMessageTableViewCell.swift */; };
 		E7D293251EC684EA00F16899 /* fun_kids_half.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E7D293231EC684EA00F16899 /* fun_kids_half.mp3 */; };
 		E7D293261EC684EA00F16899 /* ping.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E7D293241EC684EA00F16899 /* ping.mp3 */; };
@@ -141,6 +142,7 @@
 		E7BC60521EB10D79000529AC /* SignupLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupLoginViewController.swift; sourceTree = "<group>"; };
 		E7BC60531EB10D79000529AC /* SignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		E7BC60571EB11220000529AC /* TTUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TTUser.swift; sourceTree = "<group>"; };
+		E7C15E5E1ECBF0DB00549A85 /* flick.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = flick.mp3; sourceTree = "<group>"; };
 		E7D2931E1EC66EC100F16899 /* TTMessageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TTMessageTableViewCell.swift; sourceTree = "<group>"; };
 		E7D293231EC684EA00F16899 /* fun_kids_half.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = fun_kids_half.mp3; sourceTree = "<group>"; };
 		E7D293241EC684EA00F16899 /* ping.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ping.mp3; sourceTree = "<group>"; };
@@ -437,6 +439,7 @@
 		E7D293201EC6847A00F16899 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				E7C15E5E1ECBF0DB00549A85 /* flick.mp3 */,
 				E7D293371EC9033200F16899 /* whatDidYouEat.wav */,
 				E7D2932B1EC7B53100F16899 /* sort_food.wav */,
 				E7D293231EC684EA00F16899 /* fun_kids_half.mp3 */,
@@ -542,6 +545,7 @@
 				TargetAttributes = {
 					E7B940E01EAE790C0078AB5E = {
 						CreatedOnToolsVersion = 8.3;
+						DevelopmentTeam = GQAPG2Q6U6;
 						ProvisioningStyle = Automatic;
 					};
 					E7B940F71EAE790C0078AB5E = {
@@ -595,6 +599,7 @@
 				E7B940EF1EAE790C0078AB5E /* Assets.xcassets in Resources */,
 				E06516AC1EC1166A00D4E1A7 /* launchScreenIage.jpg in Resources */,
 				E038F56B1EB694DA002E55DE /* ProfileStoryboard.storyboard in Resources */,
+				E7C15E5F1ECBF0DB00549A85 /* flick.mp3 in Resources */,
 				D1CF3F0A1EC90B4A002B698F /* GoogleService-Info.plist in Resources */,
 				E7D293261EC684EA00F16899 /* ping.mp3 in Resources */,
 				E028BE4B1EC2463D00637398 /* background.jpg in Resources */,
@@ -954,7 +959,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = GQAPG2Q6U6;
 				INFOPLIST_FILE = TummyOnTrack/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tummyontrack.TummyOnTrack;
@@ -970,7 +975,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = GQAPG2Q6U6;
 				INFOPLIST_FILE = TummyOnTrack/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tummyontrack.TummyOnTrack;
