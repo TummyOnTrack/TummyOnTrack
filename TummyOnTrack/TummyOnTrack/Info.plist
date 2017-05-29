@@ -30,6 +30,8 @@
 	<string>Choose as Profile picture or food picture</string>
 	<key>NSSpeechRecognitionUsageDescription</key>
 	<string>Speech recognition will be used to determine which words you speak into this device's microphone.</string>
+	<key>UIApplicationExitsOnSuspend</key>
+	<true/>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
