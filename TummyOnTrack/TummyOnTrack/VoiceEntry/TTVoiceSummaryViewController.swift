@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class TTVoiceSummaryViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+class TTVoiceSummaryViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, VoiceCollectionCellDelegate {
     
     @IBOutlet weak var collectionView: UICollectionView!
 
@@ -89,16 +89,29 @@ class TTVoiceSummaryViewController: UIViewController, UICollectionViewDataSource
         if selectedBoolArray[indexPath.row] == true {
             //make it deleted
             selectedBoolArray[indexPath.row] = false
+            
             totalPointsEarned = totalPointsEarned - foodValueArray[indexPath.row].points!
+            
         }
         else {
             //make selected
             selectedBoolArray[indexPath.row] = true
             totalPointsEarned = totalPointsEarned + foodValueArray[indexPath.row].points!
         }
-
+        
         self.collectionView.reloadSections(IndexSet(integer: 0))
 
+    }
+    
+    func deleteFoodItem( aFoodItem: TTFoodItem) {
+        for i in 0...foodValueArray.count-1 {
+            let iFood = foodValueArray[i]
+            if iFood.name == aFoodItem.name {
+                foodValueArray.remove(at: i)
+                break;
+            }
+        }
+        self.collectionView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -107,13 +120,14 @@ class TTVoiceSummaryViewController: UIViewController, UICollectionViewDataSource
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return TTFoodItem.voiceSelectedFoodItems.count
+        return foodValueArray.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "voiceCollectionCell", for: indexPath) as! VoiceCollectionViewCell
         let foodInCell = foodValueArray[indexPath.row]
         let press = UILongPressGestureRecognizer(target: self, action: #selector(onLongPressed(longPressGestureRecognizer:)))
+        cell.delegate = self
         cell.foodItem = foodInCell
         cell.isSelectedFoodItem = selectedBoolArray[indexPath.row]
         cell.foodCellView.addGestureRecognizer(press)

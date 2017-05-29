@@ -9,6 +9,12 @@
 import UIKit
 import SDWebImage
 
+protocol VoiceCollectionCellDelegate {
+
+    func deleteFoodItem( aFoodItem: TTFoodItem)
+
+}
+
 class VoiceCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet weak var deleteImage: UIImageView!
@@ -16,13 +22,19 @@ class VoiceCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var foodImageView: UIImageView!
     @IBOutlet weak var foodNameLabel: UILabel!
 
+    @IBOutlet weak var deleteButton: UIButton!
+    
+    var delegate: VoiceCollectionCellDelegate?
+    
     var isSelectedFoodItem: Bool! {
         didSet {
             if isSelectedFoodItem == true {
                 deleteImage.image = UIImage(named: "tickmark")
+                deleteButton.isHidden = true
             }
             else {
                 deleteImage.image = UIImage(named: "delete")
+                deleteButton.isHidden = false
             }
         }
     }
@@ -31,6 +43,7 @@ class VoiceCollectionViewCell: UICollectionViewCell {
         didSet {
             foodCellView.layer.cornerRadius = 5
             foodNameLabel.text = foodItem.name
+            deleteButton.isHidden = true
          //   deleteImage.isHidden = true
             if let imageurlstring = foodItem.images?[0] {
                 /*if let data = try? Data(contentsOf: imageurlstring) {
@@ -42,12 +55,17 @@ class VoiceCollectionViewCell: UICollectionViewCell {
         }
     }
     
+    @IBAction func onDeleteButtonClick(_ sender: Any) {
+        delegate?.deleteFoodItem(aFoodItem: foodItem)
+    }
     func deleteOrSelect(isSelected: Bool) {
         if isSelected {
             deleteImage.image = UIImage(named: "tickmark")
+            deleteButton.isHidden = true
         }
         else {
             deleteImage.image = UIImage(named: "delete")
+            deleteButton.isHidden = false
         }
     }
     

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="W6W-PW-D6v">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="W6W-PW-D6v">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -168,6 +168,13 @@
                                                                 <constraint firstAttribute="height" constant="20" id="f8h-gy-iBP"/>
                                                             </constraints>
                                                         </imageView>
+                                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mdk-2U-sgN">
+                                                            <rect key="frame" x="56" y="-5" width="46" height="30"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <connections>
+                                                                <action selector="onDeleteButtonClick:" destination="Qle-8U-YOH" eventType="touchUpInside" id="A6s-ad-MHg"/>
+                                                            </connections>
+                                                        </button>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
@@ -189,6 +196,7 @@
                                             <constraint firstItem="yVI-Xe-dD1" firstAttribute="top" secondItem="Qle-8U-YOH" secondAttribute="top" constant="2" id="rJb-bz-a2g"/>
                                         </constraints>
                                         <connections>
+                                            <outlet property="deleteButton" destination="mdk-2U-sgN" id="pDL-NY-zt7"/>
                                             <outlet property="deleteImage" destination="Bpv-4E-Xjj" id="BQz-PE-Dbu"/>
                                             <outlet property="foodCellView" destination="yVI-Xe-dD1" id="gdr-Xc-eMe"/>
                                             <outlet property="foodImageView" destination="Rkl-T3-mUL" id="9Jn-7S-NGa"/>
