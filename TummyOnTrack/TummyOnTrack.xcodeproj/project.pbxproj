@@ -27,7 +27,7 @@
 		D1B1EFD51EB395250032BEE1 /* TTVoiceSummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1B1EFD41EB395250032BEE1 /* TTVoiceSummaryViewController.swift */; };
 		D1B1EFD71EB3953D0032BEE1 /* TTFoodItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1B1EFD61EB3953D0032BEE1 /* TTFoodItem.swift */; };
 		D1B1EFE81EB3BDF80032BEE1 /* VoiceCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1B1EFE71EB3BDF80032BEE1 /* VoiceCollectionViewCell.swift */; };
-		D1CF3F0A1EC90B4A002B698F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D1CF3F091EC90B4A002B698F /* GoogleService-Info.plist */; };
+		D1EBE35F1EDCFF69000C84CE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D1EBE35E1EDCFF69000C84CE /* GoogleService-Info.plist */; };
 		DCE26630DAFFED14DB212A92 /* Pods_TummyOnTrackTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C70769353C6DF168DCF8CA75 /* Pods_TummyOnTrackTests.framework */; };
 		E028BE491EC2454600637398 /* launchScreenIage2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E028BE481EC2454600637398 /* launchScreenIage2.jpg */; };
 		E028BE4B1EC2463D00637398 /* background.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E028BE4A1EC2463D00637398 /* background.jpg */; };
@@ -115,7 +115,7 @@
 		D1B1EFD41EB395250032BEE1 /* TTVoiceSummaryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TTVoiceSummaryViewController.swift; path = TummyOnTrack/VoiceEntry/TTVoiceSummaryViewController.swift; sourceTree = SOURCE_ROOT; };
 		D1B1EFD61EB3953D0032BEE1 /* TTFoodItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TTFoodItem.swift; sourceTree = "<group>"; };
 		D1B1EFE71EB3BDF80032BEE1 /* VoiceCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VoiceCollectionViewCell.swift; path = TummyOnTrack/VoiceEntry/VoiceCollectionViewCell.swift; sourceTree = SOURCE_ROOT; };
-		D1CF3F091EC90B4A002B698F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		D1EBE35E1EDCFF69000C84CE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E028BE481EC2454600637398 /* launchScreenIage2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = launchScreenIage2.jpg; sourceTree = "<group>"; };
 		E028BE4A1EC2463D00637398 /* background.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = background.jpg; sourceTree = "<group>"; };
 		E038F56A1EB694DA002E55DE /* ProfileStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ProfileStoryboard.storyboard; sourceTree = "<group>"; };
@@ -282,7 +282,7 @@
 				E028BE4A1EC2463D00637398 /* background.jpg */,
 				E028BE481EC2454600637398 /* launchScreenIage2.jpg */,
 				E7B940F01EAE790C0078AB5E /* LaunchScreen.storyboard */,
-				D1CF3F091EC90B4A002B698F /* GoogleService-Info.plist */,
+				D1EBE35E1EDCFF69000C84CE /* GoogleService-Info.plist */,
 				E7B940F31EAE790C0078AB5E /* Info.plist */,
 				E7B940EB1EAE790C0078AB5E /* TummyOnTrack.xcdatamodeld */,
 			);
@@ -547,7 +547,6 @@
 				TargetAttributes = {
 					E7B940E01EAE790C0078AB5E = {
 						CreatedOnToolsVersion = 8.3;
-						DevelopmentTeam = Z7DR9L4CWW;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Push = {
@@ -605,9 +604,9 @@
 				E7D2932C1EC7B53100F16899 /* sort_food.wav in Resources */,
 				E7B940EF1EAE790C0078AB5E /* Assets.xcassets in Resources */,
 				E06516AC1EC1166A00D4E1A7 /* launchScreenIage.jpg in Resources */,
+				D1EBE35F1EDCFF69000C84CE /* GoogleService-Info.plist in Resources */,
 				E038F56B1EB694DA002E55DE /* ProfileStoryboard.storyboard in Resources */,
 				E7C15E5F1ECBF0DB00549A85 /* flick.mp3 in Resources */,
-				D1CF3F0A1EC90B4A002B698F /* GoogleService-Info.plist in Resources */,
 				E7D293261EC684EA00F16899 /* ping.mp3 in Resources */,
 				E028BE4B1EC2463D00637398 /* background.jpg in Resources */,
 				31DE9B061EB155120055B8D8 /* Rewards.storyboard in Resources */,
@@ -966,7 +965,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = Z7DR9L4CWW;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = TummyOnTrack/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tummyontrack.tracker;
@@ -982,7 +981,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = Z7DR9L4CWW;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = TummyOnTrack/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tummyontrack.tracker;

@@ -15,6 +15,7 @@ class TTFoodItem {
     var images: [URL]?
     var dictionary: NSDictionary?
     var joke: String?
+    var searchPriority: Bool?
 
     init(dictionary: NSDictionary) {
         self.dictionary = dictionary
@@ -31,6 +32,9 @@ class TTFoodItem {
             images = imageurls
         }
         joke = TTJoke.getJokeFor(aWord: name!)
+        if let priority = dictionary["searchPriority"] as? Bool {
+            searchPriority = priority
+        }
     }
 
     static var defaultFoodDictionary = Dictionary<String, TTFoodItem>()
@@ -53,9 +57,19 @@ class TTFoodItem {
     static var voiceSelectedFoodItems = Dictionary<String, TTFoodItem>()
 
     class func getFoodItemsFromSpokenString(selectedFoodString: String) {
+        var updatedString = selectedFoodString
         for (foodKey, foodValue) in TTFoodItem.defaultFoodDictionary {
-            if (selectedFoodString.range(of: foodKey) != nil) {
+            if (foodValue.searchPriority == true) {
+                if(updatedString.range(of: foodKey) != nil) {
+                    voiceSelectedFoodItems[foodKey] = foodValue
+                    updatedString = updatedString.replacingOccurrences(of: foodKey, with: "")
+                }
+            }
+        }
+        for (foodKey, foodValue) in TTFoodItem.defaultFoodDictionary {
+            if (updatedString.range(of: foodKey) != nil) {
                 voiceSelectedFoodItems[foodKey] = foodValue
+                updatedString = updatedString.replacingOccurrences(of: foodKey, with: "")
             }
         }
     }
