@@ -31,6 +31,7 @@ class TTVoiceViewController: UIViewController, SFSpeechRecognizerDelegate {
     var originalConstraintConstant = CGFloat()
     var originalRightArrowConstraint: NSLayoutConstraint!
     let animationRunner = AnimationRunner()
+    let audioSession = AVAudioSession.sharedInstance()
     
     //object that handles speech recognition
     private let speechRecognizer = SFSpeechRecognizer(locale: Locale.init(identifier: "en-US"))
@@ -70,6 +71,7 @@ class TTVoiceViewController: UIViewController, SFSpeechRecognizerDelegate {
         originalRightArrowCenter = rightArrowImage.center
         upArrowImage.isHidden = true
         rightArrowImage.isHidden = true
+        print(AVAudioSession.sharedInstance().mode)
         
         NotificationCenter.default.addObserver(self, selector: #selector(animateUpArrow), name: NSNotification.Name(rawValue: notificationForUpArrow), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(animateRightArrow), name: NSNotification.Name(rawValue: notificationForRightArrow), object: nil)
@@ -91,6 +93,10 @@ class TTVoiceViewController: UIViewController, SFSpeechRecognizerDelegate {
             fatalError("Audio engine has no input node")
         }
         
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         //request the authorization of Speech Recognition
         SFSpeechRecognizer.requestAuthorization { (authStatus) in
             
@@ -126,6 +132,14 @@ class TTVoiceViewController: UIViewController, SFSpeechRecognizerDelegate {
                 }
                 
                 if self.isSpeechRecognizerAuthorized && self.isMicrophoneAuthorized {
+                  //  let session = AVAudioSession.sharedInstance()
+                    do {
+                 //       try session.overrideOutputAudioPort(AVAudioSessionPortOverride.speaker)
+                        try self.audioSession.overrideOutputAudioPort(AVAudioSessionPortOverride.speaker)
+                    }
+                    catch {
+                        print("Override Audio Port Error")
+                    }
                     self.animationRunner.playMusic(resourceString: "whatDidYouEat", resourceType: "wav")
                 }
                 else {
@@ -197,6 +211,14 @@ class TTVoiceViewController: UIViewController, SFSpeechRecognizerDelegate {
     func speechRecognizer(_ speechRecognizer: SFSpeechRecognizer, availabilityDidChange available: Bool) {
         if available {
             microphoneButton.isEnabled = true
+       //     let session = AVAudioSession.sharedInstance()
+            do {
+           //     try session.overrideOutputAudioPort(AVAudioSessionPortOverride.speaker)
+                try audioSession.overrideOutputAudioPort(AVAudioSessionPortOverride.speaker)
+            }
+            catch {
+                print("Override Audio Port Error")
+            }
             self.animationRunner.playMusic(resourceString: "whatDidYouEat", resourceType: "wav")
         }
         else {
@@ -210,9 +232,11 @@ class TTVoiceViewController: UIViewController, SFSpeechRecognizerDelegate {
             recognitionTask = nil
         }
         
-        let audioSession = AVAudioSession.sharedInstance()
+   //     let audioSession = AVAudioSession.sharedInstance()
         do {
             try audioSession.setCategory(AVAudioSessionCategoryPlayAndRecord)
+      //      try audioSession.overrideOutputAudioPort(AVAudioSessionPortOverride.none)
+        //    try audioSession.setCategory(AVAudioSessionCategoryRecord)
             try audioSession.setMode(AVAudioSessionModeMeasurement)
             try audioSession.setActive(true, with: .notifyOthersOnDeactivation)
         } catch {
@@ -306,6 +330,15 @@ class TTVoiceViewController: UIViewController, SFSpeechRecognizerDelegate {
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ShowVoiceSummary" {
+//            let session = AVAudioSession.sharedInstance()
+//            do {
+//                try session.setCategory(AVAudioSessionCategorySoloAmbient)
+//                try session.setMode(AVAudioSessionModeDefault)
+//            }
+//            catch {
+//                print("Error while setting default values for AVAudioSession")
+//            }
+
             TTFoodItem.getFoodItemsFromSpokenString(selectedFoodString: selectedfoodstring.capitalized)
             settingsToPauseRecording()
             audioEngine.stop()

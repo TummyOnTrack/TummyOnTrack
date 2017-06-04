@@ -149,8 +149,8 @@
                                                     <rect key="frame" x="2" y="2" width="96" height="96"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EVq-4w-wFy">
-                                                            <rect key="frame" x="29.5" y="72" width="37" height="18"/>
-                                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                                                            <rect key="frame" x="32.5" y="72" width="32" height="18"/>
+                                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
@@ -168,21 +168,16 @@
                                                                 <constraint firstAttribute="height" constant="20" id="f8h-gy-iBP"/>
                                                             </constraints>
                                                         </imageView>
-                                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mdk-2U-sgN">
-                                                            <rect key="frame" x="56" y="-5" width="46" height="30"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                            <connections>
-                                                                <action selector="onDeleteButtonClick:" destination="Qle-8U-YOH" eventType="touchUpInside" id="A6s-ad-MHg"/>
-                                                            </connections>
-                                                        </button>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstItem="Rkl-T3-mUL" firstAttribute="centerX" secondItem="yVI-Xe-dD1" secondAttribute="centerX" id="3Nu-FA-FHk"/>
+                                                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="EVq-4w-wFy" secondAttribute="trailing" constant="1" id="7sF-Rq-czd"/>
                                                         <constraint firstItem="Rkl-T3-mUL" firstAttribute="top" secondItem="yVI-Xe-dD1" secondAttribute="top" constant="6" id="B0D-r0-CD1"/>
                                                         <constraint firstItem="EVq-4w-wFy" firstAttribute="centerX" secondItem="yVI-Xe-dD1" secondAttribute="centerX" id="F7U-Hd-Etj"/>
                                                         <constraint firstAttribute="trailing" secondItem="Bpv-4E-Xjj" secondAttribute="trailing" id="NI2-dP-wOt"/>
                                                         <constraint firstItem="EVq-4w-wFy" firstAttribute="top" secondItem="Rkl-T3-mUL" secondAttribute="bottom" constant="6" id="RUF-iO-O5i"/>
+                                                        <constraint firstItem="EVq-4w-wFy" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="yVI-Xe-dD1" secondAttribute="leading" constant="1" id="dX4-Ht-JWw"/>
                                                         <constraint firstItem="Bpv-4E-Xjj" firstAttribute="top" secondItem="yVI-Xe-dD1" secondAttribute="top" id="s9u-zK-IFx"/>
                                                         <constraint firstAttribute="bottom" secondItem="EVq-4w-wFy" secondAttribute="bottom" constant="6" id="tgp-At-mwU"/>
                                                     </constraints>
@@ -196,7 +191,6 @@
                                             <constraint firstItem="yVI-Xe-dD1" firstAttribute="top" secondItem="Qle-8U-YOH" secondAttribute="top" constant="2" id="rJb-bz-a2g"/>
                                         </constraints>
                                         <connections>
-                                            <outlet property="deleteButton" destination="mdk-2U-sgN" id="pDL-NY-zt7"/>
                                             <outlet property="deleteImage" destination="Bpv-4E-Xjj" id="BQz-PE-Dbu"/>
                                             <outlet property="foodCellView" destination="yVI-Xe-dD1" id="gdr-Xc-eMe"/>
                                             <outlet property="foodImageView" destination="Rkl-T3-mUL" id="9Jn-7S-NGa"/>

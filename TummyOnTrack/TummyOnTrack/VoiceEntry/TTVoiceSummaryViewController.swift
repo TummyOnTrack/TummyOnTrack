@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class TTVoiceSummaryViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, VoiceCollectionCellDelegate {
+class TTVoiceSummaryViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     @IBOutlet weak var collectionView: UICollectionView!
 
@@ -102,17 +102,6 @@ class TTVoiceSummaryViewController: UIViewController, UICollectionViewDataSource
         self.collectionView.reloadSections(IndexSet(integer: 0))
 
     }
-    
-    func deleteFoodItem( aFoodItem: TTFoodItem) {
-        for i in 0...foodValueArray.count-1 {
-            let iFood = foodValueArray[i]
-            if iFood.name == aFoodItem.name {
-                foodValueArray.remove(at: i)
-                break;
-            }
-        }
-        self.collectionView.reloadData()
-    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -127,7 +116,6 @@ class TTVoiceSummaryViewController: UIViewController, UICollectionViewDataSource
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "voiceCollectionCell", for: indexPath) as! VoiceCollectionViewCell
         let foodInCell = foodValueArray[indexPath.row]
         let press = UILongPressGestureRecognizer(target: self, action: #selector(onLongPressed(longPressGestureRecognizer:)))
-        cell.delegate = self
         cell.foodItem = foodInCell
         cell.isSelectedFoodItem = selectedBoolArray[indexPath.row]
         cell.foodCellView.addGestureRecognizer(press)
